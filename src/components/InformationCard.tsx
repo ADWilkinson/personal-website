@@ -106,6 +106,38 @@ const InformationCard = () => {
                   </dd>
                 </div>
               </dl>
+                   <dl className="space-y-12 ">
+                <div>
+                  <dt className="text-xl leading-6 font-semibold font-morion mt-3 border-t border-theme-pan-navy pt-3 text-theme-pan-navy">
+                    Cursed Pirates - Bard
+                  </dt>
+                  <dd className="mt-2 ml-3 text-base text-theme-pan-sky">
+                    <a
+                      href="https://cursedpirates.xyz"
+                      className=""
+                      target={'_blank'}
+                    >
+                      Website
+                    </a>
+                    {' | '}
+                    <a
+                      href="https://discord.gg/galleondao"
+                      className=""
+                      target={'_blank'}
+                    >
+                      Discord
+                    </a>
+                    {' | '}
+                    <a
+                      href="https://twitter.com/cursedpirates"
+                      className=""
+                      target={'_blank'}
+                    >
+                      Twitter
+                    </a>
+                  </dd>
+                </div>
+              </dl>
               <dl className="space-y-12 ">
                 <div>
                   <dt className="text-xl leading-6 font-semibold font-morion mt-3 border-t border-theme-pan-navy pt-3 text-theme-pan-navy">
