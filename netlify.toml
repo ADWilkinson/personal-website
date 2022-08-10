@@ -1,0 +1,30 @@
+# The following redirect is intended for use with most SPAs that handle
+# routing internally.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Applies to all builds
+[build]
+  publish = "build"
+  [build.environment]
+    SERVICE_NAME = "FLYING_DUTCHMAN_CAPITAL"
+    ENVIRONMENT_NAME = "DEV"
+
+# Applies to Prod
+[context.production.environment]
+  ENVIRONMENT_NAME = "PRODUCTION"
+
+#Runs on branch deploys
+[context.branch-deploy]
+  command = "cp static/_branchdeploy_headers public/_headers && yarn build"
+
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+[[plugins]]
+  package = "netlify-plugin-image-optim"
