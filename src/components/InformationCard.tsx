@@ -27,28 +27,34 @@ const InformationCard = () => {
           </p>
           <p className="text-center  font-semibold tracking-wider uppercase ">
             <span className="block text-xs pt-2 font-medium ">
-              <span className="px-2 py-0.5 border rounded-l border-theme-pan-navy">
-                Discord:{' '}
-              </span>
-              <span className="inline-flex items-center px-2 py-0.5 rounded-r border-theme-pan-navy text-xs font-medium bg-theme-pan-navy text-theme-pan-champagne">
-                Davy Jones#0001
-              </span>
-              <span className="ml-3 px-2 py-0.5 border rounded-l border-theme-pan-navy">
-                Telegram:{' '}
-              </span>
-              <span className="inline-flex  items-center px-2 py-0.5  rounded-r border-theme-pan-navy hover:bg-theme-pan-sky  text-xs font-medium bg-theme-pan-navy text-theme-pan-champagne">
-                <a href="https://t.me/DavyJones_0x" target={'_blank'}>
-                  DavyJones_0x
-                </a>
-              </span>
-              <span className="ml-3 px-2 py-0.5 border rounded-l border-theme-pan-navy">
-                Telegram:{' '}
-              </span>
-              <span className="inline-flex  items-center px-2 py-0.5  rounded-r border-theme-pan-navy hover:bg-theme-pan-sky  text-xs font-medium bg-theme-pan-navy text-theme-pan-champagne">
-                <a href="https://t.me/blackpearlmercantile" target={'_blank'}>
-                  AMA Crypto Help
-                </a>
-              </span>
+              <div className="block text-left  md:inflex-flex lg:inline-flex xl:inline-flex md:text-center lg:text-center xl:text-center">
+                <span className="px-2 py-0.5 border rounded-l border-theme-pan-navy">
+                  Discord:{' '}
+                </span>
+                <span className="inline-flex items-center px-2 py-0.5 rounded-r border-theme-pan-navy text-xs font-medium bg-theme-pan-navy text-theme-pan-champagne">
+                  Davy Jones#0001
+                </span>
+              </div>
+              <div className="block py-2 md:inflex-flex lg:inline-flex xl:inline-flex md:py-0 lg:py-0 xl:py-0">
+                <span className="ml-3 px-2 py-0.5 border rounded-l border-theme-pan-navy">
+                  Telegram:{' '}
+                </span>
+                <span className="inline-flex  items-center px-2 py-0.5  rounded-r border-theme-pan-navy hover:bg-theme-pan-sky  text-xs font-medium bg-theme-pan-navy text-theme-pan-champagne">
+                  <a href="https://t.me/DavyJones_0x" target={'_blank'}>
+                    DavyJones_0x
+                  </a>
+                </span>
+              </div>
+              <div className="block text-right md:inflex-flex lg:inline-flex xl:inline-flex md:text-center lg:text-center xl:text-center">
+                <span className="ml-3 px-2 py-0.5 border rounded-l border-theme-pan-navy">
+                  Telegram:{' '}
+                </span>
+                <span className="inline-flex  items-center px-2 py-0.5  rounded-r border-theme-pan-navy hover:bg-theme-pan-sky  text-xs font-medium bg-theme-pan-navy text-theme-pan-champagne">
+                  <a href="https://t.me/blackpearlmercantile" target={'_blank'}>
+                    AMA Crypto Help
+                  </a>
+                </span>
+              </div>
             </span>
           </p>
 
@@ -106,7 +112,7 @@ const InformationCard = () => {
                   </dd>
                 </div>
               </dl>
-                   <dl className="space-y-12 ">
+              <dl className="space-y-12 ">
                 <div>
                   <dt className="text-xl leading-6 font-semibold font-morion mt-3 border-t border-theme-pan-navy pt-3 text-theme-pan-navy">
                     Cursed Pirates - Bard
