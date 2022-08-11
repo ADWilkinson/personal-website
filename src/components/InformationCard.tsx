@@ -144,7 +144,7 @@ const InformationCard = () => {
 
           <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
-              <span className=" text-theme-pan-champagne bg-theme-pan-navy p-2 rounded">
+              <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
                 CURRENT
               </span>
             </p>
@@ -250,7 +250,7 @@ const InformationCard = () => {
           </div>
           <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
-              <span className=" text-theme-pan-champagne bg-theme-pan-navy p-2 rounded">
+              <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
                 ANGEL INVESTMENTS
               </span>
             </p>
@@ -294,7 +294,7 @@ const InformationCard = () => {
           </div>
           <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
-              <span className=" text-theme-pan-champagne bg-theme-pan-navy p-2 rounded">
+              <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
                 WRITING
               </span>
             </p>
@@ -302,11 +302,11 @@ const InformationCard = () => {
               <dl className="space-y-12 pt-2">
                 <div>
                   <div className="relative   ">
-                    <div className="pt-3 mx-auto grid gap-8 sm:grid-cols-1 md:grid-cols-3  lg:grid-cols-3 xl:grid-cols-3 ">
+                    <div className="pt-3 pl-1 mx-auto grid gap-8 sm:grid-cols-1 md:grid-cols-3  lg:grid-cols-3 xl:grid-cols-3 ">
                       {posts.map((post) => (
                         <div
                           key={post.title}
-                          className="hover:opacity-80 flex flex-col rounded-xl border border-theme-pan-navy shadow-lg overflow-hidden"
+                          className="hover:opacity-80 flex flex-col rounded-xl border border-theme-pan-navy overflow-hidden"
                         >
                           <div className="flex-shrink-0">
                             <a
