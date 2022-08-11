@@ -1,5 +1,74 @@
 import { investors, socials } from 'constants/general'
 
+const posts = [
+  {
+    title: 'Below Deck — Black Flag Coalition Faction Preview',
+    href:
+      'https://blog.galleon.community/below-deck-black-flag-coalition-faction-preview-1e207a7f8f10',
+    category: {
+      name: 'Cursed Pirates',
+      href:
+        'https://blog.galleon.community/below-deck-black-flag-coalition-faction-preview-1e207a7f8f10',
+    },
+    description:
+      'Today we’re excited to share a preview of the Cursed Pirates latest faction with you, the Black Flag Coalition.',
+    date: 'Aug 11, 2022',
+    datetime: '2022-08-22',
+    imageUrl: 'https://miro.medium.com/max/700/0*p5JDsY_wzp7afPuk.png',
+    readingTime: '4 min',
+    author: {
+      name: 'Davy Jones',
+      href: 'https://andrew-eth.medium.com',
+      imageUrl:
+        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
+    },
+  },
+  {
+    title: 'Below Deck — Cursed Pirates Faction Preview',
+    href:
+      'https://blog.galleon.community/below-deck-cursed-pirates-faction-preview-7ac87d63e263',
+    category: {
+      name: 'Cursed Pirates',
+      href:
+        'https://blog.galleon.community/below-deck-cursed-pirates-faction-preview-7ac87d63e263',
+    },
+    description:
+      'Today we’re excited to share a preview of the Cursed Pirates latest faction with you, the Black Flag Coalition.',
+    date: 'Jul 08, 2022',
+    datetime: '2022-07-08',
+    imageUrl: 'https://miro.medium.com/max/700/0*yzkfqXS22XMMYWch.png',
+    readingTime: '4 min',
+    author: {
+      name: 'Davy Jones',
+      href: 'https://andrew-eth.medium.com',
+      imageUrl:
+        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
+    },
+  },
+  {
+    title: 'Captain’s Log #1 — Galleon Recap, Port to Voyage',
+    href:
+      'https://blog.galleon.community/captains-log-1-galleon-recap-port-to-voyage-ec1a812b64df',
+    category: {
+      name: 'Galleon',
+      href:
+        'https://blog.galleon.community/captains-log-1-galleon-recap-port-to-voyage-ec1a812b64df',
+    },
+    description:
+      'A recap of the progress Galleon has made since launch in early 2022, what we have delivered and where we are sailing going forward.',
+    date: 'Jul 06, 2022',
+    datetime: '2022-07-06',
+    imageUrl: 'https://miro.medium.com/max/700/1*Ffq7OZIZmmYOeL5JUSk50A.png',
+    readingTime: '8 min',
+    author: {
+      name: 'Davy Jones',
+      href: 'https://andrew-eth.medium.com',
+      imageUrl:
+        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
+    },
+  },
+]
+
 const InformationCard = () => {
   return (
     <div className="">
@@ -200,7 +269,7 @@ const InformationCard = () => {
                         >
                           <div className="space-y-4">
                             <img
-                              className="mx-auto h-20 w-20 ring-theme-pan-navy bg-theme-sky ring-1 rounded-full lg:w-24 lg:h-24"
+                              className="mx-auto h-20 w-20 ring-theme-pan-navy bg-theme-pan-sky ring-1 rounded-full lg:w-24 lg:h-24"
                               src={person.imageUrl}
                               alt=""
                             />
@@ -219,6 +288,117 @@ const InformationCard = () => {
                       </li>
                     ))}
                   </ul>
+                </div>
+              </dl>
+            </div>
+          </div>
+          <div className="container max-w-4xl justify-center mx-auto  mt-10">
+            <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
+              <span className=" text-theme-pan-champagne bg-theme-pan-navy p-2 rounded">
+                WRITING
+              </span>
+            </p>
+            <div className=" border-l-2 pt-2 border-theme-pan-navy pl-5 lg:col-span-2">
+              <dl className="space-y-12 pt-2">
+                <div>
+                  <div className="relative   ">
+                    <div className="pt-3 mx-auto grid gap-8 sm:grid-cols-1 md:grid-cols-3  lg:grid-cols-3 xl:grid-cols-3 ">
+                      {posts.map((post) => (
+                        <div
+                          key={post.title}
+                          className="hover:opacity-80 flex flex-col rounded-xl border border-theme-pan-navy shadow-lg overflow-hidden"
+                        >
+                          <div className="flex-shrink-0">
+                            <a
+                              target="_blank"
+                              href={post.href}
+                              rel="noreferrer"
+                            >
+                              <img
+                                className="h-48 w-full object-cover"
+                                src={post.imageUrl}
+                                alt=""
+                              />
+                            </a>
+                          </div>
+                          <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+                            <div className="flex-1">
+                              <p className="text-sm font-medium text-theme-pan-sky">
+                                <a
+                                  target="_blank"
+                                  href={post.category.href}
+                                  className="hover:underline"
+                                  rel="noreferrer"
+                                >
+                                  {post.category.name}
+                                </a>
+                              </p>
+                              <a
+                                target="_blank"
+                                href={post.href}
+                                className="block mt-2"
+                                rel="noreferrer"
+                              >
+                                <p className="text-xl  font-morion font-semibold text-theme-navy">
+                                  {post.title}
+                                </p>
+                              </a>
+                            </div>
+                            <div className="mt-6 flex items-center">
+                              <div className="flex-shrink-0">
+                                <a
+                                  target="_blank"
+                                  href={post.author.href}
+                                  rel="noreferrer"
+                                >
+                                  <span className="sr-only">
+                                    {post.author.name}
+                                  </span>
+                                  <img
+                                    className="h-10 w-10 rounded-full"
+                                    src={post.author.imageUrl}
+                                    alt=""
+                                  />
+                                </a>
+                              </div>
+                              <div className="ml-3">
+                                <p className="text-sm font-semibold text-theme-navy">
+                                  <a
+                                    target="_blank"
+                                    href={post.author.href}
+                                    className="hover:underline"
+                                    rel="noreferrer"
+                                  >
+                                    {post.author.name}
+                                  </a>
+                                </p>
+                                <div className="flex space-x-1 text-sm text-theme-pan-sky">
+                                  <time dateTime={post.datetime}>
+                                    {post.date}
+                                  </time>
+                                  <span aria-hidden="true">&middot;</span>
+                                  <span>{post.readingTime} read</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                      <div className="text-xs font-semibold tracking-wider uppercase  block text-right md:inflex-flex lg:inline-flex xl:inline-flex md:text-center lg:text-center xl:text-center">
+                        <span className="ml-3 px-2 py-0.5 border rounded-l border-theme-pan-navy">
+                          Medium:{' '}
+                        </span>
+                        <span className="inline-flex   items-center px-2 py-0.5  rounded-r border-theme-pan-navy hover:bg-theme-pan-sky  text-xs font-medium bg-theme-pan-navy text-theme-pan-champagne">
+                          <a
+                            href="https://andrew-eth.medium.com/"
+                            target={'_blank'}
+                          >
+                            andrew-eth
+                          </a>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </dl>
             </div>
