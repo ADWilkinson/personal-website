@@ -142,13 +142,13 @@ const InformationCard = () => {
             ))}
           </div>
 
-          <div className="container max-w-4xl justify-center mx-auto  mt-10">
+          <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
               <span className=" text-theme-pan-champagne bg-theme-pan-navy p-2 rounded">
                 CURRENT
               </span>
             </p>
-            <div className=" border-l-2 pt-2 border-theme-pan-navy pl-5 lg:col-span-2">
+            <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
               <dl className="space-y-12 ">
                 <div>
                   <dt className="text-xl leading-6 font-semibold font-morion border-theme-pan-navy pt-3 text-theme-pan-navy">
@@ -248,13 +248,13 @@ const InformationCard = () => {
               </dl>
             </div>
           </div>
-          <div className="container max-w-4xl justify-center mx-auto  mt-10">
+          <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
               <span className=" text-theme-pan-champagne bg-theme-pan-navy p-2 rounded">
                 ANGEL INVESTMENTS
               </span>
             </p>
-            <div className=" border-l-2 pt-2 border-theme-pan-navy pl-5 lg:col-span-2">
+            <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
               <dl className="space-y-12 pt-2">
                 <div>
                   <ul
@@ -292,13 +292,13 @@ const InformationCard = () => {
               </dl>
             </div>
           </div>
-          <div className="container max-w-4xl justify-center mx-auto  mt-10">
+          <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
               <span className=" text-theme-pan-champagne bg-theme-pan-navy p-2 rounded">
                 WRITING
               </span>
             </p>
-            <div className=" border-l-2 pt-2 border-theme-pan-navy pl-5 lg:col-span-2">
+            <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
               <dl className="space-y-12 pt-2">
                 <div>
                   <div className="relative   ">
