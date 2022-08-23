@@ -92,7 +92,7 @@ const InformationCard = () => {
             </span>
           </h1>
           <p className="text-base text-center  pb-3 text-theme-pan-navy">
-            Web3 Founder / Advisor / Engineer & Angel Investor
+            Web3 Founder, Advisor, Engineer & Angel Investor
           </p>
           <p className="text-center  font-semibold tracking-wider uppercase ">
             <span className="block text-xs pt-2 font-medium ">
@@ -145,7 +145,7 @@ const InformationCard = () => {
           <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
               <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
-                CURRENT
+                CURRENT (WEB3)
               </span>
             </p>
             <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
@@ -213,10 +213,20 @@ const InformationCard = () => {
                   </dd>
                 </div>
               </dl>
+          
+            </div>
+          </div>    <div className="container max-w-4xl justify-center mx-auto  mt-16">
+            <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
+              <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
+                PREVIOUS (WEB3)
+              </span>
+            </p>
+            <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
+
               <dl className="space-y-12 ">
                 <div>
-                  <dt className="text-xl leading-6 font-semibold font-morion mt-3 border-t border-theme-pan-navy pt-3 text-theme-pan-navy">
-                    Set Protocol - Advisor
+                  <dt className="text-xl leading-6 font-semibold font-morion pt-3 text-theme-pan-navy">
+                    Set Protocol - Advisor, Growth & Community
                   </dt>
                   <dd className="mt-2 ml-3 text-base text-theme-pan-sky">
                     {' '}
