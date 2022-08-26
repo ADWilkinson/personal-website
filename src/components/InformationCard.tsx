@@ -2,6 +2,28 @@ import { investors, socials } from 'constants/general'
 
 const posts = [
   {
+    title: 'Captain’s Log #2 — Outlook & Strategic Shift',
+    href:
+      'https://blog.galleon.community/captains-log-2-outlook-strategic-shift-26e2d092c0d7',
+    category: {
+      name: 'Galleon',
+      href:
+        'https://blog.galleon.community/captains-log-2-outlook-strategic-shift-26e2d092c0d7',
+    },
+    description:
+      'Day 206 at sea. Galleon came afoot into an unchartered, parched archipelago where the dominant land, sea and air mammal were bears...',
+    date: 'Aug 26, 2022',
+    datetime: '2022-08-26',
+    imageUrl: 'https://miro.medium.com/max/700/1*LJ59F8yShJBUwT7x19WSNQ.png',
+    readingTime: '8 min',
+    author: {
+      name: 'Davy Jones',
+      href: 'https://andrew-eth.medium.com',
+      imageUrl:
+        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
+    },
+  },
+  {
     title: 'Below Deck — Black Flag Coalition Faction Preview',
     href:
       'https://blog.galleon.community/below-deck-black-flag-coalition-faction-preview-1e207a7f8f10',
@@ -38,28 +60,6 @@ const posts = [
     datetime: '2022-07-08',
     imageUrl: 'https://miro.medium.com/max/700/0*yzkfqXS22XMMYWch.png',
     readingTime: '4 min',
-    author: {
-      name: 'Davy Jones',
-      href: 'https://andrew-eth.medium.com',
-      imageUrl:
-        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
-    },
-  },
-  {
-    title: 'Captain’s Log #1 — Galleon Recap, Port to Voyage',
-    href:
-      'https://blog.galleon.community/captains-log-1-galleon-recap-port-to-voyage-ec1a812b64df',
-    category: {
-      name: 'Galleon',
-      href:
-        'https://blog.galleon.community/captains-log-1-galleon-recap-port-to-voyage-ec1a812b64df',
-    },
-    description:
-      'A recap of the progress Galleon has made since launch in early 2022, what we have delivered and where we are sailing going forward.',
-    date: 'Jul 06, 2022',
-    datetime: '2022-07-06',
-    imageUrl: 'https://miro.medium.com/max/700/1*Ffq7OZIZmmYOeL5JUSk50A.png',
-    readingTime: '8 min',
     author: {
       name: 'Davy Jones',
       href: 'https://andrew-eth.medium.com',
@@ -126,7 +126,6 @@ const InformationCard = () => {
               </div>
             </span>
           </p>
-
           <div className="flex space-x-6 m-auto justify-center mt-4">
             {socials.social.map((item) => (
               <a
@@ -141,7 +140,6 @@ const InformationCard = () => {
               </a>
             ))}
           </div>
-
           <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
               <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
@@ -213,16 +211,15 @@ const InformationCard = () => {
                   </dd>
                 </div>
               </dl>
-          
             </div>
-          </div>    <div className="container max-w-4xl justify-center mx-auto  mt-16">
+          </div>{' '}
+          <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
               <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
                 PREVIOUS (WEB3)
               </span>
             </p>
             <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
-
               <dl className="space-y-12 ">
                 <div>
                   <dt className="text-xl leading-6 font-semibold font-morion pt-3 text-theme-pan-navy">
