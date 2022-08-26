@@ -12,7 +12,7 @@ const posts = [
     },
     description:
       'Day 206 at sea. Galleon came afoot into an unchartered, parched archipelago where the dominant land, sea and air mammal were bears...',
-    date: 'Aug 26, 2022',
+    date: 'Aug 26',
     datetime: '2022-08-26',
     imageUrl: 'https://miro.medium.com/max/700/1*LJ59F8yShJBUwT7x19WSNQ.png',
     readingTime: '8 min',
@@ -34,7 +34,7 @@ const posts = [
     },
     description:
       'Today we’re excited to share a preview of the Cursed Pirates latest faction with you, the Black Flag Coalition.',
-    date: 'Aug 11, 2022',
+    date: 'Aug 11',
     datetime: '2022-08-22',
     imageUrl: 'https://miro.medium.com/max/700/0*p5JDsY_wzp7afPuk.png',
     readingTime: '4 min',
@@ -56,7 +56,7 @@ const posts = [
     },
     description:
       'Today we’re excited to share a preview of the Cursed Pirates latest faction with you, the Black Flag Coalition.',
-    date: 'Jul 08, 2022',
+    date: 'Jul 08',
     datetime: '2022-07-08',
     imageUrl: 'https://miro.medium.com/max/700/0*yzkfqXS22XMMYWch.png',
     readingTime: '4 min',
