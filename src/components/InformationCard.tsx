@@ -1,6 +1,28 @@
 import { investors, socials } from 'constants/general'
 
 const posts = [
+   {
+    title: 'Introducing Cursed DAO, a Galleon NFT Focused Sub DAO',
+    href:
+      'https://blog.galleon.community/introducing-cursed-dao-a-galleon-nft-focused-sub-dao-ac85fbf66025',
+    category: {
+      name: 'Galleon',
+      href:
+        'https://blog.galleon.community/introducing-cursed-dao-a-galleon-nft-focused-sub-dao-ac85fbf66025',
+    },
+    description:
+      '“And are you prepared for what comes after? The cursed are not bound to me. They are bound to a lifetime of servitude before the mast.',
+    date: 'Aug 31',
+    datetime: '2022-08-31',
+    imageUrl: 'https://miro.medium.com/max/700/1*rpHFmA8ZzV_QdtaSdDcBxw.png',
+    readingTime: '7 min',
+    author: {
+      name: 'Davy Jones',
+      href: 'https://andrew-eth.medium.com',
+      imageUrl:
+        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
+    },
+  },
   {
     title: 'Captain’s Log #2 — Outlook & Strategic Shift',
     href:
@@ -11,7 +33,7 @@ const posts = [
         'https://blog.galleon.community/captains-log-2-outlook-strategic-shift-26e2d092c0d7',
     },
     description:
-      'Day 206 at sea. Galleon came afoot into an unchartered, parched archipelago where the dominant land, sea and air mammal were bears...',
+      'Day 206 at sea. Galleon came afoot into an unchartered, parched archipelago where the dominant land, sea and air mammal were bears.',
     date: 'Aug 26',
     datetime: '2022-08-26',
     imageUrl: 'https://miro.medium.com/max/700/1*LJ59F8yShJBUwT7x19WSNQ.png',
@@ -37,28 +59,6 @@ const posts = [
     date: 'Aug 11',
     datetime: '2022-08-22',
     imageUrl: 'https://miro.medium.com/max/700/0*p5JDsY_wzp7afPuk.png',
-    readingTime: '4 min',
-    author: {
-      name: 'Davy Jones',
-      href: 'https://andrew-eth.medium.com',
-      imageUrl:
-        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
-    },
-  },
-  {
-    title: 'Below Deck — Cursed Pirates Faction Preview',
-    href:
-      'https://blog.galleon.community/below-deck-cursed-pirates-faction-preview-7ac87d63e263',
-    category: {
-      name: 'Cursed Pirates',
-      href:
-        'https://blog.galleon.community/below-deck-cursed-pirates-faction-preview-7ac87d63e263',
-    },
-    description:
-      'Today we’re excited to share a preview of the Cursed Pirates latest faction with you, the Black Flag Coalition.',
-    date: 'Jul 08',
-    datetime: '2022-07-08',
-    imageUrl: 'https://miro.medium.com/max/700/0*yzkfqXS22XMMYWch.png',
     readingTime: '4 min',
     author: {
       name: 'Davy Jones',
@@ -302,7 +302,7 @@ const InformationCard = () => {
           <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
               <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
-                WRITING
+                LATEST WRITING
               </span>
             </p>
             <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
