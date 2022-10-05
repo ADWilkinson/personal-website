@@ -2,6 +2,28 @@ import { investors, socials } from 'constants/general'
 
 const posts = [
    {
+    title: 'Zero Bloat Get Setup In Crypto',
+    href:
+      'https://andrew-eth.medium.com/zero-bloat-get-setup-in-crypto-1ff462c69431',
+    category: {
+      name: 'Personal',
+      href:
+        'https://andrew-eth.medium.com/zero-bloat-get-setup-in-crypto-1ff462c69431',
+    },
+    description:
+      'Lazy speculator or on-chain maximalist, what are you?',
+    date: 'Sep 26',
+    datetime: '2022-09-26',
+    imageUrl: 'https://miro.medium.com/max/700/1*hWh2unZzs1pNb-_S7CyIFg.png',
+    readingTime: '10 min',
+    author: {
+      name: 'Andrew',
+      href: 'https://andrew-eth.medium.com',
+      imageUrl:
+        'https://miro.medium.com/fit/c/176/176/1*hWh2unZzs1pNb-_S7CyIFg.png',
+    },
+  },
+   {
     title: 'Introducing Cursed DAO, a Galleon NFT Focused Sub DAO',
     href:
       'https://blog.galleon.community/introducing-cursed-dao-a-galleon-nft-focused-sub-dao-ac85fbf66025',
@@ -11,7 +33,7 @@ const posts = [
         'https://blog.galleon.community/introducing-cursed-dao-a-galleon-nft-focused-sub-dao-ac85fbf66025',
     },
     description:
-      '“And are you prepared for what comes after? The cursed are not bound to me. They are bound to a lifetime of servitude before the mast.',
+      'And are you prepared for what comes after? The cursed are not bound to me. They are bound to a lifetime of servitude before the mast.',
     date: 'Aug 31',
     datetime: '2022-08-31',
     imageUrl: 'https://miro.medium.com/max/700/1*rpHFmA8ZzV_QdtaSdDcBxw.png',
@@ -391,7 +413,9 @@ const InformationCard = () => {
                           </div>
                         </div>
                       ))}
-                      <div className="text-xs font-semibold tracking-wider uppercase  block text-right md:inflex-flex lg:inline-flex xl:inline-flex md:text-center lg:text-center xl:text-center">
+                      
+                    </div>
+                    <div className="text-xs pt-8 font-semibold tracking-wider uppercase  block text-right md:inflex-flex lg:inline-flex xl:inline-flex md:text-center lg:text-center xl:text-center">
                         <span className="ml-3 px-2 py-0.5 border rounded-l border-theme-pan-navy">
                           Medium:{' '}
                         </span>
@@ -404,7 +428,6 @@ const InformationCard = () => {
                           </a>
                         </span>
                       </div>
-                    </div>
                   </div>
                 </div>
               </dl>

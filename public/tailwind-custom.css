@@ -1009,6 +1009,10 @@ select {
   padding-left: 0.25rem;
 }
 
+.pt-8 {
+  padding-top: 2rem;
+}
+
 .pt-10 {
   padding-top: 2.5rem;
 }

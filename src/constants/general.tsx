@@ -53,6 +53,12 @@ export const investors = [
     imageUrl: '/stfx.jpg',
     link: 'https://twitter.com/STFX_IO',
   },
+    {
+    name: 'Insrt Finance',
+    role: 'Structured Products / NFTs',
+    imageUrl: '/insrt.jpg',
+    link: 'https://twitter.com/insrtfinance',
+  },
 ]
 
 export const portfolio = [
