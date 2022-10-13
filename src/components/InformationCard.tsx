@@ -260,6 +260,14 @@ const InformationCard = () => {
                     </a>
                     {' | '}
                     <a
+                      href="https://royalfortune.studio"
+                      className=""
+                      target={'_blank'}
+                    >
+                      Royal Fortune
+                    </a>
+                    {' | '}
+                    <a
                       href="https://discord.gg/galleondao"
                       className=""
                       target={'_blank'}
