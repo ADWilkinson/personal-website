@@ -1,7 +1,29 @@
 import { investors, socials } from 'constants/general'
 
 const posts = [
-   {
+  {
+    title: 'Cursed Pirates — Update 11/10/2022',
+    href:
+      'https://blog.galleon.community/cursed-pirates-update-11-10-2022-4e99739dc8fe',
+    category: {
+      name: 'Galleon',
+      href:
+        'https://blog.galleon.community/cursed-pirates-update-11-10-2022-4e99739dc8fe',
+    },
+    description:
+      'A quick round-up of information for ye scurvy dogs around the development of Cursed Pirates & Cursed DAO.',
+    date: 'Oct 13',
+    datetime: '2022-10-13',
+    imageUrl: 'https://miro.medium.com/max/700/1*mEECLeRT3Ofsn4wXY2ESfA.png',
+    readingTime: '6 min',
+    author: {
+      name: 'Davy Jones',
+      href: 'https://andrew-eth.medium.com',
+      imageUrl:
+        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
+    },
+  },
+  {
     title: 'Zero Bloat Get Setup In Crypto',
     href:
       'https://andrew-eth.medium.com/zero-bloat-get-setup-in-crypto-1ff462c69431',
@@ -23,7 +45,7 @@ const posts = [
         'https://miro.medium.com/fit/c/176/176/1*hWh2unZzs1pNb-_S7CyIFg.png',
     },
   },
-   {
+  {
     title: 'Introducing Cursed DAO, a Galleon NFT Focused Sub DAO',
     href:
       'https://blog.galleon.community/introducing-cursed-dao-a-galleon-nft-focused-sub-dao-ac85fbf66025',
@@ -82,6 +104,28 @@ const posts = [
     datetime: '2022-08-22',
     imageUrl: 'https://miro.medium.com/max/700/0*p5JDsY_wzp7afPuk.png',
     readingTime: '4 min',
+    author: {
+      name: 'Davy Jones',
+      href: 'https://andrew-eth.medium.com',
+      imageUrl:
+        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
+    },
+  },
+  {
+    title: 'Captain’s Log #1 — Galleon Recap, Port to Voyage',
+    href:
+      'https://blog.galleon.community/captains-log-1-galleon-recap-port-to-voyage-ec1a812b64df',
+    category: {
+      name: 'Galleon',
+      href:
+        'https://blog.galleon.community/captains-log-1-galleon-recap-port-to-voyage-ec1a812b64df',
+    },
+    description:
+      'A holistic view of the progress Galleon has made in its initiatives dating back to its Seed raise.',
+    date: 'Jun 06',
+    datetime: '2022-06-06',
+    imageUrl: 'https://miro.medium.com/max/700/1*Ffq7OZIZmmYOeL5JUSk50A.png',
+    readingTime: '8 min',
     author: {
       name: 'Davy Jones',
       href: 'https://andrew-eth.medium.com',
@@ -413,21 +457,21 @@ const InformationCard = () => {
                           </div>
                         </div>
                       ))}
-                      
+
                     </div>
                     <div className="text-xs pt-8 font-semibold tracking-wider uppercase  block text-right md:inflex-flex lg:inline-flex xl:inline-flex md:text-center lg:text-center xl:text-center">
-                        <span className="ml-3 px-2 py-0.5 border rounded-l border-theme-pan-navy">
-                          Medium:{' '}
-                        </span>
-                        <span className="inline-flex   items-center px-2 py-0.5  rounded-r border-theme-pan-navy hover:bg-theme-pan-sky  text-xs font-medium bg-theme-pan-navy text-theme-pan-champagne">
-                          <a
-                            href="https://andrew-eth.medium.com/"
-                            target={'_blank'}
-                          >
-                            andrew-eth
-                          </a>
-                        </span>
-                      </div>
+                      <span className="ml-3 px-2 py-0.5 border rounded-l border-theme-pan-navy">
+                        Medium:{' '}
+                      </span>
+                      <span className="inline-flex   items-center px-2 py-0.5  rounded-r border-theme-pan-navy hover:bg-theme-pan-sky  text-xs font-medium bg-theme-pan-navy text-theme-pan-champagne">
+                        <a
+                          href="https://andrew-eth.medium.com/"
+                          target={'_blank'}
+                        >
+                          andrew-eth
+                        </a>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </dl>
