@@ -1,6 +1,6 @@
 
 import Page from 'components/Page'
-import { useEffect, useState } from 'react'
+
 const Dashboard = () => {
   return (
     <>

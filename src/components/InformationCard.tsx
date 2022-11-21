@@ -1,139 +1,5 @@
-import { investors, socials } from 'constants/general'
-
-const posts = [
-  {
-    title: 'Cursed Pirates — Update 11/10/2022',
-    href:
-      'https://blog.galleon.community/cursed-pirates-update-11-10-2022-4e99739dc8fe',
-    category: {
-      name: 'Galleon',
-      href:
-        'https://blog.galleon.community/cursed-pirates-update-11-10-2022-4e99739dc8fe',
-    },
-    description:
-      'A quick round-up of information for ye scurvy dogs around the development of Cursed Pirates & Cursed DAO.',
-    date: 'Oct 13',
-    datetime: '2022-10-13',
-    imageUrl: 'https://miro.medium.com/max/700/1*mEECLeRT3Ofsn4wXY2ESfA.png',
-    readingTime: '6 min',
-    author: {
-      name: 'Davy Jones',
-      href: 'https://andrew-eth.medium.com',
-      imageUrl:
-        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
-    },
-  },
-  {
-    title: 'Zero Bloat Get Setup In Crypto',
-    href:
-      'https://andrew-eth.medium.com/zero-bloat-get-setup-in-crypto-1ff462c69431',
-    category: {
-      name: 'Personal',
-      href:
-        'https://andrew-eth.medium.com/zero-bloat-get-setup-in-crypto-1ff462c69431',
-    },
-    description:
-      'Lazy speculator or on-chain maximalist, what are you?',
-    date: 'Sep 26',
-    datetime: '2022-09-26',
-    imageUrl: 'https://miro.medium.com/max/700/1*hWh2unZzs1pNb-_S7CyIFg.png',
-    readingTime: '10 min',
-    author: {
-      name: 'Andrew',
-      href: 'https://andrew-eth.medium.com',
-      imageUrl:
-        'https://miro.medium.com/fit/c/176/176/1*hWh2unZzs1pNb-_S7CyIFg.png',
-    },
-  },
-  {
-    title: 'Introducing Cursed DAO, a Galleon NFT Focused Sub DAO',
-    href:
-      'https://blog.galleon.community/introducing-cursed-dao-a-galleon-nft-focused-sub-dao-ac85fbf66025',
-    category: {
-      name: 'Galleon',
-      href:
-        'https://blog.galleon.community/introducing-cursed-dao-a-galleon-nft-focused-sub-dao-ac85fbf66025',
-    },
-    description:
-      'And are you prepared for what comes after? The cursed are not bound to me. They are bound to a lifetime of servitude before the mast.',
-    date: 'Aug 31',
-    datetime: '2022-08-31',
-    imageUrl: 'https://miro.medium.com/max/700/1*rpHFmA8ZzV_QdtaSdDcBxw.png',
-    readingTime: '7 min',
-    author: {
-      name: 'Davy Jones',
-      href: 'https://andrew-eth.medium.com',
-      imageUrl:
-        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
-    },
-  },
-  {
-    title: 'Captain’s Log #2 — Outlook & Strategic Shift',
-    href:
-      'https://blog.galleon.community/captains-log-2-outlook-strategic-shift-26e2d092c0d7',
-    category: {
-      name: 'Galleon',
-      href:
-        'https://blog.galleon.community/captains-log-2-outlook-strategic-shift-26e2d092c0d7',
-    },
-    description:
-      'Day 206 at sea. Galleon came afoot into an unchartered, parched archipelago where the dominant land, sea and air mammal were bears.',
-    date: 'Aug 26',
-    datetime: '2022-08-26',
-    imageUrl: 'https://miro.medium.com/max/700/1*LJ59F8yShJBUwT7x19WSNQ.png',
-    readingTime: '8 min',
-    author: {
-      name: 'Davy Jones',
-      href: 'https://andrew-eth.medium.com',
-      imageUrl:
-        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
-    },
-  },
-  {
-    title: 'Below Deck — Black Flag Coalition Faction Preview',
-    href:
-      'https://blog.galleon.community/below-deck-black-flag-coalition-faction-preview-1e207a7f8f10',
-    category: {
-      name: 'Cursed Pirates',
-      href:
-        'https://blog.galleon.community/below-deck-black-flag-coalition-faction-preview-1e207a7f8f10',
-    },
-    description:
-      'Today we’re excited to share a preview of the Cursed Pirates latest faction with you, the Black Flag Coalition.',
-    date: 'Aug 11',
-    datetime: '2022-08-22',
-    imageUrl: 'https://miro.medium.com/max/700/0*p5JDsY_wzp7afPuk.png',
-    readingTime: '4 min',
-    author: {
-      name: 'Davy Jones',
-      href: 'https://andrew-eth.medium.com',
-      imageUrl:
-        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
-    },
-  },
-  {
-    title: 'Captain’s Log #1 — Galleon Recap, Port to Voyage',
-    href:
-      'https://blog.galleon.community/captains-log-1-galleon-recap-port-to-voyage-ec1a812b64df',
-    category: {
-      name: 'Galleon',
-      href:
-        'https://blog.galleon.community/captains-log-1-galleon-recap-port-to-voyage-ec1a812b64df',
-    },
-    description:
-      'A holistic view of the progress Galleon has made in its initiatives dating back to its Seed raise.',
-    date: 'Jun 06',
-    datetime: '2022-06-06',
-    imageUrl: 'https://miro.medium.com/max/700/1*Ffq7OZIZmmYOeL5JUSk50A.png',
-    readingTime: '8 min',
-    author: {
-      name: 'Davy Jones',
-      href: 'https://andrew-eth.medium.com',
-      imageUrl:
-        'https://miro.medium.com/fit/c/176/176/1*FmOvNmeaHZwrkEAIrwbnfw.png',
-    },
-  },
-]
+import { investors, socials, tracks } from 'constants/general'
+import { posts } from '../constants/posts'
 
 const InformationCard = () => {
   return (
@@ -180,16 +46,7 @@ const InformationCard = () => {
                   </a>
                 </span>
               </div>
-              <div className="block text-right md:inflex-flex lg:inline-flex xl:inline-flex md:text-center lg:text-center xl:text-center">
-                <span className="ml-3 px-2 py-0.5 border rounded-l border-theme-pan-navy">
-                  Telegram:{' '}
-                </span>
-                <span className="inline-flex  items-center px-2 py-0.5  rounded-r border-theme-pan-navy hover:bg-theme-pan-sky  text-xs font-medium bg-theme-pan-navy text-theme-pan-champagne">
-                  <a href="https://t.me/blackpearlmercantile" target={'_blank'}>
-                    AMA Crypto Help
-                  </a>
-                </span>
-              </div>
+
             </span>
           </p>
           <div className="flex space-x-6 m-auto justify-center mt-4">
@@ -209,10 +66,10 @@ const InformationCard = () => {
           <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
               <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
-                CURRENT (WEB3)
+                CURRENT PROJECTS
               </span>
             </p>
-            <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
+            <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2 pb-8">
               <dl className="space-y-12 ">
                 <div>
                   <dt className="text-xl leading-6 font-semibold font-morion border-theme-pan-navy pt-3 text-theme-pan-navy">
@@ -247,8 +104,8 @@ const InformationCard = () => {
               </dl>
               <dl className="space-y-12 ">
                 <div>
-                  <dt className="text-xl leading-6 font-semibold font-morion mt-3 border-t border-theme-pan-navy pt-3 text-theme-pan-navy">
-                    Cursed Pirates - Bard
+                  <dt className="text-xl leading-6 font-semibold font-morion mt-3  text-theme-pan-navy">
+                    Cursed Pirates - Contributor
                   </dt>
                   <dd className="mt-2 ml-3 text-base text-theme-pan-sky">
                     <a
@@ -287,13 +144,13 @@ const InformationCard = () => {
               </dl>
             </div>
           </div>{' '}
-          <div className="container max-w-4xl justify-center mx-auto  mt-16">
+          <div className="container max-w-4xl justify-center mx-auto ">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
-              <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
-                PREVIOUS (WEB3)
+              <span className=" text-theme-pan-navy border-2 border-theme-pan-navy px-4 py-2 rounded">
+                PREVIOUS
               </span>
             </p>
-            <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
+            <div className=" border-l-2 border-b-2 pb-8 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
               <dl className="space-y-12 ">
                 <div>
                   <dt className="text-xl leading-6 font-semibold font-morion pt-3 text-theme-pan-navy">
@@ -330,17 +187,17 @@ const InformationCard = () => {
             </div>
           </div>
           <div className="container max-w-4xl justify-center mx-auto  mt-16">
-            <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
+            <p className="text-right text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
               <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
                 ANGEL INVESTMENTS
               </span>
             </p>
-            <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
+            <div className="border-b-2 pb-8 border-r-2 pt-4 border-theme-pan-navy pr-5 lg:col-span-2">
               <dl className="space-y-12 pt-2">
                 <div>
                   <ul
                     role="list"
-                    className="mx-auto grid text-center md:grid-cols-3 gap-x-4 gap-y-8 pt-3 sm:grid-cols-1 "
+                    className="mx-auto grid text-center md:grid-cols-3 gap-y-8 pt-4 sm:grid-cols-1 "
                   >
                     {investors.map((person) => (
                       <li key={person.name}>
@@ -350,7 +207,7 @@ const InformationCard = () => {
                         >
                           <div className="space-y-4">
                             <img
-                              className="mx-auto h-20 w-20 ring-theme-pan-navy bg-theme-pan-sky ring-1 rounded-full lg:w-24 lg:h-24"
+                              className="mx-auto h-20 w-20 ring-theme-pan-navy bg-theme-pan-sky ring-2 rounded-full lg:w-24 lg:h-24"
                               src={person.imageUrl}
                               alt=""
                             />
@@ -373,13 +230,14 @@ const InformationCard = () => {
               </dl>
             </div>
           </div>
+
           <div className="container max-w-4xl justify-center mx-auto  mt-16">
             <p className="text-left text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
               <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
                 LATEST WRITING
               </span>
             </p>
-            <div className=" border-l-2 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
+            <div className=" border-l-2 border-b-2 pb-8 pt-4 border-theme-pan-navy pl-5 lg:col-span-2">
               <dl className="space-y-12 pt-2">
                 <div>
                   <div className="relative   ">
@@ -485,6 +343,58 @@ const InformationCard = () => {
               </dl>
             </div>
           </div>
+
+          <div className="container max-w-4xl justify-center mx-auto  mt-16">
+            <p className="text-right text-2xl font-semibold  tracking-wider uppercase sm:text-2xl lg:text-2xl ">
+              <span className=" text-theme-pan-champagne bg-theme-pan-navy px-4 py-2 rounded">
+                MUSIC NFTs
+              </span>
+            </p>
+          
+            <div className="border-b-2 pb-8 border-r-2 pt-4 border-theme-pan-navy pr-5 lg:col-span-2">
+              <p className="translate-y-2 translate-x-5 text-right text-sm font-semibold ">
+                <span className=" uppercase tracking-wider text-theme-pan-champagne bg-theme-pan-sky px-4 py-2 rounded">
+                  Cursed Pirates
+                </span>
+              </p>
+              <dl className="space-y-12 pt-8">
+                <div>
+                  <ul
+                    role="list"
+                    className="mx-auto grid text-center md:grid-cols-3 gap-y-8 pt-4 sm:grid-cols-1 "
+                  >
+                    {tracks.map((track) => (
+                      <li key={track.name}>
+                        <a
+                          href={track.link}
+                          className="focus:outline-none hover:opacity-70"
+                        >
+                          <div className="space-y-4">
+                            <img
+                              className="mx-auto h-20 w-20 ring-theme-pan-navy bg-theme-pan-sky ring-2 rounded-full lg:w-24 lg:h-24"
+                              src={track.imageUrl}
+                              alt=""
+                            />
+                            <div className="space-y-2">
+                              <div className="   text-theme-pan-navy ">
+                                <h3 className="font-morion font-semibold text-xl">
+                                  {track.name}
+                                </h3>
+                                <p className="text-theme-pan-sky  text-base">
+                                  {track.release}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </dl>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
