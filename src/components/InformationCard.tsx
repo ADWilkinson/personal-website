@@ -338,6 +338,19 @@ const InformationCard = () => {
                         </a>
                       </span>
                     </div>
+                    <div className="text-xs pt-8 font-semibold tracking-wider uppercase  block text-right md:inflex-flex lg:inline-flex xl:inline-flex md:text-center lg:text-center xl:text-center">
+                      <span className="ml-3 px-2 py-0.5 border rounded-l border-theme-pan-navy">
+                        Mirror:{' '}
+                      </span>
+                      <span className="inline-flex   items-center px-2 py-0.5  rounded-r border-theme-pan-navy hover:bg-theme-pan-sky  text-xs font-medium bg-theme-pan-navy text-theme-pan-champagne">
+                        <a
+                          href="https://mirror.xyz/theflyingdutchman.eth"
+                          target={'_blank'}
+                        >
+                          theflyingdutchman.eth
+                        </a>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </dl>
