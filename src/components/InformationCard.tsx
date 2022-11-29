@@ -1,4 +1,6 @@
-import { investors, socials, tracks } from 'constants/general'
+import { socials } from '../constants/socials'
+import { investors } from "../constants/investors"
+import { tracks } from "../constants/tracks"
 import { posts } from '../constants/posts'
 
 const InformationCard = () => {
@@ -363,7 +365,7 @@ const InformationCard = () => {
                 MUSIC NFTs
               </span>
             </p>
-          
+
             <div className="border-b-2 pb-8 border-r-2 pt-4 border-theme-pan-navy pr-5 lg:col-span-2">
               <p className="translate-y-2 translate-x-5 text-right text-sm font-semibold ">
                 <span className=" uppercase tracking-wider text-theme-pan-champagne bg-theme-pan-sky px-4 py-2 rounded">

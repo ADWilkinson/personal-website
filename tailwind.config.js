@@ -1,5 +1,5 @@
 module.exports = {
-  presets: [require("./galleon-theme.js")],
+  presets: [require("./personal-theme.js")],
   // Customizations specific to this project would go here
   theme: {
     extend: {},
