@@ -87,6 +87,14 @@ const InformationCard = () => {
                     </a>
                     {' | '}
                     <a
+                      href="https://cursed.fund"
+                      className=""
+                      target={'_blank'}
+                    >
+                      Cursed Fund
+                    </a>
+                    {' | '}
+                    <a
                       href="https://discord.gg/galleondao"
                       className=""
                       target={'_blank'}
