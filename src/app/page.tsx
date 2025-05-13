@@ -255,28 +255,58 @@ function Resume() {
 }
 
 function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
-
+  let rotations = ['rotate-2', '0', '-rotate-2']
+  
   return (
     <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 lg:w-72 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
-              rotations[imageIndex % rotations.length],
-            )}
-          >
-            <Image
-              src={image}
-              alt="Pirate themed illustration"
-              sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
-              className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
-              priority={imageIndex === 0}
-            />
-          </div>
-        ))}
+      <div className="-my-4 flex justify-center gap-6 overflow-hidden py-4 sm:gap-10">
+        {/* First image - page-0.png (vertical) */}
+        <div
+          className={clsx(
+            'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 lg:w-72 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
+            rotations[0],
+          )}
+        >
+          <Image
+            src={image1}
+            alt="Pirate themed illustration"
+            sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
+            className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
+            priority={true}
+          />
+        </div>
+        
+        {/* Middle image - page-2.png (horizontal) */}
+        <div
+          className={clsx(
+            'relative aspect-[16/9] w-48 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-80 lg:w-96 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
+            rotations[1],
+          )}
+        >
+          <Image
+            src={image3}
+            alt="Pirate themed illustration - wide format"
+            sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 12rem"
+            className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
+            priority={false}
+          />
+        </div>
+        
+        {/* Last image - page-4.png (vertical) */}
+        <div
+          className={clsx(
+            'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 lg:w-72 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
+            rotations[2],
+          )}
+        >
+          <Image
+            src={image5}
+            alt="Pirate themed illustration"
+            sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
+            className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
+            priority={false}
+          />
+        </div>
       </div>
     </div>
   )
