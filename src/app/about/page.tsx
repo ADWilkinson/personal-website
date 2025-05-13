@@ -8,6 +8,7 @@ import { CompanyLogo } from '@/components/CompanyLogo'
 import {
   GitHubIcon,
   LinkedInIcon,
+  XIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
 import logoGalleon from '@/images/logos/web-galleon.png'
@@ -100,7 +101,7 @@ export default function About() {
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Side Projects</h3>
             <p>
-              In my spare time, I enjoy creating micro apps when I get inspired. Using my web and cloud technologies expertise, I leverage agent-style coding tools to build, deploy, and host projects in production environments rapidly. Some of my hobby projects include Wojak Jones (a yield farming DeFi assistant), ChordCraft (an AI chord progression generator), and Ultrasoundapps (a crypto apps homepage).
+              In my spare time, I enjoy creating micro apps when I get inspired. For details on my various side projects, please visit my <Link href="/projects" className="text-teal-500 hover:text-teal-600 dark:text-teal-400 dark:hover:text-teal-300">Projects page</Link>.
             </p>
           </div>
         </div>
@@ -111,6 +112,9 @@ export default function About() {
             </SocialLink>
             <SocialLink href="https://www.linkedin.com/in/andrew-d-wilkinson" icon={LinkedInIcon} className="mt-4">
               Follow on LinkedIn
+            </SocialLink>
+            <SocialLink href="https://x.com/davyjones0x" icon={XIcon} className="mt-4">
+              Follow on Twitter
             </SocialLink>
             <SocialLink
               href="mailto:gm@andrewwilkinson.io"

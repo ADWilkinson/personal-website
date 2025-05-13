@@ -8,6 +8,7 @@ import { Container } from '@/components/Container'
 import {
   GitHubIcon,
   LinkedInIcon,
+  XIcon,
 } from '@/components/SocialIcons'
 import logoGalleon from '@/images/logos/web-galleon.png'
 // Company logos
@@ -307,6 +308,11 @@ export default async function Home() {
               href="https://www.linkedin.com/in/andrew-d-wilkinson"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
+            />
+            <SocialLink
+              href="https://x.com/davyjones0x"
+              aria-label="Follow on Twitter"
+              icon={XIcon}
             />
           </div>
         </div>
