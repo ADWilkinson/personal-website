@@ -67,20 +67,23 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I'm Andrew Wilkinson, a Product and Technology Leader specializing in blockchain and DeFi.
+            I'm Andrew Wilkinson, a VC-backed Founder and Product Strategy Leader in the Ethereum Ecosystem.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              I am a Product and Technology Leader with 8+ years of experience across blockchain, DeFi, and fintech sectors, where I have built and scaled innovative products and led engineering teams. At Galleon DAO, I secured $1M+ in funding from top VCs and industry angels, managed $20M+ in investment strategies, and grew a community to over 6,000 members.
+              I'm a Product Strategy & Engineering Manager with 8+ years of experience building in the blockchain and DeFi space. Most notably, as the <strong>Founder of Galleon DAO</strong>, I led the development of composable, automated strategy tokens on Ethereum, allowing users to access complex DeFi strategies through a single token.
             </p>
             <p>
-              My experience includes defining product vision, roadmaps, and strategies for blockchain applications in the Ethereum ecosystem. I've led engineering, growth, and product teams across different companies and domains to deliver on their respective roadmaps.
+              <strong>At Galleon DAO</strong>, I secured $1M+ in funding from top VCs (1kx) and industry angels (Bankless, Anthony Sassano). Starting from a concept, I led the full-stack development, implemented smart contracts, built the Web3 frontend interface, and scaled the project to manage $20M+ in investment strategies. I hired and managed a core team of 6 members while transitioning into a tokenised DAO with onchain governance and growing a community of over 6,000 members.
             </p>
             <p>
-              I have a deep understanding of blockchain protocols, smart contracts, and the broader DeFi ecosystem. I've created and executed strategies resulting in significant user adoption and community growth through novel DeFi incentives and partnerships.
+              My experience includes defining product vision, roadmaps, and strategies for blockchain applications in the Ethereum ecosystem. I've led engineering, growth, and product teams across different companies and domains while translating complex business requirements into successful products that solve real user problems.
             </p>
             <p>
               Currently, I'm serving as Head of Brava at Brava Labs, a DeFi protocol focused on creating risk-adjusted onchain yield strategies. I define the product vision and MVP, establish the strategic roadmap, and manage a cross-functional team to bring the product to market.
+            </p>
+            <p>
+              I have a deep understanding of blockchain protocols, smart contracts, and the broader DeFi ecosystem. Throughout my career, I've created and executed strategies resulting in significant user adoption and community growth through novel DeFi incentives and partnerships.
             </p>
             <p>
               In my spare time, I enjoy creating micro apps when I get inspired. Using my web and cloud technologies expertise, I leverage agent-style coding tools to build, deploy, and host projects in production environments rapidly. Some of my hobby projects include Wojak Jones (a yield farming DeFi assistant), ChordCraft (an AI chord progression generator), and Ultrasoundapps (a crypto apps homepage).
