@@ -263,16 +263,17 @@ function Photos() {
           <div
             key={image.src}
             className={clsx(
-              'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
+              'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 lg:w-72 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
               rotations[imageIndex % rotations.length],
             )}
           >
             <Image
               src={image}
               alt="Pirate themed illustration"
-              sizes="(min-width: 640px) 16rem, 10rem"
+              sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
               className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
               priority={imageIndex === 0}
+              quality={10}
             />
           </div>
         ))}
