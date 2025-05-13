@@ -274,7 +274,6 @@ function Photos() {
               sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
               className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
               priority={imageIndex === 0}
-              quality={10}
             />
           </div>
         ))}
