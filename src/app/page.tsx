@@ -9,18 +9,18 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from '@/components/SocialIcons'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoGalleon from '@/images/logos/web-galleon.png'
 import logoStarbucks from '@/images/logos/starbucks.svg'
-import logoSetLabs from '@/images/logos/helio-stream.svg'
-import logoR3 from '@/images/logos/open-shuttle.svg'
-import logoWorldpay from '@/images/logos/airbnb.svg'
-import logoSky from '@/images/logos/facebook.svg'
-import logoBrava from '@/images/logos/cosmos.svg'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
+import logoSetLabs from '@/images/logos/web-set.jpg'
+import logoR3 from '@/images/logos/web-r3.png'
+import logoWorldpay from '@/images/logos/web-worldpay.jpg'
+import logoSky from '@/images/logos/web-sky.png'
+import logoBrava from '@/images/logos/web-brava.jpg'
+import image1 from '@/images/photos/page-0.png'
+import image2 from '@/images/photos/page-1.png'
+import image3 from '@/images/photos/page-2.png'
+import image4 from '@/images/photos/page-3.png'
+import image5 from '@/images/photos/page-4.png'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
@@ -159,8 +159,8 @@ function Role({ role }: { role: Role }) {
 
   return (
     <li className="flex gap-4">
-      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 overflow-hidden">
+        <Image src={role.logo} alt="" className="h-7 w-7 object-contain rounded-full" unoptimized />
       </div>
       <dl className="flex flex-auto flex-wrap gap-x-2">
         <dt className="sr-only">Company</dt>
@@ -200,7 +200,7 @@ function Resume() {
     {
       company: 'Galleon DAO',
       title: 'Founder',
-      logo: logoPlanetaria,
+      logo: logoGalleon,
       start: '2022',
       end: '2023',
     },
@@ -263,15 +263,16 @@ function Photos() {
           <div
             key={image.src}
             className={clsx(
-              'relative aspect-9/10 w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800',
+              'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
               rotations[imageIndex % rotations.length],
             )}
           >
             <Image
               src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
+              alt="Pirate themed illustration"
+              sizes="(min-width: 640px) 16rem, 10rem"
+              className="absolute inset-0 h-full w-full object-cover filter saturate-[0.4] contrast-[0.9] brightness-[1.07]"
+              priority={imageIndex === 0}
             />
           </div>
         ))}

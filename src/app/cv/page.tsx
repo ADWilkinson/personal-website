@@ -1,6 +1,13 @@
 import { type Metadata } from 'next'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import Link from 'next/link'
+import { CompanyLogo } from '@/components/CompanyLogo'
+import logoGalleon from '@/images/logos/web-galleon.png'
+import logoR3 from '@/images/logos/web-r3.png'
+import logoSet from '@/images/logos/web-set.jpg'
+import logoSky from '@/images/logos/web-sky.png'
+import logoWorldpay from '@/images/logos/web-worldpay.jpg'
+import logoBrava from '@/images/logos/web-brava.jpg'
 
 export const metadata: Metadata = {
   title: 'CV',
@@ -20,12 +27,14 @@ function JobTitle({
   title, 
   company, 
   period, 
-  description 
+  description,
+  logo
 }: { 
   title: string; 
   company: string; 
   period: string; 
-  description?: string 
+  description?: string;
+  logo?: any;
 }) {
   return (
     <div className="mb-8">
@@ -33,7 +42,9 @@ function JobTitle({
         <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100">{title}</h3>
         <span className="text-sm text-zinc-500 dark:text-zinc-400">{period}</span>
       </div>
-      <div className="mb-2 text-lg font-medium text-teal-500 dark:text-teal-400">{company}</div>
+      <div className="mb-2 text-lg font-medium text-teal-500 dark:text-teal-400">
+        {logo ? <CompanyLogo name={company} logo={logo} /> : company}
+      </div>
       {description && <div className="text-zinc-600 dark:text-zinc-400 italic mb-4">{description}</div>}
     </div>
   )
@@ -126,6 +137,7 @@ export default function CV() {
                 company="Brava Labs" 
                 period="Dec 2024 – Present" 
                 description="A DeFi protocol focused on creating risk-adjusted onchain yield strategies"
+                logo={logoBrava}
               />
               <JobDescription>
                 I defined the MVP of Brava's stablecoin yield platform and product roadmap for risk-adjusted onchain yield strategies. Led a cross-functional team of engineers, growth specialists, and designers to execute the product vision. Managed stakeholder relationships and reporting while ensuring the alignment of business objectives with technical feasibility. Defined and created product requirements for our long-term roadmap that integrated key technologies (e.g., Circle CCTP V2).
@@ -136,7 +148,8 @@ export default function CV() {
               <JobTitle 
                 title="Advisor" 
                 company="Brava Labs" 
-                period="Oct 2024 – Dec 2024" 
+                period="Oct 2024 – Dec 2024"
+                logo={logoBrava}
               />
               <JobDescription>
                 Provided strategic guidance on how to navigate and effectively connect with crypto-natives as a new project. Advised on community-building strategies and market positioning within the competitive DeFi landscape.
@@ -161,6 +174,7 @@ export default function CV() {
                 company="Galleon DAO" 
                 period="Jan 2022 – May 2023" 
                 description="A DeFi protocol creating structured products and automated investment strategies"
+                logo={logoGalleon}
               />
               <JobDescription>
                 I led product strategy and full-stack development from concept to launch, securing $1M in funding. Founded and guided the project through initial development, hiring and managing six core team members while transitioning to a tokenised DAO with onchain governance. Built a community of over 6,000 members and onboarded 10+ DAO contributors. Attracted $20M+ in product investments while ensuring protocol security and reliability. Established strategic partnerships and integrations within the broader DeFi ecosystem.
@@ -173,6 +187,7 @@ export default function CV() {
                 company="Set Labs" 
                 period="Feb 2022 – Aug 2022" 
                 description="A leading DeFi protocol for creating, managing, and trading tokenized structured products"
+                logo={logoSet}
               />
               <JobDescription>
                 Advised on community engagement strategies and governance mechanisms. Assisted in identifying potential partnerships and integration opportunities within the DeFi ecosystem.
@@ -183,7 +198,8 @@ export default function CV() {
               <JobTitle 
                 title="Growth Lead & Community Strategy" 
                 company="Set Labs" 
-                period="Apr 2021 – Feb 2022" 
+                period="Apr 2021 – Feb 2022"
+                logo={logoSet}
               />
               <JobDescription>
                 Spearheaded growth initiatives resulting in measurable increases in user adoption and token utilization. Developed and executed community management strategies across Twitter, Discord, and other platforms. Created engaging educational content to improve user understanding of Set Protocol's offerings. Identified and pursued business development opportunities, resulting in new strategic partnerships.
@@ -196,6 +212,7 @@ export default function CV() {
                 company="R3" 
                 period="Feb 2021 – Nov 2021" 
                 description="An enterprise DLT and confidential computing company developing Corda"
+                logo={logoR3}
               />
               <JobDescription>
                 Designed and implemented custom DLT applications using R3 Corda and Conclave frameworks. Collaborated with clients to translate complex business requirements into technical solutions. Contributed to product strategy and engineering planning for enterprise blockchain applications. Developed proof-of-concept applications showcasing privacy-preserving technologies.
@@ -208,6 +225,7 @@ export default function CV() {
                 company="Worldpay" 
                 period="Feb 2020 – Feb 2021" 
                 description="A leading payment processing company providing technology solutions worldwide"
+                logo={logoWorldpay}
               />
               <JobDescription>
                 Led architectural design of a Corda-based DLT system to improve B2B payment processes. Managed a team of 12 engineers, overseeing development and testing efforts. Served as subject matter expert for SAFe planning events, bridging product and technical requirements. Influenced framework, tool, and design choices as the project technology lead.
@@ -218,7 +236,8 @@ export default function CV() {
               <JobTitle 
                 title="Blockchain Software Engineer & Scrum Master" 
                 company="Worldpay" 
-                period="Jun 2019 – Feb 2020" 
+                period="Jun 2019 – Feb 2020"
+                logo={logoWorldpay}
               />
               <JobDescription>
                 Delivered full-stack product features for a Corda-based DLT system, including API and UI development. Established development standards and best practices for a new team within Worldpay. Facilitated the transition to the SAFe framework as acting Scrum Master.
@@ -231,6 +250,7 @@ export default function CV() {
                 company="Sky" 
                 period="Oct 2016 – Jun 2019" 
                 description="A leading media company providing TV, broadband, and mobile services"
+                logo={logoSky}
               />
               <JobDescription>
                 Developed 'Sky Analytics', an end-to-end advertising and analytics portal for campaign planning. Implemented highly flexible audience segmentation features for targeted advertising. Used JavaScript, React, and Node.js to create responsive and scalable web applications.

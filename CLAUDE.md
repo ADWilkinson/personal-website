@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal website/portfolio built using Next.js and Tailwind CSS. It's based on the "Spotlight" template from Tailwind Plus. The site includes pages for a personal bio, articles/blog posts, projects, speaking engagements, and contact information.
+This is a personal website/portfolio built using Next.js and Tailwind CSS. It's based on the "Spotlight" template from Tailwind Plus. The site includes pages for a personal bio, articles/blog posts, projects, CV, and contact information. The site has been personalized with custom company logos, pirate-themed illustrations, and content based on Andrew Wilkinson's professional experience.
 
 ## Development Commands
 
@@ -46,6 +46,8 @@ NEXT_PUBLIC_SITE_URL=https://example.com
 - `/src/components/`: Reusable UI components
 - `/src/lib/`: Utility functions and shared logic
 - `/src/images/`: Static images used throughout the site
+  - `/logos/`: Company logos (rounded style)
+  - `/photos/`: Custom images for the homepage (pirate-themed illustrations)
 - `/src/styles/`: Global styles and Tailwind configuration
 
 ### Content Management
@@ -62,6 +64,11 @@ Articles are written in MDX format in `/src/app/articles/` with each article in 
 ### Theme
 - Supports both light and dark modes using `next-themes`
 - Color scheme is primarily based around zinc/teal color palette from Tailwind
+
+### Custom Components
+- `CompanyLogo`: Displays company names with their logos in a consistent, rounded style
+- Layout components such as `Container`, `Section`, and `SimpleLayout` provide consistent page structures
+- Custom styling for images in the homepage photo gallery (desaturated pirate-themed illustrations)
 
 ## Working with MDX Articles
 
