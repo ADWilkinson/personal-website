@@ -101,7 +101,7 @@ export default function CV() {
   return (
     <SimpleLayout
       title="Curriculum Vitae"
-      intro="Product & Engineering Manager | Former VC-backed Founder | DeFi Builder"
+      intro="Product & Engineering Manager. Former VC-backed Founder. DeFi Builder."
     >
       <div className="space-y-12">
         <div className="text-zinc-600 dark:text-zinc-400">
