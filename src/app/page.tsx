@@ -271,7 +271,8 @@ function Photos() {
               src={image}
               alt="Pirate themed illustration"
               sizes="(min-width: 640px) 16rem, 10rem"
-              className="absolute inset-0 h-full w-full object-cover filter saturate-[0.4] contrast-[0.9] brightness-[1.07]"
+              className="absolute inset-0 h-full w-full object-cover"
+              quality={95}
               priority={imageIndex === 0}
             />
           </div>
