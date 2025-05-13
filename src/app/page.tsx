@@ -273,6 +273,7 @@ function Photos() {
             sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
             className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
             priority={true}
+            quality={100}
           />
         </div>
         
@@ -289,6 +290,7 @@ function Photos() {
             sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 12rem"
             className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
             priority={false}
+            quality={100}
           />
         </div>
         
@@ -305,6 +307,7 @@ function Photos() {
             sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 12rem"
             className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
             priority={false}
+            quality={100}
           />
         </div>
         
@@ -321,6 +324,7 @@ function Photos() {
             sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
             className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
             priority={false}
+            quality={100}
           />
         </div>
       </div>

@@ -70,6 +70,8 @@ export default function About() {
               alt=""
               sizes="(min-width: 1024px) 32rem, 20rem"
               className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+              quality={100}
+              priority
             />
           </div>
         </div>
