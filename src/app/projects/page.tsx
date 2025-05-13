@@ -4,13 +4,15 @@ import Image from 'next/image'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { CompanyLogo } from '@/components/CompanyLogo'
-import logoGalleon from '@/images/logos/projects/galleon.svg'
-import logoWojak from '@/images/logos/projects/wojak.svg'
-import logoChordCraft from '@/images/logos/projects/chordcraft.svg'
-import logoUltrasound from '@/images/logos/projects/ultrasound.svg'
-import logoPrivateer from '@/images/logos/projects/privateer.svg'
-import logoSaylor from '@/images/logos/projects/saylormemes.svg'
-import logoCryptoTier from '@/images/logos/projects/cryptotier.svg'
+import { 
+  GlobeAltIcon, 
+  ChartBarIcon, 
+  MusicalNoteIcon, 
+  BoltIcon, 
+  CurrencyDollarIcon, 
+  PhotoIcon, 
+  ListBulletIcon 
+} from '@heroicons/react/24/solid'
 
 const projects = [
   {
@@ -18,49 +20,56 @@ const projects = [
     description:
       'A DeFi protocol creating structured products and automated investment strategies. Secured $1M in funding, built a community of over 6,000 members, and managed $20M+ in product investments.',
     link: { href: 'https://github.com/galleonlabs', label: 'github.com/galleonlabs' },
-    logo: logoGalleon,
+    icon: GlobeAltIcon,
+    color: 'bg-indigo-900 text-white',
   },
   {
     name: 'Wojak Jones',
     description:
       'A yield farming DeFi assistant built with Firebase, Telegram API, and Virtuals Framework. Provides real-time yield farming opportunities and DeFi analytics.',
     link: { href: 'https://wojakjones.xyz', label: 'wojakjones.xyz' },
-    logo: logoWojak,
+    icon: ChartBarIcon,
+    color: 'bg-amber-500 text-white',
   },
   {
     name: 'ChordCraft',
     description:
       'An AI chord progression generator created with React, Firebase, and the OpenAI API. Generates unique chord progressions based on musical style preferences.',
     link: { href: 'https://chordcraft.io', label: 'chordcraft.io' },
-    logo: logoChordCraft,
+    icon: MusicalNoteIcon,
+    color: 'bg-indigo-500 text-white',
   },
   {
     name: 'Ultrasoundapps',
     description:
       'A centralized platform showcasing various DeFi and cryptocurrency applications. Built with React and Firebase.',
     link: { href: 'https://ultrasoundapps.com', label: 'ultrasoundapps.com' },
-    logo: logoUltrasound,
+    icon: BoltIcon,
+    color: 'bg-emerald-500 text-white',
   },
   {
     name: 'Privateer',
     description:
       'A hyperliquid-based trading bot using correlation/mean reversion strategies. Designed with Python and Trading APIs for data analysis.',
     link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'github.com/ADWilkinson/privateer-capital' },
-    logo: logoPrivateer,
+    icon: CurrencyDollarIcon,
+    color: 'bg-slate-800 text-white',
   },
   {
     name: 'SaylorMemes',
     description:
       'A meme generator app built with Vite and Firebase for creating and sharing cryptocurrency-themed memes.',
     link: { href: 'https://github.com/galleonlabs/saylormemes', label: 'github.com/galleonlabs/saylormemes' },
-    logo: logoSaylor,
+    icon: PhotoIcon,
+    color: 'bg-amber-600 text-white',
   },
   {
     name: 'CryptoTierList',
     description:
       'A platform for creating and sharing tier lists of cryptocurrency projects. Built with Next.js and MongoDB.',
     link: { href: 'https://github.com/ADWilkinson/CryptoTierList', label: 'github.com/ADWilkinson/CryptoTierList' },
-    logo: logoCryptoTier,
+    icon: ListBulletIcon,
+    color: 'bg-indigo-400 text-white',
   },
 ]
 
@@ -92,15 +101,8 @@ export default function Projects() {
       >
         {projects.map((project) => (
           <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image
-                src={project.logo}
-                alt={`${project.name} logo`}
-                className="h-8 w-8 object-contain rounded-full"
-                width={32}
-                height={32}
-                unoptimized
-              />
+            <div className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-xl ${project.color} shadow-md shadow-zinc-800/5`}>
+              <project.icon className="h-6 w-6" aria-hidden="true" />
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
               <Card.Link href={project.link.href}>{project.name}</Card.Link>
