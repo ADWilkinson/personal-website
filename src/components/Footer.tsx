@@ -33,7 +33,7 @@ export function Footer() {
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
                 &copy; {new Date().getFullYear()} Andrew Wilkinson. All rights
-                reserved.
+                reserved. <span className="text-zinc-300 opacity-0 transition-opacity dark:hover:opacity-30">Davy Jones</span>
               </p>
             </div>
           </ContainerInner>

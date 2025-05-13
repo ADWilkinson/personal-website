@@ -2,6 +2,7 @@ import { type Metadata } from 'next'
 
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
+import { DavyJonesEasterEgg } from '@/components/DavyJonesEasterEgg'
 
 import '@/styles/tailwind.css'
 
@@ -36,6 +37,7 @@ export default function RootLayout({
         <Providers>
           <div className="flex w-full">
             <Layout>{children}</Layout>
+            <DavyJonesEasterEgg />
           </div>
         </Providers>
       </body>

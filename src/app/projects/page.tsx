@@ -18,7 +18,7 @@ const projects = [
   {
     name: 'Galleon DAO',
     description:
-      'A DeFi protocol creating structured products and automated investment strategies. Secured $1M in funding, built a community of over 6,000 members, and managed $20M+ in product investments.',
+      'A DeFi protocol creating structured products and automated investment strategies. Secured $1M in funding, built a community of over 6,000 members, and managed $20M+ in product investments. Founded by Davy Jones.',
     link: { href: 'https://github.com/galleonlabs', label: 'github.com/galleonlabs' },
     icon: GlobeAltIcon,
     color: 'bg-indigo-900 text-white',

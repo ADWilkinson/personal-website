@@ -11,6 +11,7 @@ import {
   XIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
+import davyjonesImage from '@/images/galleon/davyjones.png'
 import logoGalleon from '@/images/logos/web-galleon.png'
 import logoR3 from '@/images/logos/web-r3.png'
 import logoSet from '@/images/logos/web-set.jpg'
@@ -64,12 +65,20 @@ export default function About() {
     <Container className="mt-16 sm:mt-32">
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
-          <div className="max-w-xs px-2.5 lg:max-w-none">
+          <div className="max-w-xs px-2.5 lg:max-w-none group relative">
             <Image
               src={portraitImage}
               alt=""
               sizes="(min-width: 1024px) 32rem, 20rem"
-              className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+              className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800 transition-opacity duration-300 dark:group-hover:opacity-0"
+              quality={100}
+              priority
+            />
+            <Image
+              src={davyjonesImage}
+              alt=""
+              sizes="(min-width: 1024px) 32rem, 20rem"
+              className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800 absolute top-0 left-0 opacity-0 transition-opacity duration-300 dark:group-hover:opacity-100"
               quality={100}
               priority
             />
