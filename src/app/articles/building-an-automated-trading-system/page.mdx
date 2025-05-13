@@ -1,4 +1,15 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+// Import article images
+import systemArchitecture from '@/images/articles/trading-system/system-architecture.png'
+import configRetrieval from '@/images/articles/trading-system/config-retrieval.png'
+import executionFunction from '@/images/articles/trading-system/execution-function.png'
+import positionClosure from '@/images/articles/trading-system/position-closure.png'
+import fetchMarketData from '@/images/articles/trading-system/fetch-market-data.png'
+import cleanupFunctions from '@/images/articles/trading-system/cleanup-functions.png'
+import portfolioValue from '@/images/articles/trading-system/portfolio-value.png'
+import dashboard from '@/images/articles/trading-system/dashboard.png'
 
 export const article = {
   author: 'Andrew Wilkinson',
@@ -31,7 +42,7 @@ Now, let's go into the journey of building it before, and at the end, I'll give 
 
 The system developed focuses on a modular architecture consisting of several key components executed sequentially every 24 hours by an orchestrator function that coordinates the entire trading cycle. The complete cycle takes under 20 seconds from the beginning to the end to execute and has not only the built-in scalability that comes with Firebase's cloud infrastructure but also incorporates custom logic to make the system as fault-tolerant as possible.
 
-![System Architecture](/articles/building-an-automated-trading-system/images/system-architecture.png)
+<Image src={systemArchitecture} alt="System Architecture Diagram" className="rounded-md w-full" />
 
 ### Technology Stack
 
@@ -74,7 +85,7 @@ This architecture allows for easy future maintainability and extendability by si
 
 **Implementation:** A Firestore document with an active flag, max positions, and trade size fields. The orchestrator reads this configuration at the start of each cycle to determine whether to proceed.
 
-![Config Retrieval](/articles/building-an-automated-trading-system/images/config-retrieval.png)
+<Image src={configRetrieval} alt="Configuration Retrieval" className="rounded-md w-full" />
 
 ### 2. Orchestrator
 
@@ -94,7 +105,7 @@ This architecture allows for easy future maintainability and extendability by si
 4. Handles error logging and notifications if any part of the process fails.
 5. Performs cleanup operations to prepare for the next cycle.
 
-![Execution Function](/articles/building-an-automated-trading-system/images/execution-function.png)
+<Image src={executionFunction} alt="Execution Function Code" className="rounded-md w-full" />
 
 ### 3. Position Management
 
@@ -102,7 +113,7 @@ This architecture allows for easy future maintainability and extendability by si
 
 **Implementation:** A function closeAllPositions that fetches all open positions on the exchange and starts closing them sequentially by calling the Hyperliquid API with retry mechanisms.
 
-![Position Closure Function](/articles/building-an-automated-trading-system/images/position-closure.png)
+<Image src={positionClosure} alt="Position Closure Function Code" className="rounded-md w-full" />
 
 ### 4. Data Collection
 
@@ -110,7 +121,7 @@ This architecture allows for easy future maintainability and extendability by si
 
 **Implementation:** An API call to CoinGecko fetches recent market data for a whitelisted array of tokens. The whitelist is a mapping between Hyperliquid exchange-supported tokens and CoinGecko API IDs. We then store that data in Firestore for further processing later.
 
-![Fetch Market Data Function](/articles/building-an-automated-trading-system/images/fetch-market-data.png)
+<Image src={fetchMarketData} alt="Fetch Market Data Function Code" className="rounded-md w-full" />
 
 ### 5. Data Processing
 
@@ -130,7 +141,7 @@ This architecture allows for easy future maintainability and extendability by si
 
 **Implementation:** An execution function that places orders, implements rate limiting, and handles retry logic to ensure trades are executed successfully. Finally, we record our executed trades to our Firestore for use on our front-end application.
 
-![Trade Execution Function](/articles/building-an-automated-trading-system/images/dashboard.png)
+<Image src={dashboard} alt="Trading Dashboard Interface" className="rounded-md w-full" />
 
 ### 9. Cleanup & Finalise
 
@@ -138,9 +149,9 @@ This architecture allows for easy future maintainability and extendability by si
 
 **Implementation:** Deletes specific Firestore collections, preventing data from previous cycles from affecting new ones and ensuring data integrity. The snapshot of the total portfolio value is a simple call to the Hyperliquid exchange to query our account, retrieving essential information such as current balances and margins used for our front-end display.
 
-![Cleanup Functions](/articles/building-an-automated-trading-system/images/cleanup-functions.png)
+<Image src={cleanupFunctions} alt="Cleanup Functions Code" className="rounded-md w-full mb-4" />
 
-![Portfolio Value Function](/articles/building-an-automated-trading-system/images/portfolio-value.png)
+<Image src={portfolioValue} alt="Portfolio Value Function Code" className="rounded-md w-full" />
 
 ## Conclusion and Future Directions
 
