@@ -10,7 +10,7 @@ import {
   LinkedInIcon,
 } from '@/components/SocialIcons'
 import logoGalleon from '@/images/logos/web-galleon.png'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+// Company logos
 import logoSetLabs from '@/images/logos/web-set.jpg'
 import logoR3 from '@/images/logos/web-r3.png'
 import logoWorldpay from '@/images/logos/web-worldpay.jpg'
