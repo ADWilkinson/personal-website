@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'My professional experience, skills, and education.',
 }
 
-function Section({ title, children }) {
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mb-12">
       <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100 mb-6">{title}</h2>
@@ -16,7 +16,17 @@ function Section({ title, children }) {
   )
 }
 
-function JobTitle({ title, company, period, description }) {
+function JobTitle({ 
+  title, 
+  company, 
+  period, 
+  description 
+}: { 
+  title: string; 
+  company: string; 
+  period: string; 
+  description?: string 
+}) {
   return (
     <div className="mb-8">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
@@ -29,11 +39,21 @@ function JobTitle({ title, company, period, description }) {
   )
 }
 
-function JobDescription({ children }) {
+function JobDescription({ children }: { children: React.ReactNode }) {
   return <div className="text-zinc-600 dark:text-zinc-400 mb-4">{children}</div>
 }
 
-function ProjectItem({ title, description, link, github }) {
+function ProjectItem({ 
+  title, 
+  description, 
+  link, 
+  github 
+}: { 
+  title: string; 
+  description: string; 
+  link?: string; 
+  github?: string 
+}) {
   return (
     <div className="mb-4">
       <div className="flex items-baseline">

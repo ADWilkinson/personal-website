@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.jpeg" type="image/jpeg" />
+        <link rel="icon" href="/favicon.jpeg" type="image/jpeg" sizes="any" />
       </head>
       <body className="flex h-full bg-zinc-50 dark:bg-black">
         <Providers>
