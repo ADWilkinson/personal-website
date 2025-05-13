@@ -255,11 +255,11 @@ function Resume() {
 }
 
 function Photos() {
-  let rotations = ['rotate-2', '0', '-rotate-2']
+  let rotations = ['rotate-2', '0', '0', '-rotate-2']
   
   return (
     <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-6 overflow-hidden py-4 sm:gap-10">
+      <div className="-my-4 flex flex-wrap justify-center gap-6 overflow-hidden py-4 sm:gap-8">
         {/* First image - page-0.png (vertical) */}
         <div
           className={clsx(
@@ -276,7 +276,7 @@ function Photos() {
           />
         </div>
         
-        {/* Middle image - page-2.png (horizontal) */}
+        {/* Second image - page-2.png (horizontal) */}
         <div
           className={clsx(
             'relative aspect-[16/9] w-48 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-80 lg:w-96 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
@@ -292,11 +292,27 @@ function Photos() {
           />
         </div>
         
+        {/* Third image - page-3.png (horizontal) */}
+        <div
+          className={clsx(
+            'relative aspect-[16/9] w-48 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-80 lg:w-96 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
+            rotations[2],
+          )}
+        >
+          <Image
+            src={image4}
+            alt="Pirate themed illustration - wide format"
+            sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 12rem"
+            className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
+            priority={false}
+          />
+        </div>
+        
         {/* Last image - page-4.png (vertical) */}
         <div
           className={clsx(
             'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 lg:w-72 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
-            rotations[2],
+            rotations[3],
           )}
         >
           <Image
