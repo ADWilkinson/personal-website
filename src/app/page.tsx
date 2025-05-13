@@ -288,11 +288,11 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Product and Technology Leader in Blockchain, DeFi, and Fintech.
+            Product Strategy & Engineering Manager | Former VC-backed Founder | Ethereum Ecosystem Builder
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I'm Andrew, a Product and Technology Leader with 8+ years of experience across blockchain, DeFi, and fintech sectors. 
-            I've built and scaled innovative products and led engineering teams, with a focus on the Ethereum ecosystem. 
+            I'm Andrew, a Product Strategy & Engineering Manager with 8+ years of experience building in the Ethereum ecosystem. 
+            I've built and scaled innovative products and led engineering teams across the blockchain and DeFi space. 
             At Galleon DAO, I secured $1M+ in funding, managed $20M+ in investment strategies, and grew a community to over 6,000 members.
           </p>
           <div className="mt-6 flex gap-6">
