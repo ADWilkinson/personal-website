@@ -96,11 +96,11 @@ export default function About() {
               Follow on LinkedIn
             </SocialLink>
             <SocialLink
-              href="mailto:hello@andrewwilkinson.me"
+              href="mailto:gm@andrewwilkinson.io"
               icon={MailIcon}
               className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
             >
-              hello@andrewwilkinson.me
+              gm@andrewwilkinson.io
             </SocialLink>
           </ul>
         </div>
