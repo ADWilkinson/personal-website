@@ -11,7 +11,7 @@ import logoBrava from '@/images/logos/web-brava.jpg'
 
 export const metadata: Metadata = {
   title: 'CV',
-  description: 'My professional experience, skills, and education.',
+  description: 'Product & Engineering Manager | Former VC-backed Founder | DeFi Builder',
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -101,7 +101,7 @@ export default function CV() {
   return (
     <SimpleLayout
       title="Curriculum Vitae"
-      intro="Product Strategy & Engineering Manager | Former VC-backed Founder | Ethereum Ecosystem Builder"
+      intro="Product & Engineering Manager | Former VC-backed Founder | DeFi Builder"
     >
       <div className="space-y-12">
         <div className="text-zinc-600 dark:text-zinc-400">
@@ -115,15 +115,16 @@ export default function CV() {
         
         <Section title="Summary">
           <p className="text-zinc-600 dark:text-zinc-400">
-            I am a Product Strategy & Engineering Manager with 8+ years of experience in the Ethereum ecosystem, where I have built and scaled innovative products and led engineering teams. At Galleon DAO, I secured $1M+ in funding from top VCs and industry angels, managed $20M+ in investment strategies, and grew a community to over 6,000 members. Throughout my career, I've successfully combined technical expertise with strategic thinking to deliver impactful solutions across various technology domains, consistently translating complex business requirements into successful products.
+            I am a Product & Engineering Manager with 8+ years of experience in the DeFi ecosystem, where I have built and scaled innovative products and led engineering teams. Currently as Head of Brava at Brava Labs, I define product vision and lead cross-functional teams to deliver DeFi yield strategies. At Galleon DAO, I secured $1M+ in funding from top VCs and industry angels, managed $20M+ in investment strategies, and grew a community to over 6,000 members. My leadership approach combines technical expertise with strategic vision, empowering teams to deliver impactful solutions while maintaining a user-centered focus. I excel at translating complex technical concepts into accessible products that drive real adoption.
           </p>
         </Section>
         
         <Section title="Skills">
           <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400">
-            <li><strong>Product & Strategy</strong> – Experience defining product vision, roadmaps, and strategies for blockchain applications in the Ethereum ecosystem</li>
-            <li><strong>Team Leadership</strong> – Led engineering, growth, and product teams across different companies and domains to deliver on their respective roadmaps</li>
-            <li><strong>DeFi & Crypto Expertise</strong> – Deep understanding of blockchain protocols, smart contracts, and the broader DeFi ecosystem</li>
+            <li><strong>Product Leadership</strong> – Experience defining product vision, roadmaps, and go-to-market strategies for blockchain applications with a focus on user experience and adoption</li>
+            <li><strong>Team Leadership</strong> – Led cross-functional teams of engineers, designers, and growth specialists across different companies, with a collaborative and outcome-focused approach</li>
+            <li><strong>Strategic Vision</strong> – Ability to identify market opportunities and align technical capabilities with business objectives for maximum impact</li>
+            <li><strong>DeFi & Crypto Expertise</strong> – Deep understanding of blockchain protocols, smart contracts, and the broader DeFi ecosystem with 8+ years of hands-on experience</li>
             <li><strong>Growth & Community</strong> – Created and executed strategies resulting in significant user adoption and community growth through novel DeFi incentives and partnerships</li>
             <li><strong>Full-Stack Development</strong> – Advanced skills in Typescript, React, Node.js, HTML/CSS, and Cloud Technologies (Firebase, GCP, Cloudflare), and AI tooling</li>
           </ul>
@@ -297,6 +298,17 @@ export default function CV() {
               description="Designed a hyperliquid-based trading bot using correlation/mean reversion strategies. Built with Python, Trading APIs, and Data Analysis tools."
               github="https://github.com/ADWilkinson/privateer-capital"
             />
+          </div>
+        </Section>
+        
+        <Section title="Leadership Approach">
+          <div className="text-zinc-600 dark:text-zinc-400 mb-6">
+            <p className="mb-3">My leadership philosophy is built on three core principles:</p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li><strong>Vision-Driven Execution</strong> – I combine big-picture strategic thinking with practical implementation by setting clear objectives and empowering teams to find innovative solutions.</li>
+              <li><strong>User-Centered Product Development</strong> – I focus on translating complex technical capabilities into intuitive user experiences, prioritizing adoption and real-world utility.</li>
+              <li><strong>Collaborative Team Building</strong> – I build high-performing cross-functional teams by fostering ownership, clear communication, and by connecting individual contributions to larger project goals.</li>
+            </ul>
           </div>
         </Section>
         
