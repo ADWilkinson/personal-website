@@ -5,12 +5,12 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { CompanyLogo } from '@/components/CompanyLogo'
 import logoGalleon from '@/images/logos/web-galleon.png'
-import logoWojak from '@/images/logos/starbucks.svg'
-import logoChordCraft from '@/images/logos/airbnb.svg'
-import logoUltrasound from '@/images/logos/facebook.svg'
-import logoPrivateer from '@/images/logos/helio-stream.svg'
-import logoSaylor from '@/images/logos/cosmos.svg'
-import logoCryptoTier from '@/images/logos/open-shuttle.svg'
+import logoWojak from '@/images/logos/projects/wojak.svg'
+import logoChordCraft from '@/images/logos/projects/chordcraft.svg'
+import logoUltrasound from '@/images/logos/projects/ultrasound.svg'
+import logoPrivateer from '@/images/logos/projects/privateer.svg'
+import logoSaylor from '@/images/logos/projects/saylormemes.svg'
+import logoCryptoTier from '@/images/logos/projects/cryptotier.svg'
 
 const projects = [
   {
