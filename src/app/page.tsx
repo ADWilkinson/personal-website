@@ -111,19 +111,18 @@ function SocialLink({
   )
 }
 
+// Newsletter subscription form - currently disabled until backend is connected
 function Newsletter() {
   return (
-    <form
-      action="/thank-you"
-      className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
-    >
+    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <MailIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Stay up to date</span>
+        <span className="ml-3">Coming Soon</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Get notified when I publish something new, and unsubscribe at any time.
+        Newsletter signup will be available once the backend service is configured.
       </p>
+      {/* Commented out until backend is connected
       <div className="mt-6 flex">
         <input
           type="email"
@@ -136,7 +135,8 @@ function Newsletter() {
           Join
         </Button>
       </div>
-    </form>
+      */}
+    </div>
   )
 }
 
