@@ -17,7 +17,7 @@ export default (props) => <ArticleLayout article={article} {...props} />
 
 ## Introduction
 
-<div className="lead-paragraph mb-6 text-lg text-zinc-600 dark:text-zinc-400">
+<div className="lead-paragraph mb-5 text-base text-zinc-600 dark:text-zinc-400">
   <p>Automation is a cornerstone of trading activity within DeFi, with examples of this being active liquidity management, arbitrage opportunities between AMMs, yield position compounding, and active trading strategies. I've been having fun tinkering away with <a href="https://claude.ai" className="text-teal-600 dark:text-teal-400 hover:underline">claude.ai</a> lately and wanted to see if I could build something a little more interesting in a couple of days and write about my experience.</p>
 </div>
 
@@ -181,35 +181,35 @@ This architecture allows for easy future maintainability and extendability by si
   <p className="m-0">Building this system with AI has been very fun, although not without its challenges. In just 48 or so hours, we've created a functional, live-deployed trading bot that's actively managing a long/short portfolio on <strong>Hyperliquid</strong>. The system's modular architecture, built on a robust tech stack, allows for easy maintenance and future enhancements.</p>
 </div>
 
-<h3 className="text-base font-bold text-zinc-800 dark:text-zinc-200 mt-5 mb-3">Key Learnings</h3>
+<h3 className="font-bold text-zinc-800 dark:text-zinc-200 my-4">Key Learnings</h3>
 
 <div className="space-y-4">
   <div className="p-3 border-l-4 border-teal-500 bg-teal-50 dark:bg-zinc-800 dark:border-teal-400 rounded-r-lg">
-    <h4 className="font-semibold text-teal-700 dark:text-teal-300 text-sm">AI-Assisted Rapid Prototyping</h4>
-    <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-sm m-0">The power of AI-assisted development is incredible for rapid prototyping, but to build something remotely complex, you still need your own technical skills to understand what is being generated and how to integrate the code best.</p>
+    <h4 className="font-semibold text-teal-700 dark:text-teal-300">AI-Assisted Rapid Prototyping</h4>
+    <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-base m-0">The power of AI-assisted development is incredible for rapid prototyping, but to build something remotely complex, you still need your own technical skills to understand what is being generated and how to integrate the code best.</p>
   </div>
   
   <div className="p-3 border-l-4 border-blue-500 bg-blue-50 dark:bg-zinc-800 dark:border-blue-400 rounded-r-lg">
-    <h4 className="font-semibold text-blue-700 dark:text-blue-300 text-sm">AI Has Limitations</h4>
-    <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-sm m-0">The AI is not always right, and that's okay! The experiment wasn't to see if the AI could replace me in developing the bot entirely; it was to see how much faster I could work with it assisting it—and the TLDR here is much quicker. There were a lot of minor business logic errors or slight quirks in the output of what was being generated, and simply because I am familiar with the stack, I could easily navigate and steer it back on track or correct it myself.</p>
+    <h4 className="font-semibold text-blue-700 dark:text-blue-300">AI Has Limitations</h4>
+    <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-base m-0">The AI is not always right, and that's okay! The experiment wasn't to see if the AI could replace me in developing the bot entirely; it was to see how much faster I could work with it assisting it—and the TLDR here is much quicker. There were a lot of minor business logic errors or slight quirks in the output of what was being generated, and simply because I am familiar with the stack, I could easily navigate and steer it back on track or correct it myself.</p>
   </div>
   
   <div className="p-3 border-l-4 border-purple-500 bg-purple-50 dark:bg-zinc-800 dark:border-purple-400 rounded-r-lg">
-    <h4 className="font-semibold text-purple-700 dark:text-purple-300 text-sm">Human Value Still Matters</h4>
-    <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-sm m-0">Ultimately, your project's value and differentiator still come from the personal touch. AI will become the king of scaffolding your BAU applications and workflows, but in this case, the real value was in the trading strategy I implemented outside of the AI, with the AI just building the full orchestration around it.</p>
+    <h4 className="font-semibold text-purple-700 dark:text-purple-300">Human Value Still Matters</h4>
+    <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-base m-0">Ultimately, your project's value and differentiator still come from the personal touch. AI will become the king of scaffolding your BAU applications and workflows, but in this case, the real value was in the trading strategy I implemented outside of the AI, with the AI just building the full orchestration around it.</p>
   </div>
   
   <div className="p-3 border-l-4 border-amber-500 bg-amber-50 dark:bg-zinc-800 dark:border-amber-400 rounded-r-lg">
-    <h4 className="font-semibold text-amber-700 dark:text-amber-300 text-sm">Structured Prompts Are Key</h4>
-    <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-sm m-0">The importance of well-designed structured prompts. Using AI to generate this system wasn't just a single "Hey yeah, let's do this trading system in Firebase, please LFG"; it was broken down into giving a loose architecture first, mapping out the orchestration plan and then developing each component individually (testing along the way for correctness). By doing this, we ended up with a scalable, modular system that can be adapted.</p>
+    <h4 className="font-semibold text-amber-700 dark:text-amber-300">Structured Prompts Are Key</h4>
+    <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-base m-0">The importance of well-designed structured prompts. Using AI to generate this system wasn't just a single "Hey yeah, let's do this trading system in Firebase, please LFG"; it was broken down into giving a loose architecture first, mapping out the orchestration plan and then developing each component individually (testing along the way for correctness). By doing this, we ended up with a scalable, modular system that can be adapted.</p>
   </div>
 </div>
 
-<div className="mt-6 mb-4 p-3 bg-zinc-100 dark:bg-zinc-800 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-  <h3 className="text-sm font-semibold mb-1 text-zinc-800 dark:text-zinc-200">Future Plans</h3>
-  <p className="m-0 text-sm">While the current strategy might not be profitable in the long run (I <em>fully</em> expect so, but if that's not the case, I guess I'll get a free beer from it on the weekend), I'll probably take the time going forward to dive into:</p>
+<div className="my-5 p-3 bg-zinc-100 dark:bg-zinc-800 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
+  <h3 className="font-semibold mb-2 text-zinc-800 dark:text-zinc-200">Future Plans</h3>
+  <p className="m-0 text-base">While the current strategy might not be profitable in the long run (I <em>fully</em> expect so, but if that's not the case, I guess I'll get a free beer from it on the weekend), I'll probably take the time going forward to dive into:</p>
   
-  <ul className="mt-2 space-y-0.5 list-disc list-inside text-zinc-700 dark:text-zinc-300 text-sm">
+  <ul className="mt-3 space-y-1 list-disc list-inside text-zinc-700 dark:text-zinc-300 text-base">
     <li>More sophisticated trading strategies</li>
     <li>Better risk management features</li>
     <li>Multi-DEX execution capabilities</li>
@@ -220,31 +220,31 @@ This architecture allows for easy future maintainability and extendability by si
 <p className="text-base text-center text-zinc-600 dark:text-zinc-400 my-5">I hope you enjoyed the read!</p>
 
 <div className="border-t border-zinc-200 dark:border-zinc-700 pt-5 mt-6">
-  <h2 className="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">Connect</h2>
+  <h2 className="font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-4">Connect</h2>
   
-  <div className="flex flex-wrap gap-6 mt-4">
+  <div className="flex gap-4 justify-center">
     <a 
       href="https://github.com/galleonlabs" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="flex items-center px-4 py-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-md transition-colors"
+      className="inline-block p-3 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-full transition-colors"
+      aria-label="GitHub"
     >
-      <svg viewBox="0 0 24 24" className="h-5 w-5 mr-2 fill-current text-zinc-700 dark:text-zinc-300" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-      GitHub
+      <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current text-zinc-700 dark:text-zinc-300" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
     </a>
     
     <a 
       href="https://twitter.com/davyjones0x" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="flex items-center px-4 py-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-md transition-colors"
+      className="inline-block p-3 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-full transition-colors"
+      aria-label="Twitter"
     >
-      <svg viewBox="0 0 24 24" className="h-5 w-5 mr-2 fill-current text-zinc-700 dark:text-zinc-300" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-      Twitter
+      <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current text-zinc-700 dark:text-zinc-300" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
     </a>
   </div>
   
-  <p className="mt-6 text-zinc-600 dark:text-zinc-400">
+  <p className="mt-4 text-center text-zinc-600 dark:text-zinc-400 text-base">
     Feel free to reach out if you have any questions or suggestions or want to chat. Until next time, happy coding and trading!
   </p>
 </div>
