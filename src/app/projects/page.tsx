@@ -11,7 +11,8 @@ import {
   BoltIcon, 
   CurrencyDollarIcon, 
   PhotoIcon, 
-  ListBulletIcon 
+  ListBulletIcon,
+  ArrowTrendingUpIcon
 } from '@heroicons/react/24/solid'
 
 const projects = [
@@ -19,7 +20,7 @@ const projects = [
     name: 'Galleon DAO',
     description:
       'A DeFi protocol creating structured products and automated investment strategies. Secured $1M in funding, built a community of over 6,000 members, and managed $20M+ in product investments. Founded by Davy Jones.',
-    link: { href: 'https://github.com/galleonlabs', label: 'github.com/galleonlabs' },
+    link: { href: 'https://github.com/GalleonDAO', label: 'GitHub' },
     icon: GlobeAltIcon,
     color: 'bg-indigo-900 text-white',
   },
@@ -51,7 +52,7 @@ const projects = [
     name: 'Privateer',
     description:
       'A hyperliquid-based trading bot using correlation/mean reversion strategies. Designed with Python and Trading APIs for data analysis.',
-    link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'github.com/ADWilkinson/privateer-capital' },
+    link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'GitHub' },
     icon: CurrencyDollarIcon,
     color: 'bg-slate-800 text-white',
   },
@@ -59,7 +60,7 @@ const projects = [
     name: 'SaylorMemes',
     description:
       'A meme generator app built with Vite and Firebase for creating and sharing cryptocurrency-themed memes.',
-    link: { href: 'https://github.com/galleonlabs/saylormemes', label: 'github.com/galleonlabs/saylormemes' },
+    link: { href: 'https://github.com/galleonlabs/saylormemes', label: 'GitHub' },
     icon: PhotoIcon,
     color: 'bg-amber-600 text-white',
   },
@@ -67,9 +68,17 @@ const projects = [
     name: 'CryptoTierList',
     description:
       'A platform for creating and sharing tier lists of cryptocurrency projects. Built with Next.js and MongoDB.',
-    link: { href: 'https://github.com/ADWilkinson/CryptoTierList', label: 'github.com/ADWilkinson/CryptoTierList' },
+    link: { href: 'https://github.com/ADWilkinson/CryptoTierList', label: 'GitHub' },
     icon: ListBulletIcon,
     color: 'bg-indigo-400 text-white',
+  },
+  {
+    name: 'PineScript Indicators',
+    description:
+      'Open-source library of TradingView indicators created over years for technical analysis. Includes Colour Trend, Momentum, and Volatility Map indicators in Pine Script language.',
+    link: { href: 'https://github.com/ADWilkinson/pinescript-indicators', label: 'GitHub' },
+    icon: ArrowTrendingUpIcon,
+    color: 'bg-green-600 text-white',
   },
 ]
 
