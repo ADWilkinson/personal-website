@@ -31,6 +31,8 @@ Now, let's go into the journey of building it before, and at the end, I'll give 
 
 The system developed focuses on a modular architecture consisting of several key components executed sequentially every 24 hours by an orchestrator function that coordinates the entire trading cycle. The complete cycle takes under 20 seconds from the beginning to the end to execute and has not only the built-in scalability that comes with Firebase's cloud infrastructure but also incorporates custom logic to make the system as fault-tolerant as possible.
 
+![System Architecture](/articles/building-an-automated-trading-system/images/system-architecture.png)
+
 ### Technology Stack
 
 1. **Backend:**
@@ -72,6 +74,8 @@ This architecture allows for easy future maintainability and extendability by si
 
 **Implementation:** A Firestore document with an active flag, max positions, and trade size fields. The orchestrator reads this configuration at the start of each cycle to determine whether to proceed.
 
+![Config Retrieval](/articles/building-an-automated-trading-system/images/config-retrieval.png)
+
 ### 2. Orchestrator
 
 **Purpose:** A Firebase Cloud Function is scheduled to run every 24 hours and acts as the central controller for the entire trading system, managing the flow of operations and data between various components.
@@ -90,17 +94,23 @@ This architecture allows for easy future maintainability and extendability by si
 4. Handles error logging and notifications if any part of the process fails.
 5. Performs cleanup operations to prepare for the next cycle.
 
+![Execution Function](/articles/building-an-automated-trading-system/images/execution-function.png)
+
 ### 3. Position Management
 
 **Purpose:** Ensures that all existing positions are closed before starting a new trading cycle. The strategy revolves around historical performance and keeping a balanced long/short portfolio, so we start with a clean slate each time based on new data.
 
 **Implementation:** A function closeAllPositions that fetches all open positions on the exchange and starts closing them sequentially by calling the Hyperliquid API with retry mechanisms.
 
+![Position Closure Function](/articles/building-an-automated-trading-system/images/position-closure.png)
+
 ### 4. Data Collection
 
 **Purpose:** Gathers the latest market data required for making trading decisions.
 
 **Implementation:** An API call to CoinGecko fetches recent market data for a whitelisted array of tokens. The whitelist is a mapping between Hyperliquid exchange-supported tokens and CoinGecko API IDs. We then store that data in Firestore for further processing later.
+
+![Fetch Market Data Function](/articles/building-an-automated-trading-system/images/fetch-market-data.png)
 
 ### 5. Data Processing
 
@@ -120,11 +130,17 @@ This architecture allows for easy future maintainability and extendability by si
 
 **Implementation:** An execution function that places orders, implements rate limiting, and handles retry logic to ensure trades are executed successfully. Finally, we record our executed trades to our Firestore for use on our front-end application.
 
+![Trade Execution Function](/articles/building-an-automated-trading-system/images/dashboard.png)
+
 ### 9. Cleanup & Finalise
 
 **Purpose:** Takes a snapshot of our total portfolio value and cycle duration after all the trade cycle steps are complete and clears temporary data to ensure the subsequent trading cycle starts fresh.
 
 **Implementation:** Deletes specific Firestore collections, preventing data from previous cycles from affecting new ones and ensuring data integrity. The snapshot of the total portfolio value is a simple call to the Hyperliquid exchange to query our account, retrieving essential information such as current balances and margins used for our front-end display.
+
+![Cleanup Functions](/articles/building-an-automated-trading-system/images/cleanup-functions.png)
+
+![Portfolio Value Function](/articles/building-an-automated-trading-system/images/portfolio-value.png)
 
 ## Conclusion and Future Directions
 
