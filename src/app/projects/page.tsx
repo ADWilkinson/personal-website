@@ -3,47 +3,63 @@ import Image from 'next/image'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoGalleon from '@/images/logos/planetaria.svg'
+import logoWojak from '@/images/logos/starbucks.svg'
+import logoChordCraft from '@/images/logos/airbnb.svg'
+import logoUltrasound from '@/images/logos/facebook.svg'
+import logoPrivateer from '@/images/logos/helio-stream.svg'
+import logoSaylor from '@/images/logos/cosmos.svg'
+import logoCryptoTier from '@/images/logos/open-shuttle.svg'
 
 const projects = [
   {
-    name: 'Planetaria',
+    name: 'Galleon DAO',
     description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
-    logo: logoPlanetaria,
+      'A DeFi protocol creating structured products and automated investment strategies. Secured $1M in funding, built a community of over 6,000 members, and managed $20M+ in product investments.',
+    link: { href: 'https://github.com/galleonlabs', label: 'github.com/galleonlabs' },
+    logo: logoGalleon,
   },
   {
-    name: 'Animaginary',
+    name: 'Wojak Jones',
     description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoAnimaginary,
+      'A yield farming DeFi assistant built with Firebase, Telegram API, and Virtuals Framework. Provides real-time yield farming opportunities and DeFi analytics.',
+    link: { href: 'https://wojakjones.xyz', label: 'wojakjones.xyz' },
+    logo: logoWojak,
   },
   {
-    name: 'HelioStream',
+    name: 'ChordCraft',
     description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoHelioStream,
+      'An AI chord progression generator created with React, Firebase, and the OpenAI API. Generates unique chord progressions based on musical style preferences.',
+    link: { href: 'https://chordcraft.io', label: 'chordcraft.io' },
+    logo: logoChordCraft,
   },
   {
-    name: 'cosmOS',
+    name: 'Ultrasoundapps',
     description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCosmos,
+      'A centralized platform showcasing various DeFi and cryptocurrency applications. Built with React and Firebase.',
+    link: { href: 'https://ultrasoundapps.com', label: 'ultrasoundapps.com' },
+    logo: logoUltrasound,
   },
   {
-    name: 'OpenShuttle',
+    name: 'Privateer',
     description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoOpenShuttle,
+      'A hyperliquid-based trading bot using correlation/mean reversion strategies. Designed with Python and Trading APIs for data analysis.',
+    link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'github.com/ADWilkinson/privateer-capital' },
+    logo: logoPrivateer,
+  },
+  {
+    name: 'SaylorMemes',
+    description:
+      'A meme generator app built with Vite and Firebase for creating and sharing cryptocurrency-themed memes.',
+    link: { href: 'https://github.com/galleonlabs/saylormemes', label: 'github.com/galleonlabs/saylormemes' },
+    logo: logoSaylor,
+  },
+  {
+    name: 'CryptoTierList',
+    description:
+      'A platform for creating and sharing tier lists of cryptocurrency projects. Built with Next.js and MongoDB.',
+    link: { href: 'https://github.com/ADWilkinson/CryptoTierList', label: 'github.com/ADWilkinson/CryptoTierList' },
+    logo: logoCryptoTier,
   },
 ]
 
@@ -60,14 +76,14 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export const metadata: Metadata = {
   title: 'Projects',
-  description: 'Things I’ve made trying to put my dent in the universe.',
+  description: "Projects I've worked on including DeFi protocols, tools, and applications.",
 }
 
 export default function Projects() {
   return (
     <SimpleLayout
-      title="Things I’ve made trying to put my dent in the universe."
-      intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+      title="Projects I've created"
+      intro="I've built various projects throughout my career, from DeFi protocols to tools and applications. Here's a selection of my work - including professional ventures and personal hobby projects."
     >
       <ul
         role="list"
@@ -75,7 +91,7 @@ export default function Projects() {
       >
         {projects.map((project) => (
           <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
               <Image
                 src={project.logo}
                 alt=""

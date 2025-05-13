@@ -1,0 +1,152 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Andrew Wilkinson',
+  date: '2024-04-15',
+  title: 'Building an Automated Trading System',
+  description:
+    'How I built a working automated trading bot for long/short positions on Hyperliquid in 48 hours with Claude AI, TypeScript, and Firebase.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+## Introduction
+
+Automation is a cornerstone of trading activity within DeFi, with examples of this being active liquidity management, arbitrage opportunities between AMMs, yield position compounding, and active trading strategies. I've been having fun tinkering away with [claude.ai](https://claude.ai) lately and wanted to see if I could build something a little more interesting in a couple of days and write about my experience.
+
+So, I had an idea of what I wanted to do: automate the winding up and down of a **long/short portfolio** based on a custom strategy that can be iterated over time. I had a high-level architecture in mind and a familiar tech stack, as I wanted to understand the generated code for tweaking purposes; aside from that, I aimed to see how far I could get with **Claude**.
+
+Fast-forward to the fruits of the effort, and within 48 hours, we have a live deployed automated trading bot loaded up with $500 currently winding up and down a long/short portfolio on the DEX, [Hyperliquid](https://hyperliquid.xyz/), and a production website to monitor the portfolio and its live positions.
+
+Now, let's go into the journey of building it before, and at the end, I'll give my thoughts and insights on the experience of AI-assisted development and how I plan to go further with the project.
+
+*Note: This is just an amateur trading setup for fun using tech I'm familiar with and experimenting with AI; you probably won't see this in the real world, and the strategy itself is probably going to lose money over time* 😂
+
+## Architecture Overview
+
+The system developed focuses on a modular architecture consisting of several key components executed sequentially every 24 hours by an orchestrator function that coordinates the entire trading cycle. The complete cycle takes under 20 seconds from the beginning to the end to execute and has not only the built-in scalability that comes with Firebase's cloud infrastructure but also incorporates custom logic to make the system as fault-tolerant as possible.
+
+### Technology Stack
+
+1. **Backend:**
+   - Language: TypeScript
+   - Cloud Platform: Firebase
+   - Serverless Functions: Firebase Cloud Functions
+   - Database: Cloud Firestore
+   - Scheduled Tasks: Cloud Scheduler (via Firebase Functions)
+
+2. **Frontend:**
+   - Framework: React
+   - State Management: React Hooks and Context API
+   - Real-time Updates: Firestore Real-time Listeners
+
+3. **Integrations:**
+   - Hyperliquid Exchange
+   - CCXT (Exchange API)
+   - CoinGecko API
+
+### Execution Flow
+
+The trading cycle is executed every 24 hours and completes in under 20 seconds:
+
+1. Cloud Scheduler triggers the Orchestrator function
+2. The orchestrator checks the configuration and initiates the cycle
+3. Market data is fetched and processed
+4. Trading decisions are made based on the implemented strategy
+5. Positions are adjusted (opened/closed) as needed
+6. Portfolio metrics are updated
+7. Frontend components react to data changes and update the UI
+
+This architecture allows for easy future maintainability and extendability by simply adding new modules to the strategy to be executed by the orchestrator.
+
+## Components and Their Roles
+
+### 1. Configuration Management
+
+**Purpose:** Controls the activation of the trading cycle and holds parameters that can be changed during runtime without redeployment.
+
+**Implementation:** A Firestore document with an active flag, max positions, and trade size fields. The orchestrator reads this configuration at the start of each cycle to determine whether to proceed.
+
+### 2. Orchestrator
+
+**Purpose:** A Firebase Cloud Function is scheduled to run every 24 hours and acts as the central controller for the entire trading system, managing the flow of operations and data between various components.
+
+**Implementation:**
+
+1. Initiates the trading cycle at a predetermined time each day.
+2. Checks the configuration to ensure the system is active and retrieves current parameters.
+3. Sequentially calls each component in the trading process:
+   - Closes existing positions
+   - Fetches fresh market data
+   - Processes the data and calculates necessary indicators
+   - Determines optimal trading pairs
+   - Executes new trades based on the strategy
+   - Updates the database with new positions and trade history
+4. Handles error logging and notifications if any part of the process fails.
+5. Performs cleanup operations to prepare for the next cycle.
+
+### 3. Position Management
+
+**Purpose:** Ensures that all existing positions are closed before starting a new trading cycle. The strategy revolves around historical performance and keeping a balanced long/short portfolio, so we start with a clean slate each time based on new data.
+
+**Implementation:** A function closeAllPositions that fetches all open positions on the exchange and starts closing them sequentially by calling the Hyperliquid API with retry mechanisms.
+
+### 4. Data Collection
+
+**Purpose:** Gathers the latest market data required for making trading decisions.
+
+**Implementation:** An API call to CoinGecko fetches recent market data for a whitelisted array of tokens. The whitelist is a mapping between Hyperliquid exchange-supported tokens and CoinGecko API IDs. We then store that data in Firestore for further processing later.
+
+### 5. Data Processing
+
+**Purpose:** A function that processes the collected data to generate actionable insights we can use to create long/short trading pairs. This can be extended into as many components as we want by design.
+
+**Implementation:** Various functions that analyse the market data and compute critical indicators to determine potential trading opportunities. This is done by a simple algorithm essentially playing around with recent price performance and project capitalisation.
+
+### 6. Trading Pair Determination
+
+**Purpose:** Selects optimal trading pairs based on processed data. We have set the maximum amount of long/short trading pairs to 10 in our system, but we often get around 20+ generated opportunities. Based on our data, this function determines the trading pairs that are objectively the best trades.
+
+**Implementation:** A strict filtering function that applies selection criteria to the output of the data processing step and returns ten finalised trading pairs for execution.
+
+### 7. Trade Execution
+
+**Purpose:** Executes trades on the Hyperliquid exchange platform based on the finalised long/short trading pairs.
+
+**Implementation:** An execution function that places orders, implements rate limiting, and handles retry logic to ensure trades are executed successfully. Finally, we record our executed trades to our Firestore for use on our front-end application.
+
+### 9. Cleanup & Finalise
+
+**Purpose:** Takes a snapshot of our total portfolio value and cycle duration after all the trade cycle steps are complete and clears temporary data to ensure the subsequent trading cycle starts fresh.
+
+**Implementation:** Deletes specific Firestore collections, preventing data from previous cycles from affecting new ones and ensuring data integrity. The snapshot of the total portfolio value is a simple call to the Hyperliquid exchange to query our account, retrieving essential information such as current balances and margins used for our front-end display.
+
+## Conclusion and Future Directions
+
+Building this system with AI has been very fun, although not without its challenges. In just 48 or so hours, we've created a functional, live-deployed trading bot that's actively managing a long/short portfolio on **Hyperliquid**. The system's modular architecture, built on a robust tech stack, allows for easy maintenance and future enhancements.
+
+Some personal thoughts from the experience:
+
+1. **The power of AI-assisted development is incredible for rapid prototyping**, but to build something remotely complex, you still need your own technical skills to understand what is being generated and how to integrate the code best.
+
+2. **The AI is not always right, and that's okay!** The experiment wasn't to see if the AI could replace me in developing the bot entirely; it was to see how much faster I could work with it assisting it—and the TLDR here is much quicker. There were a lot of minor business logic errors or slight quirks in the output of what was being generated, and simply because I am familiar with the stack, I could easily navigate and steer it back on track or correct it myself. Building this system in a stack I am unfamiliar with and having full AI autopilot, I'm not sure we're there yet.
+
+3. **Ultimately, your project's value and differentiator still come from the personal touch.** AI will become the king of scaffolding your BAU applications and workflows, but in this case, the real value was in the trading strategy I implemented outside of the AI, with the AI just building the full orchestration around it.
+
+4. **The importance of well-designed structured prompts.** Using AI to generate this system wasn't just a single "Hey yeah, let's do this trading system in Firebase, please LFG"; it was broken down into giving a loose architecture first, mapping out the orchestration plan and then developing each component individually (testing along the way for correctness). By doing this, we ended up with a scalable, modular system that can be adapted.
+
+While the current strategy might not be profitable in the long run (I *fully* expect so, but if that's not the case, I guess I'll get a free beer from it on the weekend), I'll probably take the time going forward to dive into more **sophisticated trading strategies, better risk management features, multi-DEX execution, and adding more data sources.**
+
+I hope you enjoyed the read!
+
+## Links
+
+- GitHub: [github.com/galleonlabs](https://github.com/galleonlabs)
+- Twitter: [@davyjones0x](https://twitter.com/davyjones0x)
+
+Feel free to reach out if you have any questions or suggestions or want to chat. Until next time, happy coding and trading!
