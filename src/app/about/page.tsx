@@ -55,7 +55,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 export const metadata: Metadata = {
   title: 'About',
   description:
-    "I'm Andrew Wilkinson, a Product & Engineering Manager, Former VC-backed Founder, and DeFi Builder.",
+    "I'm Andrew, a Product & Engineering Manager, Former VC-backed Founder, and DeFi Builder.",
 }
 
 export default function About() {
@@ -74,8 +74,8 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I'm Andrew Wilkinson.<br />
-            Product & Engineering Manager · Former VC-backed Founder · DeFi Builder
+            I'm Andrew.<br />
+            Former VC-backed Founder, Product & Engineering Manager.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Current Leadership</h3>
