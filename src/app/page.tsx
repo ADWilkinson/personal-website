@@ -261,11 +261,11 @@ function Photos() {
 
   return (
     <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex flex-wrap justify-center gap-6 overflow-hidden py-4 sm:gap-8">
+      <div className="-my-4 flex flex-nowrap justify-center gap-6 overflow-x-auto py-4 sm:gap-8">
         {/* First image - page-0.png */}
         <div
           className={clsx(
-            'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 lg:w-72 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
+            'relative aspect-9/10 w-32 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-52 lg:w-56 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
             rotations[0],
           )}
         >
@@ -283,7 +283,7 @@ function Photos() {
         {/* Second image - page-1.png */}
         <div
           className={clsx(
-            'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 lg:w-72 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
+            'relative aspect-9/10 w-32 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-52 lg:w-56 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
             rotations[1],
           )}
         >
@@ -301,7 +301,7 @@ function Photos() {
         {/* Third image - page-2.png */}
         <div
           className={clsx(
-            'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 lg:w-72 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
+            'relative aspect-9/10 w-32 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-52 lg:w-56 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
             rotations[2],
           )}
         >
@@ -319,7 +319,7 @@ function Photos() {
         {/* Fourth image - page-3.png */}
         <div
           className={clsx(
-            'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 lg:w-72 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
+            'relative aspect-9/10 w-32 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-52 lg:w-56 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
             rotations[3],
           )}
         >
@@ -337,7 +337,7 @@ function Photos() {
         {/* Last image - page-4.png */}
         <div
           className={clsx(
-            'relative aspect-9/10 w-40 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-64 lg:w-72 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
+            'relative aspect-9/10 w-32 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-52 lg:w-56 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
             rotations[4],
           )}
         >
