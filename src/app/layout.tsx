@@ -9,14 +9,18 @@ export const metadata: Metadata = {
   title: {
     template: '%s - Andrew Wilkinson',
     default:
-      'Andrew Wilkinson - Product Strategy & Engineering Manager | Former VC-backed Founder | Ethereum Ecosystem Builder',
+      'Andrew Wilkinson - Product & Engineering Manager | Former VC-backed Founder | DeFi Builder',
   },
   description:
-    "I'm Andrew, a Product Strategy & Engineering Manager with 8+ years of experience building in the Ethereum ecosystem, based in London.",
+    "I'm Andrew, a Product & Engineering Manager with 8+ years of experience building in the DeFi ecosystem, based in London.",
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
     },
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon/favicon.ico',
   },
 }
 
@@ -27,9 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
-      </head>
+      <head />
       <body className="flex h-full bg-zinc-50 dark:bg-black">
         <Providers>
           <div className="flex w-full">
