@@ -10,10 +10,6 @@ const nextConfig = {
       '/articles/*': ['./src/app/articles/**/*.mdx'],
     },
   },
-  images: {
-    formats: ['image/avif', 'image/webp'],
-    quality: 90,
-  },
 }
 
 const withMDX = nextMDX({
