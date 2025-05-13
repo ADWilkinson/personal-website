@@ -5,10 +5,12 @@ import clsx from 'clsx'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
+import { ContactMe } from '@/components/ContactMe'
 import {
   GitHubIcon,
   LinkedInIcon,
   XIcon,
+  TelegramIcon,
 } from '@/components/SocialIcons'
 import logoGalleon from '@/images/logos/web-galleon.png'
 // Company logos
@@ -360,36 +362,39 @@ export default async function Home() {
   return (
     <>
       <Container className="mt-9">
-        <div className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Product & Engineering Manager. Former VC-backed Founder. DeFi Builder.
-          </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I'm Andrew, a Product Strategy & Engineering Manager with 8+ years of experience building in the Ethereum ecosystem. 
-            Currently serving as Head of Brava at Brava Labs, I define product vision and lead cross-functional teams to deliver risk-adjusted onchain yield strategies.
-            Previously as Founder of Galleon DAO, I secured $1M+ in funding, managed $20M+ in investment strategies, and grew a community to over 6,000 members while leading full-stack development and implementation.
-          </p>
-          <div className="mt-6 flex gap-6">
-            <SocialLink
-              href="https://github.com/ADWilkinson"
-              aria-label="Follow on GitHub"
-              icon={GitHubIcon}
-            />
-            <SocialLink
-              href="https://www.linkedin.com/in/andrew-d-wilkinson"
-              aria-label="Follow on LinkedIn"
-              icon={LinkedInIcon}
-            />
-            <SocialLink
-              href="https://x.com/davyjones0x"
-              aria-label="Follow on Twitter"
-              icon={XIcon}
-            />
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+              Product & Engineering Manager. Former VC-backed Founder. DeFi Builder.
+            </h1>
+            <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+              I'm Andrew, a Product Strategy & Engineering Manager with 8+ years of experience building in the Ethereum ecosystem. 
+              Currently serving as Head of Brava at Brava Labs, I define product vision and lead cross-functional teams to deliver risk-adjusted onchain yield strategies.
+              Previously as Founder of Galleon DAO, I secured $1M+ in funding, managed $20M+ in investment strategies, and grew a community to over 6,000 members while leading full-stack development and implementation.
+            </p>
+            <div className="mt-6 flex gap-6">
+              <SocialLink
+                href="https://github.com/ADWilkinson"
+                aria-label="Follow on GitHub"
+                icon={GitHubIcon}
+              />
+              <SocialLink
+                href="https://x.com/davyjones0x"
+                aria-label="Follow on Twitter"
+                icon={XIcon}
+              />
+            </div>
+          </div>
+          <div className="lg:col-span-1">
+            <div className="mt-0 lg:mt-6">
+              <ContactMe />
+            </div>
           </div>
         </div>
       </Container>
       <Photos />
       <Container className="mt-24 md:mt-28">
+
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {articles.map((article) => (
