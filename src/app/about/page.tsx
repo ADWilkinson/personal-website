@@ -75,14 +75,14 @@ export default function About() {
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
             I'm Andrew Wilkinson.<br />
-            Product Strategy & Engineering Lead · VC-backed Founder · DeFi Builder
+            Product Strategy & Engineering Manager · VC-backed Founder · DeFi Builder
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              I'm a Product Strategy & Engineering Manager with 8+ years of experience building in the blockchain and DeFi space. Most notably, as the <strong>Founder of <CompanyLogo name="Galleon DAO" logo={logoGalleon} /></strong>, I led the development of composable, automated strategy tokens on Ethereum, allowing users to access complex DeFi strategies through a single token.
+              I'm a Product Strategy & Engineering Manager with 8+ years of experience building in the blockchain and DeFi space. Most notably, as the Founder of <CompanyLogo name="Galleon DAO" logo={logoGalleon} />, I led the development of composable, automated strategy tokens on Ethereum, allowing users to access complex DeFi strategies through a single token.
             </p>
             <p>
-              <strong>At <CompanyLogo name="Galleon DAO" logo={logoGalleon} /></strong>, I secured $1M+ in funding from top VCs (1kx) and industry angels (Bankless, Anthony Sassano). Starting from a concept, I led the full-stack development, implemented smart contracts, built the Web3 frontend interface, and scaled the project to manage $20M+ in investment strategies. I hired and managed a core team of 6 members while transitioning into a tokenised DAO with onchain governance and growing a community of over 6,000 members.
+              At <CompanyLogo name="Galleon DAO" logo={logoGalleon} />, I secured $1M+ in funding from top VCs (1kx) and industry angels (Bankless, Anthony Sassano). Starting from a concept, I led the full-stack development, implemented smart contracts, built the Web3 frontend interface, and scaled the project to manage $20M+ in investment strategies. I hired and managed a core team of 6 members while transitioning into a tokenised DAO with onchain governance and growing a community of over 6,000 members.
             </p>
             <p>
               My experience includes defining product vision, roadmaps, and strategies for blockchain applications in the Ethereum ecosystem. I've led engineering, growth, and product teams across different companies and domains while translating complex business requirements into successful products that solve real user problems.

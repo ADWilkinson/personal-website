@@ -12,9 +12,9 @@ interface CompanyLogoProps {
 export function CompanyLogo({ name, logo, className, size = 'sm' }: CompanyLogoProps) {
   const sizeClasses = {
     sm: {
-      container: 'h-6 w-6',
-      image: 'h-6 w-6',
-      dimensions: { width: 24, height: 24 }
+      container: 'h-5 w-5',
+      image: 'h-4 w-4',
+      dimensions: { width: 16, height: 16 }
     },
     md: {
       container: 'h-8 w-8',
@@ -33,7 +33,7 @@ export function CompanyLogo({ name, logo, className, size = 'sm' }: CompanyLogoP
   return (
     <span className={clsx('inline-flex items-center', className)}>
       <span className="font-medium">{name}</span>
-      <span className={clsx('ml-2 inline-flex items-center justify-center rounded-full overflow-hidden bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0', container)}>
+      <span className={clsx('ml-1 inline-flex items-center justify-center rounded-full overflow-hidden bg-white shadow-sm shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0', container)}>
         <Image 
           src={logo} 
           alt={`${name} logo`} 
