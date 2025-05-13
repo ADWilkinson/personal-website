@@ -75,7 +75,7 @@ export default function About() {
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
             I'm Andrew Wilkinson.<br />
-            Product Strategy & Engineering Manager | Former VC-backed Founder | Ethereum Ecosystem Builder
+            Product Strategy Lead | VC-backed Founder | DeFi Builder
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
