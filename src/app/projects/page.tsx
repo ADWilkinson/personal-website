@@ -12,7 +12,8 @@ import {
   CurrencyDollarIcon, 
   PhotoIcon, 
   ListBulletIcon,
-  ArrowTrendingUpIcon
+  ArrowTrendingUpIcon,
+  CubeIcon
 } from '@heroicons/react/24/solid'
 
 const projects = [
@@ -39,6 +40,14 @@ const projects = [
     link: { href: 'https://chordcraft.io', label: 'chordcraft.io' },
     icon: MusicalNoteIcon,
     color: 'bg-indigo-500 text-white',
+  },
+  {
+    name: 'PiggyOnchain',
+    description:
+      'A themed chart & analytics dashboard dedicated to the Superforms PIGGY AI Agent project, featuring real-time data visualization and performance metrics.',
+    link: { href: 'https://piggyonchain.xyz', label: 'piggyonchain.xyz' },
+    icon: CubeIcon,
+    color: 'bg-pink-500 text-white',
   },
   {
     name: 'Ultrasoundapps',
