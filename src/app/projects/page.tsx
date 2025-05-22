@@ -124,7 +124,7 @@ export const metadata: Metadata = {
 
 export default function Projects() {
   const projectImages = projects.filter(p => p.image).map(p => ({
-    src: p.image,
+    src: p.image!,
     alt: p.name,
     name: p.name
   }))
