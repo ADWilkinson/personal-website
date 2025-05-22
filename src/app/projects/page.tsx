@@ -16,67 +16,82 @@ import {
   CubeIcon
 } from '@heroicons/react/24/solid'
 
+import galleonImage from '@/images/projects/galleon.png'
+import wojakImage from '@/images/projects/wojak.png'
+import chordImage from '@/images/projects/chord.png'
+import piggyImage from '@/images/projects/piggy.png'
+import ultrasoundImage from '@/images/projects/ultrasound.png'
+import privateerImage from '@/images/projects/priv.png'
+import saylorImage from '@/images/projects/saylor.png'
+
 const projects = [
   {
     name: 'Galleon DAO',
     description:
-      'A DeFi protocol creating structured products and automated investment strategies. Secured $1M in funding, built a community of over 6,000 members, and managed $20M+ in product investments. Founded by Davy Jones.',
+      'A DeFi protocol creating structured products and automated investment strategies. Secured $1M in funding, built a community of over 6,000 members, and managed $20M+ in product investments.',
     link: { href: 'https://github.com/GalleonDAO', label: 'GitHub' },
     icon: GlobeAltIcon,
     color: 'bg-indigo-900 text-white',
+    image: galleonImage,
   },
   {
     name: 'Wojak Jones',
     description:
-      'A yield farming DeFi assistant built with Firebase, Telegram API, and Virtuals Framework. Provides real-time yield farming opportunities and DeFi analytics.',
+      'A yield farming DeFi assistant built with Firebase, Telegram API, and Virtuals Framework. Provides real-time yield farming opportunities and DeFi analytics for users.',
     link: { href: 'https://wojakjones.xyz', label: 'wojakjones.xyz' },
     icon: ChartBarIcon,
     color: 'bg-amber-500 text-white',
+    image: wojakImage,
   },
   {
     name: 'ChordCraft',
     description:
-      'An AI chord progression generator created with React, Firebase, and the OpenAI API. Generates unique chord progressions based on musical style preferences.',
+      'An AI chord progression generator created with React, Firebase, and the OpenAI API. Generates unique chord progressions based on musical style preferences and creative input.',
     link: { href: 'https://chordcraft.io', label: 'chordcraft.io' },
     icon: MusicalNoteIcon,
     color: 'bg-indigo-500 text-white',
+    image: chordImage,
   },
   {
     name: 'PiggyOnchain',
     description:
-      'A themed chart & analytics dashboard dedicated to the Superforms PIGGY AI Agent project, featuring real-time data visualization and performance metrics.',
+      'A themed chart & analytics dashboard dedicated to the Superforms PIGGY AI Agent project, featuring real-time data visualization and comprehensive performance metrics.',
     link: { href: 'https://piggyonchain.xyz', label: 'piggyonchain.xyz' },
     icon: CubeIcon,
     color: 'bg-pink-500 text-white',
+    image: piggyImage,
   },
   {
     name: 'Ultrasoundapps',
     description:
-      'A centralized platform showcasing various DeFi and cryptocurrency applications. Built with React and Firebase.',
+      'A centralized platform showcasing various DeFi and cryptocurrency applications. Built with React and Firebase to provide seamless access to multiple tools.',
     link: { href: 'https://ultrasoundapps.com', label: 'ultrasoundapps.com' },
     icon: BoltIcon,
     color: 'bg-emerald-500 text-white',
+    image: ultrasoundImage,
   },
   {
     name: 'Privateer',
     description:
-      'A hyperliquid-based trading bot using correlation/mean reversion strategies. Designed with Python and Trading APIs for data analysis.',
+      'A hyperliquid-based trading bot using correlation/mean reversion strategies. Designed with Python and Trading APIs for advanced data analysis and execution.',
     link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'GitHub' },
     icon: CurrencyDollarIcon,
     color: 'bg-slate-800 text-white',
+    image: privateerImage,
   },
   {
     name: 'SaylorMemes',
     description:
-      'A meme generator app built with Vite and Firebase for creating and sharing cryptocurrency-themed memes.',
+      'A meme generator app built with Vite and Firebase for creating and sharing cryptocurrency-themed memes. Features templates and custom editing capabilities.',
     link: { href: 'https://github.com/galleonlabs/saylormemes', label: 'GitHub' },
     icon: PhotoIcon,
     color: 'bg-amber-600 text-white',
+    image: saylorImage,
   },
   {
     name: 'CryptoTierList',
     description:
-      'A platform for creating and sharing tier lists of cryptocurrency projects. Built with Next.js and MongoDB.',
+      'A platform for creating and sharing tier lists of cryptocurrency projects. Built with Next.js and MongoDB to enable community-driven project rankings.',
     link: { href: 'https://github.com/ADWilkinson/CryptoTierList', label: 'GitHub' },
     icon: ListBulletIcon,
     color: 'bg-indigo-400 text-white',
@@ -84,7 +99,7 @@ const projects = [
   {
     name: 'PineScript Indicators',
     description:
-      'Open-source library of TradingView indicators created over years for technical analysis. Includes Colour Trend, Momentum, and Volatility Map indicators in Pine Script language.',
+      'Open-source library of TradingView indicators created for technical analysis. Includes Colour Trend, Momentum, and Volatility Map indicators in Pine Script language.',
     link: { href: 'https://github.com/ADWilkinson/pinescript-indicators', label: 'GitHub' },
     icon: ArrowTrendingUpIcon,
     color: 'bg-green-600 text-white',
@@ -108,11 +123,37 @@ export const metadata: Metadata = {
 }
 
 export default function Projects() {
+  const projectImages = projects.filter(p => p.image).map(p => ({
+    src: p.image,
+    alt: p.name,
+    name: p.name
+  }))
+
   return (
     <SimpleLayout
       title="Projects I've created"
       intro="I've built various projects throughout my career, from DeFi protocols to tools and applications. Here's a selection of my work - including professional ventures and personal hobby projects."
     >
+      {/* Image Carousel */}
+      <div className="mb-16 overflow-hidden">
+        <div className="flex animate-scroll space-x-6">
+          {[...projectImages, ...projectImages].map((image, index) => (
+            <div
+              key={`${image.name}-${index}`}
+              className="flex-none w-80 h-48 rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800"
+            >
+              <Image
+                src={image.src}
+                alt={`Screenshot of ${image.alt}`}
+                width={320}
+                height={192}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
       <ul
         role="list"
         className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
