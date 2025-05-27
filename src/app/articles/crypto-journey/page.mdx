@@ -1,0 +1,262 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import pepeCollage from '@/images/articles/crypto-journey/pepe-collage.jpg'
+import pressF from '@/images/articles/crypto-journey/press-f.jpg'
+import galleonBrand from '@/images/articles/crypto-journey/galleon-brand.jpg'
+import cryptoMemes from '@/images/articles/crypto-journey/crypto-memes.jpg'
+import davyJonesProfile from '@/images/articles/crypto-journey/davy-jones-profile.jpg'
+
+export const article = {
+  author: 'Andrew Wilkinson',
+  date: '2025-05-27',
+  title: 'From Crypto Curious to DeFi Founder and Beyond: My 7-Year Journey',
+  description:
+    'A short recap of how I went from buying my first ETH in 2017 to it being so over, to it being so back, to it being so over, to finally, it being so back.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+## The Beginning: December 2017
+
+Like many people in tech, I first heard about crypto during the 2017 bull run. I was working as a software engineer at Sky, building advertising and analytics platforms, when the bubble was forming. Some strays online caught my attention, and when I realized a longtime family friend was also in it, I reached out. That conversation sent me down the rabbit hole.
+
+My first purchase was ETH around the $700 mark—about £500 worth—not life-changing money, but enough to have skin in the game. Then came the altcoin casino phase. I remember buying LINK and joining the "Link Marines" movement (the memes were elite). My portfolio quickly expanded to include giga-trash such as Neo, OmiseGO, Lisk, Stratis, Dogecoin (this one is still GOATed), Substratum, VeChain, Steem, Cobinhood, Civic, Enjin, and countless others.
+
+<figure className="my-8">
+  <Image
+    src={pepeCollage}
+    alt="Collection of Pepe memes from the crypto community"
+    className="rounded-lg shadow-lg"
+  />
+  <figcaption className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-2">Link Marines</figcaption>
+</figure>
+
+I even participated in various ICOs during peak mania - all fueled by massive promises, cool whitepapers, cool logos, and cool websites. Looking back, it was a complete bubble. But damn, it was fun to get caught up in the hype.
+
+Then came the crash. My portfolio dropped over 95% throughout the bear market. I remember one particularly wild day when the market was so volatile that every time I swiped down with my thumb on my portfolio tracker, the value would move like +/- 20% in each direction—just absolute chaos. While most people I knew wrote off crypto as a one-and-done tulip-esque bubble, I saw it differently. I was comfortable with risk, and the amount I had wasn't life-changing, luckily (I did not have much money to even invest at the time). As I learned more about the technology and dove deeper into projects, I saw this as an opportunity to get more exposure to the industry, but this time, with a little more due diligence than what project was rocking the slickest logo at the time..
+
+## The 'Education' Phase: 2018-2019
+
+While prices crashed, I became obsessed with understanding what I'd bought. My learning stack included:
+
+- **CoinMarketCap & CoinGecko**: Daily price checking (unhealthy, but we all did it)
+- **Whitepapers**: Mainly screening to see if projects were complete scams
+- **YouTube**: Channels like IntoTheCryptoverse
+- **Crypto Twitter**: Following OGs like Cobie and Ethereum educators like Anthony Sassano
+
+At the time, I knew only one other person in crypto and didn't have anyone IRL to talk about it with. So, I dove into online communities—Twitter, Discord, and Telegram became (and still are) my core connections to the space.
+
+My first smart contract? Based on the "Press F to Pay Respects" meme. It was literally a website where you could press F and get some F tokens to send around. Funnier in my head than in reality, to be honest. 😅
+
+<figure className="my-8">
+  <Image
+    src={pressF}
+    alt="Press F to Pay Respects meme"
+    className="rounded-lg shadow-lg text-center justify-center mx-auto"
+  />
+  <figcaption className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-2">
+    <a href="https://github.com/ADWilkinson/send-f-coin" target="_blank" rel="noopener noreferrer" className="text-teal-500 hover:text-teal-600">My groundbreaking contribution to blockchain technology</a>
+  </figcaption>
+</figure>
+
+My professional transformation was gradual but complete. I'd always been passionate about tech and programming, spending countless hours learning new frameworks, Firebase, and AWS that I still use today, and even developing hobby games with Unity. But increasingly, my free time shifted to crypto with a side of crypto—building technical indicators on TradingView, learning to analyse projects and how the underlying technology works, and taking a more active role in researching, building communities, and investing.
+
+Anonymously, I ran a few communities around TradingView indicators, algo trading, and crypto research on Discord and Telegram. They were popular because there wasn't much quality content then, nor places to hang out and chat about crypto stuff that, without context, usually sounded ridiculous. These eventually fizzled out during the 2020-2021 bull cycle when large-scale communities formed, crypto became more mainstream, venture capital flooded in, and professional teams took over. After shaking off some short-term sadness of some of my communities becoming ghost towns, I was locked in and ready to go further down the rabbit hole.
+
+<div className="bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-500 dark:border-teal-400 p-4 my-6 rounded-r-md">
+  <p className="text-teal-700 dark:text-teal-300 m-0"><strong>What resonated with me:</strong> I could have self-custody of funds that I could send to anyone, earn high interest on idle cash, and not have to do regular arbitrary checks in the UK to avoid having my funds locked by some fintech every so often on their terms if you changed address and forgot to update your account or similar. Crypto is absolute financial ownership (which comes with its risks).</p>
+</div>
+
+## The Industry Pivot: 2019-2021
+
+My path to Worldpay and subsequently R3 wasn't straightforward. I originally joined an innovation department, which was promptly disbanded with redundancies. However, a select team (including me) managed to move to a newly formed blockchain exploration department. Right place, right time.
+
+Enterprise blockchain taught me what I didn't want to build. The frustrations were endless:
+
+- Always trust assumptions
+- Insufficient decentralization
+- Liquidity issues that made it worse than CeFi alternatives
+
+From my days at R3 building Corda, one thing that struck me was that with these private blockchains, you as a single entity are responsible for basically onboarding and nurturing whatever ecosystem you want to create. You're the sole evangelist, the infrastructure provider, and the community builder all at once. In a public permissionless network, given the incentive structure, you don't have that burden as much - developers come to Ethereum because other developers are there, users come because there's value, and the whole thing becomes self-reinforcing.
+
+The fundamental problem? "If this corporation decides to cancel its blockchain efforts, the whole network is moot, and we've got a huge sunk cost."
+
+What makes Ethereum incredible is its interoperability, openness to development, and access to a thriving global, highly decentralized network with billions in liquidity. Something is inspiring about building on a public, permissionless network - whether it's lending, swapping assets, or moving funds across the world in seconds.
+
+## DeFi Summer: Set Labs (2021-2022)
+
+I was an early DeFi user when most crypto activity was still on centralized exchanges. Set Labs launched Set Protocol & TokenSets, an innovative solution for on-chain asset management and a pioneer in that space. I was immediately drawn in with my interests in finance, tech, and crypto.
+
+My entry was unconventional. Set had put out a request for users to run on-chain strategies on their platform. I took everything I'd learned from building TradingView indicators and backtesting and applied it to a TokenSets strategy token. This became a fruitful partnership with a vibrant community — I loved every moment.
+
+Eventually, I simply asked the CTO at the time if any roles were available. There weren't technical roles, but there was a gap in growth. Despite it not being an engineering position, I was extremely keen to work with what I saw as some of the smartest and kindest people in crypto. So I dropped my engineering job at R3 and took on the growth role at Set - an odd pivot without context.
+
+While I was there, we captured over $500M in TVL across Set Protocol smart contracts and a continuous pipeline of prospects curious about decentralised asset management. Some notable products using Set Protocol were the DeFi Pulse Index, which tracked the top DeFi protocol tokens at the time and was widely popular - it was like the S&P 500 for DeFi. We also launched leveraged ETH structured products that gave you a non-liquidatable tokenized leveraged position on ETH (around 2X or so), which was quite innovative at the time since you could get leverage without worrying about liquidation (albeit it came with other issues).
+
+We worked with onchain, crypto-native DAOs and companies, to high-profile names in TradFi interested in on-chain fund management, though regulatory hurdles made onboarding difficult and were eventually one of the product's (alongside the rest of DeFi's) main friction points.
+
+I initially met the team at Set Labs as a user, became friends, and still keep in contact with them today—a great, long-lasting outcome from crypto that I cherish.
+
+## The Founder Journey: Galleon DAO (2022-2023)
+
+<figure className="my-8">
+  <Image
+    src={galleonBrand}
+    alt="Galleon DAO branding - 17th century age of sail theme"
+    className="rounded-lg shadow-lg"
+  />
+  <figcaption className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-2">We build On-chain Investment Themes - Galleon's unique 17th century branding</figcaption>
+</figure>
+
+As the market cooled from 2021's euphoria, I'd always been driven to build products on top of Set Protocol. Galleon started as a side project - I materialized ideas, documentation, and a website in my free time when a representative from 1kx reached out. Honestly, at first I thought it was a scammer messaging me 😅.
+
+After getting over that initial skepticism, I was incredibly excited. After a pitch, meetings with 1kx members, and presenting my vision later, I secured a $1M raise in February 2022. I moved from Set on good terms to work on Galleon full-time, ultimately growing Set Protocol further and being synergistic.
+
+### Building the Team
+
+My first hire was that family friend I'd referenced earlier—a true crypto native well-equipped to help in the early stages, when we wore about 30 different hats at all times. The rest of the core team were anonymous crypto builders representing engineering, community, and more.
+
+That's one of the best things about crypto—easy access to people who want to help from anywhere, without caring what you look like or your background. This environment is still advocated for today, as most people rock NFT profile pictures.
+
+### Navigating Chaos
+
+Some crazy moments during Galleon's run:
+
+- 2 months after raising, the Market macro topped
+- ETH went down for 10 weeks straight (!)
+- Terra (LUNA) imploded with its algorithmic Ponzi stablecoin
+- FTX imploded with SBF treating customer funds like a personal slush fund
+
+Our products were exposed to assets like LUNA and leveraged products that required damage control and zero rest. Good times, good times..
+
+### Product Innovation
+
+Galleon represented the more crypto-native, degenerate side of the ecosystem. We weren't looking to onboard Goldman Sachs or Bloomberg. Our product suite was innovative and fun:
+
+- First to market with a recursively leveraged staked Ethereum strategy (with Aave and Lido)
+- Leveraged basis trade product for savings (similar to the now billion-dollar protocol Ethena)
+- Narrative indices like one representing the "Solana, Luna, Avax" trade, which was popular at the time
+
+One of the greatest bits about Galleon was the community and theme. I still think we had one of the best brands in crypto, not a copy-paste tech brand, but something completely novel representing the 17th-century age of sail. We used this as an excuse to role-play for all team comms and public written comms at all times, as did the community of over 6,000. I'm not sure I'll get the chance to pretend to be Davy Jones professionally again, but I'm happy it happened in my lifetime.
+
+## The Difficult Decision: Sunsetting Galleon (2023)
+
+Ultimately, sunsetting Galleon was a function of:
+
+- A terrible bear market since starting in 2022, leading to capital flight and risk aversion across the industry
+- No new development of Set Protocol (the core underlying infrastructure)
+- Coming to the end of the project runway that we had already stretched
+- Serious health issues on my end
+
+Could Galleon have continued? Technically yes. But knowing my situation at the time, it was the right decision - those health issues ultimately took me out of work for a year.
+
+We unwound Galleon over several months, ensuring everyone could manage their positions in our products via the UI. I was happy to celebrate our team's successes while recognizing the shortcomings that would make it hard to scale sustainably.
+
+### Personal Impact
+
+The impact was non-trivial — feelings of failure, a whole "why me" regarding health, and wondering if I'd ever have that founding experience again or reintegrate into another role easily. At Galleon, I literally did everything, and that doesn't easily map to a traditional specialised role..
+
+I still struggle with this today. I traveled, kicked the can down the road, and eventually found my way back into the industry - but it's always on my mind.
+
+## We Are So Back: Still Building (2024-Present)
+
+I even considered changing industries for a reset. Ultimately, it's a gift to have been in the industry for so many years and not lose interest. I worked in AdTech and traditional payment rails before - nothing I was actually going home and learning about. Crypto is something I'm active in outside of work, and until that changes (and one day it definitely will), I'm sticking around.
+
+Brava began as an advisory role that later became permanent. I'm just as active in the space from a development and investing perspective outside of professional work.
+
+### Current Focus
+
+These days I enjoy:
+
+- **Operating in DeFi**: Working out interesting ways of earning yield on-chain
+- **Exploring**: New projects, new networks, new communities
+- **Investing & Trading**: Both liquid and private investments
+- **Hobby Projects**: Building ecosystem projects and leveraging AI (check my website/GitHub)
+- **Long-term Investing**: Using knowledge gained over the years to identify high-growth projects at lower valuations and see if the thesis plays out.
+
+I've moved from being a "trader" to more of a long-term investor, though I'll still take high-conviction trades on Hyperliquid at key moments (big crashes, large catalysts, etc.).
+
+## Reflections: The Good, The Bad, and The Memes
+
+### Financial Rollercoaster
+
+My crypto journey has been... eventful:
+
+- Round-tripped multiple annual salaries multiple times
+- 20-30% drops are just a Monday morning in crypto, totally numb to it now
+- Owned SHIB and PEPE early, sold for 2-5x when they went 100-200x
+- Owned LINK early and many other 'blue-chip' tokens today and sold too early
+- Got burned on countless ICOs
+- Got rugged dozens of times from meme tokens
+- Lost money in exploited DeFi vaults
+- Got liquidated on early perp DEXs when orderbooks emptied on crashes
+
+Of course, I had some great wins, too, and they have exceeded the losses. Everything I've learned and applied has been net beneficial for my career and financially, and that's all that matters. (Though I still max-cope about past "lost opportunities" sometimes.)
+
+<div className="bg-zinc-100 dark:bg-zinc-800 p-6 rounded-xl my-8">
+  <p className="text-zinc-700 dark:text-zinc-300 m-0"><strong>The best advice I received:</strong> Don't copy what others are doing blindly, especially if it's to do with investing or trading. I haven't stopped learning since 2017 and try to convert that knowledge into my ideas, whether professionally or in my portfolio. Of course, I still enjoy reading other people's ideas on the market or projects to get new perspectives, but I don't blindly act on them. Over the years, some of my ideas have done very well, others poorly, but I can learn from them each time. If you're only copying without understanding, you're simply NGMI.</p>
+</div>
+
+### The Culture
+
+The memes in crypto are second to none. Whether it's Hard Rock Nick, Michael Saylor, WAGMI/NGMI/GM, "Few understand", FOMC JPow memes, Wojak, or Pepe, I'm always entertained, whether in a bull or bear market. The memes in this industry are so good that they have become investable—some worth billions of dollars now.
+
+<figure className="my-8">
+  <Image
+    src={cryptoMemes}
+    alt="Collection of crypto memes including Pepe, Wojak, and more"
+    className="rounded-lg shadow-lg"
+  />
+  <figcaption className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-2">Memes rule the world</figcaption>
+</figure>
+
+I have some serious archives to share if you're ever short of memes (also check out [saylormemes.com](https://saylormemes.com) for more Saylor-specific memes)
+
+## Looking Forward: The Maturing Landscape
+
+Crypto is much more mature and regulated now. The US president is literally constantly shilling crypto, boomers are aping into the Bitcoin ETF (making it the fastest-growing ETF ever), stablecoin growth is full-sending, and every fintech is looking to build in the ecosystem.
+
+There's so much going for it, but it's also harder to navigate and be early to projects. The asset is much more de-risked than it was in 2017.
+
+### My 2-3 Year Vision
+
+I'd like to imagine my ongoing belief and thesis around crypto and DeFi continues to play out. I want to:
+
+- Further reap the rewards of long-term positioning
+- Reinvest within the space, but with a smaller overall percentage of my portfolio
+- Diversify my portfolio further outside of crypto
+- Mentor people and advise companies on crypto strategy
+- Consider creating something of my own again (no big thoughts there yet)
+
+### What I'm Watching in 2025
+
+- **AI Agents in DeFi**: The convergence is just beginning - autonomous agents managing yield strategies.
+- **Real Yield Sustainability**: Projects are finally moving beyond token emissions to actual revenue
+- **Stablecoin Innovation**: The next generation beyond just USD pegs
+- **Real World Assets (RWAs)**: Tokenized treasuries, real estate, and private credit are finally getting proper infrastructure
+
+## Final Thoughts
+
+Seven years in crypto have taught me that this industry rewards persistence, genuine curiosity, and the ability to survive both euphoria and despair. The technology that fascinated me in 2017 continues to evolve in ways I never imagined.
+
+To everyone on their crypto journey—whether you're buying your first ETH like I did in 2017 or you've been here since the beginning—remember that the real alpha isn't in copying others, as they have had a journey through the space that is very specific to them. It's in understanding the technology, building genuine relationships, and being convinced to stick around when everyone else leaves.
+
+<figure className="my-8 text-center">
+  <Image
+    src={davyJonesProfile}
+    alt="Davy Jones profile picture"
+    className="rounded-full w-32 h-32 mx-auto shadow-lg"
+  />
+  <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 mt-4">— Andrew / Davy Jones</figcaption>
+</figure>
+
+<div className="border-t border-zinc-200 dark:border-zinc-700 pt-8 mt-12">
+  <p className="text-center font-semibold text-zinc-800 dark:text-zinc-200">
+    Always happy to chat with other builders - DM me if you're working on something interesting in DeFi or just want to swap stories from the trading trenches.
+  </p>
+</div>
