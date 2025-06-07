@@ -368,7 +368,7 @@ export default async function Home() {
               Product & Engineering Manager. Former VC-backed Founder. DeFi Builder.
             </h1>
             <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-              I'm Andrew, a Product Strategy & Engineering Manager with 8+ years of experience building in the Ethereum ecosystem. 
+              I'm Andrew, a Product  & Engineering Manager with 8+ years of experience building in the Ethereum ecosystem and wider tech industry. 
               Currently serving as Head of Brava at Brava Labs, I define product vision and lead cross-functional teams to deliver risk-adjusted onchain yield strategies.
               Previously as Founder of Galleon DAO, I secured $1M+ in funding, managed $20M+ in investment strategies, and grew a community to over 6,000 members while leading full-stack development and implementation.
             </p>

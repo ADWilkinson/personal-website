@@ -4,11 +4,11 @@
 
 ## **Summary**
 
-I am a Product and Technology Leader with 8+ years of experience across blockchain, DeFi, and fintech sectors, where I have built and scaled innovative products and led engineering teams. At Galleon DAO, I secured $1M+ in funding from top VCs and industry angels, managed $20M+ in investment strategies, and grew a community to over 6,000 members. Throughout my career, I've successfully combined technical expertise with strategic thinking to deliver impactful solutions across various technology domains, consistently translating complex business requirements into successful products.
+I am a Product and Engineering Manager with 8+ years of experience across blockchain, DeFi, and fintech sectors, where I have built and scaled innovative products and led engineering teams. At Galleon DAO, I secured $1M+ in funding from top VCs and industry angels, managed $20M+ in investment strategies, and grew a community to over 6,000 members. Throughout my career, I've successfully combined technical expertise with strategic thinking to deliver impactful solutions across various technology domains, consistently translating complex business requirements into successful products.
 
 ## **Skills**
 
-* **Product & Strategy** – Experience defining product vision, roadmaps, and strategies for blockchain applications in the Ethereum ecosystem
+* **Product & Strategy** – Experience defining product vision, roadmaps, and strategies for applications in the Ethereum ecosystem and wider tech industry
 
 * **Team Leadership** – Led engineering, growth, and product teams across different companies and domains to deliver on their respective roadmaps.
 

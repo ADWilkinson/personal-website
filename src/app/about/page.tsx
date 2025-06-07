@@ -102,7 +102,7 @@ export default function About() {
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Product & Strategy Expertise</h3>
             <p>
-              With 8+ years of experience building in the blockchain and DeFi space, my core expertise includes defining product vision, roadmaps, and strategies for blockchain applications in the Ethereum ecosystem. I've led engineering, growth, and product teams across different companies and domains while translating complex business requirements into successful products that solve real user problems.
+              With 8+ years of experience building in the blockchain and DeFi space, my core expertise includes defining product vision, roadmaps, and strategies for blockchain applications in the Ethereum ecosystem and wider tech industry. I've led engineering, growth, and product teams across different companies and domains while translating complex business requirements into successful products that solve real user problems.
             </p>
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Industry Experience</h3>
