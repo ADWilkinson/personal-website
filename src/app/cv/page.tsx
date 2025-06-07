@@ -11,7 +11,7 @@ import logoBrava from '@/images/logos/web-brava.jpg'
 
 export const metadata: Metadata = {
   title: 'CV',
-  description: 'Product & Engineering Manager | Former VC-backed Founder | DeFi Builder',
+  description: 'Product and Engineering Manager | Former VC-backed Founder | DeFi Builder',
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -37,7 +37,7 @@ function JobTitle({
   logo?: any;
 }) {
   return (
-    <div className="mb-8">
+    <div className="">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
         <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100">{title}</h3>
         <span className="text-sm text-zinc-500 dark:text-zinc-400">{period}</span>
@@ -105,7 +105,7 @@ export default function CV() {
   return (
     <SimpleLayout
       title="Curriculum Vitae"
-      intro="Product & Engineering Manager. Former VC-backed Founder. DeFi Builder."
+      intro="Product and Engineering Manager. Former VC-backed Founder. DeFi Builder."
     >
       <div className="space-y-12">
         <div className="text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-lg border border-zinc-100 dark:border-zinc-700/40 flex flex-col md:flex-row md:items-center md:justify-between">
@@ -145,33 +145,75 @@ export default function CV() {
         
         <Section title="Summary">
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            I am a Product & Engineering Manager with 8+ years of experience in the DeFi ecosystem, where I have built and scaled innovative products and led engineering teams. Currently as Head of Brava at Brava Labs, I define product vision and lead cross-functional teams to deliver DeFi yield strategies. At Galleon DAO, I secured $1M+ in funding from top VCs and industry angels, managed $20M+ in investment strategies, and grew a community to over 6,000 members. My leadership approach combines technical expertise with strategic vision, empowering teams to deliver impactful solutions while maintaining a user-centered focus. I excel at translating complex technical concepts into accessible products that drive real adoption.
+            I am a Product and Engineering Manager with 8+ years of experience across blockchain, DeFi, and fintech, where I have built and scaled innovative products while leading engineering teams of up to 12 members. I founded Galleon DAO, securing $1M+ funding from top VCs, managed $20M+ in investment strategies, and grew a community to 6,000+ members. My expertise combines deep technical knowledge with strategic product leadership, consistently delivering impactful solutions that bridge complex technology with user needs.
           </p>
         </Section>
         
         <Section title="Skills">
-          <ul className="list-disc pl-5 space-y-3 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            <li><strong className="text-zinc-800 dark:text-zinc-100">Product Leadership</strong> – Experience defining product vision, roadmaps, and go-to-market strategies for blockchain applications with a focus on user experience and adoption</li>
-            <li><strong className="text-zinc-800 dark:text-zinc-100">Team Leadership</strong> – Led cross-functional teams of engineers, designers, and growth specialists across different companies, with a collaborative and outcome-focused approach</li>
-            <li><strong className="text-zinc-800 dark:text-zinc-100">Strategic Vision</strong> – Ability to identify market opportunities and align technical capabilities with business objectives for maximum impact</li>
-            <li><strong className="text-zinc-800 dark:text-zinc-100">DeFi & Crypto Expertise</strong> – Deep understanding of blockchain protocols, smart contracts, and the broader DeFi ecosystem with 8+ years of hands-on experience</li>
-            <li><strong className="text-zinc-800 dark:text-zinc-100">Growth & Community</strong> – Created and executed strategies resulting in significant user adoption and community growth through novel DeFi incentives and partnerships</li>
-            <li><strong className="text-zinc-800 dark:text-zinc-100">Full-Stack Development</strong> – Advanced skills in Typescript, React, Node.js, HTML/CSS, and Cloud Technologies (Firebase, GCP, Cloudflare), and AI tooling</li>
-          </ul>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-3">Leadership Skills</h3>
+              <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Team Leadership</strong> – Led cross-functional teams of up to 20 spanning engineering, product, growth, and design functions</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Hiring & Scaling</strong> – Built and scaled teams from 0 to full agile teams, establishing hiring processes, frameworks, and team culture</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Stakeholder Management</strong> – Managed relationships with VCs, investors, and C-suite executives while aligning technical execution with business objectives</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Strategic Planning</strong> – Led Scrum & SAFe planning events, defined product roadmaps, and established technical architectures for enterprise-scale systems</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Community Building</strong> – Grew and managed communities of 6,000+ members, onboarding 10+ DAO contributors as central figurehead</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-3">Technical Skills</h3>
+              <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Languages:</strong> TypeScript, C#, Kotlin, Solidity, HTML, CSS</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Frontend:</strong> React, Next.js, Redux, Tailwind CSS, Vite, Webpack</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Backend:</strong> Node.js, Express, REST APIs, OAuth, JWT</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Blockchain:</strong> Web3.js, ethers.js, Viem, Wagmi, Hardhat, EVM</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Databases:</strong> MongoDB, PostgreSQL, Firestore</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Cloud & DevOps:</strong> Firebase, GCP, Cloudflare, Docker, Vercel, Netlify, GitHub Actions, CI/CD</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Tools:</strong> Git, NPM, Yarn, Jest, React Testing Library, Telegram API, OpenAI API</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">AI Development:</strong> Claude Code, Windsurf, Cursor</li>
+              </ul>
+            </div>
+          </div>
+        </Section>
+        
+        <Section title="Key Achievements / Projects">
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Galleon DAO - Founder to DAO Creation & Raise</h3>
+              <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                <li>Conceived and built a suite of novel, automated, composable DeFi strategy tokens that simplified access to complex strategies to everyday users.</li>
+                <li>Secured $1M funding from top-tier VCs (1kx) and industry angels (Bankless, Anthony Sassano)</li>
+                <li>Attracted and managed $20M+ in total value locked across protocol products</li>
+                <li>Hired and led a core team of 6 while transitioning to a decentralized governance structure</li>
+                <li>Built community from 0 to 6,000+ members through strategic growth initiatives and a strong project culture that users bought into</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Brava - Production MVP Delivery to Seed Raise</h3>
+              <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                <li>Defined product vision and delivered on the MVP for a risk-adjusted DeFi yield platform, leading to £2M seed raise</li>
+                <li>Led cross-functional team of engineers, designers, and growth specialists to market launch</li>
+                <li>Integrated complex technologies (Circle CCTP V2, Fireblocks, Safe) while maintaining security standards</li>
+                <li>Created comprehensive product requirements, aligning business objectives with technical feasibility</li>
+                <li>Established a strategic roadmap for institutional-grade DeFi yield products</li>
+              </ul>
+            </div>
+          </div>
         </Section>
         
         <Section title="Experience">
           <div className="space-y-10">
             <div>
               <JobTitle 
-                title="Head of Brava" 
+                title="Head of Brava & Engineering Manager" 
                 company="Brava Labs" 
                 period="Dec 2024 – Present" 
                 description="A DeFi protocol focused on creating risk-adjusted onchain yield strategies"
                 logo={logoBrava}
               />
               <JobDescription>
-                I defined the MVP of Brava's stablecoin yield platform and product roadmap for risk-adjusted onchain yield strategies. Led a cross-functional team of engineers, growth specialists, and designers to execute the product vision. Managed stakeholder relationships and reporting while ensuring the alignment of business objectives with technical feasibility. Defined and created product requirements for our long-term roadmap that integrated key technologies (e.g., Circle CCTP V2).
+                Defined and delivered an MVP and product roadmap that secured £2M seed funding. Led a cross-functional team of engineers, growth specialists, and designers. Created detailed technical requirements integrating Circle CCTP V2, Fireblocks, and Safe. Managed stakeholder relationships and reporting with our CEO & Founder.
               </JobDescription>
             </div>
             
@@ -183,7 +225,7 @@ export default function CV() {
                 logo={logoBrava}
               />
               <JobDescription>
-                Provided strategic guidance on how to navigate and effectively connect with crypto-natives as a new project. Advised on community-building strategies and market positioning within the competitive DeFi landscape.
+                Provided strategic guidance on crypto-native market positioning. Advised on community-building strategies for a competitive DeFi landscape.
               </JobDescription>
             </div>
             
@@ -195,7 +237,7 @@ export default function CV() {
                 description="Institutional Grade Asset Management Onchain"
               />
               <JobDescription>
-                Contributed to building the technical foundation for NashPoint's web application. Implemented KYC whitelisting integration to ensure regulatory compliance. Developed functionality for interaction with smart contracts deployed on the EVM. Optimized frontend performance and user experience for blockchain interactions.
+                Built a technical foundation and architecture for a DeFi web application, integrating deployed smart contracts, crypto-wallet features, and third-party integrations. Implemented KYC whitelisting, ensuring the regulatory compliance required to access certain features, such as RWA-based strategies.
               </JobDescription>
             </div>
             
@@ -208,7 +250,7 @@ export default function CV() {
                 logo={logoGalleon}
               />
               <JobDescription>
-                I led product strategy and full-stack development from concept to launch, securing $1M in funding. Founded and guided the project through initial development, hiring and managing six core team members while transitioning to a tokenised DAO with onchain governance. Built a community of over 6,000 members and onboarded 10+ DAO contributors. Attracted $20M+ in product investments while ensuring protocol security and reliability. Established strategic partnerships and integrations within the broader DeFi ecosystem.
+                Founded and scaled a DeFi DAO from concept to $20M+ TVL. Secured $1M funding from leading VCs and DeFi thought leaders. Hired and managed 6 core team members across engineering and growth. Built a community of 6,000+ members and onboarded 10+ DAO contributors. Led full-stack development of smart contracts and Web3 interfaces. Established strategic partnerships and initiatives within the DeFi ecosystem with notable names such as Lido, Arbitrum & Aave.
               </JobDescription>
             </div>
             
@@ -221,7 +263,7 @@ export default function CV() {
                 logo={logoSet}
               />
               <JobDescription>
-                Advised on community engagement strategies and governance mechanisms. Assisted in identifying potential partnerships and integration opportunities within the DeFi ecosystem.
+                Advised on community engagement and DeFi strategy. Identified strategic partnerships and integration opportunities within crypto.
               </JobDescription>
             </div>
             
@@ -233,7 +275,7 @@ export default function CV() {
                 logo={logoSet}
               />
               <JobDescription>
-                Spearheaded growth initiatives resulting in measurable increases in user adoption and token utilization. Developed and executed community management strategies across Twitter, Discord, and other platforms. Created engaging educational content to improve user understanding of Set Protocol's offerings. Identified and pursued business development opportunities, resulting in new strategic partnerships.
+                Drove user adoption and protocol TVL that peaked at over $600M TVL. Managed community across Twitter and Discord, reaching 50k+ members. Responsible for creating public communications for all announcements, initiatives, and educational content, translating complex DeFi concepts into understandable information. Secured strategic partnerships with crypto-native projects and traditional finance entities looking to onboard into DeFi through business development initiatives.
               </JobDescription>
             </div>
             
@@ -246,7 +288,7 @@ export default function CV() {
                 logo={logoR3}
               />
               <JobDescription>
-                Designed and implemented custom DLT applications using R3 Corda and Conclave frameworks. Collaborated with clients to translate complex business requirements into technical solutions. Contributed to product strategy and engineering planning for enterprise blockchain applications. Developed proof-of-concept applications showcasing privacy-preserving technologies.
+                Designed custom DLT applications using Corda and Conclave frameworks. Translated complex financial requirements into technical architectures. Developed privacy-preserving proof-of-concepts for enterprise clients. Contributed to product strategy for blockchain adoption.
               </JobDescription>
             </div>
             
@@ -259,7 +301,7 @@ export default function CV() {
                 logo={logoWorldpay}
               />
               <JobDescription>
-                Led architectural design of a Corda-based DLT system to improve B2B payment processes. Managed a team of 12 engineers, overseeing development and testing efforts. Served as subject matter expert for SAFe planning events, bridging product and technical requirements. Influenced framework, tool, and design choices as the project technology lead.
+                Led architectural design of Corda-based B2B payment system. Managed a team of 12 engineers through the development lifecycle. Served as technical lead for SAFe planning events. Influenced technology stack decisions and framework choices.
               </JobDescription>
             </div>
             
@@ -271,7 +313,7 @@ export default function CV() {
                 logo={logoWorldpay}
               />
               <JobDescription>
-                Delivered full-stack product features for a Corda-based DLT system, including API and UI development. Established development standards and best practices for a new team within Worldpay. Facilitated the transition to the SAFe framework as acting Scrum Master.
+                Delivered full-stack features for an enterprise DLT system. Established development standards for the new blockchain team. Facilitated transition to the SAFe framework as Scrum Master.
               </JobDescription>
             </div>
             
@@ -284,7 +326,7 @@ export default function CV() {
                 logo={logoSky}
               />
               <JobDescription>
-                Developed 'Sky Analytics', an end-to-end advertising and analytics portal for campaign planning. Implemented highly flexible audience segmentation features for targeted advertising. Used JavaScript, React, and Node.js to create responsive and scalable web applications.
+                Developed an end-to-end advertising analytics portal serving millions of users. Implemented flexible audience segmentation for targeted campaigns. Built scalable Vue/Node.js applications handling high traffic loads.
               </JobDescription>
             </div>
           </div>
@@ -297,114 +339,56 @@ export default function CV() {
         </Section>
         
         <Section title="Hobby Projects">
-          <div className="bg-zinc-50 dark:bg-zinc-800/50 p-6 rounded-lg border border-zinc-100 dark:border-zinc-700/40 mb-8">
-            <p className="text-zinc-600 dark:text-zinc-400 mb-6 leading-relaxed">
-              I enjoy creating micro apps when I get inspired. Using my web and cloud technologies expertise, I leverage agent-style coding tools such as Claude Code and Windsurf & Cursor to build, deploy, and host in production environments rapidly. Check out my <Link href="/projects" className="text-teal-500 hover:text-teal-600 dark:text-teal-400 dark:hover:text-teal-300">Projects page</Link> for more details.
-            </p>
-          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ProjectItem 
-              title="Wojak Jones - Yield Farming DeFi Assistant"
-              description="Developed a Virtuals agent integrated with Telegram that provides real-time yield farming opportunities and DeFi analytics. Built with Firebase, Telegram API, and Virtuals Framework."
+              title="Wojak Jones"
+              description="DeFi Assistant with 50+ active users (Firebase, Telegram API, Virtuals, Twitter API)"
               link="https://wojakjones.xyz"
-              github="https://t.me/WojakJonesBot"
             />
             
             <ProjectItem 
-              title="ChordCraft - AI Chord Progression Generator"
-              description="Created an AI tool that generates unique chord progressions based on musical style preferences. Built with React, Firebase, and OpenAI API."
+              title="ChordCraft"
+              description="AI music tool generating 1000s of chord progressions with a clean, minimalistic UI (React, OpenAI, Firebase)"
               link="https://chordcraft.io"
-              github="https://github.com/ADWilkinson/chordcraft-app"
             />
             
             <ProjectItem 
-              title="Ultrasoundapps - Crypto Apps Homepage"
-              description="Built a centralized platform showcasing various DeFi and cryptocurrency applications. Created with React and Firebase."
+              title="PiggyOnchain"
+              description="Themed app based on Superform Piggy AI Agent token with custom charts, data storage, and analytics (Vite, Firebase, Apex)"
+              link="https://piggyonchain.xyz"
+            />
+            
+            <ProjectItem 
+              title="Ultrasoundapps"
+              description="Crypto app directory (React, Firebase)"
               link="https://ultrasoundapps.com"
-              github="https://github.com/galleonlabs/ultrasoundapps"
             />
             
             <ProjectItem 
-              title="Privateer - Pairs Trading Bot"
-              description="Designed a hyperliquid-based trading bot using correlation/mean reversion strategies. Built with Python, Trading APIs, and Data Analysis tools."
+              title="Privateer"
+              description="Algorithmic trading bot with live capital (Python, Trading APIs)"
               github="https://github.com/ADWilkinson/privateer-capital"
             />
-          </div>
-        </Section>
-        
-        <Section title="Leadership Approach">
-          <div className="text-zinc-600 dark:text-zinc-400 mb-6">
-            <p className="mb-3">My leadership philosophy is built on three core principles:</p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li><strong>Vision-Driven Execution</strong> – I combine big-picture strategic thinking with practical implementation by setting clear objectives and empowering teams to find innovative solutions.</li>
-              <li><strong>User-Centered Product Development</strong> – I focus on translating complex technical capabilities into intuitive user experiences, prioritizing adoption and real-world utility.</li>
-              <li><strong>Collaborative Team Building</strong> – I build high-performing cross-functional teams by fostering ownership, clear communication, and by connecting individual contributions to larger project goals.</li>
-            </ul>
-          </div>
-        </Section>
-        
-        <Section title="Technical Skills">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-zinc-50 dark:bg-zinc-800/50 p-6 rounded-lg border border-zinc-100 dark:border-zinc-700/40">
-            <div className="text-zinc-600 dark:text-zinc-400">
-              <h4 className="text-zinc-800 dark:text-zinc-100 font-semibold mb-3 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-                Languages & Frameworks
-              </h4>
-              <p className="mb-4 ml-7 leading-relaxed">TypeScript, JavaScript, Python, PineScript, Solidity, React, Node.js, Next.js</p>
-              
-              <h4 className="text-zinc-800 dark:text-zinc-100 font-semibold mb-3 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                </svg>
-                Web3 Technologies
-              </h4>
-              <p className="mb-4 ml-7 leading-relaxed">Web3.js, ethers.js, Viem, Wagmi, Hardhat, EVM</p>
-              
-              <h4 className="text-zinc-800 dark:text-zinc-100 font-semibold mb-3 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                </svg>
-                Cloud & Infrastructure
-              </h4>
-              <p className="ml-7 leading-relaxed">Firebase, AWS, GCP, Cloudflare, Docker, CI/CD, GitHub Actions</p>
-            </div>
             
-            <div className="text-zinc-600 dark:text-zinc-400">
-              <h4 className="text-zinc-800 dark:text-zinc-100 font-semibold mb-3 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-                Frontend & Design
-              </h4>
-              <p className="mb-4 ml-7 leading-relaxed">HTML, CSS, Tailwind CSS, Material UI, Chakra UI</p>
-              
-              <h4 className="text-zinc-800 dark:text-zinc-100 font-semibold mb-3 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                </svg>
-                Data & APIs
-              </h4>
-              <p className="mb-4 ml-7 leading-relaxed">REST APIs, GraphQL, MongoDB, PostgreSQL, NoSQL</p>
-              
-              <h4 className="text-zinc-800 dark:text-zinc-100 font-semibold mb-3 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-                </svg>
-                Developer Tools
-              </h4>
-              <p className="ml-7 leading-relaxed">Git, Vite, Webpack, Jest, React Testing Library, Vercel, Netlify, NPM, Yarn, AI-tools (Claude Code, Windsurf, Cursor)</p>
-            </div>
+            <ProjectItem 
+              title="SaylorMemes"
+              description="Content curation platform (Vite, Firebase)"
+              github="https://github.com/galleonlabs/saylormemes"
+            />
+            
+            <ProjectItem 
+              title="CryptoTierList"
+              description="Project ranking system (Next.js, MongoDB)"
+              github="https://github.com/ADWilkinson/CryptoTierList"
+            />
           </div>
         </Section>
         
-        <Section title="Languages & Interests">
-          <div className="text-zinc-600 dark:text-zinc-400">
-            <p className="mb-2"><span className="font-semibold">Languages:</span> English (Native)</p>
-            <p><span className="font-semibold">Interests:</span> Music (piano & guitar), travel & socialising, algorithmic trading & technical analysis, emerging technologies</p>
-          </div>
+        <Section title="Interests">
+          <p className="text-zinc-600 dark:text-zinc-400">
+            Music (piano & guitar), travel & socialising, algorithmic trading, emerging technologies
+          </p>
         </Section>
       </div>
     </SimpleLayout>
