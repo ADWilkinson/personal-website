@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: {
     template: '%s - Andrew Wilkinson',
     default:
-      'Andrew Wilkinson - Engineering and Product manager | Former VC-backed Founder | DeFi Builder',
+      'Andrew Wilkinson - Engineering and Product Manager | Former VC-backed Founder | DeFi Builder',
   },
   description:
     "I'm Andrew, an engineering and product manager with 8+ years building and scaling products across blockchain, DeFi, and fintech. Former founder who raised venture funding and built products managing $20M+ in value.",

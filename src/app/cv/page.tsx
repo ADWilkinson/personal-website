@@ -11,7 +11,7 @@ import logoBrava from '@/images/logos/web-brava.jpg'
 
 export const metadata: Metadata = {
   title: 'CV',
-  description: 'Engineering and Product manager | Former VC-backed Founder | DeFi Builder',
+  description: 'Engineering and Product Manager | Former VC-backed Founder | DeFi Builder',
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -105,7 +105,7 @@ export default function CV() {
   return (
     <SimpleLayout
       title="Curriculum Vitae"
-      intro="Engineering and Product manager. Former VC-backed Founder. DeFi Builder."
+      intro="Engineering and Product Manager. Former VC-backed Founder. DeFi Builder."
     >
       <div className="space-y-12">
         <div className="text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-lg border border-zinc-100 dark:border-zinc-700/40 flex flex-col md:flex-row md:items-center md:justify-between">
