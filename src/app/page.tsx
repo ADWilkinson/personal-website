@@ -365,10 +365,10 @@ export default async function Home() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-              Engineering and product leader. Former VC-backed Founder. DeFi Builder.
+              Engineering and product manager. Former VC-backed Founder. DeFi Builder.
             </h1>
             <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-              I'm Andrew, an engineering and product leader with 8+ years building across blockchain and fintech. 
+              I'm Andrew, an Engineering and product manager with 8+ years building across blockchain and fintech. 
               Currently Head of Brava at Brava Labs, where I shipped an MVP that secured £2M seed funding.
               Previously founded Galleon DAO, raising $1M+ from top VCs, managing $20M+ in value, and building a 6,000+ member community.
               I excel at taking products from 0-to-1 with hands-on technical expertise and strategic vision.

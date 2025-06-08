@@ -11,7 +11,7 @@ import logoBrava from '@/images/logos/web-brava.jpg'
 
 export const metadata: Metadata = {
   title: 'CV',
-  description: 'Engineering and product leader | Former VC-backed Founder | DeFi Builder',
+  description: 'Engineering and product manager | Former VC-backed Founder | DeFi Builder',
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -105,7 +105,7 @@ export default function CV() {
   return (
     <SimpleLayout
       title="Curriculum Vitae"
-      intro="Engineering and product leader. Former VC-backed Founder. DeFi Builder."
+      intro="Engineering and product manager. Former VC-backed Founder. DeFi Builder."
     >
       <div className="space-y-12">
         <div className="text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-lg border border-zinc-100 dark:border-zinc-700/40 flex flex-col md:flex-row md:items-center md:justify-between">
@@ -145,7 +145,7 @@ export default function CV() {
         
         <Section title="Summary">
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Engineering and product leader with 8+ years building and scaling products across blockchain, DeFi, and fintech, from founding my own protocol to leading teams at established companies. Successfully raised venture funding, shipped products managing $20M+ in value, and excel at taking products from 0-to-1. Combine hands-on technical expertise with strategic product vision, bringing entrepreneurial energy and rapid execution to any organization.
+            Engineering and product manager with 8+ years building and scaling products across blockchain, DeFi, and fintech. From founding my own protocol to managing teams at established enterprises, I've shipped products managing $20M+ in value and raised venture funding. I excel at taking products from 0-to-1, combining hands-on technical expertise with strategic product vision.
           </p>
         </Section>
         
@@ -154,7 +154,7 @@ export default function CV() {
             <div>
               <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-3">Leadership Skills</h3>
               <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Entrepreneurial Leadership</strong> – Founded and scaled teams from 0-8 at Galleon DAO, while managing up to 12 engineers at enterprise scale</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Team Management</strong> – Founded and scaled teams from 0-8 at Galleon DAO, while managing up to 12 engineers at enterprise scale</li>
                 <li><strong className="text-zinc-800 dark:text-zinc-100">Stakeholder Management</strong> – Managed relationships with VCs, investors, and C-suite executives while aligning technical execution with business objectives</li>
                 <li><strong className="text-zinc-800 dark:text-zinc-100">Strategic Planning</strong> – Led Scrum & SAFe planning events, defined product roadmaps, and established technical architectures for novel products</li>
                 <li><strong className="text-zinc-800 dark:text-zinc-100">Community & Growth</strong> – Built 6,000+ member community from scratch, creating an engaged user base that drove $20M+ protocol adoption</li>
@@ -180,7 +180,7 @@ export default function CV() {
               <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Galleon DAO - Founder to DAO Creation & Raise</h3>
               <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
                 <li>Created first-of-kind DeFi strategy tokens, making institutional-grade yield strategies accessible to retail users</li>
-                <li>Secured $1M funding from top-tier VCs (1kx) and industry angels (Bankless, Anthony Sassano)</li>
+                <li>Secured $1M funding from VCs (1kx) and industry angels (Bankless, Anthony Sassano)</li>
                 <li>Attracted and managed $20M+ in total value locked across protocol products</li>
                 <li>Hired and led a core team of 6 while transitioning to a decentralized governance structure</li>
                 <li>Built a community of 6,000+ members through strategic growth initiatives and a strong project culture that users bought into</li>
@@ -309,7 +309,7 @@ export default function CV() {
                 logo={logoWorldpay}
               />
               <JobDescription>
-                Delivered full-stack features for an enterprise DLT system. Established development standards for the new blockchain team based in India, optimised for asynchronous working. Facilitated transition to the SAFe framework as Scrum Master.
+                Delivered full-stack features for an enterprise DLT system. Established development standards for the new blockchain team based in India, optimized for asynchronous working. Facilitated transition to the SAFe framework as Scrum Master.
               </JobDescription>
             </div>
             
