@@ -233,7 +233,7 @@ export default function CV() {
                 description="Institutional Grade Asset Management Onchain"
               />
               <JobDescription>
-                Short-term contract to help build the technical foundation and architecture for a DeFi web application, integrating deployed smart contracts, crypto-wallet features, and third-party integrations. Implemented KYC whitelisting, ensuring the regulatory compliance required to access certain features, such as RWA-based strategies.
+                Short-term contract to help build the technical foundation and architecture for a DeFi web application, integrating deployed smart contracts, crypto-wallet features, and third-party frameworks. Implemented KYC and whitelisting via Persona, ensuring the regulatory compliance required to access certain features, such as RWA-based strategies.
               </JobDescription>
             </div>
             
@@ -246,7 +246,7 @@ export default function CV() {
                 logo={logoGalleon}
               />
               <JobDescription>
-                Founded and scaled a DeFi DAO from concept to $20M+ TVL. Secured $1M funding from leading VCs and DeFi thought leaders. Hired and managed 6 core team members across engineering and growth. Built a community of 6,000+ members and onboarded 10+ DAO contributors. Led full-stack development of smart contracts and Web3 interfaces. Established strategic partnerships and initiatives within the DeFi ecosystem with notable names such as Lido, Arbitrum & Aave.
+                Founded and scaled a DeFi DAO from concept to $20M+ TVL. Secured $1M funding from VCs (1kx) and DeFi thought leaders (Bankless, Anthony Sassano). Hired and managed 6 core team members across engineering and growth. Built a community of 6,000+ members and onboarded 10+ DAO contributors. Led full-stack development of smart contracts and Web3 interfaces. Established strategic partnerships and initiatives within the DeFi ecosystem with notable names such as Lido, Arbitrum & Aave.
               </JobDescription>
             </div>
             
@@ -271,7 +271,7 @@ export default function CV() {
                 logo={logoSet}
               />
               <JobDescription>
-                Drove user adoption and protocol TVL that peaked at over $600M TVL. Managed community across Twitter and Discord, reaching 50k+ members. Responsible for creating public communications for all announcements, initiatives, and educational content, translating complex DeFi concepts into understandable information. Secured strategic partnerships with crypto-native projects and traditional finance entities looking to onboard into DeFi through business development initiatives.
+                Drove user adoption and protocol TVL that peaked at over $600M. Managed community across Twitter and Discord, reaching 50k+ members. Created public communications for all announcements, initiatives, and educational content, translating complex DeFi concepts into understandable information. Secured strategic partnerships with crypto-native projects and traditional finance entities looking to onboard into DeFi through business development initiatives.
               </JobDescription>
             </div>
             
