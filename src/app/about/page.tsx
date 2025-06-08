@@ -57,7 +57,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 export const metadata: Metadata = {
   title: 'About',
   description:
-    "I'm Andrew, a Product & Engineering Manager, Former VC-backed Founder, and DeFi Builder.",
+    "I'm Andrew, an Engineering and product leader, Former VC-backed Founder, and DeFi Builder.",
 }
 
 export default function About() {
@@ -87,27 +87,27 @@ export default function About() {
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
             I'm Andrew.<br />
-            Former VC-backed Founder, Product & Engineering Manager.
+            Engineering and product leader, Former VC-backed Founder.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Current Leadership</h3>
             <p>
-              Currently, I'm serving as Head of Brava at <CompanyLogo name="Brava Labs" logo={logoBrava} />, a DeFi protocol focused on creating risk-adjusted onchain yield strategies. I define the product vision and MVP, establish the strategic roadmap, and manage a cross-functional team to bring the product to market.
+              Currently, I'm Head of Brava & Engineering Manager at <CompanyLogo name="Brava Labs" logo={logoBrava} />, where we're building risk-adjusted yield strategies for DeFi. I led the team that shipped our MVP, which helped us secure £2M in seed funding. Day-to-day, I work with a cross-functional team of 10, balancing technical implementation with product strategy.
             </p>
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Founder Experience</h3>
             <p>
-              As the Founder of <CompanyLogo name="Galleon DAO" logo={logoGalleon} />, I led the development of composable, automated strategy tokens on Ethereum, allowing users to access complex DeFi strategies through a single token. I secured $1M+ in funding from top VCs (1kx) and industry angels (Bankless, Anthony Sassano). Starting from a concept, I led the full-stack development, implemented smart contracts, built the Web3 frontend interface, and scaled the project to manage $20M+ in investment strategies. I hired and managed a core team of 6 members while transitioning into a tokenised DAO with onchain governance and growing a community of over 6,000 members.
+              As the Founder of <CompanyLogo name="Galleon DAO" logo={logoGalleon} />, I built automated DeFi strategies that abstracted complexity away from everyday users. We raised $1M+ from investors including 1kx and notable figures like the Bankless founders and Anthony Sassano. I wore many hats - writing smart contracts, building the frontend, hiring our core team of 6, and growing our community to over 6,000 members. At our peak, we managed over $20M in user funds.
             </p>
             
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Product & Strategy Expertise</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">0-to-1 Product & Engineering</h3>
             <p>
-              With 8+ years of experience building in the blockchain and DeFi space, my core expertise includes defining product vision, roadmaps, and strategies for blockchain applications in the Ethereum ecosystem and wider tech industry. I've led engineering, growth, and product teams across different companies and domains while translating complex business requirements into successful products that solve real user problems.
+              I've spent 8+ years building in blockchain and fintech, with a particular focus on early-stage products. I enjoy the challenge of going from idea to launch, whether that's founding my own protocol or joining an early team. My background spans both startups and larger companies, where I've led engineering teams of various sizes - from small founding teams to groups of 12+ at enterprise scale.
             </p>
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Industry Experience</h3>
             <p>
-              I have a deep understanding of blockchain protocols, smart contracts, and the broader DeFi ecosystem. Prior to my work at <CompanyLogo name="Galleon DAO" logo={logoGalleon} /> and <CompanyLogo name="Brava Labs" logo={logoBrava} />, I worked at <CompanyLogo name="Set Labs" logo={logoSet} />, <CompanyLogo name="R3" logo={logoR3} />, <CompanyLogo name="Worldpay" logo={logoWorldpay} />, and <CompanyLogo name="Sky" logo={logoSky} />. Throughout my career, I've created and executed strategies resulting in significant user adoption and community growth through novel DeFi incentives and partnerships.
+              My journey in blockchain started at traditional companies like <CompanyLogo name="Sky" logo={logoSky} /> and <CompanyLogo name="Worldpay" logo={logoWorldpay} />, before moving into the DeFi space with <CompanyLogo name="R3" logo={logoR3} /> and <CompanyLogo name="Set Labs" logo={logoSet} />. Each role taught me something different - from building scalable systems to understanding complex financial protocols. This diverse background helps me bridge the gap between technical implementation and business strategy, whether I'm working on smart contracts or planning go-to-market approaches.
             </p>
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Side Projects</h3>

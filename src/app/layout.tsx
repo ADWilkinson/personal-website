@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   title: {
     template: '%s - Andrew Wilkinson',
     default:
-      'Andrew Wilkinson - Product & Engineering Manager | Former VC-backed Founder | DeFi Builder',
+      'Andrew Wilkinson - Engineering and product leader | Former VC-backed Founder | DeFi Builder',
   },
   description:
-    "I'm Andrew, a Product & Engineering Manager with 8+ years of experience building in the DeFi ecosystem, based in London.",
+    "I'm Andrew, an Engineering and product leader with 8+ years building and scaling products across blockchain, DeFi, and fintech. Former founder who raised venture funding and built products managing $20M+ in value.",
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
