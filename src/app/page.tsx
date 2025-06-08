@@ -368,7 +368,7 @@ export default async function Home() {
               Engineering and Product manager. Former VC-backed Founder. DeFi Builder.
             </h1>
             <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-              I'm Andrew, an Engineering and product manager with 8+ years building across blockchain and fintech. 
+              I'm Andrew, an engineering and product manager with 8+ years building across blockchain and fintech. 
               Currently Head of Brava at Brava Labs, where I shipped an MVP that secured £2M seed funding.
               Previously founded Galleon DAO, raising $1M+ from top VCs, managing $20M+ in value, and building a 6,000+ member community.
               I excel at taking products from 0-to-1 with hands-on technical expertise and strategic vision.

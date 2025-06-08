@@ -14,7 +14,7 @@ export const metadata: Metadata = {
       'Andrew Wilkinson - Engineering and Product manager | Former VC-backed Founder | DeFi Builder',
   },
   description:
-    "I'm Andrew, an Engineering and product manager with 8+ years building and scaling products across blockchain, DeFi, and fintech. Former founder who raised venture funding and built products managing $20M+ in value.",
+    "I'm Andrew, an engineering and product manager with 8+ years building and scaling products across blockchain, DeFi, and fintech. Former founder who raised venture funding and built products managing $20M+ in value.",
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
