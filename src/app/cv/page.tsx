@@ -11,7 +11,7 @@ import logoBrava from '@/images/logos/web-brava.jpg'
 
 export const metadata: Metadata = {
   title: 'CV',
-  description: 'Engineering and Product Manager | Former VC-backed Founder | DeFi Builder',
+  description: 'Engineering and Product Manager with 8+ years building and scaling products across blockchain, DeFi, and fintech',
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -105,7 +105,7 @@ export default function CV() {
   return (
     <SimpleLayout
       title="Curriculum Vitae"
-      intro="Engineering and Product Manager. Former VC-backed Founder. DeFi Builder."
+      intro="Engineering and Product Manager with 8+ years building and scaling products across blockchain, DeFi, and fintech."
     >
       <div className="space-y-12">
         <div className="text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-lg border border-zinc-100 dark:border-zinc-700/40 flex flex-col md:flex-row md:items-center md:justify-between">
@@ -145,7 +145,13 @@ export default function CV() {
         
         <Section title="Summary">
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Engineering and product manager with 8+ years building and scaling products across blockchain, DeFi, and fintech. From founding my own protocol to managing teams at established enterprises, I've shipped products managing $20M+ in value and raised venture funding. I excel at taking products from 0-to-1, combining hands-on technical expertise with strategic product vision.
+            I'm a product-focused Engineering Manager with 8+ years of experience building and scaling products across blockchain, DeFi, and fintech.
+          </p>
+          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mt-4">
+            From founding an Ethereum DAO to managing teams at established enterprises, I've shipped products managing $20M+ in value, and raised $2M+ venture funding.
+          </p>
+          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mt-4">
+            I excel at taking products from 0-to-1, combining hands-on technical expertise with strategic product vision.
           </p>
         </Section>
         
@@ -177,23 +183,13 @@ export default function CV() {
         <Section title="Key Achievements / Projects">
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Galleon DAO - Founder to DAO Creation & Raise</h3>
-              <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                <li>Created first-of-kind DeFi strategy tokens, making institutional-grade yield strategies accessible to retail users</li>
-                <li>Secured $1M funding from VCs (1kx) and industry angels (Bankless, Anthony Sassano)</li>
-                <li>Attracted and managed $20M+ in total value locked across protocol products</li>
-                <li>Hired and led a core team of 6 while transitioning to a decentralized governance structure</li>
-                <li>Built a community of 6,000+ members through strategic growth initiatives and a strong project culture that users bought into</li>
-              </ul>
+              <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Galleon DAO - DAO Founder & Raise</h3>
+              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-2">I built DeFi investment products that democratized yield and leveraged strategies through simple tokens that secured $1M in funding from 1kx and notable angels, including Bankless and Anthony Sassano.</p>
+              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">I grew and led a community from 0 to 6,000+ members, driving $20M+ in TVL across protocol products through hands-on growth execution and strategic engagement within the ecosystem.</p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Brava - Production MVP Delivery to Seed Raise</h3>
-              <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                <li>Defined and shipped an MVP that secured £2M seed funding for an institutional DeFi yield platform</li>
-                <li>Led cross-functional team of engineers, designers, and growth specialists to market launch</li>
-                <li>Integrated complex technologies (Circle CCTP V2, Fireblocks, Safe) while maintaining security standards</li>
-                <li>Created comprehensive product requirements and strategic roadmap, aligning business objectives with technical feasibility for institutional-grade DeFi yield products</li>
-              </ul>
+              <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Brava - MVP Delivery to Seed Raise</h3>
+              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">I built and launched the MVP in 6 months that secured £2M seed funding for an institutional DeFi yield platform, integrating Circle CCTP V2, Fireblocks, and Safe while leading cross-functional delivery from roadmap to market launch.</p>
             </div>
           </div>
         </Section>
@@ -242,11 +238,11 @@ export default function CV() {
                 title="Founder" 
                 company="Galleon DAO" 
                 period="Jan 2022 – May 2023" 
-                description="A DeFi protocol creating structured products and automated investment strategies"
+                description="A DeFi DAO creating onchain yield and leverage structured products on Ethereum"
                 logo={logoGalleon}
               />
               <JobDescription>
-                Founded and scaled a DeFi DAO from concept to $20M+ TVL. Secured $1M funding from VCs (1kx) and DeFi thought leaders (Bankless, Anthony Sassano). Hired and managed 6 core team members across engineering and growth. Built a community of 6,000+ members and onboarded 10+ DAO contributors. Led full-stack development of smart contracts and Web3 interfaces. Established strategic partnerships and initiatives within the DeFi ecosystem with notable names such as Lido, Arbitrum & Aave.
+                Founded and scaled a DeFi DAO from concept to $20M+ TVL. Secured $1M funding from leading VCs (1kx) and DeFi thought leaders (Bankless, Anthony Sassano). Hired and managed 6 core team members across engineering and growth. Built a community of 6,000+ members and onboarded 10+ DAO contributors. Led full-stack development of smart contracts and Web3 interfaces. Established strategic partnerships and initiatives within the DeFi ecosystem with notable names such as Lido, Arbitrum & Aave.
               </JobDescription>
             </div>
             
@@ -309,7 +305,7 @@ export default function CV() {
                 logo={logoWorldpay}
               />
               <JobDescription>
-                Delivered full-stack features for an enterprise DLT system. Established development standards for the new blockchain team based in India, optimized for asynchronous working. Facilitated transition to the SAFe framework as Scrum Master.
+                Delivered full-stack features for an enterprise DLT system. Established development standards for the new blockchain team based in India, optimised for asynchronous working. Facilitated transition to the SAFe framework as Scrum Master.
               </JobDescription>
             </div>
             
