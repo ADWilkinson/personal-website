@@ -196,7 +196,7 @@ export default function CV() {
               <JobTitle 
                 title="Head of Brava & Engineering Manager" 
                 company="Brava Labs" 
-                period="Dec 2024 – Present" 
+                period="Dec 2024 – Jun 2025" 
                 description="A DeFi protocol focused on creating risk-adjusted onchain yield strategies"
                 logo={COMPANY_LOGOS.brava}
               />

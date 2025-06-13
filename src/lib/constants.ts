@@ -35,7 +35,7 @@ export const WORK_EXPERIENCE = [
     title: 'Head of Brava & Engineering Manager',
     logo: COMPANY_LOGOS.brava,
     start: '2024',
-    end: 'Present',
+    end: '2025',
   },
   {
     company: 'Galleon DAO',

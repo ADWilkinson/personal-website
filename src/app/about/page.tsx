@@ -82,9 +82,9 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <div className="space-y-7 text-base text-zinc-600 dark:text-zinc-400">
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Current Leadership</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Recent Leadership Experience</h3>
             <p>
-              Currently, I'm Head of Brava & Engineering Manager at <CompanyLogo name="Brava Labs" logo={COMPANY_LOGOS.brava} />, where we're building risk-adjusted yield strategies for DeFi. I led the team that shipped our MVP, which helped us secure £2M in seed funding. Day-to-day, I work with a cross-functional team of 10, balancing technical implementation with product strategy.
+              Most recently, I was Head of Brava & Engineering Manager at <CompanyLogo name="Brava Labs" logo={COMPANY_LOGOS.brava} />, where we built risk-adjusted yield strategies for DeFi. I led the team that shipped our MVP, which helped us secure £2M in seed funding. Day-to-day, I worked with a cross-functional team of 10, balancing technical implementation with product strategy.
             </p>
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Founder Experience</h3>
