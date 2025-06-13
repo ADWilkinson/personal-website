@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 interface CompanyLogoProps {
   name: string
-  logo: StaticImageData
+  logo: StaticImageData | string
   className?: string
   size?: 'sm' | 'md' | 'lg'
 }
@@ -40,7 +40,7 @@ export function CompanyLogo({ name, logo, className, size = 'sm' }: CompanyLogoP
           className={clsx('object-contain rounded-full', image)} 
           width={dimensions.width} 
           height={dimensions.height}
-          unoptimized
+          sizes={`${dimensions.width}px`}
         />
       </span>
     </span>
