@@ -23,8 +23,18 @@ import piggyImage from '@/images/projects/piggy.png'
 import ultrasoundImage from '@/images/projects/ultrasound.png'
 import privateerImage from '@/images/projects/priv.png'
 import saylorImage from '@/images/projects/saylor.png'
+import eluneImage from '@/images/projects/elune.png'
 
 const projects = [
+  {
+    name: 'Elune',
+    description:
+      'A simple way to earn yield onchain. Allocate funds to automated yield strategies across leading DeFi protocols, built for non-crypto native users with Base smart wallets and sponsored transactions.',
+    link: { href: 'https://tryelune.com', label: 'tryelune.com' },
+    icon: CurrencyDollarIcon,
+    color: 'bg-purple-600 text-white',
+    image: eluneImage,
+  },
   {
     name: 'Galleon DAO',
     description:

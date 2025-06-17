@@ -330,6 +330,12 @@ export default function CV() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ProjectItem 
+              title="Elune"
+              description="Simple yield farming platform for non-crypto native users with automated DeFi strategies (Base smart wallets, Superform SuperUSDC)"
+              link="https://tryelune.com"
+            />
+            
+            <ProjectItem 
               title="Wojak Jones"
               description="DeFi Assistant with 50+ active users (Firebase, Telegram API, Virtuals, Twitter API)"
               link="https://wojakjones.xyz"
