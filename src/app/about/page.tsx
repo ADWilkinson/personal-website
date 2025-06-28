@@ -52,13 +52,13 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 export const metadata: Metadata = {
   title: 'About',
   description:
-    "I'm Andrew, an Engineering and Product Manager, Former VC-backed Founder, and DeFi Builder.",
+    "I'm Andrew. Senior Software Engineer at ZKP2P, Former VC-backed Founder.",
 }
 
 export default function About() {
   return (
     <SimpleLayout
-      title="I'm Andrew. Engineering and Product Manager, Former VC-backed Founder."
+      title="I'm Andrew. Senior Software Engineer at ZKP2P, Former VC-backed Founder."
       intro="">
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
@@ -82,9 +82,14 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <div className="space-y-7 text-base text-zinc-600 dark:text-zinc-400">
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Recent Leadership Experience</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Current Role</h3>
             <p>
-              Most recently, I was Head of Brava & Engineering Manager at <CompanyLogo name="Brava Labs" logo={COMPANY_LOGOS.brava} />, where we built risk-adjusted yield strategies for DeFi. I led the team that shipped our MVP, which helped us secure £2M in seed funding. Day-to-day, I worked with a cross-functional team of 10, balancing technical implementation with product strategy.
+              I'm currently a Senior Software Engineer at <CompanyLogo name="ZKP2P" logo={COMPANY_LOGOS.zkp2p} />, where we're building trust-minimized, noncustodial fiat-to-crypto onramps using zkTLS proofs. We're enabling seamless exchanges between any offchain digital asset (like fiat currencies) and onchain assets (like USDC, ETH, SOL) across multiple payment platforms including Venmo, Revolut, Wise, and Cash App.
+            </p>
+            
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Recent Leadership Experience</h3>
+            <p>
+              Previously, I was Head of Brava & Engineering Manager at <CompanyLogo name="Brava Labs" logo={COMPANY_LOGOS.brava} />, where we built risk-adjusted yield strategies for DeFi. I led the team that shipped our MVP, which helped us secure £2M in seed funding. Day-to-day, I worked with a cross-functional team of 10, balancing technical implementation with product strategy.
             </p>
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Founder Experience</h3>

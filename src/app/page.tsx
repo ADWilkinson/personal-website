@@ -265,12 +265,12 @@ export default async function Home() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-              Engineering and Product Manager. Former VC-backed Founder. DeFi Builder.
+              Senior Software Engineer at ZKP2P. Former VC-backed Founder.
             </h1>
             <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-              I'm Andrew, an engineering and product manager with 8+ years building across blockchain and fintech. 
-              Most recently Head of Brava at Brava Labs, where I shipped an MVP that secured £2M seed funding.
-              Previously founded Galleon DAO, raising $1M+ from top VCs, managing $20M+ in value, and building a 6,000+ member community.
+              I'm Andrew, currently building at ZKP2P - enabling trust-minimized fiat-to-crypto onramps through zkTLS proofs.
+              Previously Head of Brava at Brava Labs, where I shipped an MVP that secured £2M seed funding.
+              Before that, I founded Galleon DAO, raising $1M+ from top VCs, managing $20M+ in value, and building a 6,000+ member community.
               I excel at taking products from 0-to-1 with hands-on technical expertise and strategic vision.
             </p>
             <div className="mt-6 flex gap-6">

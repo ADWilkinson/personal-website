@@ -5,11 +5,12 @@ import logoWorldpay from '@/images/logos/web-worldpay.jpg'
 import logoR3 from '@/images/logos/web-r3.png'
 import logoBrava from '@/images/logos/web-brava.jpg'
 import logoSky from '@/images/logos/web-sky.png'
+import logoZkp2p from '@/images/logos/web-zkp2p.png'
 
 export const SITE_CONFIG = {
   name: 'Andrew Wilkinson',
   email: 'gm@andrewwilkinson.io',
-  description: 'AI & Crypto OG',
+  description: 'Senior Software Engineer at ZKP2P, Former VC-backed Founder',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://andrewwilkinson.io',
 }
 
@@ -21,6 +22,7 @@ export const SOCIAL_LINKS = {
 }
 
 export const COMPANY_LOGOS = {
+  zkp2p: logoZkp2p,
   galleon: logoGalleon,
   set: logoSet,
   worldpay: logoWorldpay,
@@ -30,6 +32,13 @@ export const COMPANY_LOGOS = {
 }
 
 export const WORK_EXPERIENCE = [
+  {
+    company: 'ZKP2P',
+    title: 'Senior Software Engineer',
+    logo: COMPANY_LOGOS.zkp2p,
+    start: '2025',
+    end: 'Present',
+  },
   {
     company: 'Brava Labs',
     title: 'Head of Brava & Engineering Manager',

@@ -7,7 +7,7 @@ import { typography, getHeadingStyles, getBodyStyles, getMetaStyles, getLinkStyl
 
 export const metadata: Metadata = {
   title: 'CV',
-  description: 'Engineering and Product Manager with 8+ years building and scaling products across blockchain, DeFi, and fintech',
+  description: 'Senior Software Engineer at ZKP2P, Former VC-backed Founder',
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -101,7 +101,7 @@ export default function CV() {
   return (
     <SimpleLayout
       title="Curriculum Vitae"
-      intro="Engineering and Product Manager with 8+ years building and scaling products across blockchain, DeFi, and fintech."
+      intro="Senior Software Engineer at ZKP2P, Former VC-backed Founder. 8+ years building and scaling products across blockchain, DeFi, and fintech."
     >
       <div className="space-y-12">
         <div className="text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-lg border border-zinc-100 dark:border-zinc-700/40 flex flex-col md:flex-row md:items-center md:justify-between">
@@ -192,6 +192,19 @@ export default function CV() {
         
         <Section title="Experience">
           <div className="space-y-10">
+            <div>
+              <JobTitle 
+                title="Senior Software Engineer" 
+                company="ZKP2P" 
+                period="Jun 2025 – Present" 
+                description="A trust-minimized, noncustodial protocol enabling fiat-to-crypto onramps via zkTLS proofs"
+                logo={COMPANY_LOGOS.zkp2p}
+              />
+              <JobDescription>
+                Building the ZKP2P V2 Protocol that enables trust minimized and fully noncustodial buying and selling of any offchain digital asset (e.g. fiat currencies) for any onchain asset (e.g. USDC, Ethereum, Solana). Working on smart contract escrow systems, zkTLS integration, and supporting over 20 fiat currencies across multiple payment platforms including Venmo, Revolut, Wise, and Cash App.
+              </JobDescription>
+            </div>
+            
             <div>
               <JobTitle 
                 title="Head of Brava & Engineering Manager" 
