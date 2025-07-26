@@ -1,35 +1,35 @@
 import { type Metadata } from 'next'
+import Link from 'next/link'
 
-import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
-    <article className="md:grid md:grid-cols-4 md:items-baseline">
-      <Card className="md:col-span-3">
-        <Card.Title href={`/articles/${article.slug}`}>
-          {article.title}
-        </Card.Title>
-        <Card.Eyebrow
-          as="time"
-          dateTime={article.date}
-          className="md:hidden"
-          decorate
-        >
+    <article className="relative group">
+      <div className="flex flex-col space-y-1">
+        <time className="text-xs text-zinc-400 dark:text-zinc-500" dateTime={article.date}>
           {formatDate(article.date)}
-        </Card.Eyebrow>
-        <Card.Description>{article.description}</Card.Description>
-        <Card.Cta>Read article</Card.Cta>
-      </Card>
-      <Card.Eyebrow
-        as="time"
-        dateTime={article.date}
-        className="mt-1 max-md:hidden"
-      >
-        {formatDate(article.date)}
-      </Card.Eyebrow>
+        </time>
+        <h2 className="text-base font-medium text-zinc-800 dark:text-zinc-100">
+          <Link href={`/articles/${article.slug}`}>
+            <span className="absolute inset-0" />
+            {article.title}
+          </Link>
+        </h2>
+        <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          {article.description}
+        </p>
+      </div>
+      <div className="mt-3">
+        <Link 
+          href={`/articles/${article.slug}`}
+          className="text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
+        >
+          Read article →
+        </Link>
+      </div>
     </article>
   )
 }
@@ -48,8 +48,8 @@ export default async function ArticlesIndex() {
       title="Articles on Blockchain, DeFi, and Technology"
       intro="My thoughts and experiences in blockchain, DeFi, and technology projects."
     >
-      <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
-        <div className="flex max-w-3xl flex-col space-y-16">
+      <div className="max-w-2xl">
+        <div className="flex flex-col space-y-16">
           {articles.map((article) => (
             <Article key={article.slug} article={article} />
           ))}
