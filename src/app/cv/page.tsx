@@ -374,7 +374,7 @@ export default function CV() {
             <ProjectItem 
               title="SaylorMemes"
               description="Content curation platform (Vite, Firebase)"
-              github="https://github.com/galleonlabs/saylormemes"
+              github="https://github.com/ADWilkinson/saylormemes"
             />
             
             <ProjectItem 

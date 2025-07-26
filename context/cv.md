@@ -113,12 +113,12 @@ Developed a Virtuals agent integrated with Telegram that provides real-time yiel
 Created an AI tool that generates unique chord progressions based on musical style preferences. [chordcraft.io](https://chordcraft.io/) | [GitHub](https://github.com/ADWilkinson/chordcraft-app)
 
 **Ultrasoundapps** \- Crypto Apps Homepage (React, Firebase)  
-Built a centralized platform showcasing various DeFi and cryptocurrency applications. [ultrasoundapps.com](https://ultrasoundapps.com/) | [GitHub](https://github.com/galleonlabs/ultrasoundapps)
+Built a centralized platform showcasing various DeFi and cryptocurrency applications. [ultrasoundapps.com](https://ultrasoundapps.com/) | [GitHub](https://github.com/ADWilkinson/ultrasoundapps)
 
 **Privateer** \- Pairs Trading Bot (Python, Trading APIs, Data Analysis)  
 Designed a hyperliquid-based trading bot using correlation/mean reversion strategies. [GitHub](https://github.com/ADWilkinson/privateer-capital)
 
-**Additional Projects**: [SaylorMemes](https://github.com/galleonlabs/saylormemes) (Vite, Firebase) | [CryptoTierList](https://github.com/ADWilkinson/CryptoTierList) (Next.js, MongoDB)
+**Additional Projects**: [SaylorMemes](https://github.com/ADWilkinson/saylormemes) (Vite, Firebase) | [CryptoTierList](https://github.com/ADWilkinson/CryptoTierList) (Next.js, MongoDB)
 
 ## **Technical Skills**
 

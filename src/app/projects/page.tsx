@@ -87,7 +87,7 @@ const projects = [
     name: 'SaylorMemes',
     description:
       'Cryptocurrency meme generator with templates and custom editing.',
-    link: { href: 'https://github.com/galleonlabs/saylormemes', label: 'GitHub' },
+    link: { href: 'https://github.com/ADWilkinson/saylormemes', label: 'GitHub' },
     icon: PhotoIcon,
     image: saylorImage,
   },
