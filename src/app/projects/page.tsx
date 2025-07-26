@@ -30,7 +30,7 @@ const projects = [
   {
     name: 'Elune',
     description:
-      'A simple way to earn yield onchain. Allocate funds to automated yield strategies across leading DeFi protocols, built for non-crypto native users with Base smart wallets and sponsored transactions.',
+      'Earn yield onchain through automated DeFi strategies with sponsored transactions for non-crypto natives.',
     link: { href: 'https://tryelune.com', label: 'tryelune.com' },
     icon: CurrencyDollarIcon,
     image: eluneImage,
@@ -38,7 +38,7 @@ const projects = [
   {
     name: 'Galleon DAO',
     description:
-      'A DeFi protocol creating structured products and automated investment strategies. Secured $1M in funding, built a community of over 6,000 members, and managed $20M+ in product investments.',
+      'DeFi protocol managing $20M+ in structured products with 6,000+ community members.',
     link: { href: 'https://github.com/GalleonDAO', label: 'GitHub' },
     icon: GlobeAltIcon,
     image: galleonImage,
@@ -46,7 +46,7 @@ const projects = [
   {
     name: 'Wojak Jones',
     description:
-      'A yield farming DeFi assistant built with Firebase, Telegram API, and Virtuals Framework. Provides real-time yield farming opportunities and DeFi analytics for users.',
+      'AI yield farming assistant providing real-time DeFi opportunities via Telegram.',
     link: { href: 'https://wojakjones.xyz', label: 'wojakjones.xyz' },
     icon: ChartBarIcon,
     image: wojakImage,
@@ -54,7 +54,7 @@ const projects = [
   {
     name: 'ChordCraft',
     description:
-      'An AI chord progression generator created with React, Firebase, and the OpenAI API. Generates unique chord progressions based on musical style preferences and creative input.',
+      'AI-powered chord progression generator for musicians and composers.',
     link: { href: 'https://chordcraft.io', label: 'chordcraft.io' },
     icon: MusicalNoteIcon,
     image: chordImage,
@@ -62,7 +62,7 @@ const projects = [
   {
     name: 'PiggyOnchain',
     description:
-      'A themed chart & analytics dashboard dedicated to the Superforms PIGGY AI Agent project, featuring real-time data visualization and comprehensive performance metrics.',
+      'Real-time analytics dashboard for Superforms PIGGY AI agent.',
     link: { href: 'https://piggyonchain.xyz', label: 'piggyonchain.xyz' },
     icon: CubeIcon,
     image: piggyImage,
@@ -70,7 +70,7 @@ const projects = [
   {
     name: 'Ultrasoundapps',
     description:
-      'A centralized platform showcasing various DeFi and cryptocurrency applications. Built with React and Firebase to provide seamless access to multiple tools.',
+      'Centralized platform for discovering and accessing DeFi applications.',
     link: { href: 'https://ultrasoundapps.com', label: 'ultrasoundapps.com' },
     icon: BoltIcon,
     image: ultrasoundImage,
@@ -78,7 +78,7 @@ const projects = [
   {
     name: 'Privateer',
     description:
-      'A hyperliquid-based trading bot using correlation/mean reversion strategies. Designed with Python and Trading APIs for advanced data analysis and execution.',
+      'Trading bot using correlation and mean reversion strategies on Hyperliquid.',
     link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'GitHub' },
     icon: CurrencyDollarIcon,
     image: privateerImage,
@@ -86,7 +86,7 @@ const projects = [
   {
     name: 'SaylorMemes',
     description:
-      'A meme generator app built with Vite and Firebase for creating and sharing cryptocurrency-themed memes. Features templates and custom editing capabilities.',
+      'Cryptocurrency meme generator with templates and custom editing.',
     link: { href: 'https://github.com/galleonlabs/saylormemes', label: 'GitHub' },
     icon: PhotoIcon,
     image: saylorImage,
@@ -94,14 +94,14 @@ const projects = [
   {
     name: 'CryptoTierList',
     description:
-      'A platform for creating and sharing tier lists of cryptocurrency projects. Built with Next.js and MongoDB to enable community-driven project rankings.',
+      'Community-driven platform for ranking cryptocurrency projects.',
     link: { href: 'https://github.com/ADWilkinson/CryptoTierList', label: 'GitHub' },
     icon: ListBulletIcon,
   },
   {
     name: 'PineScript Indicators',
     description:
-      'Open-source library of TradingView indicators created for technical analysis. Includes Colour Trend, Momentum, and Volatility Map indicators in Pine Script language.',
+      'Open-source TradingView indicators for technical analysis.',
     link: { href: 'https://github.com/ADWilkinson/pinescript-indicators', label: 'GitHub' },
     icon: ArrowTrendingUpIcon,
   },
@@ -133,7 +133,7 @@ export default function Projects() {
   return (
     <SimpleLayout
       title="Projects I've created"
-      intro="I've built various projects throughout my career, from DeFi protocols to tools and applications. Here's a selection of my work - including professional ventures and personal hobby projects."
+      intro="A selection of DeFi protocols, tools, and applications I've built."
     >
 
       <ul

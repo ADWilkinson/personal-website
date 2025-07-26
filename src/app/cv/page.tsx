@@ -101,7 +101,7 @@ export default function CV() {
   return (
     <SimpleLayout
       title="Curriculum Vitae"
-      intro="Senior Software Engineer at ZKP2P, Former VC-backed Founder. 8+ years building and scaling products across blockchain, DeFi, and fintech."
+      intro="Senior Software Engineer at ZKP2P. Former VC-backed Founder."
     >
       <div className="space-y-12">
         <div className="text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-lg border border-zinc-100 dark:border-zinc-700/40 flex flex-col md:flex-row md:items-center md:justify-between">
@@ -141,13 +141,7 @@ export default function CV() {
         
         <Section title="Summary">
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            I'm a product-focused Engineering Manager with 8+ years of experience building and scaling products across blockchain, DeFi, and fintech.
-          </p>
-          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mt-4">
-            From founding an Ethereum DAO to managing teams at established enterprises, I've shipped products managing $20M+ in value, and raised $2M+ venture funding.
-          </p>
-          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mt-4">
-            I excel at taking products from 0-to-1, combining hands-on technical expertise with strategic product vision.
+            Product-focused Engineering Manager with 8+ years building across blockchain, DeFi, and fintech. Founded and scaled products managing $20M+ in value, raised $3M+ venture funding, and excel at 0-to-1 execution.
           </p>
         </Section>
         
@@ -156,10 +150,10 @@ export default function CV() {
             <div>
               <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-3">Leadership Skills</h3>
               <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Team Management</strong> – Founded and scaled teams from 0-8 at Galleon DAO, while managing up to 12 engineers at enterprise scale</li>
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Stakeholder Management</strong> – Managed relationships with VCs, investors, and C-suite executives while aligning technical execution with business objectives</li>
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Strategic Planning</strong> – Led Scrum & SAFe planning events, defined product roadmaps, and established technical architectures for novel products</li>
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Community & Growth</strong> – Built 6,000+ member community from scratch, creating an engaged user base that drove $20M+ protocol adoption</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Team Management</strong> – Scaled teams 0-8, managed up to 12 engineers</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Stakeholder Management</strong> – VCs, investors, C-suite alignment</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Strategic Planning</strong> – Product roadmaps, technical architecture</li>
+                <li><strong className="text-zinc-800 dark:text-zinc-100">Community & Growth</strong> – Built 6,000+ member community, drove $20M+ TVL</li>
               </ul>
             </div>
             <div>
@@ -180,12 +174,11 @@ export default function CV() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Galleon DAO - DAO Founder & Raise</h3>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-2">I built DeFi investment products that democratized yield and leveraged strategies through simple tokens that secured $1M in funding from 1kx and notable angels, including Bankless and Anthony Sassano.</p>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">I grew and led a community from 0 to 6,000+ members, driving $20M+ in TVL across protocol products through hands-on growth execution and strategic engagement within the ecosystem.</p>
+              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">Built DeFi investment products securing $1M from 1kx and notable angels. Grew community 0-6,000+ members, driving $20M+ TVL.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Brava - MVP Delivery to Seed Raise</h3>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">I built and launched the MVP in 6 months that secured £2M seed funding for an institutional DeFi yield platform, integrating Circle CCTP V2, Fireblocks, and Safe while leading cross-functional delivery from roadmap to market launch.</p>
+              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">Shipped MVP in 6 months securing £2M seed funding. Integrated Circle CCTP V2, Fireblocks, Safe for institutional DeFi platform.</p>
             </div>
           </div>
         </Section>
@@ -201,7 +194,7 @@ export default function CV() {
                 logo={COMPANY_LOGOS.zkp2p}
               />
               <JobDescription>
-                Building the ZKP2P V2 Protocol that enables trust minimized and fully noncustodial buying and selling of any offchain digital asset (e.g. fiat currencies) for any onchain asset (e.g. USDC, Ethereum, Solana). Working on smart contract escrow systems, zkTLS integration, and supporting over 20 fiat currencies across multiple payment platforms including Venmo, Revolut, Wise, and Cash App.
+                Building ZKP2P V2 Protocol for trust-minimized fiat-to-crypto onramps. Smart contract escrow, zkTLS integration, supporting 20+ fiat currencies across Venmo, Revolut, Wise, Cash App.
               </JobDescription>
             </div>
             
@@ -214,7 +207,7 @@ export default function CV() {
                 logo={COMPANY_LOGOS.brava}
               />
               <JobDescription>
-                Defined and delivered an MVP and product roadmap that secured £2M seed funding. Led a 10-person cross-functional team to launch an MVP serving institutional clients. Created detailed technical requirements integrating Circle CCTP V2, Fireblocks, and Safe. Managed stakeholder relationships and reporting with our CEO & Founder.
+                Delivered MVP securing £2M seed funding. Led 10-person team launching institutional yield platform. Integrated Circle CCTP V2, Fireblocks, Safe.
               </JobDescription>
             </div>
             
@@ -226,7 +219,7 @@ export default function CV() {
                 logo={COMPANY_LOGOS.brava}
               />
               <JobDescription>
-                Provided strategic guidance on crypto-native market positioning. Advised on community-building strategies for a competitive DeFi landscape.
+                Strategic guidance on crypto-native positioning and community-building strategies.
               </JobDescription>
             </div>
             
@@ -238,7 +231,7 @@ export default function CV() {
                 description="Institutional Grade Asset Management Onchain"
               />
               <JobDescription>
-                Short-term contract to help build the technical foundation and architecture for a DeFi web application, integrating deployed smart contracts, crypto-wallet features, and third-party frameworks. Implemented KYC and whitelisting via Persona, ensuring the regulatory compliance required to access certain features, such as RWA-based strategies.
+                Built DeFi web application integrating smart contracts and KYC via Persona for RWA-based strategies.
               </JobDescription>
             </div>
             
@@ -251,7 +244,7 @@ export default function CV() {
                 logo={COMPANY_LOGOS.galleon}
               />
               <JobDescription>
-                Founded and scaled a DeFi DAO from concept to $20M+ TVL. Secured $1M funding from leading VCs (1kx) and DeFi thought leaders (Bankless, Anthony Sassano). Hired and managed 6 core team members across engineering and growth. Built a community of 6,000+ members and onboarded 10+ DAO contributors. Led full-stack development of smart contracts and Web3 interfaces. Established strategic partnerships and initiatives within the DeFi ecosystem with notable names such as Lido, Arbitrum & Aave.
+                Founded and scaled DeFi DAO to $20M+ TVL. Secured $1M from 1kx and DeFi leaders. Hired 6-person team, built 6,000+ community. Partnerships with Lido, Arbitrum, Aave.
               </JobDescription>
             </div>
             
@@ -264,7 +257,7 @@ export default function CV() {
                 logo={COMPANY_LOGOS.set}
               />
               <JobDescription>
-                Advised on community engagement and DeFi strategy. Identified strategic partnerships and integration opportunities within crypto.
+                Community engagement and DeFi strategy. Strategic partnerships and integrations.
               </JobDescription>
             </div>
             
@@ -276,7 +269,7 @@ export default function CV() {
                 logo={COMPANY_LOGOS.set}
               />
               <JobDescription>
-                Drove user adoption and protocol TVL that peaked at over $600M. Managed community across Twitter and Discord, reaching 50k+ members. Created public communications for all announcements, initiatives, and educational content, translating complex DeFi concepts into understandable information. Secured strategic partnerships with crypto-native projects and traditional finance entities looking to onboard into DeFi through business development initiatives.
+                Drove adoption to $600M+ TVL. Managed 50k+ member community. Led communications and business development securing strategic partnerships.
               </JobDescription>
             </div>
             
@@ -289,7 +282,7 @@ export default function CV() {
                 logo={COMPANY_LOGOS.r3}
               />
               <JobDescription>
-                Designed custom DLT applications using Corda and Conclave frameworks. Developed privacy-preserving proof-of-concepts that leverage Conclave for prospective customers of R3 wanting to adopt the technology. Contributed to product strategy specific to a client's use case.
+                Designed custom DLT applications using Corda and Conclave. Built privacy-preserving PoCs for enterprise clients.
               </JobDescription>
             </div>
             
@@ -302,7 +295,7 @@ export default function CV() {
                 logo={COMPANY_LOGOS.worldpay}
               />
               <JobDescription>
-                Led architectural design of Corda-based B2B payment system. Managed a team of 12 engineers through the development lifecycle. Served as technical lead for SAFe planning events. Influenced technology stack decisions and framework choices.
+                Led architecture for Corda-based B2B payment system. Managed 12 engineers. Technical lead for SAFe planning.
               </JobDescription>
             </div>
             
@@ -314,7 +307,7 @@ export default function CV() {
                 logo={COMPANY_LOGOS.worldpay}
               />
               <JobDescription>
-                Delivered full-stack features for an enterprise DLT system. Established development standards for the new blockchain team based in India, optimised for asynchronous working. Facilitated transition to the SAFe framework as Scrum Master.
+                Delivered enterprise DLT features. Established development standards for distributed team. Scrum Master for SAFe transition.
               </JobDescription>
             </div>
             
@@ -327,7 +320,7 @@ export default function CV() {
                 logo={COMPANY_LOGOS.sky}
               />
               <JobDescription>
-                Developed an end-to-end advertising analytics portal serving millions of users. Implemented flexible audience segmentation for targeted campaigns. Built scalable Vue/Node.js applications handling high traffic loads.
+                Built advertising analytics portal serving millions. Implemented audience segmentation. Scalable Vue/Node.js applications.
               </JobDescription>
             </div>
           </div>
@@ -394,7 +387,7 @@ export default function CV() {
         
         <Section title="Interests">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Music (piano & guitar), travel & socialising, algorithmic trading, emerging technologies
+            Music, travel, algorithmic trading, emerging tech
           </p>
         </Section>
       </div>

@@ -76,32 +76,32 @@ export default function About() {
           <div className="space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Current Role</h3>
             <p>
-              I'm currently a Senior Software Engineer at <CompanyLogo name="ZKP2P" logo={COMPANY_LOGOS.zkp2p} />, where we're building trust-minimized, noncustodial fiat-to-crypto onramps using zkTLS proofs. We're enabling seamless exchanges between any offchain digital asset (like fiat currencies) and onchain assets (like USDC, ETH, SOL) across multiple payment platforms including Venmo, Revolut, Wise, and Cash App.
+              Senior Software Engineer at <CompanyLogo name="ZKP2P" logo={COMPANY_LOGOS.zkp2p} />, building trust-minimized fiat-to-crypto onramps using zkTLS proofs across 20+ payment platforms.
             </p>
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Recent Leadership Experience</h3>
             <p>
-              Previously, I was Head of Brava & Engineering Manager at <CompanyLogo name="Brava Labs" logo={COMPANY_LOGOS.brava} />, where we built risk-adjusted yield strategies for DeFi. I led the team that shipped our MVP, which helped us secure £2M in seed funding. Day-to-day, I worked with a cross-functional team of 10, balancing technical implementation with product strategy.
+              Previously Head of Brava at <CompanyLogo name="Brava Labs" logo={COMPANY_LOGOS.brava} />, where I led a 10-person team shipping an MVP that secured £2M seed funding.
             </p>
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Founder Experience</h3>
             <p>
-              As the Founder of <CompanyLogo name="Galleon DAO" logo={COMPANY_LOGOS.galleon} />, I built automated DeFi strategies that abstracted complexity away from everyday users. We raised $1M+ from investors including 1kx and notable figures like the Bankless founders and Anthony Sassano. I wore many hats - writing smart contracts, building the frontend, hiring our core team of 6, and growing our community to over 6,000 members. At our peak, we managed over $20M in user funds.
+              Founded <CompanyLogo name="Galleon DAO" logo={COMPANY_LOGOS.galleon} />, raising $1M+ from 1kx and DeFi leaders. Built the protocol, hired 6-person team, grew 6,000+ member community, and managed $20M+ in user funds.
             </p>
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">0-to-1 Product & Engineering</h3>
             <p>
-              I've spent 8+ years building in blockchain and fintech, with a particular focus on early-stage products. I enjoy the challenge of going from idea to launch, whether that's founding my own protocol or joining an early team. My background spans both startups and larger companies, where I've led engineering teams of various sizes - from small founding teams to groups of 12+ at enterprise scale.
+              8+ years building blockchain and fintech products from 0-to-1. Led teams from founding stage to 12+ engineers at enterprise scale.
             </p>
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Industry Experience</h3>
             <p>
-              My journey in blockchain started at traditional companies like <CompanyLogo name="Sky" logo={COMPANY_LOGOS.sky} /> and <CompanyLogo name="Worldpay" logo={COMPANY_LOGOS.worldpay} />, before moving into the DeFi space with <CompanyLogo name="R3" logo={COMPANY_LOGOS.r3} /> and <CompanyLogo name="Set Labs" logo={COMPANY_LOGOS.set} />. Each role taught me something different - from building scalable systems to understanding complex financial protocols. This diverse background helps me bridge the gap between technical implementation and business strategy, whether I'm working on smart contracts or planning go-to-market approaches.
+              Started at <CompanyLogo name="Sky" logo={COMPANY_LOGOS.sky} /> and <CompanyLogo name="Worldpay" logo={COMPANY_LOGOS.worldpay} />, then moved to DeFi with <CompanyLogo name="R3" logo={COMPANY_LOGOS.r3} /> and <CompanyLogo name="Set Labs" logo={COMPANY_LOGOS.set} />. Bridge technical implementation with business strategy across smart contracts and go-to-market.
             </p>
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Side Projects</h3>
             <p>
-              In my spare time, I enjoy creating micro apps when I get inspired. For details on my various side projects, please visit my <Link href="/projects" className="text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100 underline">Projects page</Link>.
+              Build micro apps in my spare time. See my <Link href="/projects" className="text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100 underline">Projects page</Link> for details.
             </p>
           </div>
         </div>
