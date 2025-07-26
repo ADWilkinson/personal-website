@@ -23,7 +23,7 @@ import { formatDate } from '@/lib/formatDate'
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
-    <article className="group relative py-10">
+    <article className="group relative py-10 border-b border-zinc-100 dark:border-zinc-800 last:border-0">
       <time className="text-xs text-zinc-400 dark:text-zinc-500">
         {formatDate(article.date)}
       </time>
@@ -72,7 +72,7 @@ function Role({ role }: { role: Role }) {
   let endDate = typeof role.end === 'string' ? role.end : role.end.dateTime
 
   return (
-    <li className="flex gap-4">
+    <li className="flex gap-4 py-6 first:pt-0 last:pb-0">
       <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-zinc-50 dark:bg-zinc-800 overflow-hidden">
         <Image 
           src={role.logo} 
@@ -121,7 +121,7 @@ function Resume() {
         Work
       </h2>
       <div className="mt-8">
-        <ol className="space-y-6">
+        <ol className="divide-y divide-zinc-100 dark:divide-zinc-800">
           {resume.map((role, roleIndex) => (
             <Role key={roleIndex} role={role} />
           ))}

@@ -26,7 +26,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function ContactMe() {
   return (
-    <div>
+    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
         Contact
       </h2>
