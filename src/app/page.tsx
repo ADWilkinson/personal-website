@@ -150,10 +150,7 @@ export default async function Home() {
               Senior Software Engineer at ZKP2P. Former VC-backed Founder.
             </h1>
             <p className="mt-6 text-sm leading-loose text-zinc-600 dark:text-zinc-400">
-              I'm Andrew, currently building at ZKP2P - enabling trust-minimized fiat-to-crypto onramps through zkTLS proofs.
-              Previously Head of Brava at Brava Labs, where I shipped an MVP that secured £2M seed funding.
-              Before that, I founded Galleon DAO, raising $1M+ from top VCs, managing $20M+ in value, and building a 6,000+ member community.
-              I excel at taking products from 0-to-1 with hands-on technical expertise and strategic vision.
+              Building trust-minimized fiat-to-crypto onramps using zkTLS. Previously shipped MVPs that raised $3M+ combined, managed $20M+ in value, and built a 6,000+ member community. Specialize in 0-to-1 products with hands-on technical execution.
             </p>
             <div className="mt-8 flex gap-6">
               <SocialLink

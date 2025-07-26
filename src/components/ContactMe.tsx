@@ -31,7 +31,7 @@ export function ContactMe() {
         Contact
       </h2>
       <p className="mt-6 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-        Interested in discussing crypto, work opportunities, or collaborations? Reach out through any of these channels.
+        Let's connect about crypto, work, or collaborations.
       </p>
       <div className="mt-8 space-y-4">
         <Link
