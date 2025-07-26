@@ -138,20 +138,20 @@ export default function Projects() {
 
       <ul
         role="list"
-        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3"
       >
         {projects.map((project) => (
-          <li key={project.name} className="group relative rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+          <li key={project.name} className="group relative rounded-2xl border border-zinc-100 p-4 dark:border-zinc-700/40">
             <h2 className="text-base font-medium text-zinc-800 dark:text-zinc-100">
               <Link href={project.link.href}>
                 <span className="absolute inset-0" />
                 {project.name}
               </Link>
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               {project.description}
             </p>
-            <p className="mt-6 text-xs text-zinc-400 dark:text-zinc-500">
+            <p className="mt-4 text-xs text-zinc-400 dark:text-zinc-500">
               {project.link.label}
             </p>
           </li>

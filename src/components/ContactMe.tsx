@@ -26,14 +26,14 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function ContactMe() {
   return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+    <div className="rounded-2xl border border-zinc-100 p-4 dark:border-zinc-700/40">
       <h2 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
         Contact
       </h2>
-      <p className="mt-6 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+      <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
         Let's connect about crypto, work, or collaborations.
       </p>
-      <div className="mt-8 space-y-4">
+      <div className="mt-4 space-y-3">
         <Link
           href="https://www.linkedin.com/in/andrew-d-wilkinson"
           className="flex items-center text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"

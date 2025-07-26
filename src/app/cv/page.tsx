@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="mb-12">
-      <h2 className={`${getHeadingStyles('h2')} mb-6`}>{title}</h2>
+    <div className="mb-8">
+      <h2 className={`${getHeadingStyles('h2')} mb-4`}>{title}</h2>
       {children}
     </div>
   )
@@ -62,7 +62,7 @@ function ProjectItem({
   github?: string 
 }) {
   return (
-    <div className="mb-6">
+    <div className="mb-4">
       <h3 className={`${getHeadingStyles('h4')} mb-1`}>{title}</h3>
       <div className="flex space-x-3 mb-2">
         {link && (
@@ -103,7 +103,7 @@ export default function CV() {
       title="Curriculum Vitae"
       intro="Senior Software Engineer at ZKP2P. Former VC-backed Founder."
     >
-      <div className="space-y-12">
+      <div className="space-y-8">
         <div className="text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-lg border border-zinc-100 dark:border-zinc-700/40 flex flex-col md:flex-row md:items-center md:justify-between">
           <div className="flex items-center mb-2 md:mb-0">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -146,9 +146,9 @@ export default function CV() {
         </Section>
         
         <Section title="Skills">
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div>
-              <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-3">Leadership Skills</h3>
+              <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Leadership Skills</h3>
               <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
                 <li><strong className="text-zinc-800 dark:text-zinc-100">Team Management</strong> – Scaled teams 0-8, managed up to 12 engineers</li>
                 <li><strong className="text-zinc-800 dark:text-zinc-100">Stakeholder Management</strong> – VCs, investors, C-suite alignment</li>
@@ -157,7 +157,7 @@ export default function CV() {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-3">Technical Skills</h3>
+              <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Technical Skills</h3>
               <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
                 <li><strong className="text-zinc-800 dark:text-zinc-100">Languages:</strong> TypeScript, C#, Solidity, HTML, CSS</li>
                 <li><strong className="text-zinc-800 dark:text-zinc-100">Frontend:</strong> React, Next.js, Redux, Tailwind, Vite</li>
@@ -171,7 +171,7 @@ export default function CV() {
         </Section>
         
         <Section title="Key Achievements / Projects">
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div>
               <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Galleon DAO - DAO Founder & Raise</h3>
               <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">Built DeFi investment products securing $1M from 1kx and notable angels. Grew community 0-6,000+ members, driving $20M+ TVL.</p>
@@ -184,7 +184,7 @@ export default function CV() {
         </Section>
         
         <Section title="Experience">
-          <div className="space-y-10">
+          <div className="space-y-8">
             <div>
               <JobTitle 
                 title="Senior Software Engineer" 
@@ -334,7 +334,7 @@ export default function CV() {
         
         <Section title="Hobby Projects">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ProjectItem 
               title="Elune"
               description="Simple yield farming platform for non-crypto native users with automated DeFi strategies (Base smart wallets, Superform SuperUSDC)"

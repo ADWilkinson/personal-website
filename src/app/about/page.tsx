@@ -57,9 +57,9 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <SimpleLayout
-      title="I'm Andrew. Senior Software Engineer at ZKP2P, Former VC-backed Founder."
-      intro="">
-      <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
+      title="I'm Andrew."
+      intro="Senior Software Engineer at ZKP2P. Former VC-backed Founder.">
+      <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-8">
         <div className="lg:pl-20">
           <div className="max-w-xs px-2.5 lg:max-w-none">
             <Image
@@ -73,33 +73,33 @@ export default function About() {
           </div>
         </div>
         <div className="lg:order-first lg:row-span-2">
-          <div className="space-y-7 text-base text-zinc-600 dark:text-zinc-400">
+          <div className="space-y-4 text-base text-zinc-600 dark:text-zinc-400">
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Current Role</h3>
             <p>
               Senior Software Engineer at <CompanyLogo name="ZKP2P" logo={COMPANY_LOGOS.zkp2p} />, building trust-minimized fiat-to-crypto onramps using zkTLS proofs across 20+ payment platforms.
             </p>
             
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Recent Leadership Experience</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-6 mb-2">Recent Leadership Experience</h3>
             <p>
               Previously Head of Brava at <CompanyLogo name="Brava Labs" logo={COMPANY_LOGOS.brava} />, where I led a 10-person team shipping an MVP that secured £2M seed funding.
             </p>
             
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Founder Experience</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-6 mb-2">Founder Experience</h3>
             <p>
               Founded <CompanyLogo name="Galleon DAO" logo={COMPANY_LOGOS.galleon} />, raising $1M+ from 1kx and DeFi leaders. Built the protocol, hired 6-person team, grew 6,000+ member community, and managed $20M+ in user funds.
             </p>
             
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">0-to-1 Product & Engineering</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-6 mb-2">0-to-1 Product & Engineering</h3>
             <p>
               8+ years building blockchain and fintech products from 0-to-1. Led teams from founding stage to 12+ engineers at enterprise scale.
             </p>
             
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Industry Experience</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-6 mb-2">Industry Experience</h3>
             <p>
               Started at <CompanyLogo name="Sky" logo={COMPANY_LOGOS.sky} /> and <CompanyLogo name="Worldpay" logo={COMPANY_LOGOS.worldpay} />, then moved to DeFi with <CompanyLogo name="R3" logo={COMPANY_LOGOS.r3} /> and <CompanyLogo name="Set Labs" logo={COMPANY_LOGOS.set} />. Bridge technical implementation with business strategy across smart contracts and go-to-market.
             </p>
             
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Side Projects</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-6 mb-2">Side Projects</h3>
             <p>
               Build micro apps in my spare time. See my <Link href="/projects" className="text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100 underline">Projects page</Link> for details.
             </p>
@@ -119,7 +119,7 @@ export default function About() {
             <SocialLink
               href="mailto:gm@andrewwilkinson.io"
               icon={MailIcon}
-              className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
+              className="mt-6 border-t border-zinc-100 pt-6 dark:border-zinc-700/40"
             >
               gm@andrewwilkinson.io
             </SocialLink>
