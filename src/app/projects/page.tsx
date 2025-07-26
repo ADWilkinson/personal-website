@@ -138,10 +138,10 @@ export default function Projects() {
 
       <ul
         role="list"
-        className="grid grid-cols-1 gap-x-20 gap-y-24 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
       >
         {projects.map((project) => (
-          <li key={project.name} className="group relative">
+          <li key={project.name} className="group relative rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
             <h2 className="text-base font-medium text-zinc-800 dark:text-zinc-100">
               <Link href={project.link.href}>
                 <span className="absolute inset-0" />
