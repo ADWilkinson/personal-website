@@ -2,23 +2,23 @@
 
 export const typography = {
   // Headings
-  h1: 'text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100',
-  h2: 'text-2xl sm:text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100',
-  h3: 'text-lg sm:text-xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-100',
-  h4: 'text-base sm:text-lg font-semibold tracking-tight text-zinc-800 dark:text-zinc-100',
+  h1: 'text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100',
+  h2: 'text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100',
+  h3: 'text-lg sm:text-xl font-medium tracking-tight text-zinc-900 dark:text-zinc-100',
+  h4: 'text-base sm:text-lg font-medium tracking-tight text-zinc-900 dark:text-zinc-100',
   
   // Body text
-  body: 'text-base text-zinc-600 dark:text-zinc-400',
-  bodyLarge: 'text-lg text-zinc-600 dark:text-zinc-400',
-  bodySmall: 'text-sm text-zinc-600 dark:text-zinc-400',
+  body: 'text-sm leading-relaxed text-zinc-600 dark:text-zinc-400',
+  bodyLarge: 'text-base leading-relaxed text-zinc-600 dark:text-zinc-400',
+  bodySmall: 'text-xs leading-normal text-zinc-600 dark:text-zinc-400',
   
   // Meta text
   meta: 'text-sm text-zinc-500 dark:text-zinc-400',
   metaSmall: 'text-xs text-zinc-500 dark:text-zinc-400',
   
   // Links
-  link: 'text-teal-500 dark:text-teal-400 hover:text-teal-600 dark:hover:text-teal-300 transition-colors',
-  linkSubtle: 'text-zinc-800 dark:text-zinc-100 hover:text-teal-500 dark:hover:text-teal-400 transition-colors',
+  link: 'text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors underline',
+  linkSubtle: 'text-zinc-800 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors',
   
   // Section titles (used in Section component)
   sectionTitle: 'text-sm font-semibold text-zinc-800 dark:text-zinc-100',

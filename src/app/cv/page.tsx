@@ -38,7 +38,7 @@ function JobTitle({
         <h3 className={getHeadingStyles('h3')}>{title}</h3>
         <span className={getMetaStyles()}>{period}</span>
       </div>
-      <div className="mb-2 text-lg font-medium text-teal-500 dark:text-teal-400">
+      <div className="mb-2 text-lg font-medium text-zinc-700 dark:text-zinc-300">
         {logo ? <CompanyLogo name={company} logo={logo} /> : company}
       </div>
       {description && <div className={`${getBodyStyles()} italic mb-4`}>{description}</div>}
@@ -106,7 +106,7 @@ export default function CV() {
       <div className="space-y-12">
         <div className="text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-lg border border-zinc-100 dark:border-zinc-700/40 flex flex-col md:flex-row md:items-center md:justify-between">
           <div className="flex items-center mb-2 md:mb-0">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
             <Link href={`mailto:${SITE_CONFIG.email}`} className={getLinkStyles()}>
@@ -115,14 +115,14 @@ export default function CV() {
           </div>
           <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0">
             <div className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               <Link href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className={getLinkStyles()}>
                 LinkedIn
               </Link>
               <span className="mx-2 text-zinc-400">|</span>
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 mr-2 text-teal-500 fill-current">
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 mr-2 text-zinc-500 fill-current">
                 <path d="M13.3174 10.7749L19.1457 4H17.7646L12.7039 9.88256L8.66193 4H4L10.1122 12.8955L4 20H5.38119L10.7254 13.7878L14.994 20H19.656L13.3171 10.7749H13.3174ZM11.4257 12.9738L10.8064 12.0881L5.87886 5.03974H8.00029L11.9769 10.728L12.5962 11.6137L17.7652 19.0075H15.6438L11.4257 12.9742V12.9738Z" />
               </svg>
               <Link href={SOCIAL_LINKS.twitter} target="_blank" rel="noopener noreferrer" className={getLinkStyles()}>
@@ -130,7 +130,7 @@ export default function CV() {
               </Link>
             </div>
             <div className="flex items-center md:ml-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>

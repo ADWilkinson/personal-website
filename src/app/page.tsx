@@ -72,11 +72,11 @@ function Role({ role }: { role: Role }) {
 
   return (
     <li className="flex gap-4">
-      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center bg-zinc-50 dark:bg-zinc-800 overflow-hidden">
+      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-zinc-50 dark:bg-zinc-800 overflow-hidden">
         <Image 
           src={role.logo} 
           alt={`${role.company} company logo`} 
-          className="h-7 w-7 object-contain" 
+          className="h-7 w-7 object-contain rounded-full" 
           width={28}
           height={28}
           sizes="28px"
@@ -146,13 +146,13 @@ export default async function Home() {
             <h1 className="text-3xl font-medium tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
               Senior Software Engineer at ZKP2P. Former VC-backed Founder.
             </h1>
-            <p className="mt-6 text-sm text-zinc-600 dark:text-zinc-400">
+            <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               I'm Andrew, currently building at ZKP2P - enabling trust-minimized fiat-to-crypto onramps through zkTLS proofs.
               Previously Head of Brava at Brava Labs, where I shipped an MVP that secured £2M seed funding.
               Before that, I founded Galleon DAO, raising $1M+ from top VCs, managing $20M+ in value, and building a 6,000+ member community.
               I excel at taking products from 0-to-1 with hands-on technical expertise and strategic vision.
             </p>
-            <div className="mt-6 flex gap-6">
+            <div className="mt-4 flex gap-4">
               <SocialLink
                 href={SOCIAL_LINKS.github}
                 aria-label="Follow on GitHub"
@@ -172,14 +172,14 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <Container className="mt-16 md:mt-20">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
+      <Container className="mt-12 md:mt-16">
+        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-12 lg:max-w-none lg:grid-cols-2">
+          <div className="flex flex-col gap-8">
             {articles.map((article) => (
               <Article key={article.slug} article={article} />
             ))}
           </div>
-          <div className="space-y-10 lg:pl-16 xl:pl-24">
+          <div className="space-y-8 lg:pl-12 xl:pl-16">
             <Resume />
           </div>
         </div>

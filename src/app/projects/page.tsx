@@ -141,7 +141,7 @@ export default function Projects() {
       >
         {projects.map((project) => (
           <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-10 w-10 items-center justify-center bg-zinc-100 dark:bg-zinc-800">
+            <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-800">
               <project.icon className="h-5 w-5 fill-zinc-600 dark:fill-zinc-400" aria-hidden="true" />
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
