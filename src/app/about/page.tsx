@@ -11,7 +11,6 @@ import {
   XIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
-import davyjonesImage from '@/images/galleon/davyjones.png'
 import { COMPANY_LOGOS, SOCIAL_LINKS } from '@/lib/constants'
 
 function SocialLink({
@@ -29,9 +28,9 @@ function SocialLink({
     <li className={clsx(className, 'flex')}>
       <Link
         href={href}
-        className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+        className="flex text-sm font-medium text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-400"
       >
-        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
+        <Icon className="h-5 w-5 flex-none fill-zinc-500" />
         <span className="ml-4">{children}</span>
       </Link>
     </li>
@@ -62,21 +61,14 @@ export default function About() {
       intro="">
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
-          <div className="max-w-xs px-2.5 lg:max-w-none group relative">
+          <div className="max-w-xs px-2.5 lg:max-w-none">
             <Image
               src={portraitImage}
               alt="Professional portrait of Andrew Wilkinson"
               sizes="(min-width: 1024px) 32rem, 20rem"
-              className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800 transition-opacity duration-300 dark:group-hover:opacity-0"
+              className="aspect-square bg-zinc-100 object-cover dark:bg-zinc-800"
               quality={85}
               priority
-            />
-            <Image
-              src={davyjonesImage}
-              alt="Artistic representation of Davy Jones character"
-              sizes="(min-width: 1024px) 32rem, 20rem"
-              className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800 absolute top-0 left-0 opacity-0 transition-opacity duration-300 dark:group-hover:opacity-100"
-              quality={85}
             />
           </div>
         </div>
@@ -109,7 +101,7 @@ export default function About() {
             
             <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-2">Side Projects</h3>
             <p>
-              In my spare time, I enjoy creating micro apps when I get inspired. For details on my various side projects, please visit my <Link href="/projects" className="text-teal-500 hover:text-teal-600 dark:text-teal-400 dark:hover:text-teal-300">Projects page</Link>.
+              In my spare time, I enjoy creating micro apps when I get inspired. For details on my various side projects, please visit my <Link href="/projects" className="text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100 underline">Projects page</Link>.
             </p>
           </div>
         </div>

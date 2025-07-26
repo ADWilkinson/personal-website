@@ -32,7 +32,6 @@ const projects = [
       'A simple way to earn yield onchain. Allocate funds to automated yield strategies across leading DeFi protocols, built for non-crypto native users with Base smart wallets and sponsored transactions.',
     link: { href: 'https://tryelune.com', label: 'tryelune.com' },
     icon: CurrencyDollarIcon,
-    color: 'bg-purple-600 text-white',
     image: eluneImage,
   },
   {
@@ -41,7 +40,6 @@ const projects = [
       'A DeFi protocol creating structured products and automated investment strategies. Secured $1M in funding, built a community of over 6,000 members, and managed $20M+ in product investments.',
     link: { href: 'https://github.com/GalleonDAO', label: 'GitHub' },
     icon: GlobeAltIcon,
-    color: 'bg-indigo-900 text-white',
     image: galleonImage,
   },
   {
@@ -50,7 +48,6 @@ const projects = [
       'A yield farming DeFi assistant built with Firebase, Telegram API, and Virtuals Framework. Provides real-time yield farming opportunities and DeFi analytics for users.',
     link: { href: 'https://wojakjones.xyz', label: 'wojakjones.xyz' },
     icon: ChartBarIcon,
-    color: 'bg-amber-500 text-white',
     image: wojakImage,
   },
   {
@@ -59,7 +56,6 @@ const projects = [
       'An AI chord progression generator created with React, Firebase, and the OpenAI API. Generates unique chord progressions based on musical style preferences and creative input.',
     link: { href: 'https://chordcraft.io', label: 'chordcraft.io' },
     icon: MusicalNoteIcon,
-    color: 'bg-indigo-500 text-white',
     image: chordImage,
   },
   {
@@ -68,7 +64,6 @@ const projects = [
       'A themed chart & analytics dashboard dedicated to the Superforms PIGGY AI Agent project, featuring real-time data visualization and comprehensive performance metrics.',
     link: { href: 'https://piggyonchain.xyz', label: 'piggyonchain.xyz' },
     icon: CubeIcon,
-    color: 'bg-pink-500 text-white',
     image: piggyImage,
   },
   {
@@ -77,7 +72,6 @@ const projects = [
       'A centralized platform showcasing various DeFi and cryptocurrency applications. Built with React and Firebase to provide seamless access to multiple tools.',
     link: { href: 'https://ultrasoundapps.com', label: 'ultrasoundapps.com' },
     icon: BoltIcon,
-    color: 'bg-emerald-500 text-white',
     image: ultrasoundImage,
   },
   {
@@ -86,7 +80,6 @@ const projects = [
       'A hyperliquid-based trading bot using correlation/mean reversion strategies. Designed with Python and Trading APIs for advanced data analysis and execution.',
     link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'GitHub' },
     icon: CurrencyDollarIcon,
-    color: 'bg-slate-800 text-white',
     image: privateerImage,
   },
   {
@@ -95,7 +88,6 @@ const projects = [
       'A meme generator app built with Vite and Firebase for creating and sharing cryptocurrency-themed memes. Features templates and custom editing capabilities.',
     link: { href: 'https://github.com/galleonlabs/saylormemes', label: 'GitHub' },
     icon: PhotoIcon,
-    color: 'bg-amber-600 text-white',
     image: saylorImage,
   },
   {
@@ -104,7 +96,6 @@ const projects = [
       'A platform for creating and sharing tier lists of cryptocurrency projects. Built with Next.js and MongoDB to enable community-driven project rankings.',
     link: { href: 'https://github.com/ADWilkinson/CryptoTierList', label: 'GitHub' },
     icon: ListBulletIcon,
-    color: 'bg-indigo-400 text-white',
   },
   {
     name: 'PineScript Indicators',
@@ -112,7 +103,6 @@ const projects = [
       'Open-source library of TradingView indicators created for technical analysis. Includes Colour Trend, Momentum, and Volatility Map indicators in Pine Script language.',
     link: { href: 'https://github.com/ADWilkinson/pinescript-indicators', label: 'GitHub' },
     icon: ArrowTrendingUpIcon,
-    color: 'bg-green-600 text-white',
   },
 ]
 
@@ -144,25 +134,6 @@ export default function Projects() {
       title="Projects I've created"
       intro="I've built various projects throughout my career, from DeFi protocols to tools and applications. Here's a selection of my work - including professional ventures and personal hobby projects."
     >
-      {/* Image Carousel */}
-      <div className="mb-16 overflow-hidden">
-        <div className="flex animate-scroll space-x-6">
-          {[...projectImages, ...projectImages].map((image, index) => (
-            <div
-              key={`${image.name}-${index}`}
-              className="flex-none w-80 h-48 rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800"
-            >
-              <Image
-                src={image.src}
-                alt={`Screenshot of ${image.alt}`}
-                width={320}
-                height={192}
-                className="object-cover w-full h-full"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
 
       <ul
         role="list"
@@ -170,14 +141,14 @@ export default function Projects() {
       >
         {projects.map((project) => (
           <Card as="li" key={project.name}>
-            <div className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-xl ${project.color} shadow-md shadow-zinc-800/5`}>
-              <project.icon className="h-6 w-6" aria-hidden="true" />
+            <div className="relative z-10 flex h-10 w-10 items-center justify-center bg-zinc-100 dark:bg-zinc-800">
+              <project.icon className="h-5 w-5 fill-zinc-600 dark:fill-zinc-400" aria-hidden="true" />
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
               <Card.Link href={project.link.href}>{project.name}</Card.Link>
             </h2>
             <Card.Description>{project.description}</Card.Description>
-            <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
+            <p className="relative z-10 mt-6 flex text-sm text-zinc-500 dark:text-zinc-400">
               <LinkIcon className="h-6 w-6 flex-none" />
               <span className="ml-2">{project.link.label}</span>
             </p>

@@ -12,7 +12,7 @@ function NavLink({
   return (
     <Link
       href={href}
-      className="transition hover:text-teal-500 dark:hover:text-teal-400"
+      className="hover:text-zinc-600 dark:hover:text-zinc-300"
     >
       {children}
     </Link>
@@ -34,7 +34,7 @@ export function Footer() {
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
                 &copy; {new Date().getFullYear()} Andrew Wilkinson. All rights
-                reserved. <span className="text-zinc-300 opacity-0 transition-opacity dark:hover:opacity-30">Davy Jones</span>
+                reserved.
               </p>
             </div>
           </ContainerInner>
