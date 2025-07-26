@@ -1,6 +1,5 @@
 import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
-import clsx from 'clsx'
 
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
@@ -18,28 +17,25 @@ import {
   ArrowDownIcon,
 } from '@/components/Icons'
 import { SOCIAL_LINKS, WORK_EXPERIENCE } from '@/lib/constants'
-// No longer need individual logo imports - using WORK_EXPERIENCE from constants
-import image1 from '@/images/photos/page-0.png'
-import image2 from '@/images/photos/page-1.png'
-import image3 from '@/images/photos/page-2.png'
-import image4 from '@/images/photos/page-3.png'
-import image5 from '@/images/photos/page-4.png'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
-    <Card as="article">
-      <Card.Title href={`/articles/${article.slug}`}>
-        {article.title}
-      </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
+    <article className="flex flex-col py-6 border-b border-zinc-100 dark:border-zinc-800 last:border-b-0">
+      <time className="text-xs text-zinc-500 dark:text-zinc-400">
         {formatDate(article.date)}
-      </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
-    </Card>
+      </time>
+      <h3 className="mt-2 text-base font-medium text-zinc-800 dark:text-zinc-100">
+        <Link href={`/articles/${article.slug}`} className="hover:text-zinc-600 dark:hover:text-zinc-300">
+          {article.title}
+        </Link>
+      </h3>
+      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+        {article.description}
+      </p>
+    </article>
   )
 }
 
@@ -50,40 +46,12 @@ function SocialLink({
   icon: React.ComponentType<{ className?: string }>
 }) {
   return (
-    <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+    <Link className="-m-1 p-1" {...props}>
+      <Icon className="h-5 w-5 fill-zinc-600 dark:fill-zinc-400" />
     </Link>
   )
 }
 
-// Newsletter subscription form - currently disabled until backend is connected
-function Newsletter() {
-  return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <MailIcon className="h-6 w-6 flex-none fill-zinc-400 dark:fill-zinc-500" />
-        <span className="ml-3">Coming Soon</span>
-      </h2>
-      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Newsletter signup will be available once the backend service is configured.
-      </p>
-      {/* Commented out until backend is connected
-      <div className="mt-6 flex">
-        <input
-          type="email"
-          placeholder="Email address"
-          aria-label="Email address"
-          required
-          className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(--spacing(2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 focus:outline-hidden sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10"
-        />
-        <Button type="submit" className="ml-4 flex-none">
-          Join
-        </Button>
-      </div>
-      */}
-    </div>
-  )
-}
 
 interface Role {
   company: string
@@ -104,11 +72,11 @@ function Role({ role }: { role: Role }) {
 
   return (
     <li className="flex gap-4">
-      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 overflow-hidden">
+      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center bg-zinc-50 dark:bg-zinc-800 overflow-hidden">
         <Image 
           src={role.logo} 
           alt={`${role.company} company logo`} 
-          className="h-7 w-7 object-contain rounded-full" 
+          className="h-7 w-7 object-contain" 
           width={28}
           height={28}
           sizes="28px"
@@ -147,114 +115,25 @@ function Resume() {
   }))
 
   return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BriefcaseIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Work</span>
+    <div className="border-l border-zinc-100 pl-6 dark:border-zinc-800">
+      <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        Work
       </h2>
       <ol className="mt-6 space-y-4">
         {resume.map((role, roleIndex) => (
           <Role key={roleIndex} role={role} />
         ))}
       </ol>
-      <Button href="/cv" variant="secondary" className="group mt-6 w-full">
-        View Full CV
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
+      <Link 
+        href="/cv" 
+        className="inline-block mt-6 text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+      >
+        View Full CV →
+      </Link>
     </div>
   )
 }
 
-function Photos() {
-  let rotations = ['rotate-2', '-rotate-1', '0', '0', '-rotate-2']
-
-  return (
-    <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex flex-nowrap justify-center gap-6 overflow-x-auto py-4 sm:gap-8">
-        {/* First image - page-0.png */}
-        <div
-          className={clsx(
-            'relative aspect-9/10 w-32 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-52 lg:w-56 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
-            rotations[0],
-          )}
-        >
-          <Image
-            src={image1}
-            alt="Pirate themed illustration showing maritime adventure"
-            sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
-            className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
-            priority={true}
-            quality={85}
-          />
-        </div>
-
-        {/* Second image - page-1.png */}
-        <div
-          className={clsx(
-            'relative aspect-9/10 w-32 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-52 lg:w-56 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
-            rotations[1],
-          )}
-        >
-          <Image
-            src={image2}
-            alt="Pirate themed illustration depicting naval exploration"
-            sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
-            className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
-            quality={85}
-          />
-        </div>
-
-        {/* Third image - page-2.png */}
-        <div
-          className={clsx(
-            'relative aspect-9/10 w-32 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-52 lg:w-56 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
-            rotations[2],
-          )}
-        >
-          <Image
-            src={image3}
-            alt="Pirate themed illustration of seafaring adventure"
-            sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
-            className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
-            quality={85}
-          />
-        </div>
-
-        {/* Fourth image - page-3.png */}
-        <div
-          className={clsx(
-            'relative aspect-9/10 w-32 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-52 lg:w-56 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
-            rotations[3],
-          )}
-        >
-          <Image
-            src={image4}
-            alt="Pirate themed illustration of ocean exploration"
-            sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
-            className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
-            quality={85}
-          />
-        </div>
-
-        {/* Last image - page-4.png */}
-        <div
-          className={clsx(
-            'relative aspect-9/10 w-32 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-52 lg:w-56 sm:rounded-2xl dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-md',
-            rotations[4],
-          )}
-        >
-          <Image
-            src={image5}
-            alt="Pirate themed illustration of treasure hunting"
-            sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 10rem"
-            className="absolute inset-0 h-full w-full object-cover filter saturate-[0.3]"
-            quality={85}
-          />
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
@@ -264,10 +143,10 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+            <h1 className="text-3xl font-medium tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
               Senior Software Engineer at ZKP2P. Former VC-backed Founder.
             </h1>
-            <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+            <p className="mt-6 text-sm text-zinc-600 dark:text-zinc-400">
               I'm Andrew, currently building at ZKP2P - enabling trust-minimized fiat-to-crypto onramps through zkTLS proofs.
               Previously Head of Brava at Brava Labs, where I shipped an MVP that secured £2M seed funding.
               Before that, I founded Galleon DAO, raising $1M+ from top VCs, managing $20M+ in value, and building a 6,000+ member community.
@@ -293,9 +172,7 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <Photos />
-      <Container className="mt-24 md:mt-28">
-
+      <Container className="mt-16 md:mt-20">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {articles.map((article) => (
@@ -303,8 +180,6 @@ export default async function Home() {
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            {/* Newsletter component hidden until backend is connected */}
-            {/* <Newsletter /> */}
             <Resume />
           </div>
         </div>

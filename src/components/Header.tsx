@@ -15,7 +15,6 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar.jpg'
-import davyProfileImage from '@/images/galleon/davy-profile.png'
 
 function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -147,16 +146,13 @@ function NavItem({
       <Link
         href={href}
         className={clsx(
-          'relative block px-3 py-2 transition',
+          'relative block px-3 py-2',
           isActive
-            ? 'text-teal-500 dark:text-teal-400'
-            : 'hover:text-teal-500 dark:hover:text-teal-400',
+            ? 'text-zinc-900 dark:text-zinc-100 font-medium'
+            : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100',
         )}
       >
         {children}
-        {isActive && (
-          <span className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0" />
-        )}
       </Link>
     </li>
   )
@@ -165,7 +161,7 @@ function NavItem({
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
-      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+      <ul className="flex bg-white text-sm text-zinc-800 dark:bg-zinc-900 dark:text-zinc-200">
         <NavItem href="/about">About</NavItem>
         <NavItem href="/articles">Articles</NavItem>
         <NavItem href="/projects">Projects</NavItem>
@@ -200,13 +196,13 @@ function ThemeToggle() {
     <button
       type="button"
       aria-label={`Switch to ${otherTheme} theme`}
-      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20 cursor-pointer"
+      className="px-3 py-2 bg-white dark:bg-zinc-800 cursor-pointer"
       onClick={() => setTheme(otherTheme)}
     >
       {resolvedTheme === 'dark' ? (
-        <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700" />
+        <SunIcon className="h-5 w-5 fill-zinc-100 stroke-zinc-500" />
       ) : (
-        <MoonIcon className="h-6 w-6 fill-zinc-700 stroke-zinc-500 transition group-hover:stroke-zinc-700" />
+        <MoonIcon className="h-5 w-5 fill-zinc-700 stroke-zinc-500" />
       )}
     </button>
   )
@@ -226,7 +222,7 @@ function AvatarContainer({
     <div
       className={clsx(
         className,
-        'h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:ring-white/10',
+        'h-10 w-10 bg-white p-0.5 dark:bg-zinc-800',
       )}
       {...props}
     />
@@ -240,25 +236,19 @@ function Avatar({
 }: Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href'> & {
   large?: boolean
 }) {
-  const { resolvedTheme } = useTheme()
-  const isDark = resolvedTheme === 'dark'
-  const [isHovered, setIsHovered] = useState(false)
-
   return (
     <Link
       href="/"
       aria-label="Home"
       className={clsx(className, 'pointer-events-auto')}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       {...props}
     >
       <Image
-        src={isDark && isHovered ? davyProfileImage : avatarImage}
+        src={avatarImage}
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
-          'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800 transition-all duration-300',
+          'bg-zinc-100 object-cover dark:bg-zinc-800',
           large ? 'h-16 w-16' : 'h-9 w-9',
         )}
         priority

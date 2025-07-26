@@ -14,11 +14,11 @@ function ContactIcon({
   return (
     <Link
       href={href}
-      className="group flex items-center rounded-full border border-zinc-200 px-4 py-2 shadow-sm transition hover:bg-zinc-50 dark:border-zinc-700/50 dark:hover:bg-zinc-800/50"
+      className="flex items-center border-b border-zinc-100 pb-2 text-zinc-600 hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-100"
       target="_blank"
       rel="noopener noreferrer"
     >
-      <Icon className="h-5 w-5 flex-none fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+      <Icon className="h-4 w-4 flex-none fill-current" />
       <span className="ml-3 text-sm font-medium text-zinc-900 dark:text-zinc-100">
         {children}
       </span>
@@ -51,7 +51,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function ContactMe() {
   return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+    <div className="border-l border-zinc-100 pl-6 dark:border-zinc-800">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <svg
           viewBox="0 0 24 24"
@@ -80,7 +80,7 @@ export function ContactMe() {
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
         Interested in discussing crypto, work  opportunities, or collaborations? Reach out through any of these channels.
       </p>
-      <div className="mt-4 flex flex-col gap-3">
+      <div className="mt-4 flex flex-col gap-2">
         <ContactIcon href="https://www.linkedin.com/in/andrew-d-wilkinson" icon={LinkedInIcon}>
           Connect on LinkedIn
         </ContactIcon>
