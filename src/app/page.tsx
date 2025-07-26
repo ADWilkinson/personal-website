@@ -23,16 +23,17 @@ import { formatDate } from '@/lib/formatDate'
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
-    <article className="flex flex-col py-6 border-b border-zinc-100 dark:border-zinc-800 last:border-b-0">
-      <time className="text-xs text-zinc-500 dark:text-zinc-400">
+    <article className="group relative py-10">
+      <time className="text-xs text-zinc-400 dark:text-zinc-500">
         {formatDate(article.date)}
       </time>
-      <h3 className="mt-2 text-base font-medium text-zinc-800 dark:text-zinc-100">
-        <Link href={`/articles/${article.slug}`} className="hover:text-zinc-600 dark:hover:text-zinc-300">
+      <h3 className="mt-3 text-base font-medium text-zinc-800 dark:text-zinc-100">
+        <Link href={`/articles/${article.slug}`}>
+          <span className="absolute inset-0" />
           {article.title}
         </Link>
       </h3>
-      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+      <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
         {article.description}
       </p>
     </article>
@@ -115,21 +116,23 @@ function Resume() {
   }))
 
   return (
-    <div className="border-l border-zinc-100 pl-6 dark:border-zinc-800">
-      <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+    <div>
+      <h2 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
         Work
       </h2>
-      <ol className="mt-6 space-y-4">
-        {resume.map((role, roleIndex) => (
-          <Role key={roleIndex} role={role} />
-        ))}
-      </ol>
-      <Link 
-        href="/cv" 
-        className="inline-block mt-6 text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-      >
-        View Full CV →
-      </Link>
+      <div className="mt-8">
+        <ol className="space-y-6">
+          {resume.map((role, roleIndex) => (
+            <Role key={roleIndex} role={role} />
+          ))}
+        </ol>
+        <Link 
+          href="/cv" 
+          className="inline-block mt-8 text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
+        >
+          View Full CV →
+        </Link>
+      </div>
     </div>
   )
 }
@@ -140,19 +143,19 @@ export default async function Home() {
 
   return (
     <>
-      <Container className="mt-9">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
+      <Container className="mt-16 sm:mt-24">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <h1 className="text-3xl font-medium tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
               Senior Software Engineer at ZKP2P. Former VC-backed Founder.
             </h1>
-            <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p className="mt-6 text-sm leading-loose text-zinc-600 dark:text-zinc-400">
               I'm Andrew, currently building at ZKP2P - enabling trust-minimized fiat-to-crypto onramps through zkTLS proofs.
               Previously Head of Brava at Brava Labs, where I shipped an MVP that secured £2M seed funding.
               Before that, I founded Galleon DAO, raising $1M+ from top VCs, managing $20M+ in value, and building a 6,000+ member community.
               I excel at taking products from 0-to-1 with hands-on technical expertise and strategic vision.
             </p>
-            <div className="mt-4 flex gap-4">
+            <div className="mt-8 flex gap-6">
               <SocialLink
                 href={SOCIAL_LINKS.github}
                 aria-label="Follow on GitHub"
@@ -172,14 +175,14 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <Container className="mt-12 md:mt-16">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-12 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-8">
+      <Container className="mt-24 md:mt-32">
+        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+          <div className="flex flex-col">
             {articles.map((article) => (
               <Article key={article.slug} article={article} />
             ))}
           </div>
-          <div className="space-y-8 lg:pl-12 xl:pl-16">
+          <div className="lg:pl-16 xl:pl-24">
             <Resume />
           </div>
         </div>

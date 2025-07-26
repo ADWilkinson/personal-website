@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
@@ -137,22 +138,23 @@ export default function Projects() {
 
       <ul
         role="list"
-        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 gap-x-20 gap-y-24 sm:grid-cols-2 lg:grid-cols-3"
       >
         {projects.map((project) => (
-          <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-800">
-              <project.icon className="h-5 w-5 fill-zinc-600 dark:fill-zinc-400" aria-hidden="true" />
-            </div>
-            <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-              <Card.Link href={project.link.href}>{project.name}</Card.Link>
+          <li key={project.name} className="group relative">
+            <h2 className="text-base font-medium text-zinc-800 dark:text-zinc-100">
+              <Link href={project.link.href}>
+                <span className="absolute inset-0" />
+                {project.name}
+              </Link>
             </h2>
-            <Card.Description>{project.description}</Card.Description>
-            <p className="relative z-10 mt-6 flex text-sm text-zinc-500 dark:text-zinc-400">
-              <LinkIcon className="h-6 w-6 flex-none" />
-              <span className="ml-2">{project.link.label}</span>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              {project.description}
             </p>
-          </Card>
+            <p className="mt-6 text-xs text-zinc-400 dark:text-zinc-500">
+              {project.link.label}
+            </p>
+          </li>
         ))}
       </ul>
     </SimpleLayout>
