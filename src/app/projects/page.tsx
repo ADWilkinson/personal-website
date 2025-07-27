@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { CompanyLogo } from '@/components/CompanyLogo'
+import { GitHubIcon } from '@/components/SocialIcons'
 import { 
   GlobeAltIcon, 
   ChartBarIcon, 
@@ -30,90 +31,88 @@ const projects = [
   {
     name: 'Elune',
     description:
-      'Earn yield onchain through automated DeFi strategies with sponsored transactions for non-crypto natives.',
-    link: { href: 'https://tryelune.com', label: 'tryelune.com' },
+      'Automated DeFi yield strategies with gas sponsorship for easy onchain earning.',
+    link: { href: 'https://tryelune.com', label: 'tryelune.com', type: 'website' },
     icon: CurrencyDollarIcon,
     image: eluneImage,
   },
   {
     name: 'Galleon DAO',
     description:
-      'DeFi protocol managing $20M+ in structured products with 6,000+ community members.',
-    link: { href: 'https://github.com/GalleonDAO', label: 'GitHub' },
+      'DeFi protocol managing $20M+ in structured products and 6,000+ member community.',
+    link: { href: 'https://github.com/GalleonDAO', label: 'GalleonDAO', type: 'github' },
     icon: GlobeAltIcon,
     image: galleonImage,
   },
   {
-    name: 'Wojak Jones',
-    description:
-      'AI yield farming assistant providing real-time DeFi opportunities via Telegram.',
-    link: { href: 'https://wojakjones.xyz', label: 'wojakjones.xyz' },
-    icon: ChartBarIcon,
-    image: wojakImage,
-  },
-  {
     name: 'ChordCraft',
     description:
-      'AI-powered chord progression generator for musicians and composers.',
-    link: { href: 'https://chordcraft.io', label: 'chordcraft.io' },
+      'AI chord progression generator helping musicians create compelling harmonic sequences.',
+    link: { href: 'https://chordcraft.io', label: 'chordcraft.io', type: 'website' },
     icon: MusicalNoteIcon,
     image: chordImage,
   },
   {
-    name: 'PiggyOnchain',
+    name: 'Piggy DAO',
     description:
-      'Real-time analytics dashboard for Superforms PIGGY AI agent.',
-    link: { href: 'https://piggyonchain.xyz', label: 'piggyonchain.xyz' },
+      'Real-time analytics dashboard tracking Superforms PIGGY AI agent performance metrics.',
+    link: { href: 'https://piggyonchain.xyz', label: 'piggyonchain.xyz', type: 'website' },
     icon: CubeIcon,
     image: piggyImage,
   },
   {
+    name: 'SaylorMemes',
+    description:
+      'Cryptocurrency meme generator featuring customizable templates and editing tools.',
+    link: { href: 'https://github.com/ADWilkinson/saylormemes', label: 'saylormemes', type: 'github' },
+    icon: PhotoIcon,
+    image: saylorImage,
+  },
+  {
+    name: 'Wojak Jones',
+    description:
+      'AI-powered yield farming assistant delivering real-time DeFi opportunities.',
+    link: { href: 'https://wojakjones.xyz', label: 'wojakjones.xyz', type: 'website' },
+    icon: ChartBarIcon,
+    image: wojakImage,
+  },
+  {
     name: 'Ultrasoundapps',
     description:
-      'Centralized platform for discovering and accessing DeFi applications.',
-    link: { href: 'https://ultrasoundapps.com', label: 'ultrasoundapps.com' },
+      'Curated platform for discovering and exploring the best decentralized applications.',
+    link: { href: 'https://ultrasoundapps.com', label: 'ultrasoundapps.com', type: 'website' },
     icon: BoltIcon,
     image: ultrasoundImage,
   },
   {
     name: 'Privateer',
     description:
-      'Trading bot using correlation and mean reversion strategies on Hyperliquid.',
-    link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'GitHub' },
+      'Automated trading bot implementing correlation and mean reversion strategies on Hyperliquid.',
+    link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'privateer-capital', type: 'github' },
     icon: CurrencyDollarIcon,
     image: privateerImage,
   },
   {
-    name: 'SaylorMemes',
-    description:
-      'Cryptocurrency meme generator with templates and custom editing.',
-    link: { href: 'https://github.com/ADWilkinson/saylormemes', label: 'GitHub' },
-    icon: PhotoIcon,
-    image: saylorImage,
-  },
-  {
     name: 'CryptoTierList',
     description:
-      'Community-driven platform for ranking cryptocurrency projects.',
-    link: { href: 'https://github.com/ADWilkinson/CryptoTierList', label: 'GitHub' },
+      'Community-driven platform enabling collaborative ranking of cryptocurrency projects.',
+    link: { href: 'https://github.com/ADWilkinson/CryptoTierList', label: 'CryptoTierList', type: 'github' },
     icon: ListBulletIcon,
   },
   {
     name: 'PineScript Indicators',
     description:
-      'Open-source TradingView indicators for technical analysis.',
-    link: { href: 'https://github.com/ADWilkinson/pinescript-indicators', label: 'GitHub' },
+      'Open-source technical analysis indicators for TradingView written in PineScript.',
+    link: { href: 'https://github.com/ADWilkinson/pinescript-indicators', label: 'pinescript-indicators', type: 'github' },
     icon: ArrowTrendingUpIcon,
   },
 ]
 
-function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function ExternalLinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path
-        d="M15.712 11.823a.75.75 0 1 0 1.06 1.06l-1.06-1.06Zm-4.95 1.768a.75.75 0 0 0 1.06-1.06l-1.06 1.06Zm-2.475-1.414a.75.75 0 1 0-1.06-1.06l1.06 1.06Zm4.95-1.768a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.359.53-.884.884 1.06 1.06.885-.883-1.061-1.06Zm-4.95-2.12 1.414-1.415L12 6.344l-1.415 1.413 1.061 1.061Zm0 3.535a2.5 2.5 0 0 1 0-3.536l-1.06-1.06a4 4 0 0 0 0 5.656l1.06-1.06Zm4.95-4.95a2.5 2.5 0 0 1 0 3.535L17.656 12a4 4 0 0 0 0-5.657l-1.06 1.06Zm1.06-1.06a4 4 0 0 0-5.656 0l1.06 1.06a2.5 2.5 0 0 1 3.536 0l1.06-1.06Zm-7.07 7.07.176.177 1.06-1.06-.176-.177-1.06 1.06Zm-3.183-.353.884-.884-1.06-1.06-.884.883 1.06 1.06Zm4.95 2.121-1.414 1.414 1.06 1.06 1.415-1.413-1.06-1.061Zm0-3.536a2.5 2.5 0 0 1 0 3.536l1.06 1.06a4 4 0 0 0 0-5.656l-1.06 1.06Zm-4.95 4.95a2.5 2.5 0 0 1 0-3.535L6.344 12a4 4 0 0 0 0 5.656l1.06-1.06Zm-1.06 1.06a4 4 0 0 0 5.657 0l-1.061-1.06a2.5 2.5 0 0 1-3.535 0l-1.061 1.06Zm7.07-7.07-.176-.177-1.06 1.06.176.178 1.06-1.061Z"
-        fill="currentColor"
-      />
+    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M12.232 4.232a2.5 2.5 0 013.536 3.536l-1.225 1.224a.75.75 0 001.061 1.06l1.224-1.224a4 4 0 00-5.656-5.656l-3 3a4 4 0 00.225 5.865.75.75 0 00.977-1.138 2.5 2.5 0 01-.142-3.667l3-3z" />
+      <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
     </svg>
   )
 }
@@ -124,12 +123,6 @@ export const metadata: Metadata = {
 }
 
 export default function Projects() {
-  const projectImages = projects.filter(p => p.image).map(p => ({
-    src: p.image!,
-    alt: p.name,
-    name: p.name
-  }))
-
   return (
     <SimpleLayout
       title="Projects I've created"
@@ -138,11 +131,11 @@ export default function Projects() {
 
       <ul
         role="list"
-        className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
       >
         {projects.map((project) => (
-          <li key={project.name} className="group relative rounded-2xl border border-zinc-100 p-4 dark:border-zinc-700/40">
-            <h2 className="text-base font-medium text-zinc-800 dark:text-zinc-100">
+          <li key={project.name} className="group relative rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40 transition-all duration-200 hover:shadow-md hover:border-zinc-200 dark:hover:border-zinc-600 hover:scale-[1.02]">
+            <h2 className="text-base font-medium text-zinc-800 group-hover:text-teal-600 dark:text-zinc-100 dark:group-hover:text-teal-400 transition-colors duration-200">
               <Link href={project.link.href}>
                 <span className="absolute inset-0" />
                 {project.name}
@@ -151,8 +144,13 @@ export default function Projects() {
             <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               {project.description}
             </p>
-            <p className="mt-4 text-xs text-zinc-400 dark:text-zinc-500">
-              {project.link.label}
+            <p className="mt-4 flex items-center gap-1.5 text-xs text-zinc-400 group-hover:text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400 transition-colors duration-200">
+              {project.link.type === 'github' ? (
+                <GitHubIcon className="h-3.5 w-3.5 flex-none fill-current" />
+              ) : (
+                <ExternalLinkIcon className="h-3.5 w-3.5 flex-none" />
+              )}
+              <span>{project.link.label}</span>
             </p>
           </li>
         ))}

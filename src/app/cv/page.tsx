@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="mb-8">
-      <h2 className={`${getHeadingStyles('h2')} mb-4`}>{title}</h2>
+    <div className="mb-12">
+      <h2 className={`${getHeadingStyles('h2')} mb-6`}>{title}</h2>
       {children}
     </div>
   )

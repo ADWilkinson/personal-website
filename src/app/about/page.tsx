@@ -11,6 +11,7 @@ import {
   XIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
+import davyjonesImage from '@/images/galleon/davyjones.png'
 import { COMPANY_LOGOS, SOCIAL_LINKS } from '@/lib/constants'
 
 function SocialLink({
@@ -28,9 +29,9 @@ function SocialLink({
     <li className={clsx(className, 'flex')}>
       <Link
         href={href}
-        className="flex text-sm font-medium text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-400"
+        className="group flex text-sm font-medium text-zinc-800 transition-colors duration-200 hover:text-teal-600 dark:text-zinc-200 dark:hover:text-teal-400"
       >
-        <Icon className="h-5 w-5 flex-none fill-zinc-500" />
+        <Icon className="h-5 w-5 flex-none fill-zinc-500 transition-colors duration-200 group-hover:fill-teal-500 dark:group-hover:fill-teal-400" />
         <span className="ml-4">{children}</span>
       </Link>
     </li>
@@ -57,51 +58,58 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <SimpleLayout
-      title="I'm Andrew."
-      intro="Senior Software Engineer at ZKP2P. Former VC-backed Founder.">
-      <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-8">
+      title="I'm Andrew, a builder at heart."
+      intro="I turn complex blockchain problems into elegant solutions that real people can use.">
+      <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
-          <div className="max-w-xs px-2.5 lg:max-w-none">
+          <div className="max-w-xs px-2.5 lg:max-w-none group relative">
             <Image
               src={portraitImage}
               alt="Professional portrait of Andrew Wilkinson"
               sizes="(min-width: 1024px) 32rem, 20rem"
-              className="aspect-square rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+              className="aspect-square rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800 transition-opacity duration-300 dark:group-hover:opacity-0"
               quality={85}
               priority
+            />
+            <Image
+              src={davyjonesImage}
+              alt="Artistic representation of Davy Jones character"
+              sizes="(min-width: 1024px) 32rem, 20rem"
+              className="aspect-square rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800 absolute top-0 left-0 opacity-0 transition-opacity duration-300 dark:group-hover:opacity-100"
+              quality={85}
             />
           </div>
         </div>
         <div className="lg:order-first lg:row-span-2">
-          <div className="space-y-4 text-base text-zinc-600 dark:text-zinc-400">
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Current Role</h3>
+          <div className="space-y-7 text-base text-zinc-600 dark:text-zinc-400">
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-3">What I'm Building Now</h3>
             <p>
-              Senior Software Engineer at <CompanyLogo name="ZKP2P" logo={COMPANY_LOGOS.zkp2p} />, building trust-minimized fiat-to-crypto onramps using zkTLS proofs across 20+ payment platforms.
+              At <CompanyLogo name="ZKP2P" logo={COMPANY_LOGOS.zkp2p} />, I'm making crypto accessible to everyone. We use zero-knowledge proofs to let people buy crypto with Venmo, PayPal, and 20+ other payment apps—no centralized exchange needed.
             </p>
             
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-6 mb-2">Recent Leadership Experience</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-3">Leadership Experience</h3>
             <p>
-              Previously Head of Brava at <CompanyLogo name="Brava Labs" logo={COMPANY_LOGOS.brava} />, where I led a 10-person team shipping an MVP that secured £2M seed funding.
+              As Head of Brava at <CompanyLogo name="Brava Labs" logo={COMPANY_LOGOS.brava} />, I led a 10-person engineering team to ship an MVP that secured £2M in seed funding from European investors.
             </p>
             
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-6 mb-2">Founder Experience</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-3">Founder Experience</h3>
             <p>
-              Founded <CompanyLogo name="Galleon DAO" logo={COMPANY_LOGOS.galleon} />, raising $1M+ from 1kx and DeFi leaders. Built the protocol, hired 6-person team, grew 6,000+ member community, and managed $20M+ in user funds.
+              Founded <CompanyLogo name="Galleon DAO" logo={COMPANY_LOGOS.galleon} /> and raised $1M+ from 1kx and other DeFi investors. Built the protocol from scratch, grew a 6,000+ member community, and managed $20M+ in total value locked at peak.
             </p>
             
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-6 mb-2">0-to-1 Product & Engineering</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-3">Building From Zero</h3>
             <p>
-              8+ years building blockchain and fintech products from 0-to-1. Led teams from founding stage to 12+ engineers at enterprise scale.
+              Throughout my career, I've been the engineer founders call when they need someone to turn napkin sketches into production systems. I've scaled teams from just me to 12+ engineers, and products from idea to enterprise.
             </p>
             
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-6 mb-2">Industry Experience</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-3">Career Path</h3>
             <p>
-              Started at <CompanyLogo name="Sky" logo={COMPANY_LOGOS.sky} /> and <CompanyLogo name="Worldpay" logo={COMPANY_LOGOS.worldpay} />, then moved to DeFi with <CompanyLogo name="R3" logo={COMPANY_LOGOS.r3} /> and <CompanyLogo name="Set Labs" logo={COMPANY_LOGOS.set} />. Bridge technical implementation with business strategy across smart contracts and go-to-market.
+              Started at <CompanyLogo name="Sky" logo={COMPANY_LOGOS.sky} /> and <CompanyLogo name="Worldpay" logo={COMPANY_LOGOS.worldpay} /> building large-scale systems. Moved into blockchain at <CompanyLogo name="R3" logo={COMPANY_LOGOS.r3} /> and <CompanyLogo name="Set Labs" logo={COMPANY_LOGOS.set} />, focusing on making DeFi products that people actually understand and use.
             </p>
             
-            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-6 mb-2">Side Projects</h3>
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mt-8 mb-3">Side Projects</h3>
             <p>
-              Build micro apps in my spare time. See my <Link href="/projects" className="text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100 underline">Projects page</Link> for details.
+              I build tools and applications in my free time—from AI-powered DeFi assistants to music creation tools. These projects let me experiment with new technologies and solve interesting problems. See my <Link href="/projects" className="text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100 underline">projects page</Link> for more.
             </p>
           </div>
         </div>

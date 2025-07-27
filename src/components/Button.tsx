@@ -3,9 +3,9 @@ import clsx from 'clsx'
 
 const variantStyles = {
   primary:
-    'bg-zinc-900 text-zinc-100 dark:bg-zinc-100 dark:text-zinc-900',
+    'bg-zinc-900 text-zinc-100 hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 transition-colors duration-200',
   secondary:
-    'border border-zinc-200 text-zinc-900 dark:border-zinc-700 dark:text-zinc-100',
+    'border border-zinc-200 text-zinc-900 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-200',
 }
 
 type ButtonProps = {

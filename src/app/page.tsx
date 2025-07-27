@@ -23,20 +23,16 @@ import { formatDate } from '@/lib/formatDate'
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
-    <article className="group relative py-6 border-b border-zinc-100 dark:border-zinc-800 last:border-0">
-      <time className="text-xs text-zinc-400 dark:text-zinc-500">
+    <Card as="article">
+      <Card.Title href={`/articles/${article.slug}`}>
+        {article.title}
+      </Card.Title>
+      <Card.Eyebrow as="time" dateTime={article.date} decorate>
         {formatDate(article.date)}
-      </time>
-      <h3 className="mt-2 text-base font-medium text-zinc-800 dark:text-zinc-100">
-        <Link href={`/articles/${article.slug}`}>
-          <span className="absolute inset-0" />
-          {article.title}
-        </Link>
-      </h3>
-      <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-        {article.description}
-      </p>
-    </article>
+      </Card.Eyebrow>
+      <Card.Description>{article.description}</Card.Description>
+      <Card.Cta>Read article</Card.Cta>
+    </Card>
   )
 }
 
@@ -47,8 +43,8 @@ function SocialLink({
   icon: React.ComponentType<{ className?: string }>
 }) {
   return (
-    <Link className="-m-1 p-1" {...props}>
-      <Icon className="h-5 w-5 fill-zinc-600 dark:fill-zinc-400" />
+    <Link className="group -m-1 p-1" {...props}>
+      <Icon className="h-5 w-5 fill-zinc-500 transition-colors duration-200 group-hover:fill-teal-500 dark:fill-zinc-400 dark:group-hover:fill-teal-400" />
     </Link>
   )
 }
@@ -72,8 +68,8 @@ function Role({ role }: { role: Role }) {
   let endDate = typeof role.end === 'string' ? role.end : role.end.dateTime
 
   return (
-    <li className="flex gap-4 py-4 first:pt-0 last:pb-0">
-      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-zinc-50 dark:bg-zinc-800 overflow-hidden">
+    <li className="flex gap-4">
+      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
         <Image 
           src={role.logo} 
           alt={`${role.company} company logo`} 
@@ -116,23 +112,20 @@ function Resume() {
   }))
 
   return (
-    <div>
-      <h2 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-        Work
+    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <BriefcaseIcon className="h-6 w-6 flex-none" />
+        <span className="ml-3">Work</span>
       </h2>
-      <div className="mt-4">
-        <ol className="divide-y divide-zinc-100 dark:divide-zinc-800">
-          {resume.map((role, roleIndex) => (
-            <Role key={roleIndex} role={role} />
-          ))}
-        </ol>
-        <Link 
-          href="/cv" 
-          className="inline-block mt-6 text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
-        >
-          View Full CV →
-        </Link>
-      </div>
+      <ol className="mt-6 space-y-4">
+        {resume.map((role, roleIndex) => (
+          <Role key={roleIndex} role={role} />
+        ))}
+      </ol>
+      <Button href="/cv" variant="secondary" className="group mt-6 w-full">
+        View Full CV
+        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+      </Button>
     </div>
   )
 }
@@ -143,14 +136,14 @@ export default async function Home() {
 
   return (
     <>
-      <Container className="mt-8 sm:mt-12">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <Container className="mt-9">
+        <div className="grid grid-cols-1 gap-y-6 lg:grid-cols-3 lg:gap-x-8">
           <div className="lg:col-span-2">
             <h1 className="text-3xl font-medium tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
               Senior Software Engineer at ZKP2P.<br />
               Former VC-backed Founder.
             </h1>
-            <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
               Building trust-minimized fiat-to-crypto onramps using zkTLS. Previously shipped MVPs that raised $3M+ combined, managed $20M+ in value, and built a 6,000+ member community. Specialize in 0-to-1 products with hands-on technical execution.
             </p>
             <div className="mt-6 flex gap-6">
@@ -167,20 +160,20 @@ export default async function Home() {
             </div>
           </div>
           <div className="lg:col-span-1">
-            <div className="mt-0 lg:mt-0">
+            <div className="mt-6 lg:mt-0">
               <ContactMe />
             </div>
           </div>
         </div>
       </Container>
-      <Container className="mt-16 md:mt-20">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-12 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col">
+      <Container className="mt-24 md:mt-28">
+        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+          <div className="flex flex-col gap-16">
             {articles.map((article) => (
               <Article key={article.slug} article={article} />
             ))}
           </div>
-          <div className="lg:pl-16 xl:pl-24">
+          <div className="space-y-10 lg:pl-16 xl:pl-24">
             <Resume />
           </div>
         </div>

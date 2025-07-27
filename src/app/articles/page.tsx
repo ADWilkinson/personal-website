@@ -1,35 +1,35 @@
 import { type Metadata } from 'next'
-import Link from 'next/link'
 
+import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
-    <article className="relative group">
-      <div className="flex flex-col space-y-1">
-        <time className="text-xs text-zinc-400 dark:text-zinc-500" dateTime={article.date}>
-          {formatDate(article.date)}
-        </time>
-        <h2 className="text-base font-medium text-zinc-800 dark:text-zinc-100">
-          <Link href={`/articles/${article.slug}`}>
-            <span className="absolute inset-0" />
-            {article.title}
-          </Link>
-        </h2>
-        <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          {article.description}
-        </p>
-      </div>
-      <div className="mt-3">
-        <Link 
-          href={`/articles/${article.slug}`}
-          className="text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
+    <article className="md:grid md:grid-cols-4 md:items-baseline">
+      <Card className="md:col-span-3">
+        <Card.Title href={`/articles/${article.slug}`}>
+          {article.title}
+        </Card.Title>
+        <Card.Eyebrow
+          as="time"
+          dateTime={article.date}
+          className="md:hidden"
+          decorate
         >
-          Read article →
-        </Link>
-      </div>
+          {formatDate(article.date)}
+        </Card.Eyebrow>
+        <Card.Description>{article.description}</Card.Description>
+        <Card.Cta>Read article</Card.Cta>
+      </Card>
+      <Card.Eyebrow
+        as="time"
+        dateTime={article.date}
+        className="mt-1 hidden md:block"
+      >
+        {formatDate(article.date)}
+      </Card.Eyebrow>
     </article>
   )
 }
@@ -49,7 +49,7 @@ export default async function ArticlesIndex() {
       intro="My thoughts and experiences in blockchain, DeFi, and technology projects."
     >
       <div className="max-w-2xl">
-        <div className="flex flex-col space-y-8">
+        <div className="flex flex-col space-y-16">
           {articles.map((article) => (
             <Article key={article.slug} article={article} />
           ))}
