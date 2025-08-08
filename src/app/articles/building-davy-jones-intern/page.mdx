@@ -1,0 +1,305 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import internImage from './photo1-intern.webp'
+import terminalImage from './photo2-terminal.webp'
+import architectureImage from './photo3-archite.webp'
+import claudeCodeServiceImage from './photo4-claudecodeservice.png'
+import commandRoutingImage from './photo5-commandrouting.webp'
+import contextImage from './photo6-context.webp'
+import dangerousPatternImage from './photo7-dangerouspatt.webp'
+import branchSafetyImage from './photo8-branch-saftey.webp'
+import screenshot1 from './photo10-screenshots.webp'
+import screenshot2 from './photo11-screenshots.webp'
+import screenshot3 from './photo12-screenshots.webp'
+import screenshot4 from './photo13-screenshots.webp'
+import screenshot5 from './photo14-screenshots.webp'
+import screenshot6 from './photo15-screenshots.webp'
+import screenshot7 from './photo16-screenshots.webp'
+import screenshot8 from './photo17-screenshots.webp'
+
+export const article = {
+  author: 'Andrew Wilkinson',
+  date: '2025-08-08',
+  title: 'Building the ZKP2P Intern, Davy Jones: Claude Code SDK Powered Assistant',
+  description:
+    'How I leveraged the Claude Code SDK to create an intelligent Slack bot that handles GitHub PRs, runs builds, and manages our development workflow.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+## Meet the Intern, Davy Jones
+
+<figure className="my-8 text-center">
+  <Image
+    src={internImage}
+    alt="Davy Jones Intern pixel art character"
+    className="rounded-lg shadow-lg mx-auto"
+    width={400}
+    height={400}
+  />
+  <figcaption className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-2">This is actually a random, fun asset I had from a previous project, now reused!</figcaption>
+</figure>
+
+> "@davyjonesintern, hey intern - refactor this whole repo by standup tomorrow. Make no mistakes"
+
+## Creating an AI Team Member
+
+So, some important context: I'm currently a Software Engineer at ZKP2P and lucky enough to be working with friends. We are a very small team, and I love that. I've always loved working within small teams because everything you do has an outsized impact. Recently, I've been deep in the weeds with AI tools, both professionally and as a hobby, which led me to think: what if I created an AI Intern version of myself in Slack? Something the whole team could interact with throughout the day to handle those non-critical but valuable tasks that could ultimately make a small team feel larger through output.
+
+I had an old DappNode sitting around the office that I no longer used. Instead of letting it collect dust, I had the idea to repurpose it and create an extensible wrapper around the Claude Code SDK with various handlers to interface with apps that I could host within the home server. What would make this somewhat different is that I could create a hyper-optimized ZKP2P environment of company knowledge around it, which could execute tasks within certain guardrails.
+
+I was immediately sold on the fun idea and wanted to see how far I could push the boundaries of AI-assisted development beyond just myself using Cursor/Claude Code as an individual. This became a weekend project obsession that quickly turned into something quite useful. At the time of writing, the Intern is running on Opus 4.1.
+
+<figure className="my-8">
+  <Image
+    src={terminalImage}
+    alt="Terminal showing the home server loading"
+    className="rounded-lg shadow-lg"
+  />
+  <figcaption className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-2">Loading up the home server</figcaption>
+</figure>
+
+## Enter the Claude Code SDK
+
+When I was thinking of the capabilities of the Intern, a few came to mind:
+
+- Creating, reviewing, and describing Pull Requests
+- Updating documentation repositories with new changes
+- Running builds and tests locally or on the server, creating missing tests if needed
+- Providing a summary of a developer's work over the day if they prompt for it (for example, to refresh themselves for standup)
+- Updating the team on deployment status via a Vercel integration
+- Helping onboard new employees by serving as a knowledge base on how the different projects connect, and being a point of reference to dive deep into the various codebases and their history
+- Integration with Linear to add items such as codebase context to a given ticket
+
+The key feature I wanted out of the Intern was to feel like a person within Slack, not just some half-baked chatbot, but someone you could ping in the channel mid-discussion, quite literally, to offload work to 😂
+
+I think I managed to achieve a good early vibe on this through personalization. He has a subtle pirate twang to him (befitting the name Davy Jones), and he updates his messages as he processes a request, giving that impression of 'thinking out loud'. When edge cases can't be handled or require additional information, the Intern suggests refining the query based on Claude Code's response, maintaining the conversational tone.
+
+## Architecture: Service-Oriented Design
+
+Davy Jones Intern is built with a clean service-oriented architecture in TypeScript:
+
+<figure className="my-8">
+  <Image
+    src={architectureImage}
+    alt="Architecture diagram showing service-oriented design"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+The architecture is designed with good abstraction without overdoing it. While we currently support Slack through the slack.handler.ts, the core services are platform-agnostic. Adding support for Discord, Telegram, or other platforms would require implementing new handlers while reusing all the existing business logic.
+
+### The Wrapper: Claude Code Service
+
+The most integral component is the Claude Code service, which bridges our Slack commands to the Claude Code SDK for processing:
+
+<figure className="my-8">
+  <Image
+    src={claudeCodeServiceImage}
+    alt="Claude Code service integration diagram"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+Claude maintains context across numerous turns, executing complex workflows with bespoke injected context about the environment and tools at its disposal while remembering what it's trying to accomplish.
+
+### Natural Language Command Routing
+
+The SlackHandler's command processing is where the magic happens - 500+ lines of intelligent pattern matching that feels conversational:
+
+<figure className="my-8">
+  <Image
+    src={commandRoutingImage}
+    alt="Natural language processing and command routing flow"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+This hybrid approach means the bot understands both structured commands ("merge PR #123") and natural queries ("what's broken in production?"), routing each to the appropriate service and prioritizing speed and cost efficiency if it can cut the loop short by avoiding the interpretation step.
+
+## Real-World Usage Examples
+
+See the screenshot bonanza at the end! 
+
+### Domain Knowledge Integration
+
+One of the most challenging aspects was making the bot truly useful for the ZKP2P ecosystem. I solved this with a structured knowledge base:
+
+<figure className="my-8">
+  <Image
+    src={contextImage}
+    alt="Knowledge base and context integration structure"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+The ZKP2P Context Service injects this knowledge into every query, making responses relevant to the team's specific projects and workflows. To avoid overbloating context, I also tailor the injected context based on keywords during pre-processing.
+
+### Linear Service
+
+The Linear integration showcases how external services are wrapped with domain awareness:
+
+This transforms a simple "investigate bug in auth" ticket into a comprehensive technical analysis with relevant code snippets, potential causes, and affected components.
+
+## The Claude Code SDK
+
+Working with the Claude Code SDK has made the development of the Intern fairly intuitive. Instead of focusing any effort whatsoever on the 'AI' portion of the program, I have been focusing on creating a hyper-focused company environment that allows the Intern to excel, with bespoke context and tool integrations specific to ZKP2P, as opposed to a generic bot that requires configuration.
+
+### Progressive Message Updates
+
+One feature I wanted to ensure was included is that the Intern feels like it was part of the channel messaging. When you prompt him naturally within a chat, I wanted the bot to acknowledge the request and update his message continuously as he proceeds. It's not an experience where you wait one minute and suddenly everything appears; instead, it feels like you're watching a team member work through the task, rather than just waiting for a final result.
+
+### Real Tool Execution
+
+Claude Code has access to any CLI and integration I provide, which are typically permissioned in most cases (e.g., GitHub access tokens).
+
+- Shell commands (Bash tool)
+- Vercel CLI
+- Linear SDK wrapped around a custom API
+- File operations (Read, Write, Edit tools)
+- Git operations via GitHub CLI and Git commands
+- Web searches and API calls
+
+### Command Execution Security
+
+Running a bot that can execute arbitrary commands in an isolated environment undoubtedly requires safety considerations. Luckily, because it's an isolated environment, it can be guarded easily. Permissions can be handled at the integration level, via access levels on API tokens, or at the codebase level, with fixed blockers in place for regex matches and directory restrictions.
+
+**Dangerous Pattern Detection**
+
+<figure className="my-8">
+  <Image
+    src={dangerousPatternImage}
+    alt="Dangerous pattern detection security implementation"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+**Production Branch Protection**
+
+<figure className="my-8">
+  <Image
+    src={branchSafetyImage}
+    alt="Production branch protection and safety measures"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+**Working Directory Restrictions**
+
+All operations are scoped to safe directories, and the bot runs with limited permissions. For the bot to function as a 'ZKP2P Intern', I restrict it to an isolated directory containing the ZKP2P knowledge base and project repositories.
+
+## Why It's Actually Good
+
+Ultimately, I'm wrapping the Claude Code SDK with Slack integration and giving it the juice. But whilst I made the Intern a novelty for the team, there are reasons why it's more than just a generic wrapper.
+
+**Lives on my desk:** Running on the home server means I can configure the environment in the most bespoke way, so the Intern has the most context-rich environment and access to all required tools.
+
+**Knows our domain:** The structured ZKP2P knowledge-base means it understands our specific repositories, build processes, and workflows. It's not a generic bot that I have abstracted to be applied loosely to everyone using it. Instead, I have manually configured each integration to the tools we use, so when you prompt it in Slack, it connects the dots quickly.
+
+**Feels integrated:** Instead of switching to another tool, the team mentions it in Slack, just as they would with any other team member.
+
+> "@davyjonesintern, hey sir - can you investigate the bug detailed in linear ticket ZKP2P-254 around a memory leak within the quote component?"
+
+## How It's Going & What's Next
+
+The Intern has been living in Slack for a week, but I think the novelty of it has been well-received. People use it for routine tasks, linear ticket management, actioning PRs, investigative codebase work, minor bug-fixes, and obtaining quick summaries of recent work. Nothing that's changing the world, but genuinely helpful when you're plugged in and mid-slack conversation, you want something actioned in parallel without switching context.
+
+Some further ideas I'm thinking of cooking up very soon for the Intern:
+
+**Company context:** Provide the Intern with a web of user data, with the prompting Slack user being at the center and all associated accounts (Linear, GitHub, Vercel) surrounding it. Why this would be good is that your prompts don't need to be as verbose; it'll already know all the accounts associated with you unless you specify otherwise.
+
+**GitHub Activity Summaries:** I want to experiment with the idea of the Intern collating and processing all the GitHub activity across the ZKP2P organizations' repositories. Not focusing on the who, but the what was being committed across the projects to give a sense of a day's engineering effort, amounting to something digestible for everyone on the team to understand.
+
+**Enhanced Onboarding:** Better apply Davy Jones Intern for onboarding new project joiners. Given the rich context of the project and tools, it could serve as an interactive guide that helps new team members understand our architecture, conventions, and workflows through conversational exploration, rather than relying solely on static documentation.
+
+Most importantly, though, I'm just having fun building it. It wasn't a given task to me, nor is it meant to be a real Intern (lol). As long as it remains helpful to someone, I'll continue to enjoy coding it.
+
+If you enjoyed this article, great! Thank you for reading & feel free to subscribe below for very infrequent blog updates in the future. You can find me on my socials via andrewwilkinson.io, where I share thoughts on DeFi, building, and a healthy dose of memes. 
+
+## Screenshot Bonanza
+
+### Can't remember what you did? Intern knows
+
+<figure className="my-8">
+  <Image
+    src={screenshot1}
+    alt="Intern providing work summary for standup"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+### Show people that you have too much work
+
+<figure className="my-8">
+  <Image
+    src={screenshot2}
+    alt="Intern demonstrating workload management"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+### Find out if you're in for a bad day or not
+
+<figure className="my-8">
+  <Image
+    src={screenshot3}
+    alt="Intern analyzing build status and potential issues"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+### GitHub Webhooks for all PR events (and more soon)
+
+<figure className="my-8">
+  <Image
+    src={screenshot4}
+    alt="GitHub webhook integration showing PR events"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+### Switching to the linear website is tiresome
+
+<figure className="my-8">
+  <Image
+    src={screenshot5}
+    alt="Linear integration in action directly from Slack"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+### Better linear tickets
+
+<figure className="my-8">
+  <Image
+    src={screenshot6}
+    alt="Enriched Linear tickets with codebase context"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+### Codebase queries
+
+<figure className="my-8">
+  <Image
+    src={screenshot7}
+    alt="Intern answering complex codebase queries"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+### Real-time assistance
+
+<figure className="my-8">
+  <Image
+    src={screenshot8}
+    alt="Intern providing real-time development assistance"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
