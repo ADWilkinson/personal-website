@@ -26,7 +26,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function ContactMe() {
   return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40 transition-all duration-200 hover:shadow-lg hover:border-zinc-200 dark:hover:border-zinc-600">
       <h2 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
         Contact
       </h2>
@@ -36,27 +36,27 @@ export function ContactMe() {
       <div className="mt-4 space-y-3">
         <Link
           href="https://www.linkedin.com/in/andrew-d-wilkinson"
-          className="group flex items-center text-sm text-zinc-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-colors duration-200"
+          className="group flex items-center text-sm text-zinc-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-all duration-200 py-1 hover:translate-x-1"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <LinkedInIcon className="h-4 w-4 flex-none fill-current transition-colors duration-200" />
+          <LinkedInIcon className="h-4 w-4 flex-none fill-current transition-all duration-200 group-hover:scale-110" />
           <span className="ml-3">Connect on LinkedIn</span>
         </Link>
         <Link
           href="mailto:gm@andrewwilkinson.io"
-          className="group flex items-center text-sm text-zinc-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-colors duration-200"
+          className="group flex items-center text-sm text-zinc-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-all duration-200 py-1 hover:translate-x-1"
         >
-          <MailIcon className="h-4 w-4 flex-none transition-colors duration-200" />
+          <MailIcon className="h-4 w-4 flex-none transition-all duration-200 group-hover:scale-110" />
           <span className="ml-3">Send an email</span>
         </Link>
         <Link
           href="https://t.me/DavyJones_0x"
-          className="group flex items-center text-sm text-zinc-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-colors duration-200"
+          className="group flex items-center text-sm text-zinc-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-all duration-200 py-1 hover:translate-x-1"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <TelegramIcon className="h-4 w-4 flex-none fill-current transition-colors duration-200" />
+          <TelegramIcon className="h-4 w-4 flex-none fill-current transition-all duration-200 group-hover:scale-110" />
           <span className="ml-3">Message on Telegram</span>
         </Link>
       </div>

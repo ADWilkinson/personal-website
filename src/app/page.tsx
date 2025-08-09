@@ -43,8 +43,8 @@ function SocialLink({
   icon: React.ComponentType<{ className?: string }>
 }) {
   return (
-    <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-5 w-5 fill-zinc-500 transition-colors duration-200 group-hover:fill-teal-500 dark:fill-zinc-400 dark:group-hover:fill-teal-400" />
+    <Link className="group -m-1 p-1 transition-transform duration-200 hover:scale-110" {...props}>
+      <Icon className="h-5 w-5 fill-zinc-500 transition-all duration-200 group-hover:fill-teal-500 dark:fill-zinc-400 dark:group-hover:fill-teal-400" />
     </Link>
   )
 }
@@ -69,7 +69,7 @@ function Role({ role }: { role: Role }) {
 
   return (
     <li className="flex gap-4">
-      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition-all duration-200 hover:shadow-lg hover:ring-zinc-900/10 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:hover:border-zinc-600">
         <Image 
           src={role.logo} 
           alt={`${role.company} company logo`} 
@@ -122,10 +122,10 @@ function Resume() {
           <Role key={roleIndex} role={role} />
         ))}
       </ol>
-      <Button href="/cv" variant="secondary" className="group mt-6 w-full">
+      {/* <Button href="/cv" variant="secondary" className="group mt-6 w-full">
         View Full CV
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
+      </Button> */}
     </div>
   )
 }

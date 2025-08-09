@@ -26,7 +26,7 @@ export function Card<T extends React.ElementType = 'div'>({
 
   return (
     <Component
-      className={clsx(className, 'group relative flex flex-col items-start')}
+      className={clsx(className, 'group relative flex flex-col items-start transition-all duration-200 hover:scale-[1.02]')}
     >
       {children}
     </Component>
@@ -56,7 +56,7 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
   let Component = as ?? 'h2'
 
   return (
-    <Component className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+    <Component className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 transition-colors duration-200 group-hover:text-teal-600 dark:group-hover:text-teal-400">
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
     </Component>
   )
@@ -78,10 +78,10 @@ Card.Cta = function CardCta({ children }: { children: React.ReactNode }) {
   return (
     <div
       aria-hidden="true"
-      className="relative z-10 mt-4 flex items-center text-sm text-zinc-600 group-hover:text-zinc-900 dark:text-zinc-400 dark:group-hover:text-zinc-200 transition-colors duration-200"
+      className="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-600 group-hover:text-teal-700 dark:text-teal-400 dark:group-hover:text-teal-300 transition-colors duration-200"
     >
       {children}
-      <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current transition-transform duration-200 group-hover:translate-x-1" />
+      <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current transition-transform duration-300 ease-out group-hover:translate-x-2" />
     </div>
   )
 }
@@ -112,7 +112,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
           className="absolute inset-y-0 left-0 flex items-center"
           aria-hidden="true"
         >
-          <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+          <span className="h-4 w-0.5 rounded-full bg-gradient-to-b from-teal-400 to-teal-600 dark:from-teal-500 dark:to-teal-700" />
         </span>
       )}
       {children}
