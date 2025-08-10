@@ -15,7 +15,11 @@ import {
   PhotoIcon, 
   ListBulletIcon,
   ArrowTrendingUpIcon,
-  CubeIcon
+  CubeIcon,
+  CommandLineIcon,
+  ServerIcon,
+  CodeBracketIcon,
+  BeakerIcon
 } from '@heroicons/react/24/solid'
 
 import galleonImage from '@/images/projects/galleon.png'
@@ -27,7 +31,7 @@ import privateerImage from '@/images/projects/priv.png'
 import saylorImage from '@/images/projects/saylor.png'
 import eluneImage from '@/images/projects/elune.png'
 
-const projects = [
+const productionApps = [
   {
     name: 'Elune',
     description:
@@ -37,12 +41,27 @@ const projects = [
     image: eluneImage,
   },
   {
-    name: 'Galleon DAO',
+    name: 'Piggy DAO',
     description:
-      'DeFi protocol managing $20M+ in structured products and 6,000+ member community.',
-    link: { href: 'https://github.com/GalleonDAO', label: 'GalleonDAO', type: 'github' },
-    icon: GlobeAltIcon,
-    image: galleonImage,
+      'Official website for Piggy DAO, a DeFAI agent developed by Superform with real-time analytics.',
+    link: { href: 'https://piggyonchain.xyz', label: 'piggyonchain.xyz', type: 'website' },
+    icon: CubeIcon,
+    image: piggyImage,
+  },
+  {
+    name: 'Davy Jones Intern',
+    description:
+      'Claude Code SDK-powered Slack bot managing GitHub PRs, builds, and development workflows for ZKP2P.',
+    link: { href: '/articles/building-davy-jones-intern', label: 'Read article', type: 'article' },
+    icon: CommandLineIcon,
+  },
+  {
+    name: 'SaylorMemes',
+    description:
+      'Cryptocurrency meme generator featuring customizable templates and editing tools.',
+    link: { href: 'https://saylormemes.com', label: 'saylormemes.com', type: 'website' },
+    icon: PhotoIcon,
+    image: saylorImage,
   },
   {
     name: 'ChordCraft',
@@ -52,21 +71,30 @@ const projects = [
     icon: MusicalNoteIcon,
     image: chordImage,
   },
+]
+
+const projects = [
   {
-    name: 'Piggy DAO',
+    name: 'Barbossa Engineer',
     description:
-      'Real-time analytics dashboard tracking Superforms PIGGY AI agent performance metrics.',
-    link: { href: 'https://piggyonchain.xyz', label: 'piggyonchain.xyz', type: 'website' },
-    icon: CubeIcon,
-    image: piggyImage,
+      'Automated server manager and AI engineer performing infrastructure upgrades and project work.',
+    link: { href: 'https://github.com/ADWilkinson/barbossa-engineer', label: 'barbossa-engineer', type: 'github' },
+    icon: ServerIcon,
   },
   {
-    name: 'SaylorMemes',
+    name: 'The Flying Dutchman Theme',
     description:
-      'Cryptocurrency meme generator featuring customizable templates and editing tools.',
-    link: { href: 'https://github.com/ADWilkinson/saylormemes', label: 'saylormemes', type: 'github' },
-    icon: PhotoIcon,
-    image: saylorImage,
+      'Dark VS Code theme inspired by maritime legends with careful syntax highlighting.',
+    link: { href: 'https://github.com/ADWilkinson/the-flying-dutchman-theme', label: 'the-flying-dutchman-theme', type: 'github' },
+    icon: CodeBracketIcon,
+  },
+  {
+    name: 'Galleon DAO',
+    description:
+      'DeFi protocol managing $20M+ in structured products and 6,000+ member community.',
+    link: { href: 'https://github.com/GalleonDAO', label: 'GalleonDAO', type: 'github' },
+    icon: GlobeAltIcon,
+    image: galleonImage,
   },
   {
     name: 'Wojak Jones',
@@ -128,33 +156,75 @@ export default function Projects() {
       title="Projects I've created"
       intro="A selection of DeFi protocols, tools, and applications I've built."
     >
+      <div className="space-y-20">
+        <section>
+          <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-8">
+            Current Apps
+          </h2>
+          <ul
+            role="list"
+            className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {productionApps.map((project) => (
+              <li key={project.name} className="group relative rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40 transition-all duration-200 hover:shadow-md hover:border-zinc-200 dark:hover:border-zinc-600 hover:scale-[1.02]">
+                <h3 className="text-base font-medium text-zinc-800 group-hover:text-teal-600 dark:text-zinc-100 dark:group-hover:text-teal-400 transition-colors duration-200">
+                  <Link href={project.link.href}>
+                    <span className="absolute inset-0" />
+                    {project.name}
+                  </Link>
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  {project.description}
+                </p>
+                <p className="mt-4 flex items-center gap-1.5 text-xs text-zinc-400 group-hover:text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400 transition-colors duration-200">
+                  {project.link.type === 'github' ? (
+                    <GitHubIcon className="h-3.5 w-3.5 flex-none fill-current" />
+                  ) : project.link.type === 'article' ? (
+                    <span className="text-xs">📖</span>
+                  ) : (
+                    <ExternalLinkIcon className="h-3.5 w-3.5 flex-none" />
+                  )}
+                  <span>{project.link.label}</span>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-      <ul
-        role="list"
-        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {projects.map((project) => (
-          <li key={project.name} className="group relative rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40 transition-all duration-200 hover:shadow-md hover:border-zinc-200 dark:hover:border-zinc-600 hover:scale-[1.02]">
-            <h2 className="text-base font-medium text-zinc-800 group-hover:text-teal-600 dark:text-zinc-100 dark:group-hover:text-teal-400 transition-colors duration-200">
-              <Link href={project.link.href}>
-                <span className="absolute inset-0" />
-                {project.name}
-              </Link>
-            </h2>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              {project.description}
-            </p>
-            <p className="mt-4 flex items-center gap-1.5 text-xs text-zinc-400 group-hover:text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400 transition-colors duration-200">
-              {project.link.type === 'github' ? (
-                <GitHubIcon className="h-3.5 w-3.5 flex-none fill-current" />
-              ) : (
-                <ExternalLinkIcon className="h-3.5 w-3.5 flex-none" />
-              )}
-              <span>{project.link.label}</span>
-            </p>
-          </li>
-        ))}
-      </ul>
+        <section>
+          <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-8">
+            Other Projects
+          </h2>
+          <ul
+            role="list"
+            className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {projects.map((project) => (
+              <li key={project.name} className="group relative rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40 transition-all duration-200 hover:shadow-md hover:border-zinc-200 dark:hover:border-zinc-600 hover:scale-[1.02]">
+                <h3 className="text-base font-medium text-zinc-800 group-hover:text-teal-600 dark:text-zinc-100 dark:group-hover:text-teal-400 transition-colors duration-200">
+                  <Link href={project.link.href}>
+                    <span className="absolute inset-0" />
+                    {project.name}
+                  </Link>
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  {project.description}
+                </p>
+                <p className="mt-4 flex items-center gap-1.5 text-xs text-zinc-400 group-hover:text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400 transition-colors duration-200">
+                  {project.link.type === 'github' ? (
+                    <GitHubIcon className="h-3.5 w-3.5 flex-none fill-current" />
+                  ) : project.link.type === 'article' ? (
+                    <span className="text-xs">📖</span>
+                  ) : (
+                    <ExternalLinkIcon className="h-3.5 w-3.5 flex-none" />
+                  )}
+                  <span>{project.link.label}</span>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
     </SimpleLayout>
   )
 }

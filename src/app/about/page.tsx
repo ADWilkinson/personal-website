@@ -59,7 +59,7 @@ export default function About() {
   return (
     <SimpleLayout
       title="I'm Andrew, a builder at heart."
-      intro="I turn complex blockchain problems into elegant solutions that real people can use.">
+      intro="Democratizing finance through accessible DeFi solutions.">
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
           <div className="max-w-xs px-2.5 lg:max-w-none group relative">
