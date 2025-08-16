@@ -43,7 +43,7 @@ const productionApps: Project[] = [
     link: { href: 'https://tryelune.com', label: 'tryelune.com', type: 'website' },
     icon: CurrencyDollarIcon,
     image: eluneImage,
-    tags: ['DeFi', 'React', 'TypeScript', 'Automation'],
+    tags: ['DeFi', 'Automation'],
     category: 'production' as const,
   },
   {
@@ -53,7 +53,7 @@ const productionApps: Project[] = [
     link: { href: 'https://piggyonchain.xyz', label: 'piggyonchain.xyz', type: 'website' },
     icon: CubeIcon,
     image: piggyImage,
-    tags: ['React', 'TypeScript', 'AI', 'Analytics', 'DAO'],
+    tags: ['AI', 'DAO'],
     category: 'production' as const,
   },
   {
@@ -62,7 +62,7 @@ const productionApps: Project[] = [
       'Claude Code SDK-powered Slack bot managing GitHub PRs, builds, and development workflows for ZKP2P.',
     link: { href: '/articles/building-davy-jones-intern', label: 'Read article', type: 'article' },
     icon: CommandLineIcon,
-    tags: ['Node.js', 'TypeScript', 'AI', 'Slack Bot', 'GitHub', 'Automation'],
+    tags: ['AI', 'Automation'],
     category: 'production' as const,
   },
   {
@@ -72,7 +72,7 @@ const productionApps: Project[] = [
     link: { href: 'https://saylormemes.com', label: 'saylormemes.com', type: 'website' },
     icon: PhotoIcon,
     image: saylorImage,
-    tags: ['React', 'TypeScript', 'Firebase', 'Memes'],
+    tags: ['Memes'],
     category: 'production' as const,
   },
   {
@@ -82,7 +82,7 @@ const productionApps: Project[] = [
     link: { href: 'https://chordcraft.io', label: 'chordcraft.io', type: 'website' },
     icon: MusicalNoteIcon,
     image: chordImage,
-    tags: ['AI', 'Music', 'React', 'TypeScript'],
+    tags: ['AI', 'Music'],
     category: 'production' as const,
   },
 ]
@@ -94,7 +94,7 @@ const projects: Project[] = [
       'Automated server manager and AI engineer performing infrastructure upgrades and project work.',
     link: { href: 'https://github.com/ADWilkinson/barbossa-engineer', label: 'barbossa-engineer', type: 'github' },
     icon: ServerIcon,
-    tags: ['Python', 'AI', 'Automation', 'Infrastructure'],
+    tags: ['AI', 'Infrastructure'],
     category: 'other' as const,
   },
   {
@@ -103,7 +103,7 @@ const projects: Project[] = [
       'Dark VS Code theme inspired by maritime legends with careful syntax highlighting.',
     link: { href: 'https://github.com/ADWilkinson/the-flying-dutchman-theme', label: 'the-flying-dutchman-theme', type: 'github' },
     icon: CodeBracketIcon,
-    tags: ['VS Code', 'Theme', 'TypeScript'],
+    tags: ['VS Code'],
     category: 'other' as const,
   },
   {
@@ -113,7 +113,7 @@ const projects: Project[] = [
     link: { href: 'https://github.com/GalleonDAO', label: 'GalleonDAO', type: 'github' },
     icon: GlobeAltIcon,
     image: galleonImage,
-    tags: ['DeFi', 'Solidity', 'React', 'TypeScript', 'DAO'],
+    tags: ['DeFi', 'DAO'],
     category: 'other' as const,
   },
   {
@@ -123,7 +123,7 @@ const projects: Project[] = [
     link: { href: 'https://wojakjones.xyz', label: 'wojakjones.xyz', type: 'website' },
     icon: ChartBarIcon,
     image: wojakImage,
-    tags: ['AI', 'DeFi', 'React', 'TypeScript', 'Analytics'],
+    tags: ['AI', 'DeFi'],
     category: 'other' as const,
   },
   {
@@ -133,7 +133,7 @@ const projects: Project[] = [
     link: { href: 'https://ultrasoundapps.com', label: 'ultrasoundapps.com', type: 'website' },
     icon: BoltIcon,
     image: ultrasoundImage,
-    tags: ['React', 'TypeScript', 'DeFi', 'Discovery'],
+    tags: ['DeFi'],
     category: 'other' as const,
   },
   {
@@ -143,7 +143,7 @@ const projects: Project[] = [
     link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'privateer-capital', type: 'github' },
     icon: CurrencyDollarIcon,
     image: privateerImage,
-    tags: ['Python', 'Trading', 'Automation', 'DeFi'],
+    tags: ['Trading', 'Automation'],
     category: 'other' as const,
   },
   {
@@ -152,7 +152,7 @@ const projects: Project[] = [
       'Community-driven platform enabling collaborative ranking of cryptocurrency projects.',
     link: { href: 'https://github.com/ADWilkinson/CryptoTierList', label: 'CryptoTierList', type: 'github' },
     icon: ListBulletIcon,
-    tags: ['React', 'TypeScript', 'Community'],
+    tags: ['Community'],
     category: 'other' as const,
   },
   {
@@ -161,7 +161,7 @@ const projects: Project[] = [
       'Open-source technical analysis indicators for TradingView written in PineScript.',
     link: { href: 'https://github.com/ADWilkinson/pinescript-indicators', label: 'pinescript-indicators', type: 'github' },
     icon: ArrowTrendingUpIcon,
-    tags: ['PineScript', 'Trading', 'Analytics'],
+    tags: ['Trading', 'Analytics'],
     category: 'other' as const,
   },
 ]
@@ -193,19 +193,14 @@ function ProjectCard({ project }: { project: Project }) {
       {/* Technology tags */}
       {project.tags && project.tags.length > 0 && (
         <div className="mt-3 flex flex-wrap gap-1">
-          {project.tags.slice(0, 3).map((tag) => (
+          {project.tags.slice(0, 2).map((tag) => (
             <span
               key={tag}
-              className="px-2 py-1 text-xs font-medium bg-zinc-100 text-zinc-600 rounded-md dark:bg-zinc-800 dark:text-zinc-400"
+              className="px-2 py-0.5 text-xs font-medium bg-zinc-100 text-zinc-600 rounded dark:bg-zinc-800 dark:text-zinc-400"
             >
               {tag}
             </span>
           ))}
-          {project.tags.length > 3 && (
-            <span className="px-2 py-1 text-xs font-medium text-zinc-400 dark:text-zinc-500">
-              +{project.tags.length - 3} more
-            </span>
-          )}
         </div>
       )}
       
@@ -253,10 +248,6 @@ export default function Projects() {
           availableTags={availableTags}
         />
         
-        {/* Results Summary */}
-        <div className="text-sm text-zinc-600 dark:text-zinc-400">
-          Showing {filteredCount} of {totalCount} projects
-        </div>
 
         {/* No Results */}
         {filteredCount === 0 && (

@@ -29,15 +29,6 @@ export function useProjectFilter(projects: Project[]) {
   const filteredProjects = useMemo(() => {
     let filtered = [...projects]
 
-    // Filter by search term
-    if (filters.searchTerm) {
-      const searchLower = filters.searchTerm.toLowerCase()
-      filtered = filtered.filter(project => 
-        project.name.toLowerCase().includes(searchLower) ||
-        project.description.toLowerCase().includes(searchLower)
-      )
-    }
-
     // Filter by selected tags
     if (filters.selectedTags.length > 0) {
       filtered = filtered.filter(project =>
