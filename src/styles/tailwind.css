@@ -35,6 +35,70 @@
   --text-9xl--line-height: 1;
 }
 
+@layer base {
+  :root {
+    --mono-canvas: #f8f8f5;
+    --mono-surface: #fcfcfb;
+    --mono-surface-alt: #f0f0ec;
+    --mono-border: #101010;
+    --mono-border-muted: rgba(16, 16, 16, 0.18);
+    --mono-text: #121212;
+    --mono-text-muted: #4b4b4b;
+    --mono-accent: #0a66ff;
+    --mono-grid: rgba(16, 16, 16, 0.04);
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+    font-variant-numeric: tabular-nums lining-nums;
+    letter-spacing: -0.01em;
+  }
+
+  :root.dark {
+    --mono-canvas: #050506;
+    --mono-surface: #0c0c0f;
+    --mono-surface-alt: #121217;
+    --mono-border: #e7e8f2;
+    --mono-border-muted: rgba(231, 232, 242, 0.16);
+    --mono-text: #f4f5ff;
+    --mono-text-muted: #b5b8c9;
+    --mono-accent: #7aa8ff;
+    --mono-grid: rgba(231, 232, 242, 0.06);
+  }
+
+  body {
+    background-color: var(--mono-canvas);
+    background-image:
+      linear-gradient(var(--mono-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--mono-grid) 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: var(--mono-text);
+    min-height: 100%;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(transparent 95%, rgba(0, 0, 0, 0.02) 99%, transparent 100%);
+    opacity: 0.4;
+    z-index: -1;
+  }
+
+  .dark body::before {
+    background: linear-gradient(transparent 95%, rgba(231, 232, 242, 0.08) 99%, transparent 100%);
+  }
+
+  a {
+    text-underline-offset: 0.35em;
+    text-decoration-thickness: 0.12em;
+  }
+
+  ::selection {
+    background: var(--mono-accent);
+    color: #fcfcfb;
+  }
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;

@@ -38,14 +38,14 @@ export function ProjectFilter({ filters, onFiltersChange, availableTags }: Proje
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       {/* Filter Controls */}
-      <div className="flex flex-wrap gap-3 items-center">
+      <div className="flex flex-wrap items-center gap-3 text-[0.75rem] uppercase tracking-[0.12em]">
         {/* Project Type Filter */}
         <select
           value={filters.selectedType}
           onChange={(e) => handleTypeChange(e.target.value)}
-          className="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-700 hover:border-zinc-300 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-colors dark:border-zinc-700 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:border-zinc-600 dark:focus:border-teal-400 dark:focus:ring-teal-400/20"
+          className="border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] px-3 py-2 font-semibold text-[var(--mono-text)] shadow-[3px_3px_0_var(--mono-border-muted)] transition-colors focus:border-[var(--mono-accent)] focus:outline-none focus:ring-0 dark:bg-[var(--mono-surface-alt)]"
         >
           <option value="all">All Projects</option>
           <option value="production">Production Apps</option>
@@ -56,7 +56,7 @@ export function ProjectFilter({ filters, onFiltersChange, availableTags }: Proje
         <select
           value={filters.sortBy}
           onChange={(e) => handleSortChange(e.target.value)}
-          className="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-700 hover:border-zinc-300 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-colors dark:border-zinc-700 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:border-zinc-600 dark:focus:border-teal-400 dark:focus:ring-teal-400/20"
+          className="border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] px-3 py-2 font-semibold text-[var(--mono-text)] shadow-[3px_3px_0_var(--mono-border-muted)] transition-colors focus:border-[var(--mono-accent)] focus:outline-none focus:ring-0 dark:bg-[var(--mono-surface-alt)]"
         >
           <option value="name">Sort: Name</option>
           <option value="recent">Sort: Recent</option>
@@ -67,7 +67,7 @@ export function ProjectFilter({ filters, onFiltersChange, availableTags }: Proje
         {(filters.selectedTags.length > 0 || filters.selectedType !== 'all' || filters.sortBy !== 'name') && (
           <button
             onClick={clearFilters}
-            className="text-sm text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300 transition-colors"
+            className="uppercase tracking-[0.1em] text-[var(--mono-accent)] transition-colors hover:text-[var(--mono-text)]"
           >
             Clear all
           </button>
@@ -80,10 +80,10 @@ export function ProjectFilter({ filters, onFiltersChange, availableTags }: Proje
           <button
             key={tag}
             onClick={() => handleTagToggle(tag)}
-            className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all ${
+            className={`border-2 border-[var(--mono-border)] px-3 py-1 text-[0.625rem] font-semibold uppercase tracking-[0.1em] transition-colors ${
               filters.selectedTags.includes(tag)
-                ? 'bg-teal-500 text-white dark:bg-teal-500'
-                : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700'
+                ? 'bg-[var(--mono-border)] text-[var(--mono-surface)]'
+                : 'bg-[var(--mono-surface-alt)] text-[var(--mono-text)] hover:bg-[var(--mono-surface)]'
             }`}
           >
             {tag}

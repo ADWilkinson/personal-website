@@ -62,12 +62,12 @@ export default function About() {
       intro="Democratizing finance through accessible DeFi solutions.">
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
-          <div className="max-w-xs px-2.5 lg:max-w-none group relative">
+          <div className="group relative aspect-square w-full max-w-xs overflow-hidden border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] shadow-[6px_6px_0_var(--mono-border-muted)] lg:max-w-none">
             <Image
               src={portraitImage}
               alt="Professional portrait of Andrew Wilkinson"
               sizes="(min-width: 1024px) 32rem, 20rem"
-              className="aspect-square rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800 transition-opacity duration-300 dark:group-hover:opacity-0"
+              className="h-full w-full object-cover grayscale contrast-110 transition-opacity duration-300 dark:group-hover:opacity-0"
               quality={85}
               priority
             />
@@ -75,7 +75,7 @@ export default function About() {
               src={davyjonesImage}
               alt="Artistic representation of Davy Jones character"
               sizes="(min-width: 1024px) 32rem, 20rem"
-              className="aspect-square rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800 absolute top-0 left-0 opacity-0 transition-opacity duration-300 dark:group-hover:opacity-100"
+              className="absolute inset-0 h-full w-full object-cover grayscale contrast-110 opacity-0 transition-opacity duration-300 dark:group-hover:opacity-100"
               quality={85}
             />
           </div>

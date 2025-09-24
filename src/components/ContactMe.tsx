@@ -14,11 +14,11 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     >
       <path
         d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+        className="fill-[var(--mono-surface)] stroke-[var(--mono-border)]"
       />
       <path
         d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6"
-        className="stroke-zinc-400 dark:stroke-zinc-500"
+        className="stroke-[var(--mono-border)]"
       />
     </svg>
   )
@@ -26,38 +26,38 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function ContactMe() {
   return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40 transition-all duration-200 hover:shadow-lg hover:border-zinc-200 dark:hover:border-zinc-600">
-      <h2 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+    <div className="border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-6 shadow-[4px_4px_0_var(--mono-border-muted)] transition-transform duration-150 hover:-translate-y-1">
+      <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-[var(--mono-text)]">
         Contact
       </h2>
-      <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+      <p className="mt-4 text-sm leading-relaxed text-[var(--mono-text-muted)]">
         Let's connect about crypto, work, or collaborations.
       </p>
       <div className="mt-4 space-y-3">
         <Link
           href="https://www.linkedin.com/in/andrew-d-wilkinson"
-          className="group flex items-center text-sm text-zinc-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-all duration-200 py-1 hover:translate-x-1"
+          className="group flex items-center justify-between border-b border-dashed border-[var(--mono-border-muted)] pb-2 text-[0.75rem] uppercase tracking-[0.1em] text-[var(--mono-text)] transition-colors duration-150 hover:text-[var(--mono-accent)]"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <LinkedInIcon className="h-4 w-4 flex-none fill-current transition-all duration-200 group-hover:scale-110" />
-          <span className="ml-3">Connect on LinkedIn</span>
+          <span className="flex items-center gap-2"><LinkedInIcon className="h-4 w-4 flex-none fill-current" /> LinkedIn</span>
+          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--mono-text-muted)] group-hover:text-[var(--mono-text)]">/in/andrew</span>
         </Link>
         <Link
           href="mailto:gm@andrewwilkinson.io"
-          className="group flex items-center text-sm text-zinc-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-all duration-200 py-1 hover:translate-x-1"
+          className="group flex items-center justify-between border-b border-dashed border-[var(--mono-border-muted)] pb-2 text-[0.75rem] uppercase tracking-[0.1em] text-[var(--mono-text)] transition-colors duration-150 hover:text-[var(--mono-accent)]"
         >
-          <MailIcon className="h-4 w-4 flex-none transition-all duration-200 group-hover:scale-110" />
-          <span className="ml-3">Send an email</span>
+          <span className="flex items-center gap-2"><MailIcon className="h-4 w-4 flex-none" /> Email</span>
+          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--mono-text-muted)] group-hover:text-[var(--mono-text)]">gm@andrewwilkinson.io</span>
         </Link>
         <Link
           href="https://t.me/DavyJones_0x"
-          className="group flex items-center text-sm text-zinc-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-all duration-200 py-1 hover:translate-x-1"
+          className="group flex items-center justify-between text-[0.75rem] uppercase tracking-[0.1em] text-[var(--mono-text)] transition-colors duration-150 hover:text-[var(--mono-accent)]"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <TelegramIcon className="h-4 w-4 flex-none fill-current transition-all duration-200 group-hover:scale-110" />
-          <span className="ml-3">Message on Telegram</span>
+          <span className="flex items-center gap-2"><TelegramIcon className="h-4 w-4 flex-none fill-current" /> Telegram</span>
+          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--mono-text-muted)] group-hover:text-[var(--mono-text)]">@DavyJones_0x</span>
         </Link>
       </div>
     </div>

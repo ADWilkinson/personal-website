@@ -12,7 +12,7 @@ function NavLink({
   return (
     <Link
       href={href}
-      className="transition-colors duration-200 hover:text-teal-600 dark:hover:text-teal-400"
+      className="text-[0.65rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)] transition-colors duration-150 hover:text-[var(--mono-accent)]"
     >
       {children}
     </Link>
@@ -21,19 +21,19 @@ function NavLink({
 
 export function Footer() {
   return (
-    <footer className="mt-32 flex-none">
+    <footer className="mt-24 flex-none">
       <ContainerOuter>
-        <div className="border-t border-zinc-100 pb-16 pt-10 dark:border-zinc-700/40">
+        <div className="border-t-2 border-[var(--mono-border)] pb-12 pt-8">
           <ContainerInner>
             <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-              <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
+              <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-[var(--mono-text)]">
                 <NavLink href="/about">About</NavLink>
                 <NavLink href="/articles">Articles</NavLink>
                 <NavLink href="/projects">Projects</NavLink>
               </div>
-              <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy; {new Date().getFullYear()} Andrew Wilkinson. All rights
-                reserved. <span className="text-zinc-300 opacity-0 transition-opacity duration-500 hover:opacity-100 dark:text-zinc-600">Davy Jones</span>
+              <p className="text-[0.65rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]">
+                &copy; {new Date().getFullYear()} Andrew Wilkinson · All rights reserved.
+                <span className="ml-2 text-[var(--mono-text-muted)] opacity-0 transition-opacity duration-300 hover:opacity-100">Davy Jones</span>
               </p>
             </div>
           </ContainerInner>

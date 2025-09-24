@@ -86,7 +86,11 @@ function MobileNavItem({
 }) {
   return (
     <li>
-      <PopoverButton as={Link} href={href} className="block py-2">
+      <PopoverButton
+        as={Link}
+        href={href}
+        className="block px-1 py-2 text-[0.75rem] tracking-[0.06em] text-[var(--mono-text)]"
+      >
         {children}
       </PopoverButton>
     </li>
@@ -98,29 +102,29 @@ function MobileNavigation(
 ) {
   return (
     <Popover {...props}>
-      <PopoverButton className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-sm transition-all duration-200 hover:shadow-xl hover:ring-zinc-900/10 dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20 dark:hover:shadow-zinc-900/20">
+      <PopoverButton className="group flex items-center rounded-sm border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] px-4 py-2 text-[0.75rem] font-semibold tracking-[0.08em] text-[var(--mono-text)] shadow-[3px_3px_0_var(--mono-border-muted)] transition-transform duration-150 hover:-translate-y-0.5 dark:bg-[var(--mono-surface-alt)]">
         Menu
-        <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
+        <ChevronDownIcon className="ml-3 h-auto w-2 stroke-[var(--mono-text-muted)] transition-colors duration-150 group-hover:stroke-[var(--mono-accent)]" />
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-xs duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-black/80"
+        className="fixed inset-0 z-50 bg-[var(--mono-border)]/55 backdrop-blur-xs duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-zinc-900 dark:ring-zinc-800"
+        className="fixed inset-x-4 top-8 z-50 origin-top rounded-sm border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-6 text-[var(--mono-text)] shadow-[6px_6px_0_var(--mono-border-muted)] duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-[var(--mono-surface-alt)]"
       >
         <div className="flex flex-row-reverse items-center justify-between">
           <PopoverButton aria-label="Close menu" className="-m-1 p-1">
-            <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
+            <CloseIcon className="h-6 w-6 text-[var(--mono-text-muted)]" />
           </PopoverButton>
-          <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+          <h2 className="text-[0.75rem] font-semibold tracking-[0.08em] text-[var(--mono-text-muted)]">
             Navigation
           </h2>
         </div>
         <nav className="mt-6">
-          <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+          <ul className="-my-2 space-y-1 text-[var(--mono-text)]">
             <MobileNavItem href="/about">About</MobileNavItem>
             <MobileNavItem href="/articles">Articles</MobileNavItem>
             <MobileNavItem href="/projects">Projects</MobileNavItem>
@@ -145,15 +149,15 @@ function NavItem({
       <Link
         href={href}
         className={clsx(
-          'relative block px-3 py-2 transition-all duration-200',
+          'relative block px-3 py-2 text-[0.85rem] tracking-[0.06em] transition-colors duration-150',
           isActive
-            ? 'text-zinc-900 dark:text-zinc-100 font-medium'
-            : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100',
+            ? 'text-[var(--mono-text)]'
+            : 'text-[var(--mono-text-muted)] hover:text-[var(--mono-text)]',
         )}
       >
         {children}
         {isActive && (
-          <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500 via-teal-600 to-teal-500 dark:from-teal-400 dark:via-teal-300 dark:to-teal-400" />
+          <span className="absolute inset-x-0 bottom-0 h-0.5 bg-[var(--mono-border)]" />
         )}
       </Link>
     </li>
@@ -163,7 +167,7 @@ function NavItem({
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
-      <ul className="flex rounded-full border border-zinc-200 bg-white/95 backdrop-blur-sm px-3 text-sm text-zinc-800 shadow-sm transition-shadow duration-200 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-800/95 dark:text-zinc-200">
+      <ul className="flex rounded-sm border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] px-2 py-2 text-[var(--mono-text)] shadow-[4px_4px_0_var(--mono-border-muted)]">
         <NavItem href="/about">About</NavItem>
         <NavItem href="/articles">Articles</NavItem>
         <NavItem href="/projects">Projects</NavItem>
@@ -197,13 +201,13 @@ function ThemeToggle() {
     <button
       type="button"
       aria-label={`Switch to ${otherTheme} theme`}
-      className="rounded-full border border-zinc-200 px-3 py-2 bg-white hover:bg-zinc-50 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 cursor-pointer transition-all duration-200"
+      className="rounded-sm border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] px-3 py-2 text-[var(--mono-text)] shadow-[3px_3px_0_var(--mono-border-muted)] transition-transform duration-150 hover:-translate-y-0.5 dark:bg-[var(--mono-surface-alt)]"
       onClick={() => setTheme(otherTheme)}
     >
       {resolvedTheme === 'dark' ? (
-        <SunIcon className="h-5 w-5 fill-zinc-100 stroke-zinc-500" />
+        <SunIcon className="h-5 w-5 stroke-[var(--mono-text)]" />
       ) : (
-        <MoonIcon className="h-5 w-5 fill-zinc-700 stroke-zinc-500" />
+        <MoonIcon className="h-5 w-5 stroke-[var(--mono-text)]" />
       )}
     </button>
   )
@@ -223,7 +227,7 @@ function AvatarContainer({
     <div
       className={clsx(
         className,
-        'h-10 w-10 rounded-full bg-white p-0.5 dark:bg-zinc-800',
+        'h-10 w-10 overflow-hidden rounded-sm border-2 border-[var(--mono-border)] bg-[var(--mono-surface)]',
       )}
       {...props}
     />
@@ -249,7 +253,7 @@ function Avatar({
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
-          'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
+          'rounded-none bg-[var(--mono-surface-alt)] object-cover grayscale contrast-110',
           large ? 'h-16 w-16' : 'h-9 w-9',
         )}
         priority
@@ -382,14 +386,14 @@ export function Header() {
               className="order-last mt-[calc(--spacing(16)-(--spacing(3)))]"
             />
             <Container
-              className="top-0 order-last -mb-3 pt-3"
+              className="left-0 right-0 top-0 order-last -mb-3 pt-3"
               style={{
                 position:
                   'var(--header-position)' as React.CSSProperties['position'],
               }}
             >
               <div
-                className="top-(--avatar-top,--spacing(3)) w-full"
+                className="left-0 right-0 top-(--avatar-top,--spacing(3)) w-full"
                 style={{
                   position:
                     'var(--header-inner-position)' as React.CSSProperties['position'],
@@ -422,7 +426,7 @@ export function Header() {
           }}
         >
           <Container
-            className="top-(--header-top,--spacing(6)) w-full"
+            className="left-0 right-0 top-(--header-top,--spacing(6)) w-full"
             style={{
               position:
                 'var(--header-inner-position)' as React.CSSProperties['position'],

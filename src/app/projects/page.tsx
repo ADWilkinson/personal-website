@@ -47,6 +47,15 @@ const productionApps: Project[] = [
     category: 'production' as const,
   },
   {
+    name: 'PeerLytics',
+    description:
+      'ZKP2P liquidity intelligence dashboard with Envio-backed analytics APIs and realtime 3D network visualization.',
+    link: { href: 'https://peerlytics.xyz', label: 'peerlytics.xyz', type: 'website' },
+    icon: ChartBarIcon,
+    tags: ['Analytics', 'WebGL'],
+    category: 'production' as const,
+  },
+  {
     name: 'Piggy DAO',
     description:
       'Official website for Piggy DAO, a DeFAI agent developed by Superform with real-time analytics.',
@@ -95,6 +104,24 @@ const projects: Project[] = [
     link: { href: 'https://github.com/ADWilkinson/barbossa-engineer', label: 'barbossa-engineer', type: 'github' },
     icon: ServerIcon,
     tags: ['AI', 'Infrastructure'],
+    category: 'other' as const,
+  },
+  {
+    name: 'PeerLytics Scene Engine',
+    description:
+      'React Three Fiber visualization translating ZKP2P intents, deposits, and verifiers into a realtime 3D liquidity map.',
+    link: { href: 'https://github.com/ADWilkinson/peerlytics', label: 'peerlytics', type: 'github' },
+    icon: GlobeAltIcon,
+    tags: ['WebGL', 'Analytics'],
+    category: 'other' as const,
+  },
+  {
+    name: 'PeerLytics Audit Toolkit',
+    description:
+      'TypeScript CLI that snapshots every analytics endpoint, verifies payload coverage, and keeps the dashboard honest.',
+    link: { href: 'https://github.com/ADWilkinson/peerlytics/tree/main/scripts', label: 'peerlytics/scripts', type: 'github' },
+    icon: BeakerIcon,
+    tags: ['Analytics', 'Developer Tools'],
     category: 'other' as const,
   },
   {
@@ -147,6 +174,15 @@ const projects: Project[] = [
     category: 'other' as const,
   },
   {
+    name: 'SaylorMemes Archive',
+    description:
+      'Firebase-backed media library with search, tagging, and analytics for the wider Bitcoin meme community.',
+    link: { href: 'https://github.com/ADWilkinson/saylormemes', label: 'saylormemes', type: 'github' },
+    icon: PhotoIcon,
+    tags: ['Firebase', 'React'],
+    category: 'other' as const,
+  },
+  {
     name: 'CryptoTierList',
     description:
       'Community-driven platform enabling collaborative ranking of cryptocurrency projects.',
@@ -179,24 +215,24 @@ function ExternalLinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <li className="group relative rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40 transition-all duration-200 hover:shadow-md hover:border-zinc-200 dark:hover:border-zinc-600 hover:scale-[1.02]">
-      <h3 className="text-base font-medium text-zinc-800 group-hover:text-teal-600 dark:text-zinc-100 dark:group-hover:text-teal-400 transition-colors duration-200">
+    <li className="group relative rounded-sm border-2 border-[var(--mono-border)] bg-[var(--mono-surface-alt)] p-6 transition-all duration-150 hover:-translate-y-1 hover:shadow-[4px_4px_0_var(--mono-border-muted)]">
+      <h3 className="text-sm font-semibold tracking-[0.08em] uppercase text-[var(--mono-text)] transition-colors duration-150 group-hover:text-[var(--mono-accent)]">
         <Link href={project.link.href}>
           <span className="absolute inset-0" />
           {project.name}
         </Link>
       </h3>
-      <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+      <p className="mt-3 text-sm leading-relaxed text-[var(--mono-text-muted)]">
         {project.description}
       </p>
       
       {/* Technology tags */}
       {project.tags && project.tags.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-1">
+        <div className="mt-4 flex flex-wrap gap-2">
           {project.tags.slice(0, 2).map((tag) => (
             <span
               key={tag}
-              className="px-2 py-0.5 text-xs font-medium bg-zinc-100 text-zinc-600 rounded dark:bg-zinc-800 dark:text-zinc-400"
+              className="border border-[var(--mono-border)] bg-[var(--mono-surface)] px-2 py-1 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--mono-text)]"
             >
               {tag}
             </span>
@@ -204,7 +240,7 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
       )}
       
-      <p className="mt-4 flex items-center gap-1.5 text-xs text-zinc-400 group-hover:text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400 transition-colors duration-200">
+      <p className="mt-6 flex items-center gap-2 text-[0.625rem] uppercase tracking-[0.18em] text-[var(--mono-text-muted)] transition-colors duration-150 group-hover:text-[var(--mono-text)]">
         {project.link.type === 'github' ? (
           <GitHubIcon className="h-3.5 w-3.5 flex-none fill-current" />
         ) : project.link.type === 'article' ? (
@@ -272,10 +308,10 @@ export default function Projects() {
           <div className="space-y-20">
             {filteredProductionApps.length > 0 && (
               <section>
-                <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-8">
+                <h2 className="mb-8 text-sm font-semibold tracking-[0.12em] uppercase text-[var(--mono-text)]">
                   Current Apps ({filteredProductionApps.length})
                 </h2>
-                <ul role="list" className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+                <ul role="list" className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
                   {filteredProductionApps.map((project) => (
                     <ProjectCard key={project.name} project={project} />
                   ))}
@@ -285,10 +321,10 @@ export default function Projects() {
 
             {filteredOtherProjects.length > 0 && (
               <section>
-                <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-8">
+                <h2 className="mb-8 text-sm font-semibold tracking-[0.12em] uppercase text-[var(--mono-text)]">
                   Other Projects ({filteredOtherProjects.length})
                 </h2>
-                <ul role="list" className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+                <ul role="list" className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
                   {filteredOtherProjects.map((project) => (
                     <ProjectCard key={project.name} project={project} />
                   ))}
@@ -301,10 +337,10 @@ export default function Projects() {
         {/* Show single category when filtered */}
         {filters.selectedType !== 'all' && filteredCount > 0 && (
           <section>
-            <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-8">
+            <h2 className="mb-8 text-sm font-semibold tracking-[0.12em] uppercase text-[var(--mono-text)]">
               {filters.selectedType === 'production' ? 'Current Apps' : 'Other Projects'} ({filteredCount})
             </h2>
-            <ul role="list" className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+            <ul role="list" className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {filteredProjects.map((project) => (
                 <ProjectCard key={project.name} project={project} />
               ))}

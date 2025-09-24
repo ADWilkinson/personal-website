@@ -26,7 +26,10 @@ export function Card<T extends React.ElementType = 'div'>({
 
   return (
     <Component
-      className={clsx(className, 'group relative flex flex-col items-start transition-all duration-200 hover:scale-[1.02]')}
+      className={clsx(
+        'group relative flex flex-col items-start border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-6 shadow-[4px_4px_0_var(--mono-border-muted)] transition-transform duration-150 hover:-translate-y-1',
+        className,
+      )}
     >
       {children}
     </Component>
@@ -39,7 +42,7 @@ Card.Link = function CardLink({
 }: React.ComponentPropsWithoutRef<typeof Link>) {
   return (
     <Link {...props}>
-      <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6" />
+      <span className="absolute inset-0 z-20" />
       <span className="relative z-10">{children}</span>
     </Link>
   )
@@ -56,7 +59,7 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
   let Component = as ?? 'h2'
 
   return (
-    <Component className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 transition-colors duration-200 group-hover:text-teal-600 dark:group-hover:text-teal-400">
+    <Component className="text-sm font-semibold tracking-[0.08em] text-[var(--mono-text)] transition-colors duration-150 group-hover:text-[var(--mono-accent)]">
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
     </Component>
   )
@@ -68,7 +71,7 @@ Card.Description = function CardDescription({
   children: React.ReactNode
 }) {
   return (
-    <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+    <p className="relative z-10 mt-3 text-sm leading-relaxed text-[var(--mono-text-muted)]">
       {children}
     </p>
   )
@@ -78,10 +81,10 @@ Card.Cta = function CardCta({ children }: { children: React.ReactNode }) {
   return (
     <div
       aria-hidden="true"
-      className="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-600 group-hover:text-teal-700 dark:text-teal-400 dark:group-hover:text-teal-300 transition-colors duration-200"
+      className="relative z-10 mt-6 flex items-center text-[0.65rem] uppercase tracking-[0.12em] text-[var(--mono-accent)] transition-colors duration-150 group-hover:text-[var(--mono-text)]"
     >
       {children}
-      <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current transition-transform duration-300 ease-out group-hover:translate-x-2" />
+      <ChevronRightIcon className="ml-2 h-4 w-4 stroke-current transition-transform duration-300 ease-out group-hover:translate-x-2" />
     </div>
   )
 }
@@ -102,7 +105,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
     <Component
       className={clsx(
         className,
-        'relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500',
+        'relative z-10 order-first mb-4 flex items-center text-[0.65rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]',
         decorate && 'pl-3.5',
       )}
       {...props}
@@ -112,7 +115,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
           className="absolute inset-y-0 left-0 flex items-center"
           aria-hidden="true"
         >
-          <span className="h-4 w-0.5 rounded-full bg-gradient-to-b from-teal-400 to-teal-600 dark:from-teal-500 dark:to-teal-700" />
+          <span className="h-4 w-0.5 bg-[var(--mono-border)]" />
         </span>
       )}
       {children}
