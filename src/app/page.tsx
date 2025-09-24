@@ -139,7 +139,7 @@ export default async function Home() {
 
   return (
     <>
-      <Container className="mt-9">
+      <Container className="mt-24">
         <div className="grid grid-cols-1 gap-y-6 lg:grid-cols-3 lg:gap-x-8">
           <div className="lg:col-span-2">
             <h1 className="text-3xl font-semibold tracking-tight text-[var(--mono-text)] sm:text-4xl">
