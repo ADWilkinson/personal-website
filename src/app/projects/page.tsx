@@ -75,16 +75,6 @@ const productionApps: Project[] = [
     category: 'production' as const,
   },
   {
-    name: 'SaylorMemes',
-    description:
-      'Cryptocurrency meme generator featuring customizable templates and editing tools.',
-    link: { href: 'https://saylormemes.com', label: 'saylormemes.com', type: 'website' },
-    icon: PhotoIcon,
-    image: saylorImage,
-    tags: ['Memes'],
-    category: 'production' as const,
-  },
-  {
     name: 'ChordCraft',
     description:
       'AI chord progression generator helping musicians create compelling harmonic sequences.',
@@ -177,7 +167,7 @@ const projects: Project[] = [
     name: 'SaylorMemes Archive',
     description:
       'Firebase-backed media library with search, tagging, and analytics for the wider Bitcoin meme community.',
-    link: { href: 'https://github.com/ADWilkinson/saylormemes', label: 'saylormemes', type: 'github' },
+    link: { href: 'https://saylormemes.com', label: 'saylormemes.com', type: 'website' },
     icon: PhotoIcon,
     tags: ['Firebase', 'React'],
     category: 'other' as const,
