@@ -97,15 +97,6 @@ const projects: Project[] = [
     category: 'other' as const,
   },
   {
-    name: 'PeerLytics Scene Engine',
-    description:
-      'React Three Fiber visualization translating ZKP2P intents, deposits, and verifiers into a realtime 3D liquidity map.',
-    link: { href: 'https://github.com/ADWilkinson/peerlytics', label: 'peerlytics', type: 'github' },
-    icon: GlobeAltIcon,
-    tags: ['WebGL', 'Analytics'],
-    category: 'other' as const,
-  },
-  {
     name: 'PeerLytics Audit Toolkit',
     description:
       'TypeScript CLI that snapshots every analytics endpoint, verifies payload coverage, and keeps the dashboard honest.',
