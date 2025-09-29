@@ -87,7 +87,7 @@ function MobileNavItem({
       <PopoverButton
         as={Link}
         href={href}
-        className="block px-1 py-2 text-[0.75rem] tracking-[0.06em] text-[var(--mono-text)]"
+        className="block border-l-2 border-transparent px-3 py-2 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--mono-text)] transition-all duration-200 hover:border-[var(--mono-accent)] hover:text-[var(--mono-accent)]"
       >
         {children}
       </PopoverButton>
@@ -100,29 +100,29 @@ function MobileNavigation(
 ) {
   return (
     <Popover {...props}>
-      <PopoverButton className="group flex items-center rounded-sm border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] px-4 py-2 text-[0.75rem] font-semibold tracking-[0.08em] text-[var(--mono-text)] shadow-[3px_3px_0_var(--mono-border-muted)] transition-transform duration-150 hover:-translate-y-0.5 dark:bg-[var(--mono-surface-alt)]">
+      <PopoverButton className="group flex items-center border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] px-3 py-2 text-[0.625rem] font-bold uppercase tracking-[0.12em] text-[var(--mono-text)] shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]">
         Menu
-        <ChevronDownIcon className="ml-3 h-auto w-2 stroke-[var(--mono-text-muted)] transition-colors duration-150 group-hover:stroke-[var(--mono-accent)]" />
+        <ChevronDownIcon className="ml-2 h-3 w-3 stroke-[var(--mono-text)] stroke-2" />
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-50 bg-[var(--mono-border)]/55 backdrop-blur-xs duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+        className="fixed inset-0 z-50 bg-[var(--mono-border)]/40 backdrop-blur-sm duration-200 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-4 top-8 z-50 origin-top rounded-sm border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-6 text-[var(--mono-text)] shadow-[6px_6px_0_var(--mono-border-muted)] duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-[var(--mono-surface-alt)]"
+        className="fixed inset-x-4 top-4 z-50 origin-top border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-4 shadow-[var(--shadow-lg)] duration-200 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
       >
-        <div className="flex flex-row-reverse items-center justify-between">
-          <PopoverButton aria-label="Close menu" className="-m-1 p-1">
-            <CloseIcon className="h-6 w-6 text-[var(--mono-text-muted)]" />
-          </PopoverButton>
-          <h2 className="text-[0.75rem] font-semibold tracking-[0.08em] text-[var(--mono-text-muted)]">
+        <div className="flex items-center justify-between">
+          <h2 className="text-[0.625rem] font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
             Navigation
           </h2>
+          <PopoverButton aria-label="Close menu" className="p-1">
+            <CloseIcon className="h-5 w-5 text-[var(--mono-text)]" />
+          </PopoverButton>
         </div>
-        <nav className="mt-6">
-          <ul className="-my-2 space-y-1 text-[var(--mono-text)]">
+        <nav className="mt-4">
+          <ul className="space-y-2">
             <MobileNavItem href="/about">About</MobileNavItem>
             <MobileNavItem href="/articles">Articles</MobileNavItem>
             <MobileNavItem href="/projects">Projects</MobileNavItem>
@@ -143,20 +143,17 @@ function NavItem({
   let isActive = usePathname() === href
 
   return (
-    <li>
+    <li className="relative">
       <Link
         href={href}
         className={clsx(
-          'relative block px-3 py-2 text-[0.85rem] tracking-[0.06em] transition-colors duration-150',
+          'block px-4 py-3 text-[0.625rem] font-bold uppercase tracking-[0.12em] transition-colors duration-200',
           isActive
-            ? 'text-[var(--mono-text)]'
-            : 'text-[var(--mono-text-muted)] hover:text-[var(--mono-text)]',
+            ? 'bg-[var(--mono-border)] text-[var(--mono-surface)]'
+            : 'text-[var(--mono-text)] hover:bg-[var(--mono-surface-alt)]',
         )}
       >
         {children}
-        {isActive && (
-          <span className="absolute inset-x-0 bottom-0 h-0.5 bg-[var(--mono-border)]" />
-        )}
       </Link>
     </li>
   )
@@ -165,7 +162,7 @@ function NavItem({
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
-      <ul className="flex rounded-sm border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] px-2 py-2 text-[var(--mono-text)] shadow-[4px_4px_0_var(--mono-border-muted)]">
+      <ul className="flex items-center border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] shadow-[var(--shadow-md)]">
         <NavItem href="/about">About</NavItem>
         <NavItem href="/articles">Articles</NavItem>
         <NavItem href="/projects">Projects</NavItem>
@@ -179,9 +176,9 @@ function HomePill() {
     <Link
       href="/"
       aria-label="Back to home"
-      className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-sm border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] text-[var(--mono-text)] shadow-[3px_3px_0_var(--mono-border-muted)] transition-transform duration-150 hover:-translate-y-0.5"
+      className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] text-[var(--mono-text)] shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
     >
-      <span className="text-lg leading-none">⌂</span>
+      <span className="text-lg font-bold leading-none">⌂</span>
     </Link>
   )
 }
@@ -200,9 +197,9 @@ function ThemeToggle() {
       <button
         type="button"
         aria-label="Toggle theme"
-        className="group rounded-full bg-white/90 px-3 py-2 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm transition cursor-pointer"
+        className="inline-flex h-10 w-10 items-center justify-center border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] shadow-[var(--shadow-sm)]"
       >
-        <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500" />
+        <SunIcon className="h-4 w-4 stroke-[var(--mono-text)]" />
       </button>
     )
   }
@@ -211,13 +208,13 @@ function ThemeToggle() {
     <button
       type="button"
       aria-label={`Switch to ${otherTheme} theme`}
-      className="rounded-sm border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] px-3 py-2 text-[var(--mono-text)] shadow-[3px_3px_0_var(--mono-border-muted)] transition-transform duration-150 hover:-translate-y-0.5 dark:bg-[var(--mono-surface-alt)]"
+      className="inline-flex h-10 w-10 items-center justify-center border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] text-[var(--mono-text)] shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
       onClick={() => setTheme(otherTheme)}
     >
       {resolvedTheme === 'dark' ? (
-        <SunIcon className="h-5 w-5 stroke-[var(--mono-text)]" />
+        <SunIcon className="h-4 w-4 stroke-[var(--mono-text)] stroke-2" />
       ) : (
-        <MoonIcon className="h-5 w-5 stroke-[var(--mono-text)]" />
+        <MoonIcon className="h-4 w-4 stroke-[var(--mono-text)] stroke-2" />
       )}
     </button>
   )
@@ -230,116 +227,29 @@ function clamp(number: number, a: number, b: number) {
 }
 
 export function Header() {
-  let headerRef = useRef<React.ElementRef<'div'>>(null)
-  let isInitial = useRef(true)
-
-  useEffect(() => {
-    const downDelay = 0
-    const upDelay = 64
-
-    function setProperty(property: string, value: string) {
-      document.documentElement.style.setProperty(property, value)
-    }
-
-    function removeProperty(property: string) {
-      document.documentElement.style.removeProperty(property)
-    }
-
-    function updateHeaderStyles() {
-      if (!headerRef.current) {
-        return
-      }
-
-      let { top, height } = headerRef.current.getBoundingClientRect()
-      let scrollY = clamp(
-        window.scrollY,
-        0,
-        document.body.scrollHeight - window.innerHeight,
-      )
-
-      if (isInitial.current) {
-        setProperty('--header-position', 'sticky')
-      }
-
-      setProperty('--content-offset', '0px')
-
-      if (isInitial.current || scrollY < downDelay) {
-        setProperty('--header-height', `${downDelay + height}px`)
-        setProperty('--header-mb', `${-downDelay}px`)
-      } else if (top + height < -upDelay) {
-        let offset = Math.max(height, scrollY - upDelay)
-        setProperty('--header-height', `${offset}px`)
-        setProperty('--header-mb', `${height - offset}px`)
-      } else if (top === 0) {
-        setProperty('--header-height', `${scrollY + height}px`)
-        setProperty('--header-mb', `${-scrollY}px`)
-      }
-
-      if (top === 0 && scrollY > 0) {
-        setProperty('--header-inner-position', 'fixed')
-        removeProperty('--header-top')
-      } else {
-        removeProperty('--header-inner-position')
-        setProperty('--header-top', '0px')
-      }
-    }
-
-    function updateStyles() {
-      updateHeaderStyles()
-      isInitial.current = false
-    }
-
-    updateStyles()
-    window.addEventListener('scroll', updateStyles, { passive: true })
-    window.addEventListener('resize', updateStyles)
-
-    return () => {
-      window.removeEventListener('scroll', updateStyles)
-      window.removeEventListener('resize', updateStyles)
-    }
-  }, [])
-
   return (
-    <>
-      <header
-        className="pointer-events-none relative z-50 flex flex-none flex-col"
-        style={{
-          height: 'var(--header-height)',
-          marginBottom: 'var(--header-mb)',
-        }}
-      >
-        <div
-          ref={headerRef}
-          className="top-0 z-10 h-16 pt-6"
-          style={{
-            position:
-              'var(--header-position)' as React.CSSProperties['position'],
-          }}
-        >
-          <Container
-            className="left-0 right-0 top-(--header-top,--spacing(6)) w-full"
-            style={{
-              position:
-                'var(--header-inner-position)' as React.CSSProperties['position'],
-            }}
-          >
-            <div className="relative flex gap-4">
-              <div className="flex flex-1 items-center">
-                <HomePill />
-              </div>
-              <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation className="pointer-events-auto md:hidden" />
-                <DesktopNavigation className="pointer-events-auto hidden md:block" />
-              </div>
-              <div className="flex justify-end md:flex-1">
-                <div className="pointer-events-auto">
-                  <ThemeToggle />
-                </div>
-              </div>
+    <header className="border-b-2 border-[var(--mono-border)] bg-[var(--mono-surface)]">
+      <div className="px-6 py-4 sm:px-8 lg:px-12">
+        <nav className="flex items-center justify-between">
+          {/* Home button */}
+          <HomePill />
+
+          {/* Desktop navigation - centered */}
+          <div className="hidden md:block">
+            <DesktopNavigation />
+          </div>
+
+          {/* Right side actions */}
+          <div className="flex items-center gap-3">
+            {/* Mobile menu */}
+            <div className="md:hidden">
+              <MobileNavigation />
             </div>
-          </Container>
-        </div>
-      </header>
-    </>
+            {/* Theme toggle */}
+            <ThemeToggle />
+          </div>
+        </nav>
+      </div>
+    </header>
   )
 }

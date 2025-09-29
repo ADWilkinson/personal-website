@@ -81,10 +81,10 @@ Card.Cta = function CardCta({ children }: { children: React.ReactNode }) {
   return (
     <div
       aria-hidden="true"
-      className="relative z-10 mt-6 flex items-center text-[0.65rem] uppercase tracking-[0.12em] text-[var(--mono-accent)] transition-colors duration-150 group-hover:text-[var(--mono-text)]"
+      className="relative z-10 mt-4 sm:mt-6 flex items-center text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--mono-accent)] transition-colors duration-200 group-hover:text-[var(--mono-text)]"
     >
       {children}
-      <ChevronRightIcon className="ml-2 h-4 w-4 stroke-current transition-transform duration-300 ease-out group-hover:translate-x-2" />
+      <ChevronRightIcon className="ml-2 h-3 w-3 stroke-current stroke-2 transition-transform duration-300 ease-out group-hover:translate-x-1" />
     </div>
   )
 }

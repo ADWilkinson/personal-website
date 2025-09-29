@@ -48,8 +48,8 @@ export default async function ArticlesIndex() {
       title="Articles on Blockchain, DeFi, and Technology"
       intro="My thoughts and experiences in blockchain, DeFi, and technology projects."
     >
-      <div className="max-w-2xl">
-        <div className="flex flex-col space-y-16">
+      <div className="mx-auto max-w-3xl">
+        <div className="space-y-6">
           {articles.map((article) => (
             <Article key={article.slug} article={article} />
           ))}

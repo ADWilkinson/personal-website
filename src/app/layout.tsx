@@ -46,9 +46,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head />
-      <body className="relative flex min-h-screen w-full flex-col bg-[var(--mono-canvas)] text-[var(--mono-text)] font-mono">
+      <body className="relative min-h-screen w-full bg-[var(--mono-canvas)] text-[var(--mono-text)] font-mono">
         <Providers>
-          <div className="flex w-full">
+          <div className="w-full">
             <Layout>{children}</Layout>
             <DavyJonesEasterEgg />
           </div>

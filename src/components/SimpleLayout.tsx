@@ -1,5 +1,3 @@
-import { Container } from '@/components/Container'
-
 export function SimpleLayout({
   title,
   intro,
@@ -10,16 +8,16 @@ export function SimpleLayout({
   children?: React.ReactNode
 }) {
   return (
-    <Container className="mt-14 sm:mt-24 animate-fade-in">
-      <header className="max-w-2xl space-y-4">
-        <h1 className="text-3xl font-semibold tracking-tight text-[var(--mono-text)] sm:text-4xl">
+    <div className="mx-auto max-w-4xl animate-fade-in">
+      <header className="mb-8 sm:mb-12">
+        <h1 className="mb-4 text-2xl font-bold uppercase tracking-[0.08em] text-[var(--mono-text)] sm:text-3xl">
           {title}
         </h1>
-        <p className="text-sm leading-6 tracking-[0.02em] text-[var(--mono-text-muted)]">
+        <p className="max-w-2xl text-sm leading-relaxed tracking-[0.02em] text-[var(--mono-text-muted)]">
           {intro}
         </p>
       </header>
-      {children && <div className="mt-14 sm:mt-16">{children}</div>}
-    </Container>
+      {children && <div className="animate-slide-in">{children}</div>}
+    </div>
   )
 }

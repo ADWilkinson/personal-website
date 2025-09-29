@@ -138,49 +138,57 @@ export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
 
   return (
-    <>
-      <Container className="mt-24">
-        <div className="grid grid-cols-1 gap-y-6 lg:grid-cols-3 lg:gap-x-8">
-          <div className="lg:col-span-2">
-            <h1 className="text-3xl font-semibold tracking-tight text-[var(--mono-text)] sm:text-4xl">
-              Senior Software Engineer<br />
-              Former VC-backed Founder
-            </h1>
-            <p className="mt-6 text-sm leading-7 tracking-[0.02em] text-[var(--mono-text-muted)]">
-              Building trust-minimized fiat-to-crypto onramps using zkTLS. Previously shipped MVPs that raised $3M+ combined, managed $20M+ in value, and built a 6,000+ member community. Specialize in 0-to-1 products with hands-on technical execution.
-            </p>
-            <div className="mt-6 flex gap-6">
-              <SocialLink
-                href={SOCIAL_LINKS.github}
-                aria-label="Follow on GitHub"
-                icon={GitHubIcon}
-              />
-              <SocialLink
-                href={SOCIAL_LINKS.twitter}
-                aria-label="Follow on Twitter"
-                icon={XIcon}
-              />
-            </div>
-          </div>
-          <div className="lg:col-span-1">
-            <div className="mt-6 lg:mt-0">
-              <ContactMe />
-            </div>
+    <div className="mx-auto max-w-5xl space-y-12">
+      {/* Hero Section */}
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="lg:col-span-2 space-y-6">
+          <h1 className="text-2xl font-bold uppercase tracking-[0.08em] text-[var(--mono-text)] sm:text-3xl">
+            Senior Software Engineer<br />
+            Former VC-backed Founder
+          </h1>
+          <p className="text-sm leading-relaxed tracking-[0.02em] text-[var(--mono-text-muted)]">
+            Building trust-minimized fiat-to-crypto onramps using zkTLS. Previously shipped MVPs that raised $3M+ combined, managed $20M+ in value, and built a 6,000+ member community. Specialize in 0-to-1 products with hands-on technical execution.
+          </p>
+          <div className="flex gap-3">
+            <SocialLink
+              href={SOCIAL_LINKS.github}
+              aria-label="Follow on GitHub"
+              icon={GitHubIcon}
+            />
+            <SocialLink
+              href={SOCIAL_LINKS.twitter}
+              aria-label="Follow on Twitter"
+              icon={XIcon}
+            />
           </div>
         </div>
-      </Container>
-      <Container className="mt-24 md:mt-28">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
+        <div className="lg:col-span-1">
+          <ContactMe />
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        {/* Articles */}
+        <div className="space-y-4">
+          <h2 className="text-[0.625rem] font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+            Latest Articles
+          </h2>
+          <div className="space-y-4">
             {articles.map((article) => (
               <Article key={article.slug} article={article} />
             ))}
           </div>
-          <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Resume />
-          </div>
         </div>
-      </Container>
-    </>
+
+        {/* Work Experience */}
+        <div className="space-y-4">
+          <h2 className="text-[0.625rem] font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+            Experience
+          </h2>
+          <Resume />
+        </div>
+      </div>
+    </div>
   )
 }

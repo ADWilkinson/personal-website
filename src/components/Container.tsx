@@ -1,13 +1,14 @@
 import { forwardRef } from 'react'
 import clsx from 'clsx'
 
+// Simplified container system with consistent sizing
 export const ContainerOuter = forwardRef<
   React.ElementRef<'div'>,
   React.ComponentPropsWithoutRef<'div'>
 >(function OuterContainer({ className, children, ...props }, ref) {
   return (
-    <div ref={ref} className={clsx('px-4 sm:px-6', className)} {...props}>
-      <div className="mx-auto w-full max-w-5xl">{children}</div>
+    <div ref={ref} className={clsx('w-full', className)} {...props}>
+      <div className="mx-auto w-full max-w-4xl">{children}</div>
     </div>
   )
 })
@@ -19,21 +20,40 @@ export const ContainerInner = forwardRef<
   return (
     <div
       ref={ref}
-      className={clsx('relative px-0', className)}
+      className={clsx('mx-auto w-full max-w-3xl', className)}
       {...props}
     >
-      <div className="mx-auto max-w-3xl lg:max-w-4xl">{children}</div>
+      {children}
     </div>
   )
 })
 
+// Main container component - centered by default
 export const Container = forwardRef<
-  React.ElementRef<typeof ContainerOuter>,
-  React.ComponentPropsWithoutRef<typeof ContainerOuter>
->(function Container({ children, ...props }, ref) {
+  React.ElementRef<'div'>,
+  React.ComponentPropsWithoutRef<'div'> & {
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  }
+>(function Container({ children, className, size = 'md', ...props }, ref) {
+  const sizeClasses = {
+    xs: 'max-w-xl',
+    sm: 'max-w-2xl',
+    md: 'max-w-3xl',
+    lg: 'max-w-4xl',
+    xl: 'max-w-5xl',
+  }
+
   return (
-    <ContainerOuter ref={ref} {...props}>
-      <ContainerInner>{children}</ContainerInner>
-    </ContainerOuter>
+    <div
+      ref={ref}
+      className={clsx(
+        'mx-auto w-full',
+        sizeClasses[size],
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </div>
   )
 })
