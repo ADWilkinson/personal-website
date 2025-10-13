@@ -7,29 +7,32 @@ import { formatDate } from '@/lib/formatDate'
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
-    <article className="md:grid md:grid-cols-4 md:items-baseline">
-      <Card className="md:col-span-3">
-        <Card.Title href={`/articles/${article.slug}`}>
-          {article.title}
-        </Card.Title>
-        <Card.Eyebrow
-          as="time"
-          dateTime={article.date}
-          className="md:hidden"
-          decorate
-        >
-          {formatDate(article.date)}
-        </Card.Eyebrow>
-        <Card.Description>{article.description}</Card.Description>
-        <Card.Cta>Read article</Card.Cta>
-      </Card>
-      <Card.Eyebrow
-        as="time"
-        dateTime={article.date}
-        className="mt-1 hidden md:block"
-      >
-        {formatDate(article.date)}
-      </Card.Eyebrow>
+    <article className="group relative">
+      <div className="border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
+        {/* Date badge with terminal styling */}
+        <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-[var(--mono-text-muted)]">
+          <span>[</span>
+          <time dateTime={article.date}>{formatDate(article.date)}</time>
+          <span>]</span>
+        </div>
+
+        {/* Title */}
+        <h2 className="text-sm font-bold uppercase tracking-[0.12em] text-[var(--mono-text)]">
+          <Card.Title href={`/articles/${article.slug}`}>
+            {article.title}
+          </Card.Title>
+        </h2>
+
+        {/* Description */}
+        <p className="mt-2 text-sm leading-relaxed text-[var(--mono-text-muted)]">
+          {article.description}
+        </p>
+
+        {/* CTA */}
+        <div className="mt-3 text-xs font-bold uppercase tracking-[0.15em]">
+          <Card.Cta>Read article</Card.Cta>
+        </div>
+      </div>
     </article>
   )
 }
@@ -48,10 +51,17 @@ export default async function ArticlesIndex() {
       title="Articles on Blockchain, DeFi, and Technology"
       intro="My thoughts and experiences in blockchain, DeFi, and technology projects."
     >
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-2xl">
         <div className="space-y-6">
-          {articles.map((article) => (
-            <Article key={article.slug} article={article} />
+          {articles.map((article, index) => (
+            <div key={article.slug}>
+              {index > 0 && (
+                <div className="mb-6 text-center text-[var(--mono-border)] opacity-50">
+                  ─────────────────────────
+                </div>
+              )}
+              <Article article={article} />
+            </div>
           ))}
         </div>
       </div>

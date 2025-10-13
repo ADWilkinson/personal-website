@@ -116,7 +116,7 @@ function Resume() {
 
   return (
     <div className="border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-6 shadow-[4px_4px_0_var(--mono-border-muted)]">
-      <h2 className="flex items-center gap-3 text-[0.75rem] font-semibold uppercase tracking-[0.28em] text-[var(--mono-text)]">
+      <h2 className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
         <BriefcaseIcon className="h-5 w-5 flex-none" />
         Work Log
       </h2>
@@ -171,7 +171,7 @@ export default async function Home() {
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
         {/* Articles */}
         <div className="space-y-4">
-          <h2 className="text-[0.625rem] font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+          <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
             Latest Articles
           </h2>
           <div className="space-y-4">
@@ -183,7 +183,7 @@ export default async function Home() {
 
         {/* Work Experience */}
         <div className="space-y-4">
-          <h2 className="text-[0.625rem] font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+          <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
             Experience
           </h2>
           <Resume />

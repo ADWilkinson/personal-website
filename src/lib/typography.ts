@@ -3,8 +3,8 @@
 export const typography = {
   // Headings
   h1: 'text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100',
-  h2: 'text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100',
-  h3: 'text-lg sm:text-xl font-medium tracking-tight text-zinc-900 dark:text-zinc-100',
+  h2: 'text-sm font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]',
+  h3: 'text-sm font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]',
   h4: 'text-base sm:text-lg font-medium tracking-tight text-zinc-900 dark:text-zinc-100',
   
   // Body text

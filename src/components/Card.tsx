@@ -27,7 +27,7 @@ export function Card<T extends React.ElementType = 'div'>({
   return (
     <Component
       className={clsx(
-        'group relative flex flex-col items-start border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-6 shadow-[4px_4px_0_var(--mono-border-muted)] transition-transform duration-150 hover:-translate-y-1',
+        'group relative flex flex-col items-start border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-4 shadow-[4px_4px_0_var(--mono-border-muted)] transition-transform duration-150 hover:-translate-y-1',
         className,
       )}
     >

@@ -21,7 +21,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   className = clsx(
-    'inline-flex items-center gap-2 justify-center rounded-md py-2 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 dark:focus:ring-offset-zinc-900',
+    'inline-flex items-center gap-2 justify-center rounded-md py-2 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--mono-accent)] dark:focus:ring-offset-zinc-900',
     variantStyles[variant],
     className,
   )

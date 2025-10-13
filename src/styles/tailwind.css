@@ -114,6 +114,11 @@
     color: var(--mono-text);
     min-height: 100vh;
     position: relative;
+    overscroll-behavior-y: none;
+  }
+
+  html {
+    overscroll-behavior-y: none;
   }
 
   body::before {

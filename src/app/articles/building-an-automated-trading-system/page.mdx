@@ -18,14 +18,14 @@ export default (props) => <ArticleLayout article={article} {...props} />
 ## Introduction
 
 <div className="lead-paragraph mb-5 text-base text-zinc-600 dark:text-zinc-400">
-  <p>Automation is a cornerstone of trading activity within DeFi, with examples of this being active liquidity management, arbitrage opportunities between AMMs, yield position compounding, and active trading strategies. I've been having fun tinkering away with <a href="https://claude.ai" className="text-teal-600 dark:text-teal-400 hover:underline">claude.ai</a> lately and wanted to see if I could build something a little more interesting in a couple of days and write about my experience.</p>
+  <p>Automation is a cornerstone of trading activity within DeFi, with examples of this being active liquidity management, arbitrage opportunities between AMMs, yield position compounding, and active trading strategies. I've been having fun tinkering away with <a href="https://claude.ai" className="text-[var(--mono-accent)] hover:underline">claude.ai</a> lately and wanted to see if I could build something a little more interesting in a couple of days and write about my experience.</p>
 </div>
 
 <div className="space-y-4">
   <p>So, I had an idea of what I wanted to do: automate the winding up and down of a <strong>long/short portfolio</strong> based on a custom strategy that can be iterated over time. I had a high-level architecture in mind and a familiar tech stack, as I wanted to understand the generated code for tweaking purposes; aside from that, I aimed to see how far I could get with <strong>Claude</strong>.</p>
 
-  <div className="bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-500 dark:border-teal-400 p-3 my-4 rounded-r-md">
-    <p className="text-teal-700 dark:text-teal-300 m-0">Fast-forward to the fruits of the effort, and within 48 hours, we have a live deployed automated trading bot loaded up with $500 currently winding up and down a long/short portfolio on the DEX, <a href="https://hyperliquid.xyz/" className="text-teal-600 dark:text-teal-400 hover:underline">Hyperliquid</a>, and a production website to monitor the portfolio and its live positions.</p>
+  <div className="bg-[var(--mono-surface-alt)] border-l-4 border-[var(--mono-border)] p-3 my-4 rounded-r-md">
+    <p className="text-[var(--mono-text)] m-0">Fast-forward to the fruits of the effort, and within 48 hours, we have a live deployed automated trading bot loaded up with $500 currently winding up and down a long/short portfolio on the DEX, <a href="https://hyperliquid.xyz/" className="text-[var(--mono-accent)] hover:underline">Hyperliquid</a>, and a production website to monitor the portfolio and its live positions.</p>
   </div>
 
   <p>Now, let's go into the journey of building it before, and at the end, I'll give my thoughts and insights on the experience of AI-assisted development and how I plan to go further with the project.</p>
@@ -184,13 +184,13 @@ This architecture allows for easy future maintainability and extendability by si
 <h3 className="font-bold text-zinc-800 dark:text-zinc-200 my-4">Key Learnings</h3>
 
 <div className="space-y-4">
-  <div className="p-3 border-l-4 border-teal-500 bg-teal-50 dark:bg-zinc-800 dark:border-teal-400 rounded-r-lg">
-    <h4 className="font-semibold text-teal-700 dark:text-teal-300">AI-Assisted Rapid Prototyping</h4>
+  <div className="p-3 border-l-4 border-[var(--mono-border)] bg-[var(--mono-surface-alt)] rounded-r-lg">
+    <h4 className="font-semibold text-[var(--mono-text)]">AI-Assisted Rapid Prototyping</h4>
     <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-base m-0">The power of AI-assisted development is incredible for rapid prototyping, but to build something remotely complex, you still need your own technical skills to understand what is being generated and how to integrate the code best.</p>
   </div>
   
-  <div className="p-3 border-l-4 border-blue-500 bg-blue-50 dark:bg-zinc-800 dark:border-blue-400 rounded-r-lg">
-    <h4 className="font-semibold text-blue-700 dark:text-blue-300">AI Has Limitations</h4>
+  <div className="p-3 border-l-4 border-[var(--mono-border)] bg-[var(--mono-surface-alt)] rounded-r-lg">
+    <h4 className="font-semibold text-[var(--mono-text)]">AI Has Limitations</h4>
     <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-base m-0">The AI is not always right, and that's okay! The experiment wasn't to see if the AI could replace me in developing the bot entirely; it was to see how much faster I could work with it assisting it—and the TLDR here is much quicker. There were a lot of minor business logic errors or slight quirks in the output of what was being generated, and simply because I am familiar with the stack, I could easily navigate and steer it back on track or correct it myself.</p>
   </div>
   

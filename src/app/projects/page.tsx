@@ -97,15 +97,6 @@ const projects: Project[] = [
     category: 'other' as const,
   },
   {
-    name: 'PeerLytics Audit Toolkit',
-    description:
-      'TypeScript CLI that snapshots every analytics endpoint, verifies payload coverage, and keeps the dashboard honest.',
-    link: { href: 'https://github.com/ADWilkinson/peerlytics/tree/main/scripts', label: 'peerlytics/scripts', type: 'github' },
-    icon: BeakerIcon,
-    tags: ['Analytics', 'Developer Tools'],
-    category: 'other' as const,
-  },
-  {
     name: 'The Flying Dutchman Theme',
     description:
       'Dark VS Code theme inspired by maritime legends with careful syntax highlighting.',
@@ -196,41 +187,53 @@ function ExternalLinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <li className="group relative border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]">
-      <h3 className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--mono-text)] transition-colors duration-200 group-hover:text-[var(--mono-accent)]">
-        <Link href={project.link.href}>
-          <span className="absolute inset-0" />
-          {project.name}
-        </Link>
-      </h3>
-      <p className="mt-2 text-xs leading-relaxed text-[var(--mono-text-muted)]">
-        {project.description}
-      </p>
-
-      {/* Technology tags */}
-      {project.tags && project.tags.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-1">
-          {project.tags.slice(0, 2).map((tag) => (
-            <span
-              key={tag}
-              className="border border-[var(--mono-border-muted)] bg-[var(--mono-surface-alt)] px-2 py-0.5 text-[0.5rem] font-bold uppercase tracking-[0.12em] text-[var(--mono-text)]"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-
-      <p className="mt-4 flex items-center gap-2 text-[0.5rem] font-bold uppercase tracking-[0.15em] text-[var(--mono-text-muted)] transition-colors duration-200 group-hover:text-[var(--mono-text)]">
-        {project.link.type === 'github' ? (
-          <GitHubIcon className="h-3 w-3 flex-none fill-current" />
-        ) : project.link.type === 'article' ? (
-          <span className="text-[0.6rem]">📖</span>
-        ) : (
-          <ExternalLinkIcon className="h-3 w-3 flex-none" />
+    <li className="group relative">
+      <div className="relative border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
+        {/* Status badge for production apps */}
+        {project.category === 'production' && (
+          <div className="absolute right-2 top-2 z-10 text-[0.5rem] font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+            [LIVE]
+          </div>
         )}
-        <span>{project.link.label}</span>
-      </p>
+
+        <div className="relative p-4">
+          <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-[var(--mono-text)]">
+            <Link href={project.link.href}>
+              <span className="absolute inset-0" />
+              {project.name}
+            </Link>
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-[var(--mono-text-muted)]">
+            {project.description}
+          </p>
+
+          {/* Technology tags */}
+          {project.tags && project.tags.length > 0 && (
+            <div className="mt-3 flex flex-wrap gap-1">
+              {project.tags.slice(0, 2).map((tag) => (
+                <span
+                  key={tag}
+                  className="border border-[var(--mono-border-muted)] bg-[var(--mono-surface-alt)] px-2 py-0.5 text-xs font-bold uppercase tracking-[0.12em] text-[var(--mono-text)]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Link */}
+          <p className="mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-[var(--mono-text-muted)]">
+            {project.link.type === 'github' ? (
+              <GitHubIcon className="h-3 w-3 flex-none fill-current" />
+            ) : project.link.type === 'article' ? (
+              <span className="text-[0.6rem]">📖</span>
+            ) : (
+              <ExternalLinkIcon className="h-3 w-3 flex-none" />
+            )}
+            <span>{project.link.label}</span>
+          </p>
+        </div>
+      </div>
     </li>
   )
 }
@@ -277,7 +280,7 @@ export default function Projects() {
                 selectedType: 'all',
                 sortBy: 'name'
               })}
-              className="mt-2 text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300 transition-colors"
+              className="mt-2 text-[var(--mono-accent)] hover:underline transition-colors"
             >
               Clear all filters
             </button>
@@ -289,9 +292,14 @@ export default function Projects() {
           <div className="space-y-20">
             {filteredProductionApps.length > 0 && (
               <section>
-                <h2 className="mb-6 text-xs font-bold tracking-[0.15em] uppercase text-[var(--mono-text)]">
-                  Current Apps ({filteredProductionApps.length})
-                </h2>
+                <div className="mb-6">
+                  <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+                    Current Apps ({filteredProductionApps.length})
+                  </h2>
+                  <div className="mt-2 text-[var(--mono-border)]">
+                    ─────────────────────────────────────────
+                  </div>
+                </div>
                 <ul role="list" className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
                   {filteredProductionApps.map((project) => (
                     <ProjectCard key={project.name} project={project} />
@@ -302,9 +310,14 @@ export default function Projects() {
 
             {filteredOtherProjects.length > 0 && (
               <section>
-                <h2 className="mb-6 text-xs font-bold tracking-[0.15em] uppercase text-[var(--mono-text)]">
-                  Other Projects ({filteredOtherProjects.length})
-                </h2>
+                <div className="mb-6">
+                  <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+                    Other Projects ({filteredOtherProjects.length})
+                  </h2>
+                  <div className="mt-2 text-[var(--mono-border)]">
+                    ─────────────────────────────────────────
+                  </div>
+                </div>
                 <ul role="list" className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
                   {filteredOtherProjects.map((project) => (
                     <ProjectCard key={project.name} project={project} />
@@ -318,9 +331,14 @@ export default function Projects() {
         {/* Show single category when filtered */}
         {filters.selectedType !== 'all' && filteredCount > 0 && (
           <section>
-            <h2 className="mb-6 text-xs font-bold tracking-[0.15em] uppercase text-[var(--mono-text)]">
-              {filters.selectedType === 'production' ? 'Current Apps' : 'Other Projects'} ({filteredCount})
-            </h2>
+            <div className="mb-6">
+              <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+                {filters.selectedType === 'production' ? 'Current Apps' : 'Other Projects'} ({filteredCount})
+              </h2>
+              <div className="mt-2 text-[var(--mono-border)]">
+                ─────────────────────────────────────────
+              </div>
+            </div>
             <ul role="list" className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {filteredProjects.map((project) => (
                 <ProjectCard key={project.name} project={project} />
