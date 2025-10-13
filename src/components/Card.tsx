@@ -27,7 +27,7 @@ export function Card<T extends React.ElementType = 'div'>({
   return (
     <Component
       className={clsx(
-        'group relative flex flex-col items-start border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-4 shadow-[4px_4px_0_var(--mono-border-muted)] transition-transform duration-150 hover:-translate-y-1',
+        'group relative flex flex-col items-start gap-3 rounded-sm border border-[var(--mono-border)]/20 bg-[var(--mono-surface)]/70 p-5 transition-transform duration-150 hover:-translate-y-0.5',
         className,
       )}
     >
@@ -71,7 +71,7 @@ Card.Description = function CardDescription({
   children: React.ReactNode
 }) {
   return (
-    <p className="relative z-10 mt-3 text-sm leading-relaxed text-[var(--mono-text-muted)]">
+    <p className="relative z-10 text-sm leading-relaxed text-[var(--mono-text-muted)]">
       {children}
     </p>
   )
@@ -81,7 +81,7 @@ Card.Cta = function CardCta({ children }: { children: React.ReactNode }) {
   return (
     <div
       aria-hidden="true"
-      className="relative z-10 mt-4 sm:mt-6 flex items-center text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--mono-accent)] transition-colors duration-200 group-hover:text-[var(--mono-text)]"
+      className="relative z-10 flex items-center text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--mono-accent)] transition-colors duration-200 group-hover:text-[var(--mono-text)]"
     >
       {children}
       <ChevronRightIcon className="ml-2 h-3 w-3 stroke-current stroke-2 transition-transform duration-300 ease-out group-hover:translate-x-1" />
@@ -105,7 +105,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
     <Component
       className={clsx(
         className,
-        'relative z-10 order-first mb-4 flex items-center text-[0.65rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]',
+        'relative z-10 order-first mb-2 flex items-center text-[0.65rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]',
         decorate && 'pl-3.5',
       )}
       {...props}

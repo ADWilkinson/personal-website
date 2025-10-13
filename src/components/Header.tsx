@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
@@ -12,16 +12,14 @@ import {
 } from '@headlessui/react'
 import clsx from 'clsx'
 
-import { Container } from '@/components/Container'
-
 function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
       <path
-        d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5"
+        d="m6 6 8 8M14 6l-8 8"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.5"
+        strokeWidth="1.4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -33,7 +31,7 @@ function ChevronDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 8 6" aria-hidden="true" {...props}>
       <path
-        d="M1.75 1.75 4 4.25l2.25-2.5"
+        d="M1.5 1.5 4 4.25 6.5 1.5"
         fill="none"
         strokeWidth="1.5"
         strokeLinecap="round"
@@ -77,9 +75,11 @@ function MoonIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 function MobileNavItem({
   href,
+  isActive,
   children,
 }: {
   href: string
+  isActive: boolean
   children: React.ReactNode
 }) {
   return (
@@ -87,45 +87,74 @@ function MobileNavItem({
       <PopoverButton
         as={Link}
         href={href}
-        className="block border-l-2 border-transparent px-3 py-2 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--mono-text)] transition-all duration-200 hover:border-[var(--mono-accent)] hover:text-[var(--mono-accent)]"
+        className={clsx(
+          'group flex w-full items-center justify-between px-3 py-2 text-[0.65rem] font-medium uppercase tracking-[0.12em] transition-colors duration-150',
+          isActive
+            ? 'text-[var(--mono-text)]'
+            : 'text-[var(--mono-text-muted)] hover:text-[var(--mono-text)]',
+        )}
       >
         {children}
+        <span
+          aria-hidden="true"
+          className={clsx(
+            'ml-3 h-px flex-1 bg-[var(--mono-border)] transition-opacity duration-150',
+            isActive ? 'opacity-50' : 'opacity-0 group-hover:opacity-30',
+          )}
+        />
       </PopoverButton>
     </li>
   )
 }
 
-function MobileNavigation(
-  props: React.ComponentPropsWithoutRef<typeof Popover>,
-) {
+function MobileNavigation({
+  currentPath,
+}: {
+  currentPath: string
+}) {
   return (
-    <Popover {...props}>
-      <PopoverButton className="group flex items-center border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] px-3 py-2 text-[0.625rem] font-bold uppercase tracking-[0.12em] text-[var(--mono-text)] shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]">
+    <Popover>
+      <PopoverButton className="flex items-center gap-2 rounded-sm border border-[var(--mono-border)]/25 bg-[var(--mono-surface)]/70 px-3 py-2 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--mono-text)] shadow-[var(--shadow-sm)] transition-colors duration-150 hover:text-[var(--mono-accent)]">
         Menu
-        <ChevronDownIcon className="ml-2 h-3 w-3 stroke-[var(--mono-text)] stroke-2" />
+        <ChevronDownIcon className="h-3 w-3 stroke-[var(--mono-text)] stroke-2" />
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-50 bg-[var(--mono-border)]/40 backdrop-blur-sm duration-200 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+        className="fixed inset-0 z-40 bg-[var(--mono-border)]/10 backdrop-blur-sm duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-4 top-4 z-50 origin-top border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-4 shadow-[var(--shadow-lg)] duration-200 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+        className="fixed inset-x-6 top-5 z-50 origin-top rounded-sm border border-[var(--mono-border)]/20 bg-[var(--mono-panel)]/90 p-4 shadow-[var(--shadow-lg)] backdrop-blur-sm duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
       >
         <div className="flex items-center justify-between">
-          <h2 className="text-[0.625rem] font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+          <h2 className="text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--mono-text-muted)]">
             Navigation
           </h2>
-          <PopoverButton aria-label="Close menu" className="p-1">
-            <CloseIcon className="h-5 w-5 text-[var(--mono-text)]" />
+          <PopoverButton
+            aria-label="Close menu"
+            className="rounded-sm p-1 text-[var(--mono-text-muted)] transition-colors duration-150 hover:text-[var(--mono-text)]"
+          >
+            <CloseIcon className="h-4 w-4" />
           </PopoverButton>
         </div>
-        <nav className="mt-4">
-          <ul className="space-y-2">
-            <MobileNavItem href="/about">About</MobileNavItem>
-            <MobileNavItem href="/articles">Articles</MobileNavItem>
-            <MobileNavItem href="/projects">Projects</MobileNavItem>
+        <nav className="mt-3">
+          <ul className="space-y-1.5">
+            <MobileNavItem href="/about" isActive={currentPath === '/about'}>
+              About
+            </MobileNavItem>
+            <MobileNavItem
+              href="/articles"
+              isActive={currentPath.startsWith('/articles')}
+            >
+              Articles
+            </MobileNavItem>
+            <MobileNavItem
+              href="/projects"
+              isActive={currentPath.startsWith('/projects')}
+            >
+              Projects
+            </MobileNavItem>
           </ul>
         </nav>
       </PopoverPanel>
@@ -135,50 +164,74 @@ function MobileNavigation(
 
 function NavItem({
   href,
+  isActive,
   children,
 }: {
   href: string
+  isActive: boolean
   children: React.ReactNode
 }) {
-  let isActive = usePathname() === href
-
   return (
-    <li className="relative">
+    <li>
       <Link
         href={href}
         className={clsx(
-          'block px-4 py-3 text-[0.625rem] font-bold uppercase tracking-[0.12em] transition-colors duration-200',
+          'group inline-flex items-center text-[0.65rem] font-medium uppercase tracking-[0.14em] transition-colors duration-150',
           isActive
-            ? 'bg-[var(--mono-border)] text-[var(--mono-surface)]'
-            : 'text-[var(--mono-text)] hover:bg-[var(--mono-surface-alt)]',
+            ? 'text-[var(--mono-text)]'
+            : 'text-[var(--mono-text-muted)] hover:text-[var(--mono-text)]',
         )}
       >
         {children}
+        <span
+          aria-hidden="true"
+          className={clsx(
+            'ml-1 h-px w-6 bg-[var(--mono-border)] transition-opacity duration-150',
+            isActive ? 'opacity-50' : 'opacity-0 group-hover:opacity-25',
+          )}
+        />
       </Link>
     </li>
   )
 }
 
-function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
+function DesktopNavigation({
+  currentPath,
+  ...props
+}: {
+  currentPath: string
+} & React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
-      <ul className="flex items-center border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] shadow-[var(--shadow-md)]">
-        <NavItem href="/about">About</NavItem>
-        <NavItem href="/articles">Articles</NavItem>
-        <NavItem href="/projects">Projects</NavItem>
+      <ul className="flex items-center gap-7">
+        <NavItem href="/about" isActive={currentPath === '/about'}>
+          About
+        </NavItem>
+        <NavItem
+          href="/articles"
+          isActive={currentPath.startsWith('/articles')}
+        >
+          Articles
+        </NavItem>
+        <NavItem
+          href="/projects"
+          isActive={currentPath.startsWith('/projects')}
+        >
+          Projects
+        </NavItem>
       </ul>
     </nav>
   )
 }
 
-function HomePill() {
+function BrandMark() {
   return (
     <Link
       href="/"
       aria-label="Back to home"
-      className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] text-[var(--mono-text)] shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
+      className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--mono-text)] transition-colors duration-150 hover:text-[var(--mono-accent)]"
     >
-      <span className="text-lg font-bold leading-none">⌂</span>
+      Andrew Wilkinson
     </Link>
   )
 }
@@ -192,12 +245,15 @@ function ThemeToggle() {
     setMounted(true)
   }, [])
 
+  const baseClasses =
+    'inline-flex h-9 w-9 items-center justify-center rounded-sm border border-[var(--mono-border)]/25 bg-[var(--mono-surface)]/80 text-[var(--mono-text)] shadow-[var(--shadow-sm)] transition-colors duration-150 hover:text-[var(--mono-accent)]'
+
   if (!mounted) {
     return (
       <button
         type="button"
         aria-label="Toggle theme"
-        className="inline-flex h-10 w-10 items-center justify-center border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] shadow-[var(--shadow-sm)]"
+        className={baseClasses}
       >
         <SunIcon className="h-4 w-4 stroke-[var(--mono-text)]" />
       </button>
@@ -208,7 +264,7 @@ function ThemeToggle() {
     <button
       type="button"
       aria-label={`Switch to ${otherTheme} theme`}
-      className="inline-flex h-10 w-10 items-center justify-center border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] text-[var(--mono-text)] shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
+      className={baseClasses}
       onClick={() => setTheme(otherTheme)}
     >
       {resolvedTheme === 'dark' ? (
@@ -220,35 +276,22 @@ function ThemeToggle() {
   )
 }
 
-function clamp(number: number, a: number, b: number) {
-  let min = Math.min(a, b)
-  let max = Math.max(a, b)
-  return Math.min(Math.max(number, min), max)
-}
-
 export function Header() {
+  const currentPath = usePathname() ?? '/'
+
   return (
-    <header className="border-b-2 border-[var(--mono-border)] bg-[var(--mono-surface)]">
-      <div className="px-6 py-4 sm:px-8 lg:px-12">
-        <nav className="flex items-center justify-between">
-          {/* Home button */}
-          <HomePill />
-
-          {/* Desktop navigation - centered */}
-          <div className="hidden md:block">
-            <DesktopNavigation />
+    <header className="relative">
+      <div className="flex items-center justify-between gap-4 border-b border-[var(--mono-border)]/25 pb-6">
+        <BrandMark />
+        <div className="hidden items-center gap-8 md:flex">
+          <DesktopNavigation currentPath={currentPath} />
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="md:hidden">
+            <MobileNavigation currentPath={currentPath} />
           </div>
-
-          {/* Right side actions */}
-          <div className="flex items-center gap-3">
-            {/* Mobile menu */}
-            <div className="md:hidden">
-              <MobileNavigation />
-            </div>
-            {/* Theme toggle */}
-            <ThemeToggle />
-          </div>
-        </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   )

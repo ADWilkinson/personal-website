@@ -26,38 +26,38 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function ContactMe() {
   return (
-    <div className="border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-6 shadow-[4px_4px_0_var(--mono-border-muted)] transition-transform duration-150 hover:-translate-y-1">
-      <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-[var(--mono-text)]">
+    <div className="rounded-sm border border-[var(--mono-border)]/20 bg-[var(--mono-surface)]/70 p-6">
+      <h2 className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--mono-text)]">
         Contact
       </h2>
-      <p className="mt-4 text-sm leading-relaxed text-[var(--mono-text-muted)]">
+      <p className="mt-3 text-sm leading-relaxed text-[var(--mono-text-muted)]">
         Let's connect about crypto, work, or collaborations.
       </p>
-      <div className="mt-4 space-y-3">
+      <div className="mt-5 divide-y divide-[var(--mono-border)]/15">
         <Link
           href="https://www.linkedin.com/in/andrew-d-wilkinson"
-          className="group flex items-center justify-between border-b border-dashed border-[var(--mono-border-muted)] pb-2 text-[0.75rem] uppercase tracking-[0.1em] text-[var(--mono-text)] transition-colors duration-150 hover:text-[var(--mono-accent)]"
+          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--mono-text)] transition-colors duration-150 hover:text-[var(--mono-accent)] first:pt-0 last:pb-0"
           target="_blank"
           rel="noopener noreferrer"
         >
           <span className="flex items-center gap-2"><LinkedInIcon className="h-4 w-4 flex-none fill-current" /> LinkedIn</span>
-          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--mono-text-muted)] group-hover:text-[var(--mono-text)]">/in/andrew</span>
+          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--mono-text-muted)]">/in/andrew</span>
         </Link>
         <Link
           href="mailto:gm@andrewwilkinson.io"
-          className="group flex items-center justify-between border-b border-dashed border-[var(--mono-border-muted)] pb-2 text-[0.75rem] uppercase tracking-[0.1em] text-[var(--mono-text)] transition-colors duration-150 hover:text-[var(--mono-accent)]"
+          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--mono-text)] transition-colors duration-150 hover:text-[var(--mono-accent)] first:pt-0 last:pb-0"
         >
           <span className="flex items-center gap-2"><MailIcon className="h-4 w-4 flex-none" /> Email</span>
-          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--mono-text-muted)] group-hover:text-[var(--mono-text)]">gm@andrewwilkinson.io</span>
+          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--mono-text-muted)]">gm@andrewwilkinson.io</span>
         </Link>
         <Link
           href="https://t.me/DavyJones_0x"
-          className="group flex items-center justify-between text-[0.75rem] uppercase tracking-[0.1em] text-[var(--mono-text)] transition-colors duration-150 hover:text-[var(--mono-accent)]"
+          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--mono-text)] transition-colors duration-150 hover:text-[var(--mono-accent)] first:pt-0 last:pb-0"
           target="_blank"
           rel="noopener noreferrer"
         >
           <span className="flex items-center gap-2"><TelegramIcon className="h-4 w-4 flex-none fill-current" /> Telegram</span>
-          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--mono-text-muted)] group-hover:text-[var(--mono-text)]">@DavyJones_0x</span>
+          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--mono-text-muted)]">@DavyJones_0x</span>
         </Link>
       </div>
     </div>

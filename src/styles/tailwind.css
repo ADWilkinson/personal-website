@@ -59,22 +59,23 @@
 
 @layer base {
   :root {
-    --mono-canvas: #f8f8f5;
-    --mono-surface: #fcfcfb;
-    --mono-surface-alt: #f0f0ec;
-    --mono-border: #101010;
-    --mono-border-muted: rgba(16, 16, 16, 0.18);
-    --mono-text: #121212;
-    --mono-text-muted: #4b4b4b;
-    --mono-accent: #0a66ff;
-    --mono-grid: rgba(16, 16, 16, 0.04);
+    --mono-canvas: #f7f7f2;
+    --mono-surface: #fdfdf9;
+    --mono-surface-alt: #efefe9;
+    --mono-border: #1c1c1b;
+    --mono-border-muted: rgba(28, 28, 27, 0.14);
+    --mono-text: #121211;
+    --mono-text-muted: #5a5a56;
+    --mono-accent: #155dff;
+    --mono-grid: rgba(28, 28, 27, 0.03);
+    --mono-panel: rgba(253, 253, 249, 0.9);
 
     /* Consistent shadow system */
-    --shadow-xs: 2px 2px 0 var(--mono-border-muted);
-    --shadow-sm: 3px 3px 0 var(--mono-border-muted);
-    --shadow-md: 4px 4px 0 var(--mono-border-muted);
-    --shadow-lg: 6px 6px 0 var(--mono-border-muted);
-    --shadow-xl: 8px 8px 0 var(--mono-border-muted);
+    --shadow-xs: 1px 1px 0 var(--mono-border-muted);
+    --shadow-sm: 2px 2px 0 var(--mono-border-muted);
+    --shadow-md: 3px 3px 0 var(--mono-border-muted);
+    --shadow-lg: 4px 4px 0 var(--mono-border-muted);
+    --shadow-xl: 6px 6px 0 var(--mono-border-muted);
 
     /* Grid and rhythm */
     --baseline: 1.5rem;
@@ -88,20 +89,21 @@
 
   :root.dark {
     --mono-canvas: #050506;
-    --mono-surface: #0c0c0f;
-    --mono-surface-alt: #121217;
-    --mono-border: #e7e8f2;
-    --mono-border-muted: rgba(231, 232, 242, 0.16);
-    --mono-text: #f4f5ff;
-    --mono-text-muted: #b5b8c9;
-    --mono-accent: #7aa8ff;
-    --mono-grid: rgba(231, 232, 242, 0.06);
+    --mono-surface: #09090c;
+    --mono-surface-alt: #111117;
+    --mono-border: #dfe2f3;
+    --mono-border-muted: rgba(223, 226, 243, 0.16);
+    --mono-text: #f7f8ff;
+    --mono-text-muted: #b5b9cc;
+    --mono-accent: #84a9ff;
+    --mono-grid: rgba(223, 226, 243, 0.05);
+    --mono-panel: rgba(9, 9, 12, 0.86);
 
-    --shadow-xs: 2px 2px 0 var(--mono-border-muted);
-    --shadow-sm: 3px 3px 0 var(--mono-border-muted);
-    --shadow-md: 4px 4px 0 var(--mono-border-muted);
-    --shadow-lg: 6px 6px 0 var(--mono-border-muted);
-    --shadow-xl: 8px 8px 0 var(--mono-border-muted);
+    --shadow-xs: 1px 1px 0 var(--mono-border-muted);
+    --shadow-sm: 2px 2px 0 var(--mono-border-muted);
+    --shadow-md: 3px 3px 0 var(--mono-border-muted);
+    --shadow-lg: 4px 4px 0 var(--mono-border-muted);
+    --shadow-xl: 6px 6px 0 var(--mono-border-muted);
   }
 
   body {
@@ -126,13 +128,13 @@
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(transparent 95%, rgba(0, 0, 0, 0.02) 99%, transparent 100%);
-    opacity: 0.4;
+    background: linear-gradient(transparent 96%, rgba(0, 0, 0, 0.025) 99%, transparent 100%);
+    opacity: 0.3;
     z-index: -1;
   }
 
   .dark body::before {
-    background: linear-gradient(transparent 95%, rgba(231, 232, 242, 0.08) 99%, transparent 100%);
+    background: linear-gradient(transparent 96%, rgba(223, 226, 243, 0.08) 99%, transparent 100%);
   }
 
   a {

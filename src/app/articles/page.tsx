@@ -1,4 +1,5 @@
 import { type Metadata } from 'next'
+import Link from 'next/link'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
@@ -7,31 +8,23 @@ import { formatDate } from '@/lib/formatDate'
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
-    <article className="group relative">
-      <div className="border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] p-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
-        {/* Date badge with terminal styling */}
-        <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-[var(--mono-text-muted)]">
-          <span>[</span>
-          <time dateTime={article.date}>{formatDate(article.date)}</time>
-          <span>]</span>
-        </div>
-
-        {/* Title */}
-        <h2 className="text-sm font-bold uppercase tracking-[0.12em] text-[var(--mono-text)]">
-          <Card.Title href={`/articles/${article.slug}`}>
-            {article.title}
-          </Card.Title>
+    <article className="grid gap-y-3 py-6 first:pt-0 last:pb-0 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-x-8">
+      <time
+        dateTime={article.date}
+        className="text-[0.6rem] uppercase tracking-[0.16em] text-[var(--mono-text-muted)]"
+      >
+        {formatDate(article.date)}
+      </time>
+      <div className="space-y-2">
+        <h2 className="text-sm font-semibold tracking-[0.08em] text-[var(--mono-text)]">
+          {article.title}
         </h2>
-
-        {/* Description */}
-        <p className="mt-2 text-sm leading-relaxed text-[var(--mono-text-muted)]">
+        <p className="text-sm leading-relaxed text-[var(--mono-text-muted)]">
           {article.description}
         </p>
-
-        {/* CTA */}
-        <div className="mt-3 text-xs font-bold uppercase tracking-[0.15em]">
+        <Link href={`/articles/${article.slug}`} className="inline-flex items-center">
           <Card.Cta>Read article</Card.Cta>
-        </div>
+        </Link>
       </div>
     </article>
   )
@@ -51,19 +44,10 @@ export default async function ArticlesIndex() {
       title="Articles on Blockchain, DeFi, and Technology"
       intro="My thoughts and experiences in blockchain, DeFi, and technology projects."
     >
-      <div className="mx-auto max-w-2xl">
-        <div className="space-y-6">
-          {articles.map((article, index) => (
-            <div key={article.slug}>
-              {index > 0 && (
-                <div className="mb-6 text-center text-[var(--mono-border)] opacity-50">
-                  ─────────────────────────
-                </div>
-              )}
-              <Article article={article} />
-            </div>
-          ))}
-        </div>
+      <div className="mx-auto max-w-3xl divide-y divide-[var(--mono-border)]/12">
+        {articles.map((article) => (
+          <Article key={article.slug} article={article} />
+        ))}
       </div>
     </SimpleLayout>
   )

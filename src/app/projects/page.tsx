@@ -1,12 +1,7 @@
 'use client'
 
-import { type Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { CompanyLogo } from '@/components/CompanyLogo'
 import { GitHubIcon } from '@/components/SocialIcons'
 import { ProjectFilter } from '@/components/ProjectFilter'
 import { useProjectFilter, type Project } from '@/hooks/useProjectFilter'
@@ -22,18 +17,8 @@ import {
   CubeIcon,
   CommandLineIcon,
   ServerIcon,
-  CodeBracketIcon,
-  BeakerIcon
+  CodeBracketIcon
 } from '@heroicons/react/24/solid'
-
-import galleonImage from '@/images/projects/galleon.png'
-import wojakImage from '@/images/projects/wojak.png'
-import chordImage from '@/images/projects/chord.png'
-import piggyImage from '@/images/projects/piggy.png'
-import ultrasoundImage from '@/images/projects/ultrasound.png'
-import privateerImage from '@/images/projects/priv.png'
-import saylorImage from '@/images/projects/saylor.png'
-import eluneImage from '@/images/projects/elune.png'
 
 const productionApps: Project[] = [
   {
@@ -42,7 +27,6 @@ const productionApps: Project[] = [
       'Automated DeFi yield strategies with gas sponsorship for easy onchain earning.',
     link: { href: 'https://tryelune.com', label: 'tryelune.com', type: 'website' },
     icon: CurrencyDollarIcon,
-    image: eluneImage,
     tags: ['DeFi', 'Automation'],
     category: 'production' as const,
   },
@@ -61,7 +45,6 @@ const productionApps: Project[] = [
       'Official website for Piggy DAO, a DeFAI agent developed by Superform with real-time analytics.',
     link: { href: 'https://piggyonchain.xyz', label: 'piggyonchain.xyz', type: 'website' },
     icon: CubeIcon,
-    image: piggyImage,
     tags: ['AI', 'DAO'],
     category: 'production' as const,
   },
@@ -80,7 +63,6 @@ const productionApps: Project[] = [
       'AI chord progression generator helping musicians create compelling harmonic sequences.',
     link: { href: 'https://chordcraft.io', label: 'chordcraft.io', type: 'website' },
     icon: MusicalNoteIcon,
-    image: chordImage,
     tags: ['AI', 'Music'],
     category: 'production' as const,
   },
@@ -111,7 +93,6 @@ const projects: Project[] = [
       'DeFi protocol managing $20M+ in structured products and 6,000+ member community.',
     link: { href: 'https://github.com/GalleonDAO', label: 'GalleonDAO', type: 'github' },
     icon: GlobeAltIcon,
-    image: galleonImage,
     tags: ['DeFi', 'DAO'],
     category: 'other' as const,
   },
@@ -121,7 +102,6 @@ const projects: Project[] = [
       'AI-powered yield farming assistant delivering real-time DeFi opportunities.',
     link: { href: 'https://wojakjones.xyz', label: 'wojakjones.xyz', type: 'website' },
     icon: ChartBarIcon,
-    image: wojakImage,
     tags: ['AI', 'DeFi'],
     category: 'other' as const,
   },
@@ -131,7 +111,6 @@ const projects: Project[] = [
       'Curated platform for discovering and exploring the best decentralized applications.',
     link: { href: 'https://ultrasoundapps.com', label: 'ultrasoundapps.com', type: 'website' },
     icon: BoltIcon,
-    image: ultrasoundImage,
     tags: ['DeFi'],
     category: 'other' as const,
   },
@@ -141,7 +120,6 @@ const projects: Project[] = [
       'Automated trading bot implementing correlation and mean reversion strategies on Hyperliquid.',
     link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'privateer-capital', type: 'github' },
     icon: CurrencyDollarIcon,
-    image: privateerImage,
     tags: ['Trading', 'Automation'],
     category: 'other' as const,
   },
@@ -183,58 +161,45 @@ function ExternalLinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-// Metadata is moved to layout.tsx for client components
-
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <li className="group relative">
-      <div className="relative border-2 border-[var(--mono-border)] bg-[var(--mono-surface)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
-        {/* Status badge for production apps */}
+    <Card as="li" className="h-full">
+      <div className="flex items-start justify-between gap-3">
+        <Card.Title as="h3" href={project.link.href}>
+          {project.name}
+        </Card.Title>
         {project.category === 'production' && (
-          <div className="absolute right-2 top-2 z-10 text-[0.5rem] font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
-            [LIVE]
-          </div>
+          <span className="text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-[var(--mono-text-muted)]">
+            Live
+          </span>
         )}
-
-        <div className="relative p-4">
-          <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-[var(--mono-text)]">
-            <Link href={project.link.href}>
-              <span className="absolute inset-0" />
-              {project.name}
-            </Link>
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-[var(--mono-text-muted)]">
-            {project.description}
-          </p>
-
-          {/* Technology tags */}
-          {project.tags && project.tags.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-1">
-              {project.tags.slice(0, 2).map((tag) => (
-                <span
-                  key={tag}
-                  className="border border-[var(--mono-border-muted)] bg-[var(--mono-surface-alt)] px-2 py-0.5 text-xs font-bold uppercase tracking-[0.12em] text-[var(--mono-text)]"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Link */}
-          <p className="mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-[var(--mono-text-muted)]">
-            {project.link.type === 'github' ? (
-              <GitHubIcon className="h-3 w-3 flex-none fill-current" />
-            ) : project.link.type === 'article' ? (
-              <span className="text-[0.6rem]">📖</span>
-            ) : (
-              <ExternalLinkIcon className="h-3 w-3 flex-none" />
-            )}
-            <span>{project.link.label}</span>
-          </p>
-        </div>
       </div>
-    </li>
+      <p className="text-sm leading-relaxed text-[var(--mono-text-muted)]">
+        {project.description}
+      </p>
+      {project.tags && project.tags.length > 0 && (
+        <div className="flex flex-wrap gap-1">
+          {project.tags.slice(0, 3).map((tag) => (
+            <span
+              key={tag}
+              className="rounded-sm border border-[var(--mono-border)]/15 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+      <p className="flex items-center gap-2 text-[0.6rem] uppercase tracking-[0.14em] text-[var(--mono-text-muted)]">
+        {project.link.type === 'github' ? (
+          <GitHubIcon className="h-3 w-3 flex-none fill-current" />
+        ) : project.link.type === 'article' ? (
+          <span aria-hidden="true">▻</span>
+        ) : (
+          <ExternalLinkIcon className="h-3 w-3 flex-none" />
+        )}
+        <span>{project.link.label}</span>
+      </p>
+    </Card>
   )
 }
 
@@ -260,19 +225,19 @@ export default function Projects() {
       title="Projects I've created"
       intro="A selection of DeFi protocols, tools, and applications I've built."
     >
-      <div className="mx-auto max-w-5xl space-y-8">
+      <div className="mx-auto max-w-5xl space-y-10">
         {/* Filter Component */}
         <ProjectFilter
           filters={filters}
           onFiltersChange={setFilters}
           availableTags={availableTags}
         />
-        
+
 
         {/* No Results */}
         {filteredCount === 0 && (
-          <div className="text-center py-12">
-            <p className="text-zinc-500 dark:text-zinc-400">No projects found matching your filters.</p>
+          <div className="py-12 text-center">
+            <p className="text-[var(--mono-text-muted)]">No projects found matching your filters.</p>
             <button
               onClick={() => setFilters({
                 searchTerm: '',
@@ -280,7 +245,7 @@ export default function Projects() {
                 selectedType: 'all',
                 sortBy: 'name'
               })}
-              className="mt-2 text-[var(--mono-accent)] hover:underline transition-colors"
+              className="mt-2 text-[0.7rem] uppercase tracking-[0.12em] text-[var(--mono-accent)] hover:underline"
             >
               Clear all filters
             </button>
@@ -289,18 +254,18 @@ export default function Projects() {
 
         {/* Show filtered results based on type filter */}
         {filters.selectedType === 'all' && (
-          <div className="space-y-20">
+          <div className="space-y-16">
             {filteredProductionApps.length > 0 && (
-              <section>
-                <div className="mb-6">
-                  <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
-                    Current Apps ({filteredProductionApps.length})
+              <section className="space-y-8">
+                <div className="flex flex-col gap-2 border-b border-[var(--mono-border)]/15 pb-4">
+                  <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+                    Current Apps
                   </h2>
-                  <div className="mt-2 text-[var(--mono-border)]">
-                    ─────────────────────────────────────────
-                  </div>
+                  <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]">
+                    {filteredProductionApps.length} shipped and maintained
+                  </p>
                 </div>
-                <ul role="list" className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+                <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {filteredProductionApps.map((project) => (
                     <ProjectCard key={project.name} project={project} />
                   ))}
@@ -309,16 +274,16 @@ export default function Projects() {
             )}
 
             {filteredOtherProjects.length > 0 && (
-              <section>
-                <div className="mb-6">
-                  <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
-                    Other Projects ({filteredOtherProjects.length})
+              <section className="space-y-8">
+                <div className="flex flex-col gap-2 border-b border-[var(--mono-border)]/15 pb-4">
+                  <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+                    Other Projects
                   </h2>
-                  <div className="mt-2 text-[var(--mono-border)]">
-                    ─────────────────────────────────────────
-                  </div>
+                  <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]">
+                    {filteredOtherProjects.length} explorations and experiments
+                  </p>
                 </div>
-                <ul role="list" className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+                <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {filteredOtherProjects.map((project) => (
                     <ProjectCard key={project.name} project={project} />
                   ))}
@@ -330,16 +295,16 @@ export default function Projects() {
 
         {/* Show single category when filtered */}
         {filters.selectedType !== 'all' && filteredCount > 0 && (
-          <section>
-            <div className="mb-6">
-              <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-[var(--mono-text)]">
-                {filters.selectedType === 'production' ? 'Current Apps' : 'Other Projects'} ({filteredCount})
+          <section className="space-y-8">
+            <div className="flex flex-col gap-2 border-b border-[var(--mono-border)]/15 pb-4">
+              <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+                {filters.selectedType === 'production' ? 'Current Apps' : 'Other Projects'}
               </h2>
-              <div className="mt-2 text-[var(--mono-border)]">
-                ─────────────────────────────────────────
-              </div>
+              <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]">
+                {filteredCount} results
+              </p>
             </div>
-            <ul role="list" className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filteredProjects.map((project) => (
                 <ProjectCard key={project.name} project={project} />
               ))}
