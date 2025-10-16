@@ -119,30 +119,35 @@
   }
 
   body {
-    background-color: var(--surface-default);
+    background-color: transparent;
     color: var(--text-primary);
     min-height: 100vh;
     position: relative;
     overscroll-behavior-y: none;
   }
 
-  body::before {
+  html {
+    background-color: var(--surface-default);
+    position: relative;
+  }
+
+  html::before {
     content: "";
     position: fixed;
     inset: 0;
     background-image: url('/brand/backgrounds/path826brand.png');
     background-size: cover;
     background-repeat: no-repeat;
-    opacity: 0.08;
+    background-position: center;
+    opacity: 0.30;
+    filter: grayscale(80%) contrast(0.8);
     pointer-events: none;
     z-index: -1;
-    mix-blend-mode: multiply;
-    transition: opacity 180ms ease-out;
   }
 
-  .dark body::before {
-    opacity: 0.04;
-    mix-blend-mode: screen;
+  html.dark::before {
+    opacity: 0.05;
+    filter: grayscale(90%) contrast(0.7);
   }
 
   html {
