@@ -115,20 +115,20 @@ export default function CV() {
   return (
     <SimpleLayout
       icon={(
-        <div className="relative h-7 w-7">
+        <div className="relative h-10 w-10">
           <Image
             src="/brand/icons/Governance-Icon.png"
             alt="CV icon"
-            width={28}
-            height={28}
+            width={40}
+            height={40}
             className="h-full w-full dark:hidden"
             priority
           />
           <Image
             src="/brand/icons/Governance-Icon-Dark.png"
             alt=""
-            width={28}
-            height={28}
+            width={40}
+            height={40}
             className="hidden h-full w-full dark:block"
             priority
           />
