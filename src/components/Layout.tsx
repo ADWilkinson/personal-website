@@ -13,7 +13,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </a>
 
       <div className="relative min-h-screen">
-        <div className="pointer-events-none absolute inset-0 z-[-1] mx-auto max-w-[72rem] border border-dashed border-[var(--border-default)]" aria-hidden="true" />
         <div className="relative mx-auto flex min-h-screen w-full max-w-5xl flex-col px-5 pb-10 pt-8 sm:px-10 lg:px-12">
           <Header />
           <main
