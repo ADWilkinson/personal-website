@@ -1,0 +1,115 @@
+/* Davy Jones Brand Fonts - Morion (Display) and Wigrum (Body/UI) */
+
+/* Morion - Display/Headline serif font */
+@font-face {
+  font-family: "Morion";
+  src: url("../FONTS/Morion/Morion-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morion";
+  src: url("../FONTS/Morion/Morion-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morion";
+  src: url("../FONTS/Morion/Morion-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morion";
+  src: url("../FONTS/Morion/Morion-SemiboldItalic.otf") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morion";
+  src: url("../FONTS/Morion/Morion-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morion";
+  src: url("../FONTS/Morion/Morion-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morion";
+  src: url("../FONTS/Morion/Morion-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Wigrum - Body/UI sans-serif font */
+@font-face {
+  font-family: "Wigrum";
+  src: url("../FONTS/Wigrum/wigrumweb-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wigrum";
+  src: url("../FONTS/Wigrum/wigrumweb-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wigrum";
+  src: url("../FONTS/Wigrum/wigrumweb-medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wigrum";
+  src: url("../FONTS/Wigrum/wigrumweb-mediumitalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wigrum";
+  src: url("../FONTS/Wigrum/wigrumweb-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wigrum";
+  src: url("../FONTS/Wigrum/wigrumweb-bolditalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wigrum";
+  src: url("../FONTS/Wigrum/wigrumweb-light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}

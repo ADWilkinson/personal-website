@@ -1,0 +1,24 @@
+{
+  "palette": {
+    "primary": {
+      "midnight": "#040728",
+      "cerulean": "#025BEE"
+    },
+    "neutral": {
+      "sand": "#FDE6C4",
+      "parchment": "#FEF3E2",
+      "charcoal": "#27272A",
+      "canvas": "#F4EEE8",
+      "white": "#FFFFFF"
+    },
+    "accent": {
+      "aqua": "#59F4F4",
+      "copper": "#DC7F5A",
+      "navigator": "#0072B5"
+    }
+  },
+  "meta": {
+    "brand": "Davy Jones",
+    "version": "1.0.0"
+  }
+}

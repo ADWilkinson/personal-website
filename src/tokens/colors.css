@@ -1,0 +1,30 @@
+:root {
+  --dj-midnight: #040728;
+  --dj-cerulean: #025bee;
+  --dj-sand: #fde6c4;
+  --dj-parchment: #fef3e2;
+  --dj-aqua: #59f4f4;
+  --dj-copper: #dc7f5a;
+  --dj-charcoal: #27272a;
+  --dj-navigator: #0072b5;
+  --dj-canvas: #f4eee8;
+  --dj-white: #ffffff;
+}
+
+.theme-dark {
+  --surface-default: var(--dj-midnight);
+  --surface-muted: #090c33;
+  --text-primary: var(--dj-white);
+  --text-secondary: rgba(255, 255, 255, 0.72);
+  --border-default: rgba(255, 255, 255, 0.16);
+  --accent-primary: var(--dj-cerulean);
+}
+
+.theme-light {
+  --surface-default: var(--dj-canvas);
+  --surface-muted: var(--dj-parchment);
+  --text-primary: var(--dj-midnight);
+  --text-secondary: rgba(4, 7, 40, 0.72);
+  --border-default: rgba(4, 7, 40, 0.16);
+  --accent-primary: var(--dj-cerulean);
+}

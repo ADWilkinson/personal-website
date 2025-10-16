@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import './fonts.css';
+@import '../tokens/colors.css';
 @import './prism.css' layer(components);
 
 @plugin '@tailwindcss/typography';
@@ -67,27 +68,15 @@
 @layer base {
   /* Davy Jones Color Tokens */
   :root {
-    /* Core brand colors */
-    --dj-midnight: #040728;
-    --dj-cerulean: #025bee;
-    --dj-sand: #fde6c4;
-    --dj-parchment: #fef3e2;
-    --dj-aqua: #59f4f4;
-    --dj-copper: #dc7f5a;
-    --dj-charcoal: #27272a;
-    --dj-navigator: #0072b5;
-    --dj-canvas: #f4eee8;
-    --dj-white: #ffffff;
-
-    /* Semantic light theme tokens */
+    /* Semantic light theme tokens sourced from the brand kit */
     --surface-default: var(--dj-canvas);
     --surface-muted: var(--dj-parchment);
     --surface-elevated: var(--dj-white);
     --text-primary: var(--dj-midnight);
     --text-secondary: rgba(4, 7, 40, 0.72);
     --text-muted: rgba(4, 7, 40, 0.54);
-    --border-default: var(--dj-charcoal);
-    --border-muted: rgba(4, 7, 40, 0.16);
+    --border-default: rgba(4, 7, 40, 0.16);
+    --border-muted: rgba(4, 7, 40, 0.12);
     --accent-primary: var(--dj-cerulean);
     --accent-hover: var(--dj-aqua);
     --accent-emphasis: var(--dj-copper);
@@ -116,7 +105,7 @@
     --text-primary: var(--dj-white);
     --text-secondary: rgba(255, 255, 255, 0.72);
     --text-muted: rgba(255, 255, 255, 0.54);
-    --border-default: rgba(255, 255, 255, 0.24);
+    --border-default: rgba(255, 255, 255, 0.16);
     --border-muted: rgba(255, 255, 255, 0.12);
     --accent-primary: var(--dj-cerulean);
     --accent-hover: var(--dj-aqua);

@@ -165,7 +165,10 @@ function ExternalLinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card as="li" className="h-full">
+    <Card
+      as="li"
+      className="h-full bg-[var(--surface-muted)] shadow-[var(--shadow-xs)] transition-[background-color,border-color,box-shadow] duration-200 ease-out hover:border-[var(--accent-primary)]/35 hover:bg-[var(--surface-elevated)] hover:shadow-[var(--shadow-brand-soft)] dark:hover:border-[var(--accent-hover)]/40"
+    >
       <div className="flex items-start justify-between gap-3">
         <Card.Title as="h3" href={project.link.href}>
           {project.name}
