@@ -75,8 +75,8 @@
     --text-primary: var(--dj-midnight);
     --text-secondary: rgba(4, 7, 40, 0.72);
     --text-muted: rgba(4, 7, 40, 0.54);
-    --border-default: rgba(4, 7, 40, 0.22);
-    --border-muted: rgba(4, 7, 40, 0.14);
+    --border-default: rgba(4, 7, 40, 0.28);
+    --border-muted: rgba(4, 7, 40, 0.18);
     --accent-primary: var(--dj-cerulean);
     --accent-hover: var(--dj-aqua);
     --accent-emphasis: var(--dj-copper);
@@ -105,8 +105,8 @@
     --text-primary: var(--dj-white);
     --text-secondary: rgba(255, 255, 255, 0.72);
     --text-muted: rgba(255, 255, 255, 0.54);
-    --border-default: rgba(255, 255, 255, 0.24);
-    --border-muted: rgba(255, 255, 255, 0.14);
+    --border-default: rgba(255, 255, 255, 0.32);
+    --border-muted: rgba(255, 255, 255, 0.18);
     --accent-primary: var(--dj-cerulean);
     --accent-hover: var(--dj-aqua);
     --accent-emphasis: var(--dj-copper);
