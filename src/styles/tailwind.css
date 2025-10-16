@@ -137,6 +137,25 @@
     overscroll-behavior-y: none;
   }
 
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('/brand/backgrounds/path826brand.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: -1;
+    mix-blend-mode: multiply;
+    transition: opacity 180ms ease-out;
+  }
+
+  .dark body::before {
+    opacity: 0.04;
+    mix-blend-mode: screen;
+  }
+
   html {
     overscroll-behavior-y: none;
   }
@@ -163,11 +182,18 @@
     transition:
       text-decoration-color 90ms ease-out,
       color 90ms ease-out;
+    text-decoration: underline;
   }
 
   a:hover {
     color: var(--accent-primary);
     text-decoration-color: var(--accent-primary);
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--accent-hover);
+    outline-offset: 3px;
+    text-decoration-color: var(--accent-hover);
   }
 
   ::selection {
