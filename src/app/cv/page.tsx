@@ -1,4 +1,5 @@
 import { type Metadata } from 'next'
+import Image from 'next/image'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import Link from 'next/link'
 import { CompanyLogo } from '@/components/CompanyLogo'
@@ -113,6 +114,26 @@ function ProjectItem({
 export default function CV() {
   return (
     <SimpleLayout
+      icon={(
+        <div className="relative h-7 w-7">
+          <Image
+            src="/brand/icons/Governance-Icon.png"
+            alt="CV icon"
+            width={28}
+            height={28}
+            className="h-full w-full dark:hidden"
+            priority
+          />
+          <Image
+            src="/brand/icons/Governance-Icon-Dark.png"
+            alt=""
+            width={28}
+            height={28}
+            className="hidden h-full w-full dark:block"
+            priority
+          />
+        </div>
+      )}
       title="Curriculum Vitae"
       intro="Senior Software Engineer at ZKP2P. Former VC-backed Founder."
     >

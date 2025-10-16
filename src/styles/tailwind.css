@@ -177,23 +177,18 @@
   }
 
   a {
-    text-underline-offset: 0.25em;
-    text-decoration-thickness: 1px;
-    transition:
-      text-decoration-color 90ms ease-out,
-      color 90ms ease-out;
-    text-decoration: underline;
+    text-decoration: none;
+    color: inherit;
+    transition: color 90ms ease-out;
   }
 
   a:hover {
     color: var(--accent-primary);
-    text-decoration-color: var(--accent-primary);
   }
 
   a:focus-visible {
     outline: 2px solid var(--accent-hover);
     outline-offset: 3px;
-    text-decoration-color: var(--accent-hover);
   }
 
   ::selection {

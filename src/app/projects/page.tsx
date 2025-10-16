@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { GitHubIcon } from '@/components/SocialIcons'
@@ -222,6 +224,26 @@ export default function Projects() {
 
   return (
     <SimpleLayout
+      icon={
+        <div className="relative h-7 w-7">
+          <Image
+            src="/brand/icons/Application-Icon.png"
+            alt="Projects icon"
+            width={28}
+            height={28}
+            className="h-full w-full dark:hidden"
+            priority
+          />
+          <Image
+            src="/brand/icons/Application-Icon-Dark.png"
+            alt=""
+            width={28}
+            height={28}
+            className="hidden h-full w-full dark:block"
+            priority
+          />
+        </div>
+      }
       title="Projects I've created"
       intro="A selection of DeFi protocols, tools, and applications I've built."
     >

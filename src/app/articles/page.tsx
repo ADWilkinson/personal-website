@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { type Metadata } from 'next'
 import Link from 'next/link'
 
@@ -41,6 +42,26 @@ export default async function ArticlesIndex() {
 
   return (
     <SimpleLayout
+      icon={
+        <div className="relative h-7 w-7">
+          <Image
+            src="/brand/icons/Community-Icon.png"
+            alt="Articles icon"
+            width={28}
+            height={28}
+            className="h-full w-full dark:hidden"
+            priority
+          />
+          <Image
+            src="/brand/icons/Community-Icon-Dark.png"
+            alt=""
+            width={28}
+            height={28}
+            className="hidden h-full w-full dark:block"
+            priority
+          />
+        </div>
+      }
       title="Articles on Blockchain, DeFi, and Technology"
       intro="My thoughts and experiences in blockchain, DeFi, and technology projects."
     >

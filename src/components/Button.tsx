@@ -3,7 +3,7 @@ import clsx from 'clsx'
 
 const variantStyles = {
   primary:
-    'bg-[var(--accent-primary)] text-[var(--dj-white)] transition-colors duration-150 hover:bg-[var(--accent-hover)] active:translate-y-[1px]',
+    'bg-[var(--accent-primary)] text-[var(--dj-white)] transition-colors duration-150 hover:bg-[var(--accent-hover)] hover:text-[var(--dj-midnight)] active:translate-y-[1px]',
   secondary:
     'border border-[var(--border-default)]/25 bg-[var(--surface-muted)]/60 text-[var(--text-primary)] transition-colors duration-150 hover:bg-[var(--surface-muted)] active:translate-y-[1px]',
   ghost:

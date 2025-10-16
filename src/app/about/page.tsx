@@ -58,6 +58,26 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <SimpleLayout
+      icon={(
+        <div className="relative h-7 w-7">
+          <Image
+            src="/brand/icons/About-Icon.png"
+            alt="About icon"
+            width={28}
+            height={28}
+            className="h-full w-full dark:hidden"
+            priority
+          />
+          <Image
+            src="/brand/icons/About-Icon-Dark.png"
+            alt=""
+            width={28}
+            height={28}
+            className="hidden h-full w-full dark:block"
+            priority
+          />
+        </div>
+      )}
       title="I'm Andrew, a builder at heart."
       intro="Democratizing finance through accessible DeFi solutions.">
       <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-16">
