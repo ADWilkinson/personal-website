@@ -17,9 +17,11 @@ function Article({ article }: { article: ArticleWithSlug }) {
         {formatDate(article.date)}
       </time>
       <div className="space-y-2">
-        <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-[var(--text-primary)]">
-          {article.title}
-        </h2>
+        <Link href={`/articles/${article.slug}`}>
+          <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-[var(--text-primary)] transition-colors duration-150 hover:text-[var(--accent-primary)]">
+            {article.title}
+          </h2>
+        </Link>
         <p className="text-sm leading-relaxed text-[var(--text-muted)]">
           {article.description}
         </p>

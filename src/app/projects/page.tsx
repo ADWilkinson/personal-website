@@ -171,7 +171,7 @@ function ProjectCard({ project }: { project: Project }) {
           {project.name}
         </Card.Title>
         {project.category === 'production' && (
-          <span className="text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-[var(--text-muted)]">
+          <span className="rounded-sm border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent-primary)]">
             Live
           </span>
         )}
@@ -184,7 +184,7 @@ function ProjectCard({ project }: { project: Project }) {
           {project.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="rounded-sm border border-[var(--border-default)]/15 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]"
+              className="rounded-sm border border-[var(--border-default)]/30 bg-[var(--surface-muted)]/40 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]"
             >
               {tag}
             </span>
