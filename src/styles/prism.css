@@ -1,5 +1,5 @@
 pre[class*='language-'] {
-  color: var(--color-zinc-100);
+  color: var(--text-primary);
 }
 
 .token.tag,
@@ -8,7 +8,7 @@ pre[class*='language-'] {
 .token.selector .class,
 .token.selector.class,
 .token.function {
-  color: var(--color-pink-400);
+  color: var(--accent-primary);
 }
 
 .token.attr-name,
@@ -16,32 +16,32 @@ pre[class*='language-'] {
 .token.rule,
 .token.pseudo-class,
 .token.important {
-  color: var(--color-zinc-300);
+  color: var(--text-secondary);
 }
 
 .token.module {
-  color: var(--color-pink-400);
+  color: var(--accent-primary);
 }
 
 .token.attr-value,
 .token.class,
 .token.string,
 .token.property {
-  color: var(--color-teal-300);
+  color: var(--accent-hover);
 }
 
 .token.punctuation,
 .token.attr-equals {
-  color: var(--color-zinc-500);
+  color: var(--text-muted);
 }
 
 .token.unit,
 .language-css .token.function {
-  color: var(--color-sky-200);
+  color: var(--accent-hover);
 }
 
 .token.comment,
 .token.operator,
 .token.combinator {
-  color: var(--color-zinc-400);
+  color: var(--text-muted);
 }
