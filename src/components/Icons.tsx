@@ -24,11 +24,11 @@ export function BriefcaseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     >
       <path
         d="M2.75 9.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-        className="fill-[var(--surface-muted)] stroke-[var(--border-default)]/35"
+        className="fill-[var(--surface-muted)] stroke-[var(--border-default)]"
       />
       <path
         d="M3 14.25h6.249c.484 0 .952-.002 1.316.319l.777.682a.996.996 0 0 0 1.316 0l.777-.682c.364-.32.832-.319 1.316-.319H21M8.75 6.5V4.75a2 2 0 0 1 2-2h2.5a2 2 0 0 1 2 2V6.5"
-        className="stroke-[var(--border-default)]/60"
+        className="stroke-[var(--border-default)]"
       />
     </svg>
   )
@@ -61,11 +61,11 @@ export function CalendarIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     >
       <path
         d="M11.75 3v2.25M11.75 3h1.5m-1.5 0h-1.5m1.5 2.25h3.5a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-9.5a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2h3.5m0 0h1.5m-1.5 0V3m1.5 2.25V3"
-        className="stroke-[var(--border-default)]/60"
+        className="stroke-[var(--border-default)]"
       />
       <path
         d="M8.75 9.75h6.5M8.75 13.25h4.5"
-        className="stroke-[var(--border-default)]/60"
+        className="stroke-[var(--border-default)]"
       />
     </svg>
   )

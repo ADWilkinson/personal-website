@@ -26,17 +26,17 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function ContactMe() {
   return (
-    <div className="rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-muted)]/70 p-6">
+    <div className="rounded-lg border border-[var(--border-muted)] bg-[var(--surface-muted)] p-6">
       <h2 className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--text-primary)]">
         Contact
       </h2>
       <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">
         Let's connect about crypto, work, or collaborations.
       </p>
-      <div className="mt-5 divide-y divide-[var(--border-default)]/15">
+      <div className="mt-5 divide-y divide-[var(--border-muted)]">
         <Link
           href="https://www.linkedin.com/in/andrew-d-wilkinson"
-          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--text-primary)] transition-colors duration-150 hover:text-[var(--accent-primary)] first:pt-0 last:pb-0"
+          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--text-primary)] transition-colors duration-90 hover:text-[var(--accent-primary)] first:pt-0 last:pb-0"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -45,14 +45,14 @@ export function ContactMe() {
         </Link>
         <Link
           href="mailto:gm@andrewwilkinson.io"
-          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--text-primary)] transition-colors duration-150 hover:text-[var(--accent-primary)] first:pt-0 last:pb-0"
+          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--text-primary)] transition-colors duration-90 hover:text-[var(--accent-primary)] first:pt-0 last:pb-0"
         >
           <span className="flex items-center gap-2"><MailIcon className="h-4 w-4 flex-none" /> Email</span>
           <span className="text-[0.6rem] tracking-[0.12em] text-[var(--text-muted)]">gm@andrewwilkinson.io</span>
         </Link>
         <Link
           href="https://t.me/DavyJones_0x"
-          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--text-primary)] transition-colors duration-150 hover:text-[var(--accent-primary)] first:pt-0 last:pb-0"
+          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--text-primary)] transition-colors duration-90 hover:text-[var(--accent-primary)] first:pt-0 last:pb-0"
           target="_blank"
           rel="noopener noreferrer"
         >

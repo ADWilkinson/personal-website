@@ -29,9 +29,9 @@ function SocialLink({
     <li className={clsx(className, 'flex')}>
       <Link
         href={href}
-        className="group flex items-center text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)] transition-colors duration-150 hover:text-[var(--accent-primary)]"
+        className="group flex items-center text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)] transition-colors duration-90 hover:text-[var(--accent-primary)]"
       >
-        <Icon className="h-4 w-4 flex-none fill-[var(--text-muted)] transition-colors duration-150 group-hover:fill-[var(--accent-primary)]" />
+        <Icon className="h-4 w-4 flex-none fill-[var(--text-muted)] transition-colors duration-90 group-hover:fill-[var(--accent-primary)]" />
         <span className="ml-3">{children}</span>
       </Link>
     </li>
@@ -82,7 +82,7 @@ export default function About() {
       intro="Democratizing finance through accessible DeFi solutions.">
       <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-16">
         <div className="lg:order-2">
-          <div className="group relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-muted)]/70 lg:max-w-none">
+          <div className="group relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-lg border border-[var(--border-muted)] bg-[var(--surface-muted)] lg:max-w-none">
             <Image
               src={portraitImage}
               alt="Professional portrait of Andrew Wilkinson"
@@ -129,12 +129,12 @@ export default function About() {
 
             <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)] mt-6 mb-2">Side Projects</h3>
             <p>
-              I build tools and applications in my free time—from AI-powered DeFi assistants to music creation tools. These projects let me experiment with new technologies and solve interesting problems. See my <Link href="/projects" className="text-[var(--accent-primary)] underline hover:text-[var(--text-primary)]">projects page</Link> for more.
+              I build tools and applications in my free time—from AI-powered DeFi assistants to music creation tools. These projects let me experiment with new technologies and solve interesting problems. See my <Link href="/projects" className="text-[var(--accent-primary)] underline transition-colors duration-90 hover:text-[var(--text-primary)]">projects page</Link> for more.
             </p>
           </div>
         </div>
       </div>
-      <div className="mt-12 border-t border-[var(--border-default)]/30 pt-8">
+      <div className="mt-12 border-t border-[var(--border-default)] pt-8">
         <ul role="list" className="flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-x-8 sm:space-y-0">
             <SocialLink href={SOCIAL_LINKS.github} icon={GitHubIcon}>
               Follow on GitHub

@@ -12,19 +12,19 @@
 }
 
 .theme-dark {
-  --surface-default: var(--dj-midnight);
-  --surface-muted: #090c33;
-  --text-primary: var(--dj-white);
-  --text-secondary: rgba(255, 255, 255, 0.72);
-  --border-default: rgba(255, 255, 255, 0.16);
-  --accent-primary: var(--dj-cerulean);
+  --surface-default: var(--dj-charcoal);
+  --surface-muted: var(--dj-charcoal);
+  --text-primary: var(--dj-canvas);
+  --text-secondary: var(--dj-canvas);
+  --border-default: var(--dj-canvas);
+  --accent-primary: var(--dj-navigator);
 }
 
 .theme-light {
   --surface-default: var(--dj-canvas);
-  --surface-muted: var(--dj-parchment);
-  --text-primary: var(--dj-midnight);
-  --text-secondary: rgba(4, 7, 40, 0.72);
-  --border-default: rgba(4, 7, 40, 0.16);
-  --accent-primary: var(--dj-cerulean);
+  --surface-muted: var(--dj-canvas);
+  --text-primary: var(--dj-charcoal);
+  --text-secondary: var(--dj-charcoal);
+  --border-default: var(--dj-charcoal);
+  --accent-primary: var(--dj-navigator);
 }

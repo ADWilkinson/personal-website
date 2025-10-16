@@ -47,7 +47,7 @@ export function DavyJonesEasterEgg() {
   if (!isDark) {
     return (
       <div
-        className="fixed bottom-5 right-5 z-50 h-2 w-2 cursor-pointer rounded-full border border-[var(--border-default)]/20 bg-transparent transition-all duration-180 hover:border-[var(--border-default)]/30"
+        className="fixed bottom-5 right-5 z-50 h-2 w-2 cursor-pointer rounded-full border border-[var(--border-default)] bg-transparent transition-all duration-90 hover:border-[var(--border-default)]"
         onClick={handleClick}
       />
     )
@@ -57,7 +57,7 @@ export function DavyJonesEasterEgg() {
     <div className="fixed bottom-5 right-5 z-50">
       {showEasterEgg ? (
         <div
-          className="cursor-pointer rounded-full bg-[var(--surface-elevated)]/85 p-2 shadow-[var(--shadow-md)] transition-all duration-180 hover:shadow-[var(--shadow-lg)]"
+          className="cursor-pointer rounded-full bg-[var(--surface-elevated)] p-2 shadow-[var(--shadow-md)] transition-all duration-90 hover:shadow-[var(--shadow-lg)]"
           onClick={() => setShowEasterEgg(false)}
           title="Davy Jones"
         >
@@ -71,7 +71,7 @@ export function DavyJonesEasterEgg() {
         </div>
       ) : (
         <div
-          className="h-3 w-3 cursor-pointer rounded-full border border-[var(--border-default)]/20 bg-transparent transition-all duration-180 hover:border-[var(--accent-primary)]/60"
+          className="h-3 w-3 cursor-pointer rounded-full border border-[var(--border-default)] bg-transparent transition-all duration-90 hover:border-[var(--accent-primary)]"
           onClick={handleClick}
         />
       )}

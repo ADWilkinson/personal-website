@@ -13,7 +13,7 @@ export function SimpleLayout({
     <div className="mx-auto max-w-4xl animate-fade-in">
       <header className="mb-10 sm:mb-14">
         {icon && (
-          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full border border-[var(--border-default)]/25 bg-[var(--surface-muted)]/60 shadow-[var(--shadow-sm)]">
+          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full border border-[var(--border-muted)] bg-[var(--surface-muted)] shadow-[var(--shadow-sm)]">
             {icon}
           </div>
         )}

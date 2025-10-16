@@ -38,10 +38,10 @@ function SocialLink({
 }) {
   return (
     <Link
-      className="group inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border-default)]/20 bg-[var(--surface-muted)]/60 transition-transform duration-150 hover:-translate-y-0.5"
+      className="group inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border-muted)] bg-[var(--surface-muted)] transition-transform duration-180 hover:-translate-y-0.5"
       {...props}
     >
-      <Icon className="h-3.5 w-3.5 fill-[var(--text-muted)] transition-colors duration-150 group-hover:fill-[var(--accent-primary)]" />
+      <Icon className="h-3.5 w-3.5 fill-[var(--text-muted)] transition-colors duration-90 group-hover:fill-[var(--accent-primary)]" />
     </Link>
   )
 }
@@ -66,7 +66,7 @@ function Role({ role }: { role: Role }) {
 
   return (
     <li className="grid grid-cols-[auto_1fr] items-start gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
-      <div className="flex h-10 w-10 items-center justify-center rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-muted)]">
+      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-muted)] bg-[var(--surface-muted)]">
         <Image
           src={role.logo}
           alt={`${role.company} company logo`}
@@ -113,12 +113,12 @@ function Resume() {
   }))
 
   return (
-    <div className="rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-muted)]/70 p-6">
+    <div className="rounded-lg border border-[var(--border-muted)] bg-[var(--surface-muted)] p-6">
       <h2 className="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[var(--text-primary)]">
         <BriefcaseIcon className="h-5 w-5 flex-none" />
         Work Log
       </h2>
-      <ol className="mt-4 divide-y divide-[var(--border-default)]/15">
+      <ol className="mt-4 divide-y divide-[var(--border-muted)]">
         {resume.map((role, roleIndex) => (
           <Role key={roleIndex} role={role} />
         ))}
@@ -166,7 +166,7 @@ export default async function Home() {
       {/* Content Section */}
       <div className="grid grid-cols-1 gap-16 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
         <section className="space-y-5">
-          <div className="flex flex-col gap-2 border-b border-[var(--border-default)]/15 pb-3">
+          <div className="flex flex-col gap-2 border-b border-[var(--border-default)] pb-3">
             <h2 className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[var(--text-primary)]">
               Latest Articles
             </h2>
@@ -178,7 +178,7 @@ export default async function Home() {
           </div>
         </section>
         <section className="space-y-5">
-          <div className="flex flex-col gap-2 border-b border-[var(--border-default)]/15 pb-3">
+          <div className="flex flex-col gap-2 border-b border-[var(--border-default)] pb-3">
             <h2 className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[var(--text-primary)]">
               Experience
             </h2>

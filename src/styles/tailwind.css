@@ -59,27 +59,27 @@
   --space-64: 16rem;
 
   /* Brand border radius */
-  --radius-brand: 18px;
+  --radius-brand: 8px;
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-lg: 8px;
 }
 
 @layer base {
-  /* Davy Jones Color Tokens */
+  /* Minimalist 3-Color Palette */
   :root {
-    /* Semantic light theme tokens sourced from the brand kit */
+    /* Light theme - using only Canvas, Navigator, Charcoal */
     --surface-default: var(--dj-canvas);
-    --surface-muted: var(--dj-parchment);
-    --surface-elevated: var(--dj-white);
-    --text-primary: var(--dj-midnight);
-    --text-secondary: rgba(4, 7, 40, 0.72);
-    --text-muted: rgba(4, 7, 40, 0.54);
-    --border-default: rgba(4, 7, 40, 0.34);
-    --border-muted: rgba(4, 7, 40, 0.22);
-    --accent-primary: var(--dj-cerulean);
-    --accent-hover: var(--dj-aqua);
-    --accent-emphasis: var(--dj-copper);
+    --surface-muted: var(--dj-canvas);
+    --surface-elevated: var(--dj-canvas);
+    --text-primary: var(--dj-charcoal);
+    --text-secondary: var(--dj-charcoal);
+    --text-muted: var(--dj-charcoal);
+    --border-default: var(--dj-charcoal);
+    --border-muted: var(--dj-charcoal);
+    --accent-primary: var(--dj-navigator);
+    --accent-hover: var(--dj-navigator);
+    --accent-emphasis: var(--dj-navigator);
 
     /* Brand shadow system */
     --shadow-brand-soft: 0 18px 60px -30px rgba(4, 7, 40, 0.6);
@@ -98,18 +98,18 @@
   }
 
   :root.dark {
-    /* Semantic dark theme tokens */
-    --surface-default: var(--dj-midnight);
-    --surface-muted: #090c33;
-    --surface-elevated: #0d1144;
-    --text-primary: var(--dj-white);
-    --text-secondary: rgba(255, 255, 255, 0.72);
-    --text-muted: rgba(255, 255, 255, 0.54);
-    --border-default: rgba(255, 255, 255, 0.38);
-    --border-muted: rgba(255, 255, 255, 0.22);
-    --accent-primary: var(--dj-cerulean);
-    --accent-hover: var(--dj-aqua);
-    --accent-emphasis: var(--dj-copper);
+    /* Dark theme - using only Canvas, Navigator, Charcoal */
+    --surface-default: var(--dj-charcoal);
+    --surface-muted: var(--dj-charcoal);
+    --surface-elevated: var(--dj-charcoal);
+    --text-primary: var(--dj-canvas);
+    --text-secondary: var(--dj-canvas);
+    --text-muted: var(--dj-canvas);
+    --border-default: var(--dj-canvas);
+    --border-muted: var(--dj-canvas);
+    --accent-primary: var(--dj-navigator);
+    --accent-hover: var(--dj-navigator);
+    --accent-emphasis: var(--dj-navigator);
 
     --shadow-brand-soft: 0 18px 60px -30px rgba(0, 0, 0, 0.8);
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -182,7 +182,7 @@
 
   ::selection {
     background: var(--accent-primary);
-    color: var(--dj-white);
+    color: var(--dj-canvas);
   }
 
   /* Focus styles - brand compliant */

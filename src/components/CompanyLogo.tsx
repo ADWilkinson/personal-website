@@ -35,7 +35,7 @@ export function CompanyLogo({ name, logo, className, size = 'sm' }: CompanyLogoP
       {name}
       <span
         className={clsx(
-          'ml-1 inline-flex items-center justify-center overflow-hidden rounded-full bg-[var(--surface-elevated)] shadow-[var(--shadow-xs)] ring-1 ring-[var(--border-default)]/20',
+          'ml-1 inline-flex items-center justify-center overflow-hidden rounded-full bg-[var(--surface-elevated)] shadow-[var(--shadow-xs)] ring-1 ring-[var(--border-default)]',
           container,
         )}
       >

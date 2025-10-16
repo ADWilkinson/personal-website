@@ -13,7 +13,7 @@
 
 .theme-dark {
   --surface-default: var(--dj-midnight);
-  --surface-muted: #090c33;
+  --surface-muted: var(--dj-charcoal);
   --text-primary: var(--dj-white);
   --text-secondary: rgba(255, 255, 255, 0.72);
   --border-default: rgba(255, 255, 255, 0.16);

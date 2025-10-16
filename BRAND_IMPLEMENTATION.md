@@ -59,8 +59,8 @@ The Davy Jones brand identity has been successfully integrated into your persona
 
 /* Dark Mode */
 --surface-default: var(--dj-midnight)
---surface-muted: #090c33
---surface-elevated: #0d1144
+--surface-muted: var(--dj-charcoal)
+--surface-elevated: var(--dj-charcoal)
 --text-primary: var(--dj-white)
 --text-secondary: rgba(255, 255, 255, 0.72)
 --text-muted: rgba(255, 255, 255, 0.54)
@@ -158,13 +158,13 @@ Follow the `--space-*` scale defined in tailwind.css:
 
 ### Border Radius
 ```tsx
-// Brand standard (18px)
+// Brand standard (8px)
 <div className="rounded-brand">...</div>
 
-// Smaller variants
-<div className="rounded-sm">...</div>  // 8px
+// Variants
+<div className="rounded-sm">...</div>  // 8px (same as brand)
 <div className="rounded-md">...</div>  // 12px
-<div className="rounded-lg">...</div>  // 18px (same as brand)
+<div className="rounded-lg">...</div>  // 8px (same as brand)
 ```
 
 ## Recommendations

@@ -18,7 +18,7 @@ function Article({ article }: { article: ArticleWithSlug }) {
       </time>
       <div className="space-y-2">
         <Link href={`/articles/${article.slug}`}>
-          <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-[var(--text-primary)] transition-colors duration-150 hover:text-[var(--accent-primary)]">
+          <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-[var(--text-primary)] transition-colors duration-90 hover:text-[var(--accent-primary)]">
             {article.title}
           </h2>
         </Link>
@@ -67,7 +67,7 @@ export default async function ArticlesIndex() {
       title="Articles on Blockchain, DeFi, and Technology"
       intro="My thoughts and experiences in blockchain, DeFi, and technology projects."
     >
-      <div className="mx-auto max-w-3xl divide-y divide-[var(--border-default)]/12">
+      <div className="mx-auto max-w-3xl divide-y divide-[var(--border-default)]">
         {articles.map((article) => (
           <Article key={article.slug} article={article} />
         ))}

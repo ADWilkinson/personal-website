@@ -88,7 +88,7 @@ function MobileNavItem({
         as={Link}
         href={href}
         className={clsx(
-          'group flex w-full items-center justify-between px-3 py-2 text-[0.65rem] font-medium uppercase tracking-[0.12em] transition-colors duration-150',
+          'group flex w-full items-center justify-between px-3 py-2 text-[0.65rem] font-medium uppercase tracking-[0.12em] transition-colors duration-90',
           isActive
             ? 'text-[var(--text-primary)]'
             : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
@@ -98,7 +98,7 @@ function MobileNavItem({
         <span
           aria-hidden="true"
           className={clsx(
-            'ml-3 h-px flex-1 bg-[var(--border-default)] transition-opacity duration-150',
+            'ml-3 h-px flex-1 bg-[var(--border-default)] transition-opacity duration-90',
             isActive ? 'opacity-50' : 'opacity-0 group-hover:opacity-30',
           )}
         />
@@ -114,18 +114,18 @@ function MobileNavigation({
 }) {
   return (
     <Popover>
-      <PopoverButton className="flex items-center gap-2 rounded-sm border border-[var(--border-default)]/25 bg-[var(--surface-muted)]/70 px-3 py-2 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--text-primary)] shadow-[var(--shadow-sm)] transition-colors duration-150 hover:text-[var(--accent-primary)]">
+      <PopoverButton className="flex items-center gap-2 rounded-lg border border-[var(--border-default)] bg-[var(--surface-muted)] px-3 py-2 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--text-primary)] shadow-[var(--shadow-sm)] transition-colors duration-90 hover:text-[var(--accent-primary)]">
         Menu
         <ChevronDownIcon className="h-3 w-3 stroke-[var(--text-primary)] stroke-2" />
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-40 bg-[var(--border-default)]/10 backdrop-blur-sm duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+        className="fixed inset-0 z-40 bg-[var(--dj-charcoal)] backdrop-blur-sm duration-180 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-6 top-5 z-50 origin-top rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-elevated)]/90 p-4 shadow-[var(--shadow-lg)] backdrop-blur-sm duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+        className="fixed inset-x-6 top-5 z-50 origin-top rounded-lg border border-[var(--border-muted)] bg-[var(--surface-elevated)] p-4 shadow-[var(--shadow-lg)] backdrop-blur-sm duration-180 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
       >
         <div className="flex items-center justify-between">
           <h2 className="text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--text-muted)]">
@@ -133,7 +133,7 @@ function MobileNavigation({
           </h2>
           <PopoverButton
             aria-label="Close menu"
-            className="rounded-sm p-1 text-[var(--text-muted)] transition-colors duration-150 hover:text-[var(--text-primary)]"
+            className="rounded-lg p-1 text-[var(--text-muted)] transition-colors duration-90 hover:text-[var(--text-primary)]"
           >
             <CloseIcon className="h-4 w-4" />
           </PopoverButton>
@@ -176,7 +176,7 @@ function NavItem({
       <Link
         href={href}
         className={clsx(
-          'group inline-flex items-center text-[0.65rem] font-medium uppercase tracking-[0.14em] transition-colors duration-150',
+          'group inline-flex items-center text-[0.65rem] font-medium uppercase tracking-[0.14em] transition-colors duration-90',
           isActive
             ? 'text-[var(--text-primary)]'
             : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
@@ -186,7 +186,7 @@ function NavItem({
         <span
           aria-hidden="true"
           className={clsx(
-            'ml-1 h-px w-6 bg-[var(--border-default)] transition-opacity duration-150',
+            'ml-1 h-px w-6 bg-[var(--border-default)] transition-opacity duration-90',
             isActive ? 'opacity-50' : 'opacity-0 group-hover:opacity-25',
           )}
         />
@@ -229,7 +229,7 @@ function BrandMark() {
     <Link
       href="/"
       aria-label="Back to home"
-      className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--text-primary)] transition-colors duration-150 hover:text-[var(--accent-primary)]"
+      className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--text-primary)] transition-colors duration-90 hover:text-[var(--accent-primary)]"
     >
       Andrew Wilkinson
     </Link>
@@ -246,7 +246,7 @@ function ThemeToggle() {
   }, [])
 
   const baseClasses =
-    'inline-flex h-9 w-9 items-center justify-center rounded-sm border border-[var(--border-default)]/25 bg-[var(--surface-muted)]/80 text-[var(--text-primary)] shadow-[var(--shadow-sm)] transition-colors duration-150 hover:text-[var(--accent-primary)]'
+    'inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--border-default)] bg-[var(--surface-muted)] text-[var(--text-primary)] shadow-[var(--shadow-sm)] transition-colors duration-90 hover:text-[var(--accent-primary)]'
 
   if (!mounted) {
     return (
@@ -281,7 +281,7 @@ export function Header() {
 
   return (
     <header className="relative">
-      <div className="flex items-center justify-between gap-4 border-b border-[var(--border-default)]/25 pb-6">
+      <div className="flex items-center justify-between gap-4 border-b border-[var(--border-muted)] pb-6">
         <BrandMark />
         <div className="hidden items-center gap-8 md:flex">
           <DesktopNavigation currentPath={currentPath} />

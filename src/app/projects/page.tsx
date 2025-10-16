@@ -167,14 +167,14 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <Card
       as="li"
-      className="h-full bg-[var(--surface-muted)] shadow-[var(--shadow-xs)] transition-[background-color,border-color,box-shadow] duration-200 ease-out hover:border-[var(--accent-primary)]/35 hover:bg-[var(--surface-elevated)] hover:shadow-[var(--shadow-brand-soft)] dark:hover:border-[var(--accent-hover)]/40"
+      className="h-full bg-[var(--surface-muted)] shadow-[var(--shadow-xs)] transition-[background-color,border-color,box-shadow] duration-90 ease-out hover:border-[var(--accent-primary)] hover:bg-[var(--surface-elevated)] hover:shadow-[var(--shadow-brand-soft)] dark:hover:border-[var(--accent-hover)]"
     >
       <div className="flex items-start justify-between gap-3">
         <Card.Title as="h3" href={project.link.href}>
           {project.name}
         </Card.Title>
         {project.category === 'production' && (
-          <span className="rounded-sm border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent-primary)]">
+          <span className="rounded-md border border-[var(--accent-primary)] bg-[var(--dj-navigator)] px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-[var(--dj-canvas)]">
             Live
           </span>
         )}
@@ -187,7 +187,7 @@ function ProjectCard({ project }: { project: Project }) {
           {project.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="rounded-sm border border-[var(--border-default)]/30 bg-[var(--surface-muted)]/40 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]"
+              className="rounded-md border border-[var(--border-default)] bg-[var(--surface-elevated)] px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]"
             >
               {tag}
             </span>

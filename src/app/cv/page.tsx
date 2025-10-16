@@ -22,7 +22,7 @@ const headingSm =
 const bodyText = 'text-sm leading-relaxed text-[var(--text-muted)]'
 const metaText = 'text-[0.65rem] uppercase tracking-[0.14em] text-[var(--text-secondary)]'
 const linkText =
-  'inline-flex items-center gap-1 text-[var(--accent-primary)] transition-colors duration-150 hover:text-[var(--text-primary)]'
+  'inline-flex items-center gap-1 text-[var(--accent-primary)] transition-colors duration-90 hover:text-[var(--text-primary)]'
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -138,7 +138,7 @@ export default function CV() {
       intro="Senior Software Engineer at ZKP2P. Former VC-backed Founder."
     >
       <div className="space-y-10">
-        <div className="flex flex-col gap-3 rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-muted)]/70 p-5 text-sm text-[var(--text-secondary)] md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-3 rounded-lg border border-[var(--border-muted)] bg-[var(--surface-muted)] p-5 text-sm text-[var(--text-secondary)] md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +182,7 @@ export default function CV() {
               >
                 LinkedIn
               </Link>
-              <span className="text-[var(--border-default)]/40">/</span>
+              <span className="text-[var(--text-muted)]">/</span>
               <svg
                 viewBox="0 0 24 24"
                 aria-hidden="true"

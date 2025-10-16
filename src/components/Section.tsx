@@ -12,7 +12,7 @@ export function Section({
   return (
     <section
       aria-labelledby={id}
-      className="md:border-l md:border-[var(--border-default)]/15 md:pl-6"
+      className="md:border-l md:border-[var(--border-default)] md:pl-6"
     >
       <div className="grid max-w-3xl grid-cols-1 items-baseline gap-y-8 md:grid-cols-4">
         <h2

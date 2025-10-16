@@ -45,8 +45,8 @@ This document verifies that all color combinations in the current implementation
 | Location | Background | Text | Ratio | Status |
 |----------|-----------|------|-------|--------|
 | Body | `--dj-midnight` | `--text-primary` (white) | 17.1:1 | ✅ PASS |
-| Cards | `#090c33` | `--text-primary` | 15.8:1 | ✅ PASS |
-| Elevated surfaces | `#0d1144` | `--text-primary` | 14.2:1 | ✅ PASS |
+| Cards | `var(--dj-charcoal)` | `--text-primary` | 15.8:1 | ✅ PASS |
+| Elevated surfaces | `var(--dj-charcoal)` | `--text-primary` | 15.8:1 | ✅ PASS |
 
 #### Interactive Elements
 | Location | Background | Element | Ratio | Status |

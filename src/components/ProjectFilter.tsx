@@ -38,14 +38,14 @@ export function ProjectFilter({ filters, onFiltersChange, availableTags }: Proje
   }
 
   return (
-    <div className="space-y-5 rounded-sm border border-[var(--border-default)]/15 bg-[var(--surface-muted)]/60 p-5">
+    <div className="space-y-5 rounded-lg border border-[var(--border-muted)] bg-[var(--surface-muted)] p-5">
       {/* Filter Controls */}
       <div className="flex flex-wrap items-center gap-3 text-[0.7rem] uppercase tracking-[0.12em] text-[var(--text-primary)]">
         {/* Project Type Filter */}
         <select
           value={filters.selectedType}
           onChange={(e) => handleTypeChange(e.target.value)}
-          className="rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-muted)]/70 px-3 py-2 text-[0.65rem] uppercase tracking-[0.12em] text-[var(--text-primary)] transition-colors focus:border-[var(--accent-primary)] focus:outline-none focus:ring-0"
+          className="rounded-lg border border-[var(--border-muted)] bg-[var(--surface-muted)] px-3 py-2 text-[0.65rem] uppercase tracking-[0.12em] text-[var(--text-primary)] transition-colors focus:border-[var(--accent-primary)] focus:outline-none focus:ring-0"
         >
           <option value="all">All Projects</option>
           <option value="production">Production Apps</option>
@@ -56,7 +56,7 @@ export function ProjectFilter({ filters, onFiltersChange, availableTags }: Proje
         <select
           value={filters.sortBy}
           onChange={(e) => handleSortChange(e.target.value)}
-          className="rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-muted)]/70 px-3 py-2 text-[0.65rem] uppercase tracking-[0.12em] text-[var(--text-primary)] transition-colors focus:border-[var(--accent-primary)] focus:outline-none focus:ring-0"
+          className="rounded-lg border border-[var(--border-muted)] bg-[var(--surface-muted)] px-3 py-2 text-[0.65rem] uppercase tracking-[0.12em] text-[var(--text-primary)] transition-colors focus:border-[var(--accent-primary)] focus:outline-none focus:ring-0"
         >
           <option value="name">Sort: Name</option>
           <option value="recent">Sort: Recent</option>
@@ -67,7 +67,7 @@ export function ProjectFilter({ filters, onFiltersChange, availableTags }: Proje
         {(filters.selectedTags.length > 0 || filters.selectedType !== 'all' || filters.sortBy !== 'name') && (
           <button
             onClick={clearFilters}
-            className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--accent-primary)] transition-colors hover:text-[var(--text-primary)]"
+            className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--accent-primary)] transition-colors duration-90 hover:text-[var(--text-primary)]"
           >
             Clear all
           </button>
@@ -80,10 +80,10 @@ export function ProjectFilter({ filters, onFiltersChange, availableTags }: Proje
           <button
             key={tag}
             onClick={() => handleTagToggle(tag)}
-            className={`rounded-sm border border-[var(--border-default)]/20 px-3 py-1 text-[0.6rem] uppercase tracking-[0.1em] transition-colors ${
+            className={`rounded-lg border border-[var(--border-muted)] px-3 py-1 text-[0.6rem] uppercase tracking-[0.1em] transition-colors duration-90 ${
               filters.selectedTags.includes(tag)
                 ? 'bg-[var(--border-default)] text-[var(--surface-muted)]'
-                : 'bg-[var(--surface-muted)]/60 text-[var(--text-primary)] hover:bg-[var(--surface-muted)]'
+                : 'bg-[var(--surface-muted)] text-[var(--text-primary)] hover:bg-[var(--surface-elevated)]'
             }`}
           >
             {tag}
