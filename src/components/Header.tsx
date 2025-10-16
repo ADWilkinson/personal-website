@@ -90,15 +90,15 @@ function MobileNavItem({
         className={clsx(
           'group flex w-full items-center justify-between px-3 py-2 text-[0.65rem] font-medium uppercase tracking-[0.12em] transition-colors duration-150',
           isActive
-            ? 'text-[var(--mono-text)]'
-            : 'text-[var(--mono-text-muted)] hover:text-[var(--mono-text)]',
+            ? 'text-[var(--text-primary)]'
+            : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
         )}
       >
         {children}
         <span
           aria-hidden="true"
           className={clsx(
-            'ml-3 h-px flex-1 bg-[var(--mono-border)] transition-opacity duration-150',
+            'ml-3 h-px flex-1 bg-[var(--border-default)] transition-opacity duration-150',
             isActive ? 'opacity-50' : 'opacity-0 group-hover:opacity-30',
           )}
         />
@@ -114,26 +114,26 @@ function MobileNavigation({
 }) {
   return (
     <Popover>
-      <PopoverButton className="flex items-center gap-2 rounded-sm border border-[var(--mono-border)]/25 bg-[var(--mono-surface)]/70 px-3 py-2 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--mono-text)] shadow-[var(--shadow-sm)] transition-colors duration-150 hover:text-[var(--mono-accent)]">
+      <PopoverButton className="flex items-center gap-2 rounded-sm border border-[var(--border-default)]/25 bg-[var(--surface-muted)]/70 px-3 py-2 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--text-primary)] shadow-[var(--shadow-sm)] transition-colors duration-150 hover:text-[var(--accent-primary)]">
         Menu
-        <ChevronDownIcon className="h-3 w-3 stroke-[var(--mono-text)] stroke-2" />
+        <ChevronDownIcon className="h-3 w-3 stroke-[var(--text-primary)] stroke-2" />
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-40 bg-[var(--mono-border)]/10 backdrop-blur-sm duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+        className="fixed inset-0 z-40 bg-[var(--border-default)]/10 backdrop-blur-sm duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-6 top-5 z-50 origin-top rounded-sm border border-[var(--mono-border)]/20 bg-[var(--mono-panel)]/90 p-4 shadow-[var(--shadow-lg)] backdrop-blur-sm duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+        className="fixed inset-x-6 top-5 z-50 origin-top rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-elevated)]/90 p-4 shadow-[var(--shadow-lg)] backdrop-blur-sm duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
       >
         <div className="flex items-center justify-between">
-          <h2 className="text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--mono-text-muted)]">
+          <h2 className="text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--text-muted)]">
             Navigation
           </h2>
           <PopoverButton
             aria-label="Close menu"
-            className="rounded-sm p-1 text-[var(--mono-text-muted)] transition-colors duration-150 hover:text-[var(--mono-text)]"
+            className="rounded-sm p-1 text-[var(--text-muted)] transition-colors duration-150 hover:text-[var(--text-primary)]"
           >
             <CloseIcon className="h-4 w-4" />
           </PopoverButton>
@@ -178,15 +178,15 @@ function NavItem({
         className={clsx(
           'group inline-flex items-center text-[0.65rem] font-medium uppercase tracking-[0.14em] transition-colors duration-150',
           isActive
-            ? 'text-[var(--mono-text)]'
-            : 'text-[var(--mono-text-muted)] hover:text-[var(--mono-text)]',
+            ? 'text-[var(--text-primary)]'
+            : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
         )}
       >
         {children}
         <span
           aria-hidden="true"
           className={clsx(
-            'ml-1 h-px w-6 bg-[var(--mono-border)] transition-opacity duration-150',
+            'ml-1 h-px w-6 bg-[var(--border-default)] transition-opacity duration-150',
             isActive ? 'opacity-50' : 'opacity-0 group-hover:opacity-25',
           )}
         />
@@ -229,7 +229,7 @@ function BrandMark() {
     <Link
       href="/"
       aria-label="Back to home"
-      className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--mono-text)] transition-colors duration-150 hover:text-[var(--mono-accent)]"
+      className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--text-primary)] transition-colors duration-150 hover:text-[var(--accent-primary)]"
     >
       Andrew Wilkinson
     </Link>
@@ -246,7 +246,7 @@ function ThemeToggle() {
   }, [])
 
   const baseClasses =
-    'inline-flex h-9 w-9 items-center justify-center rounded-sm border border-[var(--mono-border)]/25 bg-[var(--mono-surface)]/80 text-[var(--mono-text)] shadow-[var(--shadow-sm)] transition-colors duration-150 hover:text-[var(--mono-accent)]'
+    'inline-flex h-9 w-9 items-center justify-center rounded-sm border border-[var(--border-default)]/25 bg-[var(--surface-muted)]/80 text-[var(--text-primary)] shadow-[var(--shadow-sm)] transition-colors duration-150 hover:text-[var(--accent-primary)]'
 
   if (!mounted) {
     return (
@@ -255,7 +255,7 @@ function ThemeToggle() {
         aria-label="Toggle theme"
         className={baseClasses}
       >
-        <SunIcon className="h-4 w-4 stroke-[var(--mono-text)]" />
+        <SunIcon className="h-4 w-4 stroke-[var(--text-primary)]" />
       </button>
     )
   }
@@ -268,9 +268,9 @@ function ThemeToggle() {
       onClick={() => setTheme(otherTheme)}
     >
       {resolvedTheme === 'dark' ? (
-        <SunIcon className="h-4 w-4 stroke-[var(--mono-text)] stroke-2" />
+        <SunIcon className="h-4 w-4 stroke-[var(--text-primary)] stroke-2" />
       ) : (
-        <MoonIcon className="h-4 w-4 stroke-[var(--mono-text)] stroke-2" />
+        <MoonIcon className="h-4 w-4 stroke-[var(--text-primary)] stroke-2" />
       )}
     </button>
   )
@@ -281,7 +281,7 @@ export function Header() {
 
   return (
     <header className="relative">
-      <div className="flex items-center justify-between gap-4 border-b border-[var(--mono-border)]/25 pb-6">
+      <div className="flex items-center justify-between gap-4 border-b border-[var(--border-default)]/25 pb-6">
         <BrandMark />
         <div className="hidden items-center gap-8 md:flex">
           <DesktopNavigation currentPath={currentPath} />

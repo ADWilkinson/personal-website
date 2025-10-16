@@ -36,7 +36,7 @@ export default (props) => <ArticleLayout article={article} {...props} />
 
 ## WTF is a Stablecoin?
 
-<div className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-6 mb-8">
+<div className="bg-[var(--surface-muted)]/70 border border-[var(--border-default)]/20 rounded-lg p-6 mb-8">
   <p className="m-0">Stablecoins are cryptocurrencies designed to maintain a stable value relative to a reference asset (typically the US dollar). Think of them as blockchain-native dollars—you can send them anywhere, instantly, without traditional banking intermediaries.</p>
 
   <p className="mb-4">The big three—<strong>USDT</strong>, <strong>USDC</strong>, and <strong>USDS</strong>—achieve this stability through different mechanisms. USDT and USDC are backed by real dollars and treasuries sitting in bank accounts. USDS (Sky's stablecoin) maintains its dollar value through overcollateralized crypto loans and real-world asset backing. Beyond these are synthetic dollars like Ethena's USDe (backed by hedged crypto positions), algorithmic stablecoins, and even some backed by other commodities like gold.</p>
@@ -44,15 +44,15 @@ export default (props) => <ArticleLayout article={article} {...props} />
   <p className="mb-0">While they might fluctuate by a few cents here and there, they generally hover around $1. The appeal is straightforward: they combine crypto's efficiency and accessibility with relative price stability. No more explaining why your portfolio swung 30% overnight. Just stable(ish), boring, incredibly useful digital dollars that are rapidly transforming how value moves globally.</p>
 </div>
 
-<p className="text-lg font-medium text-zinc-900 dark:text-zinc-100 mt-6">Now, the DeFi projects that are best positioned to ride the stablecoin wave.</p>
+<p className="text-lg font-medium text-[var(--text-primary)] mt-6">Now, the DeFi projects that are best positioned to ride the stablecoin wave.</p>
 
 ## AAVE - The DeFi Banking Infrastructure
 
-<div className="bg-[var(--mono-surface-alt)] border-l-4 border-[var(--mono-border)] p-4 mb-8 rounded-r-md">
+<div className="bg-[var(--surface-elevated)] border-l-4 border-[var(--border-default)] p-4 mb-8 rounded-r-md">
   <div className="space-y-1">
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Market Cap:</strong> ~$4.7 billion</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Risk Level:</strong> Low</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Native Stablecoin:</strong> GHO</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Market Cap:</strong> ~$4.7 billion</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Risk Level:</strong> Low</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Native Stablecoin:</strong> GHO</p>
   </div>
 </div>
 
@@ -62,29 +62,29 @@ But here's what makes AAVE particularly interesting for Stablecoin Summer: their
 
 Recent developments have been particularly bullish. World Liberty Financial (yes, the Trump-affiliated DeFi project) took a significant position in AAVE, and the Ethereum Foundation themselves are using Aave for onchain loans, giving blue-chip validity to the project and its year of leading the primitive. The "Aavenomics" upgrade, including the Umbrella upgrade, redirects even more protocol revenue to token holders through a buyback and distribution mechanism.
 
-<div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-2">Value accrual:</div>
-  <div className="text-sm text-zinc-600 dark:text-zinc-400">Protocol fees from lending spreads, GHO interest revenue, and buybacks through Aavenomics.</div>
+<div className="mt-6 p-4 bg-[var(--surface-muted)]/70 rounded-lg">
+  <div className="text-sm font-medium text-[var(--text-primary)] mb-2">Value accrual:</div>
+  <div className="text-sm text-[var(--text-muted)]">Protocol fees from lending spreads, GHO interest revenue, and buybacks through Aavenomics.</div>
 </div>
 
 <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-  <span className="font-medium text-zinc-700 dark:text-zinc-300">Links:</span>
+  <span className="font-medium text-[var(--text-muted)]">Links:</span>
   <div className="flex items-center gap-2">
-    <a href="https://aave.com" className="text-[var(--mono-accent)] hover:underline">aave.com</a>
-    <span className="text-zinc-400">•</span>
-    <a href="https://coingecko.com/en/coins/aave" className="text-[var(--mono-accent)] hover:underline">CoinGecko</a>
+    <a href="https://aave.com" className="text-[var(--accent-primary)] hover:underline">aave.com</a>
+    <span className="text-[var(--text-secondary)]">•</span>
+    <a href="https://coingecko.com/en/coins/aave" className="text-[var(--accent-primary)] hover:underline">CoinGecko</a>
   </div>
 </div>
 
-<hr className="my-12 border-zinc-200 dark:border-zinc-700" />
+<hr className="my-12 border-[var(--border-default)]/20" />
 
 ## SKY (ex. MakerDAO) - The OG Stablecoin Protocol
 
-<div className="bg-[var(--mono-surface-alt)] border-l-4 border-[var(--mono-border)] p-4 mb-8 rounded-r-md">
+<div className="bg-[var(--surface-elevated)] border-l-4 border-[var(--border-default)] p-4 mb-8 rounded-r-md">
   <div className="space-y-1">
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Market Cap:</strong> ~$1.9 billion</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Risk Level:</strong> Low</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Stablecoins:</strong> DAI & USDS</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Market Cap:</strong> ~$1.9 billion</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Risk Level:</strong> Low</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Stablecoins:</strong> DAI & USDS</p>
   </div>
 </div>
 
@@ -94,29 +94,29 @@ Their revenue model remains compelling: users deposit collateral to mint stablec
 
 The token conversion (1 MKR = 24,000 SKY) introduces new tokenomics where SKY can be staked to earn protocol rewards. When the protocol's surplus buffer exceeds certain thresholds, it can be used for MKR buybacks and burns—a mechanism that has already removed significant MKR from circulation. Their $1 billion allocation to tokenized real-world assets is particularly noteworthy, which generates additional yield flowing into this surplus buffer.
 
-<div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-2">Value accrual:</div>
-  <div className="text-sm text-zinc-600 dark:text-zinc-400">Stability fees from DAI/USDS minting, RWA yields flow to surplus buffer, surplus buffer buybacks and burns, SKY staking rewards.</div>
+<div className="mt-6 p-4 bg-[var(--surface-muted)]/70 rounded-lg">
+  <div className="text-sm font-medium text-[var(--text-primary)] mb-2">Value accrual:</div>
+  <div className="text-sm text-[var(--text-muted)]">Stability fees from DAI/USDS minting, RWA yields flow to surplus buffer, surplus buffer buybacks and burns, SKY staking rewards.</div>
 </div>
 
 <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-  <span className="font-medium text-zinc-700 dark:text-zinc-300">Links:</span>
+  <span className="font-medium text-[var(--text-muted)]">Links:</span>
   <div className="flex items-center gap-2">
-    <a href="https://sky.money" className="text-[var(--mono-accent)] hover:underline">sky.money</a>
-    <span className="text-zinc-400">•</span>
-    <a href="https://coingecko.com/en/coins/sky" className="text-[var(--mono-accent)] hover:underline">CoinGecko</a>
+    <a href="https://sky.money" className="text-[var(--accent-primary)] hover:underline">sky.money</a>
+    <span className="text-[var(--text-secondary)]">•</span>
+    <a href="https://coingecko.com/en/coins/sky" className="text-[var(--accent-primary)] hover:underline">CoinGecko</a>
   </div>
 </div>
 
-<hr className="my-12 border-zinc-200 dark:border-zinc-700" />
+<hr className="my-12 border-[var(--border-default)]/20" />
 
 ## ENA (Ethena) - The Yield Innovation Play
 
 <div className="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 dark:border-amber-400 p-4 mb-8 rounded-r-md">
   <div className="space-y-1">
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Market Cap:</strong> ~$2.2 billion</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Risk Level:</strong> Medium</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Stablecoins:</strong> USDe, USDtb</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Market Cap:</strong> ~$2.2 billion</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Risk Level:</strong> Medium</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Stablecoins:</strong> USDe, USDtb</p>
   </div>
 </div>
 
@@ -126,9 +126,9 @@ Their growth has been remarkable—from $85 million to $6 billion in under a yea
 
 ENA token holders recently approved a fee switch proposal. Under this proposal, a portion of protocol revenues will flow to staked ENA. As the protocol scales, this could create significant value accrual and directly tie the token to the growth of the stablecoin, USDE, and wider narrative.
 
-<div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-2">Value accrual:</div>
-  <div className="text-sm text-zinc-600 dark:text-zinc-400">Revenue sharing to staked ENA holders, governance over the growing protocol treasury.</div>
+<div className="mt-6 p-4 bg-[var(--surface-muted)]/70 rounded-lg">
+  <div className="text-sm font-medium text-[var(--text-primary)] mb-2">Value accrual:</div>
+  <div className="text-sm text-[var(--text-muted)]">Revenue sharing to staked ENA holders, governance over the growing protocol treasury.</div>
 </div>
 
 <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-400 p-3 mt-4 rounded-r-md">
@@ -137,23 +137,23 @@ ENA token holders recently approved a fee switch proposal. Under this proposal, 
 </div>
 
 <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-  <span className="font-medium text-zinc-700 dark:text-zinc-300">Links:</span>
+  <span className="font-medium text-[var(--text-muted)]">Links:</span>
   <div className="flex items-center gap-2">
-    <a href="https://ethena.fi" className="text-[var(--mono-accent)] hover:underline">ethena.fi</a>
-    <span className="text-zinc-400">•</span>
-    <a href="https://coingecko.com/en/coins/ethena" className="text-[var(--mono-accent)] hover:underline">CoinGecko</a>
+    <a href="https://ethena.fi" className="text-[var(--accent-primary)] hover:underline">ethena.fi</a>
+    <span className="text-[var(--text-secondary)]">•</span>
+    <a href="https://coingecko.com/en/coins/ethena" className="text-[var(--accent-primary)] hover:underline">CoinGecko</a>
   </div>
 </div>
 
-<hr className="my-12 border-zinc-200 dark:border-zinc-700" />
+<hr className="my-12 border-[var(--border-default)]/20" />
 
 ## CRV (Curve) - The Stablecoin Trading Infrastructure & Ecosystem
 
-<div className="bg-[var(--mono-surface-alt)] border-l-4 border-[var(--mono-border)] p-4 mb-8 rounded-r-md">
+<div className="bg-[var(--surface-elevated)] border-l-4 border-[var(--border-default)] p-4 mb-8 rounded-r-md">
   <div className="space-y-1">
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Market Cap:</strong> ~$950 million</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Risk Level:</strong> Low</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Native Stablecoin:</strong> crvUSD</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Market Cap:</strong> ~$950 million</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Risk Level:</strong> Low</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Native Stablecoin:</strong> crvUSD</p>
   </div>
 </div>
 
@@ -163,21 +163,21 @@ The valuation disconnect is particularly interesting: $2.48 billion in TVL but o
 
 The real power in Curve comes from veCRV, a locked CRV that earns fees and controls where CRV emissions go. This created the "Curve Wars," where protocols battle for voting power to direct emissions to their pools.
 
-<div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-2">Value accrual:</div>
-  <div className="text-sm text-zinc-600 dark:text-zinc-400">Trading fees to veCRV holders, crvUSD interest revenue, gauge voting power controls billions in incentives.</div>
+<div className="mt-6 p-4 bg-[var(--surface-muted)]/70 rounded-lg">
+  <div className="text-sm font-medium text-[var(--text-primary)] mb-2">Value accrual:</div>
+  <div className="text-sm text-[var(--text-muted)]">Trading fees to veCRV holders, crvUSD interest revenue, gauge voting power controls billions in incentives.</div>
 </div>
 
 
-  <p className="text-md text-zinc-600 dark:text-zinc-400 m-0">Following Curve, I must mention, by extension, Convex and Resupply as higher-risk, related ecosystem tokens.</p>
+  <p className="text-md text-[var(--text-muted)] m-0">Following Curve, I must mention, by extension, Convex and Resupply as higher-risk, related ecosystem tokens.</p>
 
 
 ### CVX (Convex) - The Curve Force Multiplier
 
 <div className="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 dark:border-amber-400 p-4 mb-8 rounded-r-md">
   <div className="space-y-1">
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Market Cap:</strong> ~$250 million</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Risk Level:</strong> Medium</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Market Cap:</strong> ~$250 million</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Risk Level:</strong> Medium</p>
   </div>
 </div>
 
@@ -187,18 +187,18 @@ By pooling users' CRV and permanently locking it, Convex achieves the maximum 2.
 
 With $1.15 billion in TVL against a sub-$300 million market cap, CVX trades at a significant discount to the veCRV it controls. It's essentially a leveraged bet on Curve's success with additional revenue streams.
 
-<div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-2">Value accrual:</div>
-  <div className="text-sm text-zinc-600 dark:text-zinc-400">Platform fees, voting bribes (often exceeding base rewards), and all Curve ecosystem growth share.</div>
+<div className="mt-6 p-4 bg-[var(--surface-muted)]/70 rounded-lg">
+  <div className="text-sm font-medium text-[var(--text-primary)] mb-2">Value accrual:</div>
+  <div className="text-sm text-[var(--text-muted)]">Platform fees, voting bribes (often exceeding base rewards), and all Curve ecosystem growth share.</div>
 </div>
 
 ### RSUP (Resupply) - The Leveraged Yield Protocol
 
 <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-400 p-4 mb-8 rounded-r-md">
   <div className="space-y-1">
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Market Cap:</strong> ~$9 million</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Risk Level:</strong> Very High</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Native Stablecoin:</strong> reUSD</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Market Cap:</strong> ~$9 million</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Risk Level:</strong> Very High</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Native Stablecoin:</strong> reUSD</p>
   </div>
 </div>
 
@@ -208,51 +208,51 @@ Users deposit stablecoins like crvUSD or frxUSD to mint reUSD, which maintains t
 
 The tiny market cap relative to potential makes this the highest risk/reward play in the Curve ecosystem. RSUP stakers receive all protocol revenues, and given the Convex team's track record, they may implement similar vote-locking mechanics to capture additional value.
 
-<div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-2">Value accrual:</div>
-  <div className="text-sm text-zinc-600 dark:text-zinc-400">All protocol fees to staked RSUP, benefits from Curve ecosystem growth, and potential future gauge control.</div>
+<div className="mt-6 p-4 bg-[var(--surface-muted)]/70 rounded-lg">
+  <div className="text-sm font-medium text-[var(--text-primary)] mb-2">Value accrual:</div>
+  <div className="text-sm text-[var(--text-muted)]">All protocol fees to staked RSUP, benefits from Curve ecosystem growth, and potential future gauge control.</div>
 </div>
 
 <div className="mt-6 space-y-3">
-  <h4 className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Curve Ecosystem Links:</h4>
+  <h4 className="text-sm font-medium text-[var(--text-muted)]">Curve Ecosystem Links:</h4>
   
   <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-    <span className="font-medium text-zinc-600 dark:text-zinc-400 min-w-[80px]">Curve:</span>
+    <span className="font-medium text-[var(--text-muted)] min-w-[80px]">Curve:</span>
     <div className="flex items-center gap-2">
-      <a href="https://curve.finance" className="text-[var(--mono-accent)] hover:underline">curve.finance</a>
-      <span className="text-zinc-400">•</span>
-      <a href="https://www.coingecko.com/en/coins/curve-dao-token" className="text-[var(--mono-accent)] hover:underline">CoinGecko</a>
+      <a href="https://curve.finance" className="text-[var(--accent-primary)] hover:underline">curve.finance</a>
+      <span className="text-[var(--text-secondary)]">•</span>
+      <a href="https://www.coingecko.com/en/coins/curve-dao-token" className="text-[var(--accent-primary)] hover:underline">CoinGecko</a>
     </div>
   </div>
   
   <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-    <span className="font-medium text-zinc-600 dark:text-zinc-400 min-w-[80px]">Convex:</span>
+    <span className="font-medium text-[var(--text-muted)] min-w-[80px]">Convex:</span>
     <div className="flex items-center gap-2">
-      <a href="https://convexfinance.com" className="text-[var(--mono-accent)] hover:underline">convexfinance.com</a>
-      <span className="text-zinc-400">•</span>
-      <a href="https://coingecko.com/en/coins/convex-finance" className="text-[var(--mono-accent)] hover:underline">CoinGecko</a>
+      <a href="https://convexfinance.com" className="text-[var(--accent-primary)] hover:underline">convexfinance.com</a>
+      <span className="text-[var(--text-secondary)]">•</span>
+      <a href="https://coingecko.com/en/coins/convex-finance" className="text-[var(--accent-primary)] hover:underline">CoinGecko</a>
     </div>
   </div>
   
   <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-    <span className="font-medium text-zinc-600 dark:text-zinc-400 min-w-[80px]">Resupply:</span>
+    <span className="font-medium text-[var(--text-muted)] min-w-[80px]">Resupply:</span>
     <div className="flex items-center gap-2">
-      <a href="https://resupply.fi" className="text-[var(--mono-accent)] hover:underline">resupply.fi</a>
-      <span className="text-zinc-400">•</span>
-      <a href="https://coingecko.com/en/coins/resupply" className="text-[var(--mono-accent)] hover:underline">CoinGecko</a>
+      <a href="https://resupply.fi" className="text-[var(--accent-primary)] hover:underline">resupply.fi</a>
+      <span className="text-[var(--text-secondary)]">•</span>
+      <a href="https://coingecko.com/en/coins/resupply" className="text-[var(--accent-primary)] hover:underline">CoinGecko</a>
     </div>
   </div>
 </div>
 
-<hr className="my-12 border-zinc-200 dark:border-zinc-700" />
+<hr className="my-12 border-[var(--border-default)]/20" />
 
 ## LQTY (Liquity V2) - The DeFi-Native Rate Pioneer
 
 <div className="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 dark:border-amber-400 p-4 mb-8 rounded-r-md">
   <div className="space-y-1">
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Market Cap:</strong> ~$100 million</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Risk Level:</strong> Medium</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Native Stablecoin:</strong> BOLD</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Market Cap:</strong> ~$100 million</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Risk Level:</strong> Medium</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Native Stablecoin:</strong> BOLD</p>
   </div>
 </div>
 
@@ -264,29 +264,29 @@ LQTY's role has evolved significantly. Modular initiative-based Governance allow
 
 With TVL at $24M at launch, V2 is early but builds on V1's impressive track record (peak $4B TVL, zero exploits). The new design maintains the core ethos—only backed by crypto assets (no real-world assets or custody by centralized players), not subject to collateral changes and protocol upgrades (immutable)—while fixing V1's limitations through user-set rates and multi-collateral support (WETH, wstETH, rETH).
 
-<div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-2">Value accrual:</div>
-  <div className="text-sm text-zinc-600 dark:text-zinc-400">Protocol revenue sharing through PIL direction, continued V1 rewards, governance over 25% of all V2 revenue flows.</div>
+<div className="mt-6 p-4 bg-[var(--surface-muted)]/70 rounded-lg">
+  <div className="text-sm font-medium text-[var(--text-primary)] mb-2">Value accrual:</div>
+  <div className="text-sm text-[var(--text-muted)]">Protocol revenue sharing through PIL direction, continued V1 rewards, governance over 25% of all V2 revenue flows.</div>
 </div>
 
 <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-  <span className="font-medium text-zinc-700 dark:text-zinc-300">Links:</span>
+  <span className="font-medium text-[var(--text-muted)]">Links:</span>
   <div className="flex items-center gap-2">
-    <a href="https://liquity.org" className="text-[var(--mono-accent)] hover:underline">liquity.org</a>
-    <span className="text-zinc-400">•</span>
-    <a href="https://coingecko.com/en/coins/liquity" className="text-[var(--mono-accent)] hover:underline">CoinGecko</a>
+    <a href="https://liquity.org" className="text-[var(--accent-primary)] hover:underline">liquity.org</a>
+    <span className="text-[var(--text-secondary)]">•</span>
+    <a href="https://coingecko.com/en/coins/liquity" className="text-[var(--accent-primary)] hover:underline">CoinGecko</a>
   </div>
 </div>
 
-<hr className="my-12 border-zinc-200 dark:border-zinc-700" />
+<hr className="my-12 border-[var(--border-default)]/20" />
 
 ## SYRUP (Maple Finance) - Institutional Lending Bridge
 
 <div className="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 dark:border-amber-400 p-4 mb-8 rounded-r-md">
   <div className="space-y-1">
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Market Cap:</strong> ~$560 million</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Risk Level:</strong> Medium</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Product:</strong> syrupUSDC (yield-bearing USDC)</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Market Cap:</strong> ~$560 million</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Risk Level:</strong> Medium</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Product:</strong> syrupUSDC (yield-bearing USDC)</p>
   </div>
 </div>
 
@@ -296,29 +296,29 @@ The May 2025 partnership with Cantor Fitzgerald for a $2 billion Bitcoin-backed 
 
 SYRUP token holders don't just govern—they actively participate. Stakers can underwrite specific lending pools, taking junior tranche risk but earning 10-20% of the interest generated. Pool delegates (professional underwriters) stake SYRUP as skin in the game, aligning incentives throughout the system.
 
-<div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-2">Value accrual:</div>
-  <div className="text-sm text-zinc-600 dark:text-zinc-400">Pool staking rewards (10-20% of interest), protocol origination fees (0.66-0.99%), performance fees from successful loans.</div>
+<div className="mt-6 p-4 bg-[var(--surface-muted)]/70 rounded-lg">
+  <div className="text-sm font-medium text-[var(--text-primary)] mb-2">Value accrual:</div>
+  <div className="text-sm text-[var(--text-muted)]">Pool staking rewards (10-20% of interest), protocol origination fees (0.66-0.99%), performance fees from successful loans.</div>
 </div>
 
 <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-  <span className="font-medium text-zinc-700 dark:text-zinc-300">Links:</span>
+  <span className="font-medium text-[var(--text-muted)]">Links:</span>
   <div className="flex items-center gap-2">
-    <a href="https://maple.finance" className="text-[var(--mono-accent)] hover:underline">maple.finance</a>
-    <span className="text-zinc-400">•</span>
-    <a href="https://coingecko.com/en/coins/maple-finance" className="text-[var(--mono-accent)] hover:underline">CoinGecko</a>
+    <a href="https://maple.finance" className="text-[var(--accent-primary)] hover:underline">maple.finance</a>
+    <span className="text-[var(--text-secondary)]">•</span>
+    <a href="https://coingecko.com/en/coins/maple-finance" className="text-[var(--accent-primary)] hover:underline">CoinGecko</a>
   </div>
 </div>
 
-<hr className="my-12 border-zinc-200 dark:border-zinc-700" />
+<hr className="my-12 border-[var(--border-default)]/20" />
 
 ## INV (Inverse Finance) - The Fixed-Rate Pioneer
 
 <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-400 p-4 mb-8 rounded-r-md">
   <div className="space-y-1">
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Market Cap:</strong> ~$16 million</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Risk Level:</strong> Very High</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Native Stablecoin:</strong> DOLA</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Market Cap:</strong> ~$16 million</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Risk Level:</strong> Very High</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Native Stablecoin:</strong> DOLA</p>
   </div>
 </div>
 
@@ -328,29 +328,29 @@ DOLA, their stablecoin, has found product-market fit through clever partnerships
 
 Here's the clever bit: INV stakers receive DBR (DOLA Borrowing Rights) tokens as streaming rewards. Borrowers must hold DBR equal to 8% of their loan annually, creating constant buy pressure. Current DBR yield to INV stakers exceeds 15% APR, paid in a token with forced demand.
 
-<div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-2">Value accrual:</div>
-  <div className="text-sm text-zinc-600 dark:text-zinc-400">DBR streaming yield, protocol interest revenue, and DOLA expansion capture LP fees across DeFi.</div>
+<div className="mt-6 p-4 bg-[var(--surface-muted)]/70 rounded-lg">
+  <div className="text-sm font-medium text-[var(--text-primary)] mb-2">Value accrual:</div>
+  <div className="text-sm text-[var(--text-muted)]">DBR streaming yield, protocol interest revenue, and DOLA expansion capture LP fees across DeFi.</div>
 </div>
 
 <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-  <span className="font-medium text-zinc-700 dark:text-zinc-300">Links:</span>
+  <span className="font-medium text-[var(--text-muted)]">Links:</span>
   <div className="flex items-center gap-2">
-    <a href="https://inverse.finance" className="text-[var(--mono-accent)] hover:underline">inverse.finance</a>
-    <span className="text-zinc-400">•</span>
-    <a href="https://coingecko.com/en/coins/inverse-finance" className="text-[var(--mono-accent)] hover:underline">CoinGecko</a>
+    <a href="https://inverse.finance" className="text-[var(--accent-primary)] hover:underline">inverse.finance</a>
+    <span className="text-[var(--text-secondary)]">•</span>
+    <a href="https://coingecko.com/en/coins/inverse-finance" className="text-[var(--accent-primary)] hover:underline">CoinGecko</a>
   </div>
 </div>
 
-<hr className="my-12 border-zinc-200 dark:border-zinc-700" />
+<hr className="my-12 border-[var(--border-default)]/20" />
 
 ## RESOLV - The Technical Innovation Play
 
 <div className="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 dark:border-amber-400 p-4 mb-8 rounded-r-md">
   <div className="space-y-1">
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Market Cap:</strong> ~$53 million</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Risk Level:</strong> High</p>
-    <p className="text-sm text-zinc-700 dark:text-zinc-300 m-0"><strong>Native Stablecoin:</strong> USR</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Market Cap:</strong> ~$53 million</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Risk Level:</strong> High</p>
+    <p className="text-sm text-[var(--text-muted)] m-0"><strong>Native Stablecoin:</strong> USR</p>
   </div>
 </div>
 
@@ -360,27 +360,27 @@ The protocol offers stUSR (6% APY for standard users) and RLP tokens (10.9% APY 
 
 Backed by $10 million from cyberFund and Maven 11, RESOLV has the runway to execute. The protocol generates revenue from mint/redeem fees (0.2%), funding rate arbitrage, and collateral staking yields; token holders will receive a share of all protocol revenues.
 
-<div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-2">Value accrual:</div>
-  <div className="text-sm text-zinc-600 dark:text-zinc-400">Resolv's current RESOLV staking program features 74.16% APR, future revenue sharing with token holders, governance over protocol-controlled assets, and benefits from USR adoption across DeFi.</div>
+<div className="mt-6 p-4 bg-[var(--surface-muted)]/70 rounded-lg">
+  <div className="text-sm font-medium text-[var(--text-primary)] mb-2">Value accrual:</div>
+  <div className="text-sm text-[var(--text-muted)]">Resolv's current RESOLV staking program features 74.16% APR, future revenue sharing with token holders, governance over protocol-controlled assets, and benefits from USR adoption across DeFi.</div>
 </div>
 
 <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-  <span className="font-medium text-zinc-700 dark:text-zinc-300">Links:</span>
+  <span className="font-medium text-[var(--text-muted)]">Links:</span>
   <div className="flex items-center gap-2">
-    <a href="https://resolv.xyz" className="text-[var(--mono-accent)] hover:underline">resolv.xyz</a>
-    <span className="text-zinc-400">•</span>
-    <a href="https://coingecko.com/en/coins/resolv" className="text-[var(--mono-accent)] hover:underline">CoinGecko</a>
+    <a href="https://resolv.xyz" className="text-[var(--accent-primary)] hover:underline">resolv.xyz</a>
+    <span className="text-[var(--text-secondary)]">•</span>
+    <a href="https://coingecko.com/en/coins/resolv" className="text-[var(--accent-primary)] hover:underline">CoinGecko</a>
   </div>
 </div>
 
-<hr className="my-12 border-zinc-200 dark:border-zinc-700" />
+<hr className="my-12 border-[var(--border-default)]/20" />
 
 ## The Thesis
 
-<div className="bg-[var(--mono-surface-alt)] border-l-4 border-[var(--mono-border)] p-6 mb-8 rounded-r-md">
-  <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100 mb-4">Stablecoin adoption isn't slowing down—it's accelerating.</p>
-  <p className="text-zinc-700 dark:text-zinc-300">This acceleration of activity and growth of stablecoin supplies directly correlates to more fees generated by the underlying DeFi protocols.</p>
+<div className="bg-[var(--surface-elevated)] border-l-4 border-[var(--border-default)] p-6 mb-8 rounded-r-md">
+  <p className="text-lg font-medium text-[var(--text-primary)] mb-4">Stablecoin adoption isn't slowing down—it's accelerating.</p>
+  <p className="text-[var(--text-muted)]">This acceleration of activity and growth of stablecoin supplies directly correlates to more fees generated by the underlying DeFi protocols.</p>
 </div>
 
 <div className="space-y-6">
@@ -392,7 +392,7 @@ Backed by $10 million from cyberFund and Maven 11, RESOLV has the runway to exec
 
   <p>I've already positioned myself across a few of these protocols because I think the risk/reward makes sense here. Not because it's guaranteed money (far from it), but because stablecoins solving actual problems have caught the attention of all major financial institutions and governments, it feels like betting on infrastructure rather than narratives. Whether that thesis plays out, you'll be able to tell by whether I'm eating beans on toast daily or not.</p>
 
-  <div className="bg-zinc-100 dark:bg-zinc-800 p-4 rounded-lg mt-8">
-    <p className="text-sm italic text-zinc-600 dark:text-zinc-400 m-0">I hope you enjoyed reading, and to end, here's the El Clásico disclaimer that this isn't financial advice—just my perspective on where value might accrue as this trend unfolds. Do your own research and never invest more than you can afford to lose. Everything may go to 0 (I hope not).</p>
+  <div className="bg-[var(--surface-muted)]/70 p-4 rounded-lg mt-8">
+    <p className="text-sm italic text-[var(--text-muted)] m-0">I hope you enjoyed reading, and to end, here's the El Clásico disclaimer that this isn't financial advice—just my perspective on where value might accrue as this trend unfolds. Do your own research and never invest more than you can afford to lose. Everything may go to 0 (I hope not).</p>
   </div>
 </div>

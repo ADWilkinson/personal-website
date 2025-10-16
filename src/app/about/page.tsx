@@ -29,9 +29,9 @@ function SocialLink({
     <li className={clsx(className, 'flex')}>
       <Link
         href={href}
-        className="group flex items-center text-xs font-semibold uppercase tracking-[0.12em] text-[var(--mono-text-muted)] transition-colors duration-200 hover:text-[var(--mono-accent)]"
+        className="group flex items-center text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)] transition-colors duration-150 hover:text-[var(--accent-primary)]"
       >
-        <Icon className="h-4 w-4 flex-none fill-[var(--mono-text-muted)] transition-colors duration-200 group-hover:fill-[var(--mono-accent)]" />
+        <Icon className="h-4 w-4 flex-none fill-[var(--text-muted)] transition-colors duration-150 group-hover:fill-[var(--accent-primary)]" />
         <span className="ml-3">{children}</span>
       </Link>
     </li>
@@ -62,12 +62,12 @@ export default function About() {
       intro="Democratizing finance through accessible DeFi solutions.">
       <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-16">
         <div className="lg:order-2">
-          <div className="group relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-sm border border-[var(--mono-border)]/20 bg-[var(--mono-surface)]/70 lg:max-w-none">
+          <div className="group relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-muted)]/70 lg:max-w-none">
             <Image
               src={portraitImage}
               alt="Professional portrait of Andrew Wilkinson"
               sizes="(min-width: 1024px) 32rem, 20rem"
-              className="h-full w-full object-cover grayscale contrast-110 transition-opacity duration-300 dark:group-hover:opacity-0"
+              className="h-full w-full object-cover grayscale contrast-110 transition-opacity duration-180 dark:group-hover:opacity-0"
               quality={85}
               priority
             />
@@ -75,46 +75,46 @@ export default function About() {
               src={davyjonesImage}
               alt="Artistic representation of Davy Jones character"
               sizes="(min-width: 1024px) 32rem, 20rem"
-              className="absolute inset-0 h-full w-full object-cover grayscale contrast-110 opacity-0 transition-opacity duration-300 dark:group-hover:opacity-100"
+              className="absolute inset-0 h-full w-full object-cover grayscale contrast-110 opacity-0 transition-opacity duration-180 dark:group-hover:opacity-100"
               quality={85}
             />
           </div>
         </div>
         <div className="lg:order-1">
-          <div className="space-y-6 text-sm text-[var(--mono-text-muted)]">
-            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)] mt-6 mb-2">What I'm Building Now</h3>
+          <div className="space-y-6 text-sm text-[var(--text-muted)]">
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)] mt-6 mb-2">What I'm Building Now</h3>
             <p>
               At <CompanyLogo name="ZKP2P" logo={COMPANY_LOGOS.zkp2p} />, I'm making crypto accessible to everyone. We use zero-knowledge proofs to let people buy crypto with Venmo, PayPal, and 20+ other payment apps—no centralized exchange needed.
             </p>
 
-            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)] mt-6 mb-2">Leadership Experience</h3>
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)] mt-6 mb-2">Leadership Experience</h3>
             <p>
               As Head of Brava at <CompanyLogo name="Brava Labs" logo={COMPANY_LOGOS.brava} />, I led a 10-person engineering team to ship an MVP that secured £2M in seed funding from European investors.
             </p>
 
-            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)] mt-6 mb-2">Founder Experience</h3>
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)] mt-6 mb-2">Founder Experience</h3>
             <p>
               Founded <CompanyLogo name="Galleon DAO" logo={COMPANY_LOGOS.galleon} /> and raised $1M+ from 1kx and other DeFi investors. Built the protocol from scratch, grew a 6,000+ member community, and managed $20M+ in total value locked at peak.
             </p>
 
-            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)] mt-6 mb-2">Building From Zero</h3>
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)] mt-6 mb-2">Building From Zero</h3>
             <p>
               Throughout my career, I've been the engineer founders call when they need someone to turn napkin sketches into production systems. I've scaled teams from just me to 12+ engineers, and products from idea to enterprise.
             </p>
 
-            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)] mt-6 mb-2">Career Path</h3>
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)] mt-6 mb-2">Career Path</h3>
             <p>
               Started at <CompanyLogo name="Sky" logo={COMPANY_LOGOS.sky} /> and <CompanyLogo name="Worldpay" logo={COMPANY_LOGOS.worldpay} /> building large-scale systems. Moved into blockchain at <CompanyLogo name="R3" logo={COMPANY_LOGOS.r3} /> and <CompanyLogo name="Set Labs" logo={COMPANY_LOGOS.set} />, focusing on making DeFi products that people actually understand and use.
             </p>
 
-            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)] mt-6 mb-2">Side Projects</h3>
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)] mt-6 mb-2">Side Projects</h3>
             <p>
-              I build tools and applications in my free time—from AI-powered DeFi assistants to music creation tools. These projects let me experiment with new technologies and solve interesting problems. See my <Link href="/projects" className="text-[var(--mono-accent)] underline hover:text-[var(--mono-text)]">projects page</Link> for more.
+              I build tools and applications in my free time—from AI-powered DeFi assistants to music creation tools. These projects let me experiment with new technologies and solve interesting problems. See my <Link href="/projects" className="text-[var(--accent-primary)] underline hover:text-[var(--text-primary)]">projects page</Link> for more.
             </p>
           </div>
         </div>
       </div>
-      <div className="mt-12 border-t border-[var(--mono-border)]/30 pt-8">
+      <div className="mt-12 border-t border-[var(--border-default)]/30 pt-8">
         <ul role="list" className="flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-x-8 sm:space-y-0">
             <SocialLink href={SOCIAL_LINKS.github} icon={GitHubIcon}>
               Follow on GitHub

@@ -27,7 +27,7 @@ export function Card<T extends React.ElementType = 'div'>({
   return (
     <Component
       className={clsx(
-        'group relative flex flex-col items-start gap-3 rounded-sm border border-[var(--mono-border)]/20 bg-[var(--mono-surface)]/70 p-5 transition-transform duration-150 hover:-translate-y-0.5',
+        'group relative flex flex-col items-start gap-3 rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-muted)]/70 p-5 transition-transform duration-150 hover:-translate-y-0.5',
         className,
       )}
     >
@@ -59,7 +59,7 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
   let Component = as ?? 'h2'
 
   return (
-    <Component className="text-sm font-semibold tracking-[0.08em] text-[var(--mono-text)] transition-colors duration-150 group-hover:text-[var(--mono-accent)]">
+    <Component className="font-display text-sm font-semibold tracking-[0.08em] text-[var(--text-primary)] transition-colors duration-150 group-hover:text-[var(--accent-primary)]">
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
     </Component>
   )
@@ -71,7 +71,7 @@ Card.Description = function CardDescription({
   children: React.ReactNode
 }) {
   return (
-    <p className="relative z-10 text-sm leading-relaxed text-[var(--mono-text-muted)]">
+    <p className="relative z-10 text-sm leading-relaxed text-[var(--text-muted)]">
       {children}
     </p>
   )
@@ -81,10 +81,10 @@ Card.Cta = function CardCta({ children }: { children: React.ReactNode }) {
   return (
     <div
       aria-hidden="true"
-      className="relative z-10 flex items-center text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--mono-accent)] transition-colors duration-200 group-hover:text-[var(--mono-text)]"
+      className="relative z-10 flex items-center text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--accent-primary)] transition-colors duration-150 group-hover:text-[var(--text-primary)]"
     >
       {children}
-      <ChevronRightIcon className="ml-2 h-3 w-3 stroke-current stroke-2 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+      <ChevronRightIcon className="ml-2 h-3 w-3 stroke-current stroke-2 transition-transform duration-150 ease-out group-hover:translate-x-1" />
     </div>
   )
 }
@@ -105,7 +105,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
     <Component
       className={clsx(
         className,
-        'relative z-10 order-first mb-2 flex items-center text-[0.65rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]',
+        'relative z-10 order-first mb-2 flex items-center text-[0.65rem] uppercase tracking-[0.12em] text-[var(--text-muted)]',
         decorate && 'pl-3.5',
       )}
       {...props}
@@ -115,7 +115,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
           className="absolute inset-y-0 left-0 flex items-center"
           aria-hidden="true"
         >
-          <span className="h-4 w-0.5 bg-[var(--mono-border)]" />
+          <span className="h-4 w-0.5 bg-[var(--border-default)]" />
         </span>
       )}
       {children}

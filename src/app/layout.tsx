@@ -1,5 +1,4 @@
 import { type Metadata } from 'next'
-import { JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 
 import { Providers } from '@/app/providers'
@@ -7,13 +6,6 @@ import { Layout } from '@/components/Layout'
 import { DavyJonesEasterEgg } from '@/components/DavyJonesEasterEgg'
 
 import '@/styles/tailwind.css'
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-mono',
-  weight: ['400', '500', '600', '700'],
-})
 
 export const metadata: Metadata = {
   title: {
@@ -42,11 +34,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${jetbrainsMono.variable}`}
+      className="h-full antialiased"
       suppressHydrationWarning
     >
       <head />
-      <body className="relative min-h-screen w-full bg-[var(--mono-canvas)] text-[var(--mono-text)] font-mono">
+      <body className="relative min-h-screen w-full">
         <Providers>
           <div className="w-full">
             <Layout>{children}</Layout>

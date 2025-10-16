@@ -47,7 +47,7 @@ export function DavyJonesEasterEgg() {
   if (!isDark) {
     return (
       <div
-        className="fixed bottom-5 right-5 z-50 w-2 h-2 rounded-full bg-transparent border border-zinc-300/10 cursor-pointer hover:border-zinc-300/20 transition-all duration-300"
+        className="fixed bottom-5 right-5 z-50 h-2 w-2 cursor-pointer rounded-full border border-[var(--border-default)]/20 bg-transparent transition-all duration-180 hover:border-[var(--border-default)]/30"
         onClick={handleClick}
       />
     )
@@ -57,7 +57,7 @@ export function DavyJonesEasterEgg() {
     <div className="fixed bottom-5 right-5 z-50">
       {showEasterEgg ? (
         <div
-          className="p-2 rounded-full bg-zinc-800/70 cursor-pointer backdrop-blur-sm ring-1 ring-zinc-700/50 shadow-lg transition-all duration-300 hover:ring-zinc-600/50"
+          className="cursor-pointer rounded-full bg-[var(--surface-elevated)]/85 p-2 shadow-[var(--shadow-md)] transition-all duration-180 hover:shadow-[var(--shadow-lg)]"
           onClick={() => setShowEasterEgg(false)}
           title="Davy Jones"
         >
@@ -71,7 +71,7 @@ export function DavyJonesEasterEgg() {
         </div>
       ) : (
         <div
-          className="w-3 h-3 rounded-full bg-transparent border border-zinc-500/10 cursor-pointer hover:border-zinc-500/30 transition-all duration-300"
+          className="h-3 w-3 cursor-pointer rounded-full border border-[var(--border-default)]/20 bg-transparent transition-all duration-180 hover:border-[var(--accent-primary)]/60"
           onClick={handleClick}
         />
       )}

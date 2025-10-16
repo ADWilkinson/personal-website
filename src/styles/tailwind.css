@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './fonts.css';
 @import './prism.css' layer(components);
 
 @plugin '@tailwindcss/typography';
@@ -7,14 +8,14 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Refined monospace type scale */
-  --text-xs: 0.625rem;
+  /* Brand typography scale - adjusted for Morion (display) and Wigrum (body) */
+  --text-xs: 0.75rem;
   --text-xs--line-height: 1rem;
-  --text-sm: 0.75rem;
-  --text-sm--line-height: 1.25rem;
-  --text-base: 0.875rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.3rem;
+  --text-base: 1rem;
   --text-base--line-height: 1.5rem;
-  --text-lg: 1rem;
+  --text-lg: 1.125rem;
   --text-lg--line-height: 1.625rem;
   --text-xl: 1.25rem;
   --text-xl--line-height: 1.75rem;
@@ -25,11 +26,11 @@
   --text-4xl: 2.25rem;
   --text-4xl--line-height: 2.5rem;
   --text-5xl: 3rem;
-  --text-5xl--line-height: 3.25rem;
+  --text-5xl--line-height: 3.3rem;
   --text-6xl: 3.75rem;
-  --text-6xl--line-height: 1;
+  --text-6xl--line-height: 4.125rem;
   --text-7xl: 4.5rem;
-  --text-7xl--line-height: 1;
+  --text-7xl--line-height: 4.95rem;
   --text-8xl: 6rem;
   --text-8xl--line-height: 1;
   --text-9xl: 8rem;
@@ -55,65 +56,82 @@
   --space-48: 12rem;
   --space-56: 14rem;
   --space-64: 16rem;
+
+  /* Brand border radius */
+  --radius-brand: 18px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
 }
 
 @layer base {
+  /* Davy Jones Color Tokens */
   :root {
-    --mono-canvas: #f7f7f2;
-    --mono-surface: #fdfdf9;
-    --mono-surface-alt: #efefe9;
-    --mono-border: #1c1c1b;
-    --mono-border-muted: rgba(28, 28, 27, 0.14);
-    --mono-text: #121211;
-    --mono-text-muted: #5a5a56;
-    --mono-accent: #155dff;
-    --mono-grid: rgba(28, 28, 27, 0.03);
-    --mono-panel: rgba(253, 253, 249, 0.9);
+    /* Core brand colors */
+    --dj-midnight: #040728;
+    --dj-cerulean: #025bee;
+    --dj-sand: #fde6c4;
+    --dj-parchment: #fef3e2;
+    --dj-aqua: #59f4f4;
+    --dj-copper: #dc7f5a;
+    --dj-charcoal: #27272a;
+    --dj-navigator: #0072b5;
+    --dj-canvas: #f4eee8;
+    --dj-white: #ffffff;
 
-    /* Consistent shadow system */
-    --shadow-xs: 1px 1px 0 var(--mono-border-muted);
-    --shadow-sm: 2px 2px 0 var(--mono-border-muted);
-    --shadow-md: 3px 3px 0 var(--mono-border-muted);
-    --shadow-lg: 4px 4px 0 var(--mono-border-muted);
-    --shadow-xl: 6px 6px 0 var(--mono-border-muted);
+    /* Semantic light theme tokens */
+    --surface-default: var(--dj-canvas);
+    --surface-muted: var(--dj-parchment);
+    --surface-elevated: var(--dj-white);
+    --text-primary: var(--dj-midnight);
+    --text-secondary: rgba(4, 7, 40, 0.72);
+    --text-muted: rgba(4, 7, 40, 0.54);
+    --border-default: var(--dj-charcoal);
+    --border-muted: rgba(4, 7, 40, 0.16);
+    --accent-primary: var(--dj-cerulean);
+    --accent-hover: var(--dj-aqua);
+    --accent-emphasis: var(--dj-copper);
 
-    /* Grid and rhythm */
-    --baseline: 1.5rem;
-    --grid-unit: 24px;
+    /* Brand shadow system */
+    --shadow-brand-soft: 0 18px 60px -30px rgba(4, 7, 40, 0.6);
+    --shadow-brand-outline: 0 0 0 2px rgba(89, 244, 244, 0.5);
+    --shadow-xs: 0 1px 2px rgba(4, 7, 40, 0.08);
+    --shadow-sm: 0 2px 4px rgba(4, 7, 40, 0.1);
+    --shadow-md: 0 4px 8px rgba(4, 7, 40, 0.12);
+    --shadow-lg: 0 8px 16px rgba(4, 7, 40, 0.14);
 
-    font-feature-settings: 'tnum' 1, 'lnum' 1, 'ss01' 1;
-    font-variant-numeric: tabular-nums lining-nums;
-    letter-spacing: -0.01em;
+    /* Typography */
+    font-family: "Wigrum", "Inter", "Helvetica Neue", sans-serif;
+    color: var(--text-primary);
+    background-color: var(--surface-default);
     line-height: 1.5;
+    letter-spacing: -0.01em;
   }
 
   :root.dark {
-    --mono-canvas: #050506;
-    --mono-surface: #09090c;
-    --mono-surface-alt: #111117;
-    --mono-border: #dfe2f3;
-    --mono-border-muted: rgba(223, 226, 243, 0.16);
-    --mono-text: #f7f8ff;
-    --mono-text-muted: #b5b9cc;
-    --mono-accent: #84a9ff;
-    --mono-grid: rgba(223, 226, 243, 0.05);
-    --mono-panel: rgba(9, 9, 12, 0.86);
+    /* Semantic dark theme tokens */
+    --surface-default: var(--dj-midnight);
+    --surface-muted: #090c33;
+    --surface-elevated: #0d1144;
+    --text-primary: var(--dj-white);
+    --text-secondary: rgba(255, 255, 255, 0.72);
+    --text-muted: rgba(255, 255, 255, 0.54);
+    --border-default: rgba(255, 255, 255, 0.24);
+    --border-muted: rgba(255, 255, 255, 0.12);
+    --accent-primary: var(--dj-cerulean);
+    --accent-hover: var(--dj-aqua);
+    --accent-emphasis: var(--dj-copper);
 
-    --shadow-xs: 1px 1px 0 var(--mono-border-muted);
-    --shadow-sm: 2px 2px 0 var(--mono-border-muted);
-    --shadow-md: 3px 3px 0 var(--mono-border-muted);
-    --shadow-lg: 4px 4px 0 var(--mono-border-muted);
-    --shadow-xl: 6px 6px 0 var(--mono-border-muted);
+    --shadow-brand-soft: 0 18px 60px -30px rgba(0, 0, 0, 0.8);
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.36);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.42);
   }
 
   body {
-    background-color: var(--mono-canvas);
-    background-image:
-      linear-gradient(var(--mono-grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--mono-grid) 1px, transparent 1px);
-    background-size: var(--grid-unit) var(--grid-unit);
-    background-attachment: fixed;
-    color: var(--mono-text);
+    background-color: var(--surface-default);
+    color: var(--text-primary);
     min-height: 100vh;
     position: relative;
     overscroll-behavior-y: none;
@@ -123,38 +141,43 @@
     overscroll-behavior-y: none;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(transparent 96%, rgba(0, 0, 0, 0.025) 99%, transparent 100%);
-    opacity: 0.3;
-    z-index: -1;
+  /* Typography hierarchy - Morion for headings, Wigrum for body */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Morion", "Times New Roman", serif;
+    color: var(--text-primary);
+    font-weight: 600;
   }
 
-  .dark body::before {
-    background: linear-gradient(transparent 96%, rgba(223, 226, 243, 0.08) 99%, transparent 100%);
+  h1 {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    letter-spacing: -0.02em;
   }
 
   a {
     text-underline-offset: 0.25em;
     text-decoration-thickness: 1px;
-    transition: text-decoration-color 150ms ease;
+    transition:
+      text-decoration-color 90ms ease-out,
+      color 90ms ease-out;
   }
 
   a:hover {
-    text-decoration-color: var(--mono-accent);
+    color: var(--accent-primary);
+    text-decoration-color: var(--accent-primary);
   }
 
   ::selection {
-    background: var(--mono-accent);
-    color: #fcfcfb;
+    background: var(--accent-primary);
+    color: var(--dj-white);
   }
 
-  /* Focus styles */
+  /* Focus styles - brand compliant */
   :focus-visible {
-    outline: 2px solid var(--mono-accent);
+    outline: 2px solid var(--accent-hover);
     outline-offset: 2px;
   }
 
@@ -165,20 +188,21 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--mono-surface);
-    border: 1px solid var(--mono-border-muted);
+    background: var(--surface-muted);
+    border: 1px solid var(--border-muted);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--mono-border);
-    border: 1px solid var(--mono-border-muted);
+    background: var(--border-default);
+    border: 1px solid var(--border-muted);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--mono-accent);
+    background: var(--accent-primary);
   }
 }
 
+/* Brand-compliant animations - all under 200ms per guidelines */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -191,7 +215,7 @@
 }
 
 .animate-fade-in {
-  animation: fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: fade-in 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes slide-in {
@@ -206,7 +230,7 @@
 }
 
 .animate-slide-in {
-  animation: slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slide-in 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Utility classes for consistent spacing */
@@ -222,25 +246,43 @@
   }
 }
 
-/* Consistent hover effects */
+/* Brand-compliant hover effects */
 .hover-lift {
-  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hover-lift:hover {
   transform: translateY(-2px);
 }
 
-/* Typography utilities */
-.text-label {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
+@layer utilities {
+  /* Typography utilities */
+  .font-display {
+    font-family: "Morion", "Times New Roman", serif;
+  }
 
-.text-caption {
-  font-size: var(--text-sm);
-  letter-spacing: 0.02em;
-  color: var(--mono-text-muted);
+  .font-body {
+    font-family: "Wigrum", "Inter", "Helvetica Neue", sans-serif;
+  }
+
+  .text-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-family: "Wigrum", "Inter", sans-serif;
+  }
+
+  .text-caption {
+    font-size: var(--text-sm);
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+  }
+
+  /* Brand display text */
+  .text-display {
+    font-family: "Morion", "Times New Roman", serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
 }

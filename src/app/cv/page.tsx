@@ -2,18 +2,31 @@ import { type Metadata } from 'next'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import Link from 'next/link'
 import { CompanyLogo } from '@/components/CompanyLogo'
-import { COMPANY_LOGOS, WORK_EXPERIENCE, SOCIAL_LINKS, SITE_CONFIG } from '@/lib/constants'
-import { typography, getHeadingStyles, getBodyStyles, getMetaStyles, getLinkStyles } from '@/lib/typography'
+import {
+  COMPANY_LOGOS,
+  WORK_EXPERIENCE,
+  SOCIAL_LINKS,
+  SITE_CONFIG,
+} from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'CV',
   description: 'Senior Software Engineer at ZKP2P, Former VC-backed Founder',
 }
 
+const headingMd =
+  'font-display text-[1.2rem] font-semibold tracking-tight text-[var(--text-primary)]'
+const headingSm =
+  'font-display text-[1rem] font-semibold tracking-tight text-[var(--text-primary)]'
+const bodyText = 'text-sm leading-relaxed text-[var(--text-muted)]'
+const metaText = 'text-[0.65rem] uppercase tracking-[0.14em] text-[var(--text-secondary)]'
+const linkText =
+  'inline-flex items-center gap-1 text-[var(--accent-primary)] transition-colors duration-150 hover:text-[var(--text-primary)]'
+
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mb-12">
-      <h2 className={`${getHeadingStyles('h2')} mb-6`}>{title}</h2>
+      <h2 className={`${headingMd} mb-6`}>{title}</h2>
       {children}
     </div>
   )
@@ -35,19 +48,19 @@ function JobTitle({
   return (
     <div className="">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-        <h3 className={getHeadingStyles('h3')}>{title}</h3>
-        <span className={getMetaStyles()}>{period}</span>
+        <h3 className={headingSm}>{title}</h3>
+        <span className={metaText}>{period}</span>
       </div>
-      <div className="mb-2 text-lg font-medium text-zinc-700 dark:text-zinc-300">
+      <div className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[var(--text-primary)]">
         {logo ? <CompanyLogo name={company} logo={logo} /> : company}
       </div>
-      {description && <div className={`${getBodyStyles()} italic mb-4`}>{description}</div>}
+      {description && <div className={`${bodyText} italic mb-4`}>{description}</div>}
     </div>
   )
 }
 
 function JobDescription({ children }: { children: React.ReactNode }) {
-  return <div className={`${getBodyStyles()} mb-4 ${typography.lineHeight.relaxed}`}>{children}</div>
+  return <div className={`${bodyText} mb-4`}>{children}</div>
 }
 
 function ProjectItem({ 
@@ -63,14 +76,14 @@ function ProjectItem({
 }) {
   return (
     <div className="mb-4">
-      <h3 className={`${getHeadingStyles('h4')} mb-1`}>{title}</h3>
+      <h3 className={`${headingSm} mb-1`}>{title}</h3>
       <div className="flex space-x-3 mb-2">
         {link && (
           <Link 
             href={link} 
             target="_blank" 
             rel="noopener noreferrer"
-            className={`${getLinkStyles()} text-sm inline-flex items-center`}
+            className={`${linkText} text-sm`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -83,7 +96,7 @@ function ProjectItem({
             href={github} 
             target="_blank" 
             rel="noopener noreferrer"
-            className={`${getLinkStyles()} text-sm inline-flex items-center`}
+            className={`${linkText} text-sm`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z" />
@@ -92,7 +105,7 @@ function ProjectItem({
           </Link>
         )}
       </div>
-      <p className={`${getBodyStyles()} ${typography.lineHeight.relaxed}`}>{description}</p>
+      <p className={bodyText}>{description}</p>
     </div>
   )
 }
@@ -103,82 +116,134 @@ export default function CV() {
       title="Curriculum Vitae"
       intro="Senior Software Engineer at ZKP2P. Former VC-backed Founder."
     >
-      <div className="space-y-8">
-        <div className="text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-lg border border-zinc-100 dark:border-zinc-700/40 flex flex-col md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center mb-2 md:mb-0">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      <div className="space-y-10">
+        <div className="flex flex-col gap-3 rounded-sm border border-[var(--border-default)]/20 bg-[var(--surface-muted)]/70 p-5 text-sm text-[var(--text-secondary)] md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-[var(--accent-primary)]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
             </svg>
-            <Link href={`mailto:${SITE_CONFIG.email}`} className={getLinkStyles()}>
+            <Link href={`mailto:${SITE_CONFIG.email}`} className={linkText}>
               {SITE_CONFIG.email}
             </Link>
           </div>
-          <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0">
-            <div className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          <div className="flex flex-col gap-3 text-sm md:flex-row md:items-center md:gap-4">
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-[var(--accent-primary)]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
               </svg>
-              <Link href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className={getLinkStyles()}>
+              <Link
+                href={SOCIAL_LINKS.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkText}
+              >
                 LinkedIn
               </Link>
-              <span className="mx-2 text-zinc-400">|</span>
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 mr-2 text-zinc-500 fill-current">
+              <span className="text-[var(--border-default)]/40">/</span>
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="h-5 w-5 text-[var(--accent-primary)]"
+              >
                 <path d="M13.3174 10.7749L19.1457 4H17.7646L12.7039 9.88256L8.66193 4H4L10.1122 12.8955L4 20H5.38119L10.7254 13.7878L14.994 20H19.656L13.3171 10.7749H13.3174ZM11.4257 12.9738L10.8064 12.0881L5.87886 5.03974H8.00029L11.9769 10.728L12.5962 11.6137L17.7652 19.0075H15.6438L11.4257 12.9742V12.9738Z" />
               </svg>
-              <Link href={SOCIAL_LINKS.twitter} target="_blank" rel="noopener noreferrer" className={getLinkStyles()}>
+              <Link
+                href={SOCIAL_LINKS.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkText}
+              >
                 Twitter
               </Link>
             </div>
-            <div className="flex items-center md:ml-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-[var(--accent-primary)]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
               </svg>
-              <span>London, UK</span>
+              <span className="text-[var(--text-primary)]">London, UK</span>
             </div>
           </div>
         </div>
-        
+
         <Section title="Summary">
-          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          <p className={bodyText}>
             Product-focused Engineering Manager with 8+ years building across blockchain, DeFi, and fintech. Founded and scaled products managing $20M+ in value, raised $3M+ venture funding, and excel at 0-to-1 execution.
           </p>
         </Section>
-        
+
         <Section title="Skills">
           <div className="space-y-4">
             <div>
-              <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Leadership Skills</h3>
-              <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Team Management</strong> – Scaled teams 0-8, managed up to 12 engineers</li>
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Stakeholder Management</strong> – VCs, investors, C-suite alignment</li>
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Strategic Planning</strong> – Product roadmaps, technical architecture</li>
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Community & Growth</strong> – Built 6,000+ member community, drove $20M+ TVL</li>
+              <h3 className={`${headingSm} mb-2`}>Leadership Skills</h3>
+              <ul className="list-disc space-y-2 pl-5 text-[var(--text-muted)]">
+                <li><strong className="text-[var(--text-primary)]">Team Management</strong> – Scaled teams 0-8, managed up to 12 engineers</li>
+                <li><strong className="text-[var(--text-primary)]">Stakeholder Management</strong> – VCs, investors, C-suite alignment</li>
+                <li><strong className="text-[var(--text-primary)]">Strategic Planning</strong> – Product roadmaps, technical architecture</li>
+                <li><strong className="text-[var(--text-primary)]">Community & Growth</strong> – Built 6,000+ member community, drove $20M+ TVL</li>
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Technical Skills</h3>
-              <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Languages:</strong> TypeScript, C#, Solidity, HTML, CSS</li>
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Frontend:</strong> React, Next.js, Redux, Tailwind, Vite</li>
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Backend:</strong> Node.js, Express, REST APIs</li>
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Cloud & DevOps:</strong> Firebase, GCP, Cloudflare, Docker, Vercel, Netlify, GitHub Actions</li>
-                <li><strong className="text-zinc-800 dark:text-zinc-100">Tools:</strong> Git, NPM, Yarn, Telegram API, OpenAI API, Web3.js, ethers.js, Viem, Wagmi, Hardhat, EVM</li>
-                <li><strong className="text-zinc-800 dark:text-zinc-100">AI Tools:</strong> Claude Code, Windsurf, Cursor</li>
+              <h3 className={`${headingSm} mb-2`}>Technical Skills</h3>
+              <ul className="list-disc space-y-2 pl-5 text-[var(--text-muted)]">
+                <li><strong className="text-[var(--text-primary)]">Languages:</strong> TypeScript, C#, Solidity, HTML, CSS</li>
+                <li><strong className="text-[var(--text-primary)]">Frontend:</strong> React, Next.js, Redux, Tailwind, Vite</li>
+                <li><strong className="text-[var(--text-primary)]">Backend:</strong> Node.js, Express, REST APIs</li>
+                <li><strong className="text-[var(--text-primary)]">Cloud & DevOps:</strong> Firebase, GCP, Cloudflare, Docker, Vercel, Netlify, GitHub Actions</li>
+                <li><strong className="text-[var(--text-primary)]">Tools:</strong> Git, NPM, Yarn, Telegram API, OpenAI API, Web3.js, ethers.js, Viem, Wagmi, Hardhat, EVM</li>
+                <li><strong className="text-[var(--text-primary)]">AI Tools:</strong> Claude Code, Windsurf, Cursor</li>
               </ul>
             </div>
           </div>
         </Section>
-        
+
         <Section title="Key Achievements / Projects">
           <div className="space-y-4">
             <div>
-              <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Galleon DAO - DAO Founder & Raise</h3>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">Built DeFi investment products securing $1M from 1kx and notable angels. Grew community 0-6,000+ members, driving $20M+ TVL.</p>
+              <h3 className={`${headingSm} mb-2`}>Galleon DAO - DAO Founder & Raise</h3>
+              <p className={bodyText}>Built DeFi investment products securing $1M from 1kx and notable angels. Grew community 0-6,000+ members, driving $20M+ TVL.</p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mb-2">Brava - MVP Delivery to Seed Raise</h3>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">Shipped MVP in 6 months securing £2M seed funding. Integrated Circle CCTP V2, Fireblocks, Safe for institutional DeFi platform.</p>
+              <h3 className={`${headingSm} mb-2`}>Brava - MVP Delivery to Seed Raise</h3>
+              <p className={bodyText}>Shipped MVP in 6 months securing £2M seed funding. Integrated Circle CCTP V2, Fireblocks, Safe for institutional DeFi platform.</p>
             </div>
           </div>
         </Section>
@@ -327,7 +392,7 @@ export default function CV() {
         </Section>
         
         <Section title="Education">
-          <p className="text-zinc-600 dark:text-zinc-400">
+          <p className={bodyText}>
             Bachelor's Degree with Honours in Biological Sciences (2.1), University of Brighton (2012 – 2015)
           </p>
         </Section>
@@ -386,7 +451,7 @@ export default function CV() {
         </Section>
         
         <Section title="Interests">
-          <p className="text-zinc-600 dark:text-zinc-400">
+          <p className={bodyText}>
             Music, travel, algorithmic trading, emerging tech
           </p>
         </Section>

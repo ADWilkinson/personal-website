@@ -3,9 +3,11 @@ import clsx from 'clsx'
 
 const variantStyles = {
   primary:
-    'bg-zinc-900 text-zinc-100 hover:bg-zinc-700 hover:shadow-lg hover:scale-105 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 transition-all duration-200 shadow-sm active:scale-100',
+    'bg-[var(--accent-primary)] text-[var(--dj-white)] transition-colors duration-150 hover:bg-[var(--accent-hover)] active:translate-y-[1px]',
   secondary:
-    'border border-zinc-200 text-zinc-900 hover:bg-zinc-50 hover:shadow-md hover:border-zinc-300 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800 dark:hover:border-zinc-600 transition-all duration-200 active:scale-95',
+    'border border-[var(--border-default)]/25 bg-[var(--surface-muted)]/60 text-[var(--text-primary)] transition-colors duration-150 hover:bg-[var(--surface-muted)] active:translate-y-[1px]',
+  ghost:
+    'text-[var(--text-primary)] transition-colors duration-150 hover:text-[var(--accent-primary)]',
 }
 
 type ButtonProps = {
@@ -21,7 +23,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   className = clsx(
-    'inline-flex items-center gap-2 justify-center rounded-md py-2 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--mono-accent)] dark:focus:ring-offset-zinc-900',
+    'inline-flex items-center justify-center gap-2 rounded-sm px-4 py-2 text-sm font-medium text-[var(--text-primary)] transition-transform duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-hover)]',
     variantStyles[variant],
     className,
   )

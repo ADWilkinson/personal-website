@@ -169,12 +169,12 @@ function ProjectCard({ project }: { project: Project }) {
           {project.name}
         </Card.Title>
         {project.category === 'production' && (
-          <span className="text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-[var(--mono-text-muted)]">
+          <span className="text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-[var(--text-muted)]">
             Live
           </span>
         )}
       </div>
-      <p className="text-sm leading-relaxed text-[var(--mono-text-muted)]">
+      <p className="text-sm leading-relaxed text-[var(--text-muted)]">
         {project.description}
       </p>
       {project.tags && project.tags.length > 0 && (
@@ -182,14 +182,14 @@ function ProjectCard({ project }: { project: Project }) {
           {project.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="rounded-sm border border-[var(--mono-border)]/15 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]"
+              className="rounded-sm border border-[var(--border-default)]/15 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]"
             >
               {tag}
             </span>
           ))}
         </div>
       )}
-      <p className="flex items-center gap-2 text-[0.6rem] uppercase tracking-[0.14em] text-[var(--mono-text-muted)]">
+      <p className="flex items-center gap-2 text-[0.6rem] uppercase tracking-[0.14em] text-[var(--text-muted)]">
         {project.link.type === 'github' ? (
           <GitHubIcon className="h-3 w-3 flex-none fill-current" />
         ) : project.link.type === 'article' ? (
@@ -237,7 +237,7 @@ export default function Projects() {
         {/* No Results */}
         {filteredCount === 0 && (
           <div className="py-12 text-center">
-            <p className="text-[var(--mono-text-muted)]">No projects found matching your filters.</p>
+            <p className="text-[var(--text-muted)]">No projects found matching your filters.</p>
             <button
               onClick={() => setFilters({
                 searchTerm: '',
@@ -245,7 +245,7 @@ export default function Projects() {
                 selectedType: 'all',
                 sortBy: 'name'
               })}
-              className="mt-2 text-[0.7rem] uppercase tracking-[0.12em] text-[var(--mono-accent)] hover:underline"
+              className="mt-2 text-[0.7rem] uppercase tracking-[0.12em] text-[var(--accent-primary)] hover:underline"
             >
               Clear all filters
             </button>
@@ -257,11 +257,11 @@ export default function Projects() {
           <div className="space-y-16">
             {filteredProductionApps.length > 0 && (
               <section className="space-y-8">
-                <div className="flex flex-col gap-2 border-b border-[var(--mono-border)]/15 pb-4">
-                  <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+                <div className="flex flex-col gap-2 border-b border-[var(--border-default)]/15 pb-4">
+                  <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)]">
                     Current Apps
                   </h2>
-                  <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]">
+                  <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                     {filteredProductionApps.length} shipped and maintained
                   </p>
                 </div>
@@ -275,11 +275,11 @@ export default function Projects() {
 
             {filteredOtherProjects.length > 0 && (
               <section className="space-y-8">
-                <div className="flex flex-col gap-2 border-b border-[var(--mono-border)]/15 pb-4">
-                  <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+                <div className="flex flex-col gap-2 border-b border-[var(--border-default)]/15 pb-4">
+                  <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)]">
                     Other Projects
                   </h2>
-                  <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]">
+                  <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                     {filteredOtherProjects.length} explorations and experiments
                   </p>
                 </div>
@@ -296,11 +296,11 @@ export default function Projects() {
         {/* Show single category when filtered */}
         {filters.selectedType !== 'all' && filteredCount > 0 && (
           <section className="space-y-8">
-            <div className="flex flex-col gap-2 border-b border-[var(--mono-border)]/15 pb-4">
-              <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--mono-text)]">
+            <div className="flex flex-col gap-2 border-b border-[var(--border-default)]/15 pb-4">
+              <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)]">
                 {filters.selectedType === 'production' ? 'Current Apps' : 'Other Projects'}
               </h2>
-              <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--mono-text-muted)]">
+              <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                 {filteredCount} results
               </p>
             </div>

@@ -31,14 +31,19 @@ export function CompanyLogo({ name, logo, className, size = 'sm' }: CompanyLogoP
   const { container, image, dimensions } = sizeClasses[size]
 
   return (
-    <span className={clsx('inline-flex items-center', className)}>
-      <span className="font-medium">{name}</span>
-      <span className={clsx('ml-1 inline-flex items-center justify-center rounded-full overflow-hidden bg-white shadow-sm shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0', container)}>
-        <Image 
-          src={logo} 
-          alt={`${name} logo`} 
-          className={clsx('object-contain rounded-full', image)} 
-          width={dimensions.width} 
+    <span className={clsx('inline-flex items-center font-medium text-[var(--text-primary)]', className)}>
+      {name}
+      <span
+        className={clsx(
+          'ml-1 inline-flex items-center justify-center overflow-hidden rounded-full bg-[var(--surface-elevated)] shadow-[var(--shadow-xs)] ring-1 ring-[var(--border-default)]/20',
+          container,
+        )}
+      >
+        <Image
+          src={logo}
+          alt={`${name} logo`}
+          className={clsx('rounded-full object-contain', image)}
+          width={dimensions.width}
           height={dimensions.height}
           sizes={`${dimensions.width}px`}
         />
