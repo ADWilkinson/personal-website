@@ -24,21 +24,21 @@ import {
 
 const productionApps: Project[] = [
   {
-    name: 'Elune',
+    name: 'PeerLytics',
     description:
-      'Automated DeFi yield strategies with gas sponsorship for easy onchain earning.',
-    link: { href: 'https://tryelune.com', label: 'tryelune.com', type: 'website' },
-    icon: CurrencyDollarIcon,
-    tags: ['DeFi', 'Automation'],
+      'ZKP2P liquidity analytics dashboard and explorer powered by Envio-backed APIs.',
+    link: { href: 'https://peerlytics.xyz', label: 'peerlytics.xyz', type: 'website' },
+    icon: ChartBarIcon,
+    tags: ['Analytics', 'Explorer', 'ZKP2P'],
     category: 'production' as const,
   },
   {
-    name: 'PeerLytics',
+    name: 'Privateer',
     description:
-      'ZKP2P liquidity intelligence dashboard with Envio-backed analytics APIs and realtime 3D network visualization.',
-    link: { href: 'https://peerlytics.xyz', label: 'peerlytics.xyz', type: 'website' },
-    icon: ChartBarIcon,
-    tags: ['Analytics', 'WebGL'],
+      'Webhook-to-Hyperliquid trading automation with SaaS UI for signals, risk, and execution.',
+    link: { href: 'https://hlprivateer.xyz', label: 'hlprivateer.xyz', type: 'website' },
+    icon: CurrencyDollarIcon,
+    tags: ['Hyperliquid', 'Trading', 'Automation'],
     category: 'production' as const,
   },
   {
@@ -51,12 +51,12 @@ const productionApps: Project[] = [
     category: 'production' as const,
   },
   {
-    name: 'Davy Jones Intern',
+    name: 'Elune',
     description:
-      'Claude Code SDK-powered Slack bot managing GitHub PRs, builds, and development workflows for ZKP2P.',
-    link: { href: '/articles/building-davy-jones-intern', label: 'Read article', type: 'article' },
-    icon: CommandLineIcon,
-    tags: ['AI', 'Automation'],
+      'Automated DeFi yield strategies with gas sponsorship for easy onchain earning.',
+    link: { href: 'https://tryelune.com', label: 'tryelune.com', type: 'website' },
+    icon: CurrencyDollarIcon,
+    tags: ['DeFi', 'Automation'],
     category: 'production' as const,
   },
   {
@@ -66,6 +66,15 @@ const productionApps: Project[] = [
     link: { href: 'https://chordcraft.io', label: 'chordcraft.io', type: 'website' },
     icon: MusicalNoteIcon,
     tags: ['AI', 'Music'],
+    category: 'production' as const,
+  },
+  {
+    name: 'Davy Jones Intern',
+    description:
+      'Claude Code SDK-powered Slack bot managing GitHub PRs, builds, and development workflows for ZKP2P.',
+    link: { href: '/articles/building-davy-jones-intern', label: 'Read article', type: 'article' },
+    icon: CommandLineIcon,
+    tags: ['AI', 'Automation'],
     category: 'production' as const,
   },
 ]
@@ -117,7 +126,7 @@ const projects: Project[] = [
     category: 'other' as const,
   },
   {
-    name: 'Privateer',
+    name: 'Privateer Capital',
     description:
       'Automated trading bot implementing correlation and mean reversion strategies on Hyperliquid.',
     link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'privateer-capital', type: 'github' },
@@ -225,6 +234,14 @@ export default function Projects() {
   const filteredProductionApps = filteredProjects.filter(p => p.category === 'production')
   const filteredOtherProjects = filteredProjects.filter(p => p.category === 'other')
 
+  // Apply custom display order for production apps
+  const productionOrder = ['PeerLytics', 'Privateer', 'Piggy DAO', 'Elune', 'ChordCraft', 'Davy Jones Intern']
+  const orderedFilteredProductionApps = [...filteredProductionApps].sort((a, b) => {
+    const ai = productionOrder.indexOf(a.name)
+    const bi = productionOrder.indexOf(b.name)
+    return (ai === -1 ? Number.MAX_SAFE_INTEGER : ai) - (bi === -1 ? Number.MAX_SAFE_INTEGER : bi)
+  })
+
   return (
     <SimpleLayout
       icon={
@@ -291,7 +308,7 @@ export default function Projects() {
                   </p>
                 </div>
                 <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {filteredProductionApps.map((project) => (
+                  {orderedFilteredProductionApps.map((project) => (
                     <ProjectCard key={project.name} project={project} />
                   ))}
                 </ul>
@@ -330,7 +347,7 @@ export default function Projects() {
               </p>
             </div>
             <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredProjects.map((project) => (
+              {(filters.selectedType === 'production' ? orderedFilteredProductionApps : filteredProjects).map((project) => (
                 <ProjectCard key={project.name} project={project} />
               ))}
             </ul>
