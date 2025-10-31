@@ -51,15 +51,6 @@ const productionApps: Project[] = [
     category: 'production' as const,
   },
   {
-    name: 'Elune',
-    description:
-      'Automated DeFi yield strategies with gas sponsorship for easy onchain earning.',
-    link: { href: 'https://tryelune.com', label: 'tryelune.com', type: 'website' },
-    icon: CurrencyDollarIcon,
-    tags: ['DeFi', 'Automation'],
-    category: 'production' as const,
-  },
-  {
     name: 'ChordCraft',
     description:
       'AI chord progression generator helping musicians create compelling harmonic sequences.',
@@ -80,6 +71,15 @@ const productionApps: Project[] = [
 ]
 
 const projects: Project[] = [
+  {
+    name: 'Elune',
+    description:
+      'Simple yield farming platform for non-crypto native users with automated DeFi strategies.',
+    link: { href: 'https://tryelune.com', label: 'tryelune.com', type: 'website' },
+    icon: CurrencyDollarIcon,
+    tags: ['DeFi', 'Yield'],
+    category: 'other' as const,
+  },
   {
     name: 'Barbossa Engineer',
     description:
@@ -235,7 +235,7 @@ export default function Projects() {
   const filteredOtherProjects = filteredProjects.filter(p => p.category === 'other')
 
   // Apply custom display order for production apps
-  const productionOrder = ['PeerLytics', 'Privateer', 'Piggy DAO', 'Elune', 'ChordCraft', 'Davy Jones Intern']
+  const productionOrder = ['PeerLytics', 'Privateer', 'Piggy DAO', 'ChordCraft', 'Davy Jones Intern']
   const orderedFilteredProductionApps = [...filteredProductionApps].sort((a, b) => {
     const ai = productionOrder.indexOf(a.name)
     const bi = productionOrder.indexOf(b.name)
