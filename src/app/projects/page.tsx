@@ -68,6 +68,15 @@ const productionApps: Project[] = [
     tags: ['AI', 'Automation'],
     category: 'production' as const,
   },
+  {
+    name: 'usdctofiat',
+    description:
+      'Sell USDC, Receive Fiat. Deposit USDC, set your fiat payout details, and wait for buyers to fill your order via zero-knowledge proofs.',
+    link: { href: 'https://usdctofiat.xyz', label: 'usdctofiat.xyz', type: 'website' },
+    icon: CurrencyDollarIcon,
+    tags: ['ZKP2P', 'Payments'],
+    category: 'production' as const,
+  },
 ]
 
 const projects: Project[] = [
