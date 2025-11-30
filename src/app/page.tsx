@@ -30,14 +30,14 @@ function Role({ role, index }: { role: Role; index: number }) {
       className="group flex gap-3 py-3 first:pt-0 last:pb-0 opacity-0 animate-fade-up-subtle"
       style={{ animationDelay: `${100 + index * 50}ms`, animationFillMode: 'forwards' }}
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[var(--border-default)]/20 bg-[var(--surface-muted)] transition-transform duration-300 group-hover:scale-105">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[var(--border-default)]/20 bg-white transition-transform duration-300 group-hover:scale-105">
         <Image
           src={role.logo}
           alt={role.company}
-          className="h-full w-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
-          width={40}
-          height={40}
-          sizes="40px"
+          className="h-7 w-7 object-contain grayscale transition-all duration-300 group-hover:grayscale-0"
+          width={28}
+          height={28}
+          sizes="28px"
         />
       </div>
       <div className="flex flex-1 flex-col min-w-0">
