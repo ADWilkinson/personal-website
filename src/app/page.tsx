@@ -34,7 +34,7 @@ function Role({ role, index }: { role: Role; index: number }) {
         <Image
           src={role.logo}
           alt={role.company}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover grayscale opacity-80 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
           fill
           sizes="36px"
         />

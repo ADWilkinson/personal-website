@@ -245,10 +245,7 @@ function ExpandButton({
 }
 
 export default function Projects() {
-  const [showAllCurrent, setShowAllCurrent] = useState(false)
   const [showPast, setShowPast] = useState(false)
-
-  const visibleCurrentProjects = showAllCurrent ? currentProjects : currentProjects.slice(0, 4)
 
   return (
     <SimpleLayout
@@ -256,20 +253,12 @@ export default function Projects() {
       title="Projects"
       intro="Things I've built—DeFi protocols, trading tools, and side projects."
     >
-      {/* Current Projects */}
+      {/* Current Projects - show all */}
       <ul className="space-y-0">
-        {visibleCurrentProjects.map((project, index) => (
+        {currentProjects.map((project, index) => (
           <ProjectItem key={project.name} project={project} index={index} />
         ))}
       </ul>
-      {currentProjects.length > 4 && (
-        <ExpandButton
-          expanded={showAllCurrent}
-          onClick={() => setShowAllCurrent(!showAllCurrent)}
-          showMoreText={`Show ${currentProjects.length - 4} more`}
-          showLessText="Show less"
-        />
-      )}
 
       {/* Past Projects Section */}
       <div className="mt-10 pt-8 border-t border-[var(--border-default)]/10">
