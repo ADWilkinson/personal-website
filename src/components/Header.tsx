@@ -113,38 +113,40 @@ function MobileNavigation({
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm transition-opacity duration-200 data-[closed]:opacity-0"
+        className="fixed inset-0 z-[100] bg-black/80 transition-opacity duration-200 data-[closed]:opacity-0"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-4 top-4 z-[110] origin-top rounded-xl border border-[var(--border-default)]/20 bg-[#FAF9F6] dark:bg-[#1a1a1a] p-6 shadow-2xl transition duration-200 data-[closed]:scale-95 data-[closed]:opacity-0"
+        className="fixed inset-x-4 top-4 z-[110] origin-top transition duration-200 data-[closed]:scale-95 data-[closed]:opacity-0"
       >
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-[var(--text-muted)]">Navigation</span>
-          <PopoverButton
-            aria-label="Close menu"
-            className="rounded-full p-2 text-[var(--text-muted)] transition-colors duration-200 hover:bg-[var(--text-primary)]/5 hover:text-[var(--text-primary)]"
-          >
-            <CloseIcon className="h-5 w-5" />
-          </PopoverButton>
+        <div className="rounded-xl border border-[var(--border-default)]/20 bg-[#f4eee8] p-6 shadow-2xl dark:bg-[#27272a]">
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-[var(--text-muted)]">Navigation</span>
+            <PopoverButton
+              aria-label="Close menu"
+              className="rounded-full p-2 text-[var(--text-muted)] transition-colors duration-200 hover:bg-[var(--text-primary)]/5 hover:text-[var(--text-primary)]"
+            >
+              <CloseIcon className="h-5 w-5" />
+            </PopoverButton>
+          </div>
+          <nav className="mt-4">
+            <ul className="divide-y divide-[var(--border-default)]/10">
+              <MobileNavItem href="/" isActive={currentPath === '/'}>
+                Home
+              </MobileNavItem>
+              <MobileNavItem href="/about" isActive={currentPath === '/about'}>
+                About
+              </MobileNavItem>
+              <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')}>
+                Writing
+              </MobileNavItem>
+              <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')}>
+                Projects
+              </MobileNavItem>
+            </ul>
+          </nav>
         </div>
-        <nav className="mt-4">
-          <ul className="divide-y divide-[var(--border-default)]/10">
-            <MobileNavItem href="/" isActive={currentPath === '/'}>
-              Home
-            </MobileNavItem>
-            <MobileNavItem href="/about" isActive={currentPath === '/about'}>
-              About
-            </MobileNavItem>
-            <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')}>
-              Writing
-            </MobileNavItem>
-            <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')}>
-              Projects
-            </MobileNavItem>
-          </ul>
-        </nav>
       </PopoverPanel>
     </Popover>
   )
