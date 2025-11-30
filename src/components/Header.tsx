@@ -19,7 +19,7 @@ function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         d="m6 6 8 8M14 6l-8 8"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.4"
+        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -27,14 +27,15 @@ function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function ChevronDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 8 6" aria-hidden="true" {...props}>
       <path
-        d="M4 6h12M4 10h12M4 14h12"
-        stroke="currentColor"
-        strokeWidth="1.4"
+        d="M1.5 1.5 4 4.25 6.5 1.5"
+        fill="none"
+        strokeWidth="1.5"
         strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )
@@ -76,23 +77,18 @@ function MobileNavItem({
   href,
   isActive,
   children,
-  index,
 }: {
   href: string
   isActive: boolean
   children: React.ReactNode
-  index: number
 }) {
   return (
-    <li
-      className="opacity-0 animate-fade-up-subtle"
-      style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'forwards' }}
-    >
+    <li>
       <PopoverButton
         as={Link}
         href={href}
         className={clsx(
-          'block py-2.5 text-sm transition-colors duration-200',
+          'block py-3 text-sm transition-colors duration-200',
           isActive
             ? 'text-[var(--text-primary)]'
             : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
@@ -111,40 +107,40 @@ function MobileNavigation({
 }) {
   return (
     <Popover>
-      <PopoverButton className="group flex items-center gap-2 text-sm text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--text-primary)]">
-        <MenuIcon className="h-5 w-5" />
+      <PopoverButton className="group flex items-center gap-1.5 rounded-lg border border-[var(--border-default)]/20 bg-[var(--surface-muted)] px-3 py-2 text-sm text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--border-default)]/40">
         <span>Menu</span>
+        <ChevronDownIcon className="h-2.5 w-2.5 stroke-current stroke-2 transition-transform duration-200 group-data-[open]:rotate-180" />
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-40 bg-[var(--dj-charcoal)]/60 backdrop-blur-sm duration-200 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+        className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-200 data-[closed]:opacity-0"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-6 top-6 z-50 origin-top rounded-lg border border-[var(--border-muted)]/20 bg-[var(--surface-elevated)] p-6 shadow-lg duration-200 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+        className="fixed inset-x-4 top-4 z-50 origin-top rounded-xl border border-[var(--border-default)]/20 bg-[var(--surface-default)] p-6 shadow-xl transition duration-200 data-[closed]:scale-95 data-[closed]:opacity-0"
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs text-[var(--text-muted)] opacity-60">Navigation</span>
+          <span className="text-xs text-[var(--text-muted)]">Navigation</span>
           <PopoverButton
             aria-label="Close menu"
-            className="rounded-full p-1.5 text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--text-primary)]"
+            className="rounded-full p-2 text-[var(--text-muted)] transition-colors duration-200 hover:bg-[var(--text-primary)]/5 hover:text-[var(--text-primary)]"
           >
             <CloseIcon className="h-5 w-5" />
           </PopoverButton>
         </div>
         <nav className="mt-4">
-          <ul className="space-y-1">
-            <MobileNavItem href="/" isActive={currentPath === '/'} index={0}>
+          <ul className="divide-y divide-[var(--border-default)]/10">
+            <MobileNavItem href="/" isActive={currentPath === '/'}>
               Home
             </MobileNavItem>
-            <MobileNavItem href="/about" isActive={currentPath === '/about'} index={1}>
+            <MobileNavItem href="/about" isActive={currentPath === '/about'}>
               About
             </MobileNavItem>
-            <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')} index={2}>
+            <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')}>
               Writing
             </MobileNavItem>
-            <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')} index={3}>
+            <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')}>
               Projects
             </MobileNavItem>
           </ul>
@@ -225,7 +221,7 @@ function ThemeToggle() {
   }, [])
 
   const baseClasses =
-    'group inline-flex h-8 w-8 items-center justify-center rounded-full text-[var(--text-muted)] transition-all duration-200 hover:text-[var(--text-primary)]'
+    'group inline-flex h-9 w-9 items-center justify-center rounded-full text-[var(--text-muted)] transition-all duration-200 hover:bg-[var(--text-primary)]/5 hover:text-[var(--text-primary)]'
 
   if (!mounted) {
     return (

@@ -30,11 +30,11 @@ function Role({ role, index }: { role: Role; index: number }) {
       className="group flex items-center gap-3 py-2.5 first:pt-0 last:pb-0 opacity-0 animate-fade-up-subtle"
       style={{ animationDelay: `${100 + index * 50}ms`, animationFillMode: 'forwards' }}
     >
-      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-[var(--surface-muted)] ring-1 ring-[var(--border-default)]/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[var(--border-default)]/20 bg-[var(--surface-muted)] transition-transform duration-300 group-hover:scale-105">
         <Image
           src={role.logo}
           alt={role.company}
-          className="h-6 w-6 object-contain grayscale opacity-80 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+          className="h-6 w-6 object-contain grayscale transition-all duration-300 group-hover:grayscale-0"
           width={24}
           height={24}
           sizes="24px"
