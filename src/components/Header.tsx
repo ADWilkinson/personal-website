@@ -113,12 +113,12 @@ function MobileNavigation({
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-200 data-[closed]:opacity-0"
+        className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm transition-opacity duration-200 data-[closed]:opacity-0"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-4 top-4 z-50 origin-top rounded-xl border border-[var(--border-default)]/20 bg-[var(--surface-default)] p-6 shadow-xl transition duration-200 data-[closed]:scale-95 data-[closed]:opacity-0"
+        className="fixed inset-x-4 top-4 z-[110] origin-top rounded-xl border border-[var(--border-default)]/20 bg-[var(--dj-canvas)] dark:bg-[var(--dj-charcoal)] p-6 shadow-2xl transition duration-200 data-[closed]:scale-95 data-[closed]:opacity-0"
       >
         <div className="flex items-center justify-between">
           <span className="text-xs text-[var(--text-muted)]">Navigation</span>
