@@ -27,7 +27,7 @@ interface Role {
 function Role({ role, index }: { role: Role; index: number }) {
   return (
     <li
-      className="group flex items-center gap-3 py-2.5 first:pt-0 last:pb-0 opacity-0 animate-fade-up-subtle"
+      className="group flex gap-3 py-3 first:pt-0 last:pb-0 opacity-0 animate-fade-up-subtle"
       style={{ animationDelay: `${100 + index * 50}ms`, animationFillMode: 'forwards' }}
     >
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[var(--border-default)]/20 bg-[var(--surface-muted)] transition-transform duration-300 group-hover:scale-105">
@@ -40,16 +40,16 @@ function Role({ role, index }: { role: Role; index: number }) {
           sizes="24px"
         />
       </div>
-      <div className="flex flex-1 items-baseline justify-between gap-2 min-w-0">
-        <div className="flex items-baseline gap-2 min-w-0">
+      <div className="flex flex-1 flex-col min-w-0">
+        <div className="flex items-baseline justify-between gap-2">
           <span className="text-sm font-medium text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-primary)]">
             {role.company}
           </span>
-          <span className="text-sm text-[var(--text-muted)] truncate">{role.title}</span>
+          <span className="text-xs text-[var(--text-muted)] opacity-40 tabular-nums shrink-0">
+            {role.start}–{role.end}
+          </span>
         </div>
-        <span className="text-xs text-[var(--text-muted)] opacity-40 tabular-nums shrink-0">
-          {role.start}–{role.end}
-        </span>
+        <span className="text-sm text-[var(--text-muted)]">{role.title}</span>
       </div>
     </li>
   )
