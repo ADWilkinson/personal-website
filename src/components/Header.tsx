@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
@@ -117,10 +118,15 @@ function MobileNavigation({
   currentPath: string
 }) {
   const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   const closeMenu = useCallback(() => setIsOpen(false), [])
 
-  // Close menu on escape key
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Close menu on escape key and lock body scroll
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeMenu()
@@ -135,6 +141,54 @@ function MobileNavigation({
     }
   }, [isOpen, closeMenu])
 
+  const menuContent = isOpen ? (
+    <>
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-black/70"
+        style={{ zIndex: 99998 }}
+        onClick={closeMenu}
+        aria-hidden="true"
+      />
+
+      {/* Menu Panel */}
+      <div
+        className="fixed left-4 right-4 top-4 rounded-xl border border-[var(--border-default)]/20 bg-[#f4eee8] p-6 shadow-2xl dark:bg-[#27272a]"
+        style={{ zIndex: 99999 }}
+        role="dialog"
+        aria-modal="true"
+      >
+        <div className="flex items-center justify-between">
+          <span className="text-xs text-[var(--text-muted)]">Navigation</span>
+          <button
+            type="button"
+            onClick={closeMenu}
+            aria-label="Close menu"
+            className="rounded-full p-2 text-[var(--text-muted)] transition-colors duration-200 hover:bg-[var(--text-primary)]/5 hover:text-[var(--text-primary)]"
+          >
+            <CloseIcon className="h-5 w-5" />
+          </button>
+        </div>
+        <nav className="mt-4">
+          <ul className="divide-y divide-[var(--border-default)]/10">
+            <MobileNavItem href="/" isActive={currentPath === '/'} onClick={closeMenu}>
+              Home
+            </MobileNavItem>
+            <MobileNavItem href="/about" isActive={currentPath === '/about'} onClick={closeMenu}>
+              About
+            </MobileNavItem>
+            <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')} onClick={closeMenu}>
+              Writing
+            </MobileNavItem>
+            <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')} onClick={closeMenu}>
+              Projects
+            </MobileNavItem>
+          </ul>
+        </nav>
+      </div>
+    </>
+  ) : null
+
   return (
     <>
       <button
@@ -147,47 +201,7 @@ function MobileNavigation({
         <ChevronDownIcon className="h-2.5 w-2.5 stroke-current stroke-2" />
       </button>
 
-      {/* Backdrop */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm"
-          onClick={closeMenu}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Menu Panel */}
-      {isOpen && (
-        <div className="fixed inset-x-4 top-4 z-[9999] rounded-xl border border-[var(--border-default)]/20 bg-[#f4eee8] p-6 shadow-2xl dark:bg-[#27272a]">
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-[var(--text-muted)]">Navigation</span>
-            <button
-              type="button"
-              onClick={closeMenu}
-              aria-label="Close menu"
-              className="rounded-full p-2 text-[var(--text-muted)] transition-colors duration-200 hover:bg-[var(--text-primary)]/5 hover:text-[var(--text-primary)]"
-            >
-              <CloseIcon className="h-5 w-5" />
-            </button>
-          </div>
-          <nav className="mt-4">
-            <ul className="divide-y divide-[var(--border-default)]/10">
-              <MobileNavItem href="/" isActive={currentPath === '/'} onClick={closeMenu}>
-                Home
-              </MobileNavItem>
-              <MobileNavItem href="/about" isActive={currentPath === '/about'} onClick={closeMenu}>
-                About
-              </MobileNavItem>
-              <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')} onClick={closeMenu}>
-                Writing
-              </MobileNavItem>
-              <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')} onClick={closeMenu}>
-                Projects
-              </MobileNavItem>
-            </ul>
-          </nav>
-        </div>
-      )}
+      {mounted && menuContent && createPortal(menuContent, document.body)}
     </>
   )
 }
