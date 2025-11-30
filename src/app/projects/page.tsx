@@ -77,6 +77,13 @@ const currentProjects = [
 // Past projects
 const pastProjects = [
   {
+    name: 'Galleon DAO',
+    desc: 'DeFi protocol managing $20M+ in structured products and 6,000+ member community',
+    url: 'https://github.com/GalleonDAO',
+    icon: TreasureIcon,
+    tags: ['DeFi', 'DAO'],
+  },
+  {
     name: 'Elune',
     desc: 'Automated DeFi yield strategies with gas sponsorship for easy onchain earning',
     url: 'https://tryelune.com',
@@ -96,13 +103,6 @@ const pastProjects = [
     url: 'https://github.com/ADWilkinson/the-flying-dutchman-theme',
     icon: CodeIcon,
     tags: ['VS Code'],
-  },
-  {
-    name: 'Galleon DAO',
-    desc: 'DeFi protocol managing $20M+ in structured products and 6,000+ member community',
-    url: 'https://github.com/GalleonDAO',
-    icon: TreasureIcon,
-    tags: ['DeFi', 'DAO'],
   },
   {
     name: 'Wojak Jones',
@@ -251,7 +251,7 @@ export default function Projects() {
     <SimpleLayout
       icon={HelmIcon}
       title="Projects"
-      intro="Things I've built—DeFi protocols, trading tools, and side projects."
+      intro="Things I've built: DeFi protocols, trading tools, and side projects."
     >
       {/* Current Projects - show all */}
       <ul className="space-y-0">

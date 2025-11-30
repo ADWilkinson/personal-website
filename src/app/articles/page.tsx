@@ -23,7 +23,7 @@ const ARTICLES = [
   {
     slug: 'crypto-journey',
     title: 'My Crypto Journey',
-    description: 'From curious developer to DeFi founder—lessons learned along the way.',
+    description: 'From curious developer to DeFi founder: lessons learned along the way.',
     date: '2024-09-05'
   },
   {
@@ -108,7 +108,7 @@ function ExpandButton({
 
 export default function ArticlesIndex() {
   const [showAll, setShowAll] = useState(false)
-  const visibleArticles = showAll ? ARTICLES : ARTICLES.slice(0, 3)
+  const visibleArticles = showAll ? ARTICLES : ARTICLES.slice(0, 4)
 
   return (
     <SimpleLayout
@@ -121,11 +121,11 @@ export default function ArticlesIndex() {
           <ArticleItem key={article.slug} article={article} index={index} />
         ))}
       </ul>
-      {ARTICLES.length > 3 && (
+      {ARTICLES.length > 4 && (
         <ExpandButton
           expanded={showAll}
           onClick={() => setShowAll(!showAll)}
-          showMoreText={`Show ${ARTICLES.length - 3} more articles`}
+          showMoreText={`Show ${ARTICLES.length - 4} more articles`}
           showLessText="Show less"
         />
       )}

@@ -75,7 +75,7 @@ export default function About() {
           </p>
 
           <p>
-            Previously, I led a 10-person engineering team at Brava Labs, shipping an MVP that secured £2M in seed funding. Before that, I founded Galleon DAO—raised $1M+ from 1kx, grew a 6,000+ member community, and managed $20M+ TVL at peak.
+            Previously, I led a 10-person engineering team at Brava Labs, shipping an MVP that secured £2M in seed funding. Before that, I founded Galleon DAO, raised $1M+ from 1kx, grew a 6,000+ member community, and managed $20M+ TVL at peak.
           </p>
 
           <p>
@@ -83,7 +83,7 @@ export default function About() {
           </p>
 
           <p>
-            Outside of work, I build side projects—AI assistants, trading tools, music apps. See my{' '}
+            Outside of work, I build side projects: AI assistants, trading tools, music apps. See my{' '}
             <Link
               href="/projects"
               className="inline-flex items-center gap-0.5 text-[var(--text-primary)] transition-colors duration-200 hover:text-[var(--accent-primary)]"
