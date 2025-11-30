@@ -200,20 +200,19 @@ function ProjectItem({
                 className="text-[var(--text-muted)] opacity-0 transition-all duration-200 group-hover:opacity-50"
               />
             )}
+            {/* Tags inline with title */}
+            <div className="hidden sm:flex items-center gap-1.5">
+              {project.tags.slice(0, 2).map(tag => (
+                <span
+                  key={tag}
+                  className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--text-primary)]/[0.05] text-[var(--text-muted)] transition-colors duration-200 group-hover:bg-[var(--accent-primary)]/10 group-hover:text-[var(--accent-primary)]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
-          <span className="text-sm text-[var(--text-muted)] truncate">{project.desc}</span>
-        </div>
-
-        {/* Tags - hidden on mobile */}
-        <div className="hidden sm:flex items-center gap-1.5 shrink-0">
-          {project.tags.slice(0, 2).map(tag => (
-            <span
-              key={tag}
-              className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--text-primary)]/[0.05] text-[var(--text-muted)] transition-colors duration-200 group-hover:bg-[var(--accent-primary)]/10 group-hover:text-[var(--accent-primary)]"
-            >
-              {tag}
-            </span>
-          ))}
+          <span className="text-sm text-[var(--text-muted)] line-clamp-2">{project.desc}</span>
         </div>
       </Link>
     </li>
