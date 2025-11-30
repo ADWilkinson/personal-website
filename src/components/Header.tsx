@@ -1,15 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import {
-  Popover,
-  PopoverButton,
-  PopoverBackdrop,
-  PopoverPanel,
-} from '@headlessui/react'
 import clsx from 'clsx'
 
 function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -17,6 +11,21 @@ function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     <svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
       <path
         d="m6 6 8 8M14 6l-8 8"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
+      <path
+        d="M3 5h14M3 10h14M3 15h14"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.5"
@@ -76,26 +85,28 @@ function MoonIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 function MobileNavItem({
   href,
   isActive,
+  onClick,
   children,
 }: {
   href: string
   isActive: boolean
+  onClick: () => void
   children: React.ReactNode
 }) {
   return (
     <li>
-      <PopoverButton
-        as={Link}
+      <Link
         href={href}
+        onClick={onClick}
         className={clsx(
           'block py-3 text-sm transition-colors duration-200',
           isActive
-            ? 'text-[var(--text-primary)]'
+            ? 'text-[var(--text-primary)] font-medium'
             : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
         )}
       >
         {children}
-      </PopoverButton>
+      </Link>
     </li>
   )
 }
@@ -105,50 +116,79 @@ function MobileNavigation({
 }: {
   currentPath: string
 }) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const closeMenu = useCallback(() => setIsOpen(false), [])
+
+  // Close menu on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMenu()
+    }
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = ''
+    }
+  }, [isOpen, closeMenu])
+
   return (
-    <Popover>
-      <PopoverButton className="group flex items-center gap-1.5 rounded-lg border border-[var(--border-default)]/20 bg-[var(--surface-muted)] px-3 py-2 text-sm text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--border-default)]/40">
-        <span>Menu</span>
-        <ChevronDownIcon className="h-2.5 w-2.5 stroke-current stroke-2 transition-transform duration-200 group-data-[open]:rotate-180" />
-      </PopoverButton>
-      <PopoverBackdrop
-        transition
-        className="fixed inset-0 z-[100] bg-black/80 transition-opacity duration-200 data-[closed]:opacity-0"
-      />
-      <PopoverPanel
-        focus
-        transition
-        className="fixed inset-x-4 top-4 z-[110] origin-top transition duration-200 data-[closed]:scale-95 data-[closed]:opacity-0"
+    <>
+      <button
+        type="button"
+        onClick={() => setIsOpen(true)}
+        className="group flex items-center gap-1.5 rounded-lg border border-[var(--border-default)]/20 bg-[var(--surface-muted)] px-3 py-2 text-sm text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--border-default)]/40"
+        aria-label="Open menu"
       >
-        <div className="rounded-xl border border-[var(--border-default)]/20 bg-[#f4eee8] p-6 shadow-2xl dark:bg-[#27272a]">
+        <span>Menu</span>
+        <ChevronDownIcon className="h-2.5 w-2.5 stroke-current stroke-2" />
+      </button>
+
+      {/* Backdrop */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm"
+          onClick={closeMenu}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Menu Panel */}
+      {isOpen && (
+        <div className="fixed inset-x-4 top-4 z-[9999] rounded-xl border border-[var(--border-default)]/20 bg-[#f4eee8] p-6 shadow-2xl dark:bg-[#27272a]">
           <div className="flex items-center justify-between">
             <span className="text-xs text-[var(--text-muted)]">Navigation</span>
-            <PopoverButton
+            <button
+              type="button"
+              onClick={closeMenu}
               aria-label="Close menu"
               className="rounded-full p-2 text-[var(--text-muted)] transition-colors duration-200 hover:bg-[var(--text-primary)]/5 hover:text-[var(--text-primary)]"
             >
               <CloseIcon className="h-5 w-5" />
-            </PopoverButton>
+            </button>
           </div>
           <nav className="mt-4">
             <ul className="divide-y divide-[var(--border-default)]/10">
-              <MobileNavItem href="/" isActive={currentPath === '/'}>
+              <MobileNavItem href="/" isActive={currentPath === '/'} onClick={closeMenu}>
                 Home
               </MobileNavItem>
-              <MobileNavItem href="/about" isActive={currentPath === '/about'}>
+              <MobileNavItem href="/about" isActive={currentPath === '/about'} onClick={closeMenu}>
                 About
               </MobileNavItem>
-              <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')}>
+              <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')} onClick={closeMenu}>
                 Writing
               </MobileNavItem>
-              <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')}>
+              <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')} onClick={closeMenu}>
                 Projects
               </MobileNavItem>
             </ul>
           </nav>
         </div>
-      </PopoverPanel>
-    </Popover>
+      )}
+    </>
   )
 }
 
