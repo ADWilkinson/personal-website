@@ -1,366 +1,302 @@
 'use client'
 
-import Image from 'next/image'
+import { useState } from 'react'
+import Link from 'next/link'
 
-import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { GitHubIcon } from '@/components/SocialIcons'
-import { ProjectFilter } from '@/components/ProjectFilter'
-import { useProjectFilter, type Project } from '@/hooks/useProjectFilter'
-import { 
-  GlobeAltIcon, 
-  ChartBarIcon, 
-  MusicalNoteIcon, 
-  BoltIcon, 
-  CurrencyDollarIcon, 
-  PhotoIcon, 
-  ListBulletIcon,
-  ArrowTrendingUpIcon,
-  CubeIcon,
-  CommandLineIcon,
+import {
+  HelmIcon,
+  ExternalLinkIcon,
+  ArrowRightIcon,
+  ChartIcon,
+  AnchorIcon,
+  CoinIcon,
+  MusicIcon,
+  UsersIcon,
+  TreasureIcon,
+  MoonIcon,
+  BotIcon,
+  TerminalIcon,
   ServerIcon,
-  CodeBracketIcon
-} from '@heroicons/react/24/solid'
+  CodeIcon,
+  ImageIcon,
+  ListIcon,
+  ZapIcon,
+  TrendingIcon,
+  CubeIcon,
+  GlobeIcon,
+} from '@/components/Icons'
 
-const productionApps: Project[] = [
+// Current active projects
+const currentProjects = [
   {
     name: 'PeerLytics',
-    description:
-      'ZKP2P liquidity analytics dashboard and explorer powered by Envio-backed APIs.',
-    link: { href: 'https://peerlytics.xyz', label: 'peerlytics.xyz', type: 'website' },
-    icon: ChartBarIcon,
-    tags: ['Analytics', 'Explorer', 'ZKP2P'],
-    category: 'production' as const,
+    desc: 'ZKP2P liquidity intelligence dashboard with Envio-backed analytics APIs and realtime 3D visualization',
+    url: 'https://peerlytics.xyz',
+    icon: ChartIcon,
+    tags: ['Analytics', 'WebGL'],
   },
   {
     name: 'Privateer',
-    description:
-      'Webhook-to-Hyperliquid trading automation with SaaS UI for signals, risk, and execution.',
-    link: { href: 'https://hlprivateer.xyz', label: 'hlprivateer.xyz', type: 'website' },
-    icon: CurrencyDollarIcon,
-    tags: ['Hyperliquid', 'Trading', 'Automation'],
-    category: 'production' as const,
-  },
-  {
-    name: 'Piggy DAO',
-    description:
-      'Official website for Piggy DAO, a DeFAI agent developed by Superform with real-time analytics.',
-    link: { href: 'https://piggyonchain.xyz', label: 'piggyonchain.xyz', type: 'website' },
-    icon: CubeIcon,
-    tags: ['AI', 'DAO'],
-    category: 'production' as const,
-  },
-  {
-    name: 'ChordCraft',
-    description:
-      'AI chord progression generator helping musicians create compelling harmonic sequences.',
-    link: { href: 'https://chordcraft.io', label: 'chordcraft.io', type: 'website' },
-    icon: MusicalNoteIcon,
-    tags: ['AI', 'Music'],
-    category: 'production' as const,
-  },
-  {
-    name: 'Davy Jones Intern',
-    description:
-      'Claude Code SDK-powered Slack bot managing GitHub PRs, builds, and development workflows for ZKP2P.',
-    link: { href: '/articles/building-davy-jones-intern', label: 'Read article', type: 'article' },
-    icon: CommandLineIcon,
-    tags: ['AI', 'Automation'],
-    category: 'production' as const,
+    desc: 'Hyperliquid trading automation and strategy execution',
+    url: 'https://hlprivateer.xyz',
+    icon: AnchorIcon,
+    tags: ['Trading', 'Automation'],
   },
   {
     name: 'usdctofiat',
-    description:
-      'Sell USDC, Receive Fiat. Deposit USDC, set your fiat payout details, and wait for buyers to fill your order via zero-knowledge proofs.',
-    link: { href: 'https://usdctofiat.xyz', label: 'usdctofiat.xyz', type: 'website' },
-    icon: CurrencyDollarIcon,
-    tags: ['ZKP2P', 'Payments'],
-    category: 'production' as const,
+    desc: 'Sell USDC and receive fiat via ZK proofs',
+    url: 'https://usdctofiat.xyz',
+    icon: CoinIcon,
+    tags: ['Payments', 'ZK'],
+  },
+  {
+    name: 'Piggy DAO',
+    desc: 'Official website for Piggy DAO, a DeFAI agent developed by Superform with real-time analytics',
+    url: 'https://piggyonchain.xyz',
+    icon: CubeIcon,
+    tags: ['AI', 'DAO'],
+  },
+  {
+    name: 'Davy Jones Intern',
+    desc: 'Claude Code SDK-powered Slack bot managing GitHub PRs, builds, and development workflows',
+    url: '/articles/building-davy-jones-intern',
+    icon: TerminalIcon,
+    tags: ['AI', 'Automation'],
+    isInternal: true,
+  },
+  {
+    name: 'ChordCraft',
+    desc: 'AI chord progression generator helping musicians create compelling harmonic sequences',
+    url: 'https://chordcraft.io',
+    icon: MusicIcon,
+    tags: ['AI', 'Music'],
   },
 ]
 
-const projects: Project[] = [
+// Past projects
+const pastProjects = [
   {
     name: 'Elune',
-    description:
-      'Simple yield farming platform for non-crypto native users with automated DeFi strategies.',
-    link: { href: 'https://tryelune.com', label: 'tryelune.com', type: 'website' },
-    icon: CurrencyDollarIcon,
-    tags: ['DeFi', 'Yield'],
-    category: 'other' as const,
+    desc: 'Automated DeFi yield strategies with gas sponsorship for easy onchain earning',
+    url: 'https://tryelune.com',
+    icon: MoonIcon,
+    tags: ['DeFi', 'Automation'],
   },
   {
     name: 'Barbossa Engineer',
-    description:
-      'Automated server manager and AI engineer performing infrastructure upgrades and project work.',
-    link: { href: 'https://github.com/ADWilkinson/barbossa-engineer', label: 'barbossa-engineer', type: 'github' },
+    desc: 'Automated server manager and AI engineer performing infrastructure upgrades and project work',
+    url: 'https://github.com/ADWilkinson/barbossa-engineer',
     icon: ServerIcon,
     tags: ['AI', 'Infrastructure'],
-    category: 'other' as const,
   },
   {
     name: 'The Flying Dutchman Theme',
-    description:
-      'Dark VS Code theme inspired by maritime legends with careful syntax highlighting.',
-    link: { href: 'https://github.com/ADWilkinson/the-flying-dutchman-theme', label: 'the-flying-dutchman-theme', type: 'github' },
-    icon: CodeBracketIcon,
+    desc: 'Dark VS Code theme inspired by maritime legends with careful syntax highlighting',
+    url: 'https://github.com/ADWilkinson/the-flying-dutchman-theme',
+    icon: CodeIcon,
     tags: ['VS Code'],
-    category: 'other' as const,
   },
   {
     name: 'Galleon DAO',
-    description:
-      'DeFi protocol managing $20M+ in structured products and 6,000+ member community.',
-    link: { href: 'https://github.com/GalleonDAO', label: 'GalleonDAO', type: 'github' },
-    icon: GlobeAltIcon,
+    desc: 'DeFi protocol managing $20M+ in structured products and 6,000+ member community',
+    url: 'https://github.com/GalleonDAO',
+    icon: TreasureIcon,
     tags: ['DeFi', 'DAO'],
-    category: 'other' as const,
   },
   {
     name: 'Wojak Jones',
-    description:
-      'AI-powered yield farming assistant delivering real-time DeFi opportunities.',
-    link: { href: 'https://wojakjones.xyz', label: 'wojakjones.xyz', type: 'website' },
-    icon: ChartBarIcon,
+    desc: 'AI-powered yield farming assistant delivering real-time DeFi opportunities',
+    url: 'https://wojakjones.xyz',
+    icon: BotIcon,
     tags: ['AI', 'DeFi'],
-    category: 'other' as const,
   },
   {
     name: 'Ultrasoundapps',
-    description:
-      'Curated platform for discovering and exploring the best decentralized applications.',
-    link: { href: 'https://ultrasoundapps.com', label: 'ultrasoundapps.com', type: 'website' },
-    icon: BoltIcon,
+    desc: 'Curated platform for discovering and exploring the best decentralized applications',
+    url: 'https://ultrasoundapps.com',
+    icon: ZapIcon,
     tags: ['DeFi'],
-    category: 'other' as const,
   },
   {
     name: 'Privateer Capital',
-    description:
-      'Automated trading bot implementing correlation and mean reversion strategies on Hyperliquid.',
-    link: { href: 'https://github.com/ADWilkinson/privateer-capital', label: 'privateer-capital', type: 'github' },
-    icon: CurrencyDollarIcon,
+    desc: 'Automated trading bot implementing correlation and mean reversion strategies on Hyperliquid',
+    url: 'https://github.com/ADWilkinson/privateer-capital',
+    icon: TrendingIcon,
     tags: ['Trading', 'Automation'],
-    category: 'other' as const,
   },
   {
     name: 'SaylorMemes Archive',
-    description:
-      'Firebase-backed media library with search, tagging, and analytics for the wider Bitcoin meme community.',
-    link: { href: 'https://saylormemes.com', label: 'saylormemes.com', type: 'website' },
-    icon: PhotoIcon,
+    desc: 'Firebase-backed media library with search, tagging, and analytics for the Bitcoin meme community',
+    url: 'https://saylormemes.com',
+    icon: ImageIcon,
     tags: ['Firebase', 'React'],
-    category: 'other' as const,
   },
   {
     name: 'CryptoTierList',
-    description:
-      'Community-driven platform enabling collaborative ranking of cryptocurrency projects.',
-    link: { href: 'https://github.com/ADWilkinson/CryptoTierList', label: 'CryptoTierList', type: 'github' },
-    icon: ListBulletIcon,
+    desc: 'Community-driven platform enabling collaborative ranking of cryptocurrency projects',
+    url: 'https://github.com/ADWilkinson/CryptoTierList',
+    icon: ListIcon,
     tags: ['Community'],
-    category: 'other' as const,
   },
   {
     name: 'PineScript Indicators',
-    description:
-      'Open-source technical analysis indicators for TradingView written in PineScript.',
-    link: { href: 'https://github.com/ADWilkinson/pinescript-indicators', label: 'pinescript-indicators', type: 'github' },
-    icon: ArrowTrendingUpIcon,
+    desc: 'Open-source technical analysis indicators for TradingView written in PineScript',
+    url: 'https://github.com/ADWilkinson/pinescript-indicators',
+    icon: TrendingIcon,
     tags: ['Trading', 'Analytics'],
-    category: 'other' as const,
   },
 ]
 
-function ExternalLinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" {...props}>
-      <path d="M12.232 4.232a2.5 2.5 0 013.536 3.536l-1.225 1.224a.75.75 0 001.061 1.06l1.224-1.224a4 4 0 00-5.656-5.656l-3 3a4 4 0 00.225 5.865.75.75 0 00.977-1.138 2.5 2.5 0 01-.142-3.667l3-3z" />
-      <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
-    </svg>
-  )
+type ProjectType = {
+  name: string
+  desc: string
+  url: string
+  icon: typeof ChartIcon
+  tags: string[]
+  isInternal?: boolean
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectItem({
+  project,
+  index,
+  baseDelay = 100,
+}: {
+  project: ProjectType
+  index: number
+  baseDelay?: number
+}) {
+  const IconComponent = project.icon
+  const isExternal = !project.isInternal
+
   return (
-    <Card
-      as="li"
-      className="h-full bg-[var(--surface-muted)] shadow-[var(--shadow-xs)] transition-[background-color,border-color,box-shadow] duration-90 ease-out hover:border-[var(--accent-primary)] hover:bg-[var(--surface-elevated)] hover:shadow-[var(--shadow-brand-soft)] dark:hover:border-[var(--accent-hover)]"
+    <li
+      className="group opacity-0 animate-fade-up-subtle"
+      style={{ animationDelay: `${baseDelay + index * 40}ms`, animationFillMode: 'forwards' }}
     >
-      <div className="flex items-start justify-between gap-3">
-        <Card.Title as="h3" href={project.link.href}>
-          {project.name}
-        </Card.Title>
-        {project.category === 'production' && (
-          <span className="rounded-md border border-[var(--accent-primary)] bg-[var(--dj-navigator)] px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-[var(--dj-canvas)]">
-            Live
-          </span>
-        )}
-      </div>
-      <p className="text-sm leading-relaxed text-[var(--text-muted)]">
-        {project.description}
-      </p>
-      {project.tags && project.tags.length > 0 && (
-        <div className="flex flex-wrap gap-1">
-          {project.tags.slice(0, 3).map((tag) => (
+      <Link
+        href={project.url}
+        className="flex items-center gap-3 py-3 -mx-2 px-2 rounded-lg transition-all duration-200 hover:bg-[var(--text-primary)]/[0.03]"
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noopener noreferrer' : undefined}
+      >
+        {/* Icon */}
+        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-[var(--surface-muted)] flex items-center justify-center ring-1 ring-[var(--border-default)]/10 transition-all duration-300 group-hover:scale-105 group-hover:ring-[var(--accent-primary)]/20">
+          <IconComponent
+            size={20}
+            className="text-[var(--text-muted)] transition-colors duration-200 group-hover:text-[var(--accent-primary)]"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-1 flex-col min-w-0">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-primary)]">
+              {project.name}
+            </span>
+            {isExternal && (
+              <ExternalLinkIcon
+                size={12}
+                className="text-[var(--text-muted)] opacity-0 transition-all duration-200 group-hover:opacity-50"
+              />
+            )}
+          </div>
+          <span className="text-sm text-[var(--text-muted)] truncate">{project.desc}</span>
+        </div>
+
+        {/* Tags - hidden on mobile */}
+        <div className="hidden sm:flex items-center gap-1.5 shrink-0">
+          {project.tags.slice(0, 2).map(tag => (
             <span
               key={tag}
-              className="rounded-md border border-[var(--border-default)] bg-[var(--surface-elevated)] px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]"
+              className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--text-primary)]/[0.05] text-[var(--text-muted)] transition-colors duration-200 group-hover:bg-[var(--accent-primary)]/10 group-hover:text-[var(--accent-primary)]"
             >
               {tag}
             </span>
           ))}
         </div>
-      )}
-      <p className="flex items-center gap-2 text-[0.6rem] uppercase tracking-[0.14em] text-[var(--text-muted)]">
-        {project.link.type === 'github' ? (
-          <GitHubIcon className="h-3 w-3 flex-none fill-current" />
-        ) : project.link.type === 'article' ? (
-          <span aria-hidden="true">▻</span>
-        ) : (
-          <ExternalLinkIcon className="h-3 w-3 flex-none" />
-        )}
-        <span>{project.link.label}</span>
-      </p>
-    </Card>
+      </Link>
+    </li>
+  )
+}
+
+function ExpandButton({
+  expanded,
+  onClick,
+  showMoreText,
+  showLessText,
+}: {
+  expanded: boolean
+  onClick: () => void
+  showMoreText: string
+  showLessText: string
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="group inline-flex items-center gap-1 text-xs text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent-primary)] pt-3"
+    >
+      <span>{expanded ? showLessText : showMoreText}</span>
+      <ArrowRightIcon
+        size={10}
+        className={`transition-transform duration-200 ${expanded ? 'rotate-[-90deg]' : 'rotate-90'}`}
+      />
+    </button>
   )
 }
 
 export default function Projects() {
-  // Combine all projects for filtering
-  const allProjects = [...productionApps, ...projects]
-  
-  const {
-    filters,
-    setFilters,
-    availableTags,
-    filteredProjects,
-    totalCount,
-    filteredCount
-  } = useProjectFilter(allProjects)
+  const [showAllCurrent, setShowAllCurrent] = useState(false)
+  const [showPast, setShowPast] = useState(false)
 
-  // Separate filtered projects by category
-  const filteredProductionApps = filteredProjects.filter(p => p.category === 'production')
-  const filteredOtherProjects = filteredProjects.filter(p => p.category === 'other')
-
-  // Apply custom display order for production apps
-  const productionOrder = ['PeerLytics', 'Privateer', 'Piggy DAO', 'ChordCraft', 'Davy Jones Intern']
-  const orderedFilteredProductionApps = [...filteredProductionApps].sort((a, b) => {
-    const ai = productionOrder.indexOf(a.name)
-    const bi = productionOrder.indexOf(b.name)
-    return (ai === -1 ? Number.MAX_SAFE_INTEGER : ai) - (bi === -1 ? Number.MAX_SAFE_INTEGER : bi)
-  })
+  const visibleCurrentProjects = showAllCurrent ? currentProjects : currentProjects.slice(0, 4)
 
   return (
     <SimpleLayout
-      icon={
-        <div className="relative h-10 w-10">
-          <Image
-            src="/brand/icons/Application-Icon.png"
-            alt="Projects icon"
-            width={40}
-            height={40}
-            className="h-full w-full dark:hidden"
-            priority
-          />
-          <Image
-            src="/brand/icons/Application-Icon-Dark.png"
-            alt=""
-            width={40}
-            height={40}
-            className="hidden h-full w-full dark:block"
-            priority
-          />
-        </div>
-      }
-      title="Projects I've created"
-      intro="A selection of DeFi protocols, tools, and applications I've built."
+      icon={HelmIcon}
+      title="Projects"
+      intro="Things I've built—DeFi protocols, trading tools, and side projects."
     >
-      <div className="mx-auto max-w-5xl space-y-10">
-        {/* Filter Component */}
-        <ProjectFilter
-          filters={filters}
-          onFiltersChange={setFilters}
-          availableTags={availableTags}
+      {/* Current Projects */}
+      <ul className="space-y-0">
+        {visibleCurrentProjects.map((project, index) => (
+          <ProjectItem key={project.name} project={project} index={index} />
+        ))}
+      </ul>
+      {currentProjects.length > 4 && (
+        <ExpandButton
+          expanded={showAllCurrent}
+          onClick={() => setShowAllCurrent(!showAllCurrent)}
+          showMoreText={`Show ${currentProjects.length - 4} more`}
+          showLessText="Show less"
         />
+      )}
 
+      {/* Past Projects Section */}
+      <div className="mt-10 pt-8 border-t border-[var(--border-default)]/10">
+        <button
+          onClick={() => setShowPast(!showPast)}
+          className="group flex items-center gap-2 text-sm text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--text-primary)]"
+        >
+          <span className="font-medium">Past Projects</span>
+          <span className="text-xs opacity-60">({pastProjects.length})</span>
+          <ArrowRightIcon
+            size={12}
+            className={`transition-transform duration-200 ${showPast ? 'rotate-90' : ''}`}
+          />
+        </button>
 
-        {/* No Results */}
-        {filteredCount === 0 && (
-          <div className="py-12 text-center">
-            <p className="text-[var(--text-muted)]">No projects found matching your filters.</p>
-            <button
-              onClick={() => setFilters({
-                searchTerm: '',
-                selectedTags: [],
-                selectedType: 'all',
-                sortBy: 'name'
-              })}
-              className="mt-2 text-[0.7rem] uppercase tracking-[0.12em] text-[var(--accent-primary)] hover:underline"
-            >
-              Clear all filters
-            </button>
-          </div>
-        )}
-
-        {/* Show filtered results based on type filter */}
-        {filters.selectedType === 'all' && (
-          <div className="space-y-16">
-            {filteredProductionApps.length > 0 && (
-              <section className="space-y-8">
-                <div className="flex flex-col gap-2 border-b border-[var(--border-default)]/15 pb-4">
-                  <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)]">
-                    Current Apps
-                  </h2>
-                  <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]">
-                    {filteredProductionApps.length} shipped and maintained
-                  </p>
-                </div>
-                <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {orderedFilteredProductionApps.map((project) => (
-                    <ProjectCard key={project.name} project={project} />
-                  ))}
-                </ul>
-              </section>
-            )}
-
-            {filteredOtherProjects.length > 0 && (
-              <section className="space-y-8">
-                <div className="flex flex-col gap-2 border-b border-[var(--border-default)]/15 pb-4">
-                  <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)]">
-                    Other Projects
-                  </h2>
-                  <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]">
-                    {filteredOtherProjects.length} explorations and experiments
-                  </p>
-                </div>
-                <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {filteredOtherProjects.map((project) => (
-                    <ProjectCard key={project.name} project={project} />
-                  ))}
-                </ul>
-              </section>
-            )}
-          </div>
-        )}
-
-        {/* Show single category when filtered */}
-        {filters.selectedType !== 'all' && filteredCount > 0 && (
-          <section className="space-y-8">
-            <div className="flex flex-col gap-2 border-b border-[var(--border-default)]/15 pb-4">
-              <h2 className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)]">
-                {filters.selectedType === 'production' ? 'Current Apps' : 'Other Projects'}
-              </h2>
-              <p className="text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]">
-                {filteredCount} results
-              </p>
-            </div>
-            <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {(filters.selectedType === 'production' ? orderedFilteredProductionApps : filteredProjects).map((project) => (
-                <ProjectCard key={project.name} project={project} />
-              ))}
-            </ul>
-          </section>
+        {showPast && (
+          <ul className="space-y-0 mt-4">
+            {pastProjects.map((project, index) => (
+              <ProjectItem
+                key={project.name}
+                project={project}
+                index={index}
+                baseDelay={50}
+              />
+            ))}
+          </ul>
         )}
       </div>
     </SimpleLayout>

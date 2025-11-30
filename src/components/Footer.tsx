@@ -1,40 +1,33 @@
-import Link from 'next/link'
+'use client'
 
-import { ContainerInner, ContainerOuter } from '@/components/Container'
-
-function NavLink({
-  href,
-  children,
-}: {
-  href: string
-  children: React.ReactNode
-}) {
-  return (
-    <Link
-      href={href}
-      className="text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)] transition-colors duration-90 hover:text-[var(--text-primary)]"
-    >
-      {children}
-    </Link>
-  )
-}
+import { useState } from 'react'
+import { WaveIcon } from '@/components/Icons'
 
 export function Footer() {
+  const [waveCount, setWaveCount] = useState(0)
+
+  const handleWaveClick = () => {
+    setWaveCount(prev => prev + 1)
+  }
+
   return (
-    <footer className="mt-auto border-t border-[var(--border-muted)] pt-6">
-      <div className="flex flex-col gap-4 text-center text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)] sm:flex-row sm:items-center sm:justify-between sm:text-left">
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:justify-start">
-          <NavLink href="/about">About</NavLink>
-          <NavLink href="/articles">Articles</NavLink>
-          <NavLink href="/projects">Projects</NavLink>
-        </div>
-        <p>
-          &copy; {new Date().getFullYear()} Andrew Wilkinson
-          <span className="ml-2 hidden text-[var(--text-muted)] transition-opacity duration-90 dark:inline-block dark:opacity-0 dark:hover:opacity-80">
-            Davy Jones
+    <footer className="flex items-center gap-2 pt-8 text-xs text-[var(--text-muted)]">
+      <button
+        onClick={handleWaveClick}
+        className="group inline-flex items-center gap-1.5 opacity-50 transition-opacity duration-200 hover:opacity-100"
+        aria-label="Wave"
+      >
+        <WaveIcon
+          size={14}
+          className={`transition-transform duration-300 ${waveCount > 0 ? 'animate-[wave_0.5s_ease-in-out]' : ''} group-hover:text-[var(--accent-primary)]`}
+        />
+        {waveCount >= 5 && (
+          <span className="text-[10px] opacity-60 animate-fade-in">
+            {waveCount >= 10 ? '🏴‍☠️' : 'ahoy!'}
           </span>
-        </p>
-      </div>
+        )}
+      </button>
+      <span className="opacity-50">&copy; {new Date().getFullYear()} Andrew Wilkinson</span>
     </footer>
   )
 }

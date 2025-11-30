@@ -24,41 +24,63 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
+function ContactLink({
+  href,
+  icon: Icon,
+  label,
+  handle,
+  external = false,
+}: {
+  href: string
+  icon: React.ComponentType<{ className?: string }>
+  label: string
+  handle: string
+  external?: boolean
+}) {
+  return (
+    <Link
+      href={href}
+      className="group flex items-center gap-3 py-2.5 first:pt-0 last:pb-0"
+      {...(external && { target: '_blank', rel: 'noopener noreferrer' })}
+    >
+      <Icon className="h-4 w-4 flex-none fill-[var(--text-muted)] transition-colors duration-150 group-hover:fill-[var(--text-primary)]" />
+      <span className="flex-1 text-sm text-[var(--text-primary)] transition-colors duration-150 group-hover:text-[var(--accent-primary)]">
+        {label}
+      </span>
+      <span className="text-xs text-[var(--text-muted)]">
+        {handle}
+      </span>
+    </Link>
+  )
+}
+
 export function ContactMe() {
   return (
-    <div className="rounded-lg border border-[var(--border-muted)] bg-[var(--surface-muted)] p-6">
-      <h2 className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--text-primary)]">
+    <div className="rounded-lg border border-[var(--border-muted)] p-5">
+      <h2 className="mb-4 text-sm font-medium text-[var(--text-primary)]">
         Contact
       </h2>
-      <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">
-        Let's connect about crypto, work, or collaborations.
-      </p>
-      <div className="mt-5 divide-y divide-[var(--border-muted)]">
-        <Link
+      <div className="space-y-0">
+        <ContactLink
           href="https://www.linkedin.com/in/andrew-d-wilkinson"
-          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--text-primary)] transition-colors duration-90 hover:text-[var(--accent-primary)] first:pt-0 last:pb-0"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="flex items-center gap-2"><LinkedInIcon className="h-4 w-4 flex-none fill-current" /> LinkedIn</span>
-          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--text-muted)]">/in/andrew</span>
-        </Link>
-        <Link
+          icon={LinkedInIcon}
+          label="LinkedIn"
+          handle="/in/andrew"
+          external
+        />
+        <ContactLink
           href="mailto:gm@andrewwilkinson.io"
-          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--text-primary)] transition-colors duration-90 hover:text-[var(--accent-primary)] first:pt-0 last:pb-0"
-        >
-          <span className="flex items-center gap-2"><MailIcon className="h-4 w-4 flex-none" /> Email</span>
-          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--text-muted)]">gm@andrewwilkinson.io</span>
-        </Link>
-        <Link
+          icon={MailIcon}
+          label="Email"
+          handle="gm@andrewwilkinson.io"
+        />
+        <ContactLink
           href="https://t.me/DavyJones_0x"
-          className="flex items-center justify-between py-2 text-[0.7rem] uppercase tracking-[0.1em] text-[var(--text-primary)] transition-colors duration-90 hover:text-[var(--accent-primary)] first:pt-0 last:pb-0"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="flex items-center gap-2"><TelegramIcon className="h-4 w-4 flex-none fill-current" /> Telegram</span>
-          <span className="text-[0.6rem] tracking-[0.12em] text-[var(--text-muted)]">@DavyJones_0x</span>
-        </Link>
+          icon={TelegramIcon}
+          label="Telegram"
+          handle="@DavyJones_0x"
+          external
+        />
       </div>
     </div>
   )

@@ -1,30 +1,42 @@
+interface IconProps {
+  size?: number
+  className?: string
+}
+
 export function SimpleLayout({
   title,
   intro,
+  icon: Icon,
   children,
-  icon,
 }: {
   title: string
   intro: string
-  icon?: React.ReactNode
+  icon?: React.ComponentType<IconProps>
   children?: React.ReactNode
 }) {
   return (
-    <div className="mx-auto max-w-4xl animate-fade-in">
-      <header className="mb-10 sm:mb-14">
-        {icon && (
-          <div className="mb-4">
-            {icon}
-          </div>
-        )}
-        <h1 className="font-display mb-3 text-[1.75rem] font-semibold tracking-tight text-[var(--text-primary)] sm:text-[2rem]">
+    <div className="space-y-10">
+      <header className="space-y-3">
+        <h1
+          className="flex items-center gap-2.5 font-display text-2xl font-semibold text-[var(--text-primary)] opacity-0 animate-fade-up"
+          style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}
+        >
+          {Icon && <Icon size={22} className="text-[var(--text-muted)] opacity-50" />}
           {title}
         </h1>
-        <p className="max-w-2xl text-sm leading-relaxed tracking-[0.01em] text-[var(--text-muted)]">
+        <p
+          className="text-sm leading-relaxed text-[var(--text-muted)] max-w-md opacity-0 animate-fade-up-subtle"
+          style={{ animationDelay: '50ms', animationFillMode: 'forwards' }}
+        >
           {intro}
         </p>
       </header>
-      {children && <div className="animate-slide-in">{children}</div>}
+      <div
+        className="opacity-0 animate-fade-up-subtle"
+        style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
+      >
+        {children}
+      </div>
     </div>
   )
 }

@@ -1,77 +1,134 @@
-import Image from 'next/image'
-import { type Metadata } from 'next'
+'use client'
+
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
-import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
-import { formatDate } from '@/lib/formatDate'
+import { QuillIcon, ArrowRightIcon } from '@/components/Icons'
 
-function Article({ article }: { article: ArticleWithSlug }) {
+// Static article data (in a real app, this would come from getAllArticles)
+const ARTICLES = [
+  {
+    slug: 'stablecoin-summer',
+    title: 'Stablecoin Summer',
+    description: 'Why 2025 might be the year stablecoins go mainstream, and what that means for crypto.',
+    date: '2025-02-05'
+  },
+  {
+    slug: 'building-davy-jones-intern',
+    title: 'Building Davy Jones Intern',
+    description: 'How I built a Telegram bot to help manage a DeFi community using Claude and Firebase.',
+    date: '2025-01-18'
+  },
+  {
+    slug: 'crypto-journey',
+    title: 'My Crypto Journey',
+    description: 'From curious developer to DeFi founder—lessons learned along the way.',
+    date: '2024-09-05'
+  },
+  {
+    slug: 'building-an-automated-trading-system',
+    title: 'Building an Automated Trading System',
+    description: 'Technical deep-dive into building a trading bot with Python and various APIs.',
+    date: '2024-06-24'
+  },
+]
+
+function formatDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  })
+}
+
+function ArticleItem({
+  article,
+  index,
+}: {
+  article: typeof ARTICLES[0]
+  index: number
+}) {
   return (
-    <article className="grid gap-y-3 py-6 first:pt-0 last:pb-0 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-x-8">
-      <time
-        dateTime={article.date}
-        className="text-[0.6rem] uppercase tracking-[0.16em] text-[var(--text-muted)]"
+    <li
+      className="group opacity-0 animate-fade-up-subtle"
+      style={{ animationDelay: `${100 + index * 50}ms`, animationFillMode: 'forwards' }}
+    >
+      <Link
+        href={`/articles/${article.slug}`}
+        className="block py-4 -mx-2 px-2 rounded-lg transition-all duration-200 hover:bg-[var(--text-primary)]/[0.03]"
       >
-        {formatDate(article.date)}
-      </time>
-      <div className="space-y-2">
-        <Link href={`/articles/${article.slug}`}>
-          <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-[var(--text-primary)] transition-colors duration-90 hover:text-[var(--accent-primary)]">
+        <div className="flex items-baseline justify-between gap-4">
+          <span className="text-sm font-medium text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-primary)]">
             {article.title}
-          </h2>
-        </Link>
-        <p className="text-sm leading-relaxed text-[var(--text-muted)]">
+          </span>
+          <time
+            className="text-xs text-[var(--text-muted)] opacity-40 tabular-nums shrink-0"
+            dateTime={article.date}
+          >
+            {formatDate(article.date)}
+          </time>
+        </div>
+        <p className="mt-1.5 text-sm text-[var(--text-muted)] line-clamp-2 transition-colors duration-200 group-hover:text-[var(--text-muted)]/80">
           {article.description}
         </p>
-        <Link href={`/articles/${article.slug}`} className="inline-flex items-center">
-          <Card.Cta>Read article</Card.Cta>
-        </Link>
-      </div>
-    </article>
+        <span className="inline-flex items-center gap-1 mt-2 text-xs text-[var(--accent-primary)] opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
+          Read more
+          <ArrowRightIcon size={10} />
+        </span>
+      </Link>
+    </li>
   )
 }
 
-export const metadata: Metadata = {
-  title: 'Articles',
-  description:
-    'Articles about blockchain, DeFi, and technology projects I have worked on.',
+function ExpandButton({
+  expanded,
+  onClick,
+  showMoreText,
+  showLessText,
+}: {
+  expanded: boolean
+  onClick: () => void
+  showMoreText: string
+  showLessText: string
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="group inline-flex items-center gap-1 text-xs text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent-primary)] pt-3"
+    >
+      <span>{expanded ? showLessText : showMoreText}</span>
+      <ArrowRightIcon
+        size={10}
+        className={`transition-transform duration-200 ${expanded ? 'rotate-[-90deg]' : 'rotate-90'}`}
+      />
+    </button>
+  )
 }
 
-export default async function ArticlesIndex() {
-  let articles = await getAllArticles()
+export default function ArticlesIndex() {
+  const [showAll, setShowAll] = useState(false)
+  const visibleArticles = showAll ? ARTICLES : ARTICLES.slice(0, 3)
 
   return (
     <SimpleLayout
-      icon={
-        <div className="relative h-10 w-10">
-          <Image
-            src="/brand/icons/Community-Icon.png"
-            alt="Articles icon"
-            width={40}
-            height={40}
-            className="h-full w-full dark:hidden"
-            priority
-          />
-          <Image
-            src="/brand/icons/Community-Icon-Dark.png"
-            alt=""
-            width={40}
-            height={40}
-            className="hidden h-full w-full dark:block"
-            priority
-          />
-        </div>
-      }
-      title="Articles on Blockchain, DeFi, and Technology"
-      intro="My thoughts and experiences in blockchain, DeFi, and technology projects."
+      icon={QuillIcon}
+      title="Writing"
+      intro="Thoughts on building products, blockchain, and DeFi."
     >
-      <div className="mx-auto max-w-3xl divide-y divide-[var(--border-default)]">
-        {articles.map((article) => (
-          <Article key={article.slug} article={article} />
+      <ul className="space-y-0">
+        {visibleArticles.map((article, index) => (
+          <ArticleItem key={article.slug} article={article} index={index} />
         ))}
-      </div>
+      </ul>
+      {ARTICLES.length > 3 && (
+        <ExpandButton
+          expanded={showAll}
+          onClick={() => setShowAll(!showAll)}
+          showMoreText={`Show ${ARTICLES.length - 3} more articles`}
+          showLessText="Show less"
+        />
+      )}
     </SimpleLayout>
   )
 }

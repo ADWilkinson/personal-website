@@ -1,191 +1,198 @@
+'use client'
+
+import { useState } from 'react'
 import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
 
-import { Card } from '@/components/Card'
-import { ContactMe } from '@/components/ContactMe'
 import {
   GitHubIcon,
   XIcon,
+  LinkedInIcon,
 } from '@/components/SocialIcons'
 import {
-  BriefcaseIcon,
+  AnchorIcon,
+  ArrowRightIcon,
+  MailIcon,
 } from '@/components/Icons'
 import { SOCIAL_LINKS, WORK_EXPERIENCE } from '@/lib/constants'
-import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
-import { formatDate } from '@/lib/formatDate'
-
-
-function Article({ article }: { article: ArticleWithSlug }) {
-  return (
-    <Card as="article">
-      <Card.Title href={`/articles/${article.slug}`}>
-        {article.title}
-      </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
-      </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
-    </Card>
-  )
-}
-
-function SocialLink({
-  icon: Icon,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof Link> & {
-  icon: React.ComponentType<{ className?: string }>
-}) {
-  return (
-    <Link
-      className="group inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border-muted)] bg-[var(--surface-muted)] transition-transform duration-180 hover:-translate-y-0.5"
-      {...props}
-    >
-      <Icon className="h-3.5 w-3.5 fill-[var(--text-muted)] transition-colors duration-90 group-hover:fill-[var(--accent-primary)]" />
-    </Link>
-  )
-}
-
 
 interface Role {
   company: string
   title: string
-  logo: string | ImageProps['src']
-  start: string | { label: string; dateTime: string }
-  end: string | { label: string; dateTime: string }
+  logo: ImageProps['src']
+  start: string
+  end: string
 }
 
-function Role({ role }: { role: Role }) {
-  let startLabel =
-    typeof role.start === 'string' ? role.start : role.start.label
-  let startDate =
-    typeof role.start === 'string' ? role.start : role.start.dateTime
-
-  let endLabel = typeof role.end === 'string' ? role.end : role.end.label
-  let endDate = typeof role.end === 'string' ? role.end : role.end.dateTime
-
+function Role({ role, index }: { role: Role; index: number }) {
   return (
-    <li className="grid grid-cols-[auto_1fr] items-start gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
-      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-muted)] bg-[var(--surface-muted)]">
+    <li
+      className="group flex items-center gap-3 py-2.5 first:pt-0 last:pb-0 opacity-0 animate-fade-up-subtle"
+      style={{ animationDelay: `${100 + index * 50}ms`, animationFillMode: 'forwards' }}
+    >
+      <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full ring-1 ring-[var(--border-default)]/10 transition-transform duration-300 group-hover:scale-105">
         <Image
           src={role.logo}
-          alt={`${role.company} company logo`}
-          className="h-6 w-6 object-contain grayscale"
-          width={24}
-          height={24}
-          sizes="24px"
+          alt={role.company}
+          className="h-full w-full object-cover"
+          fill
+          sizes="36px"
         />
       </div>
-      <dl className="grid grid-cols-1 gap-y-1 sm:grid-cols-[1fr_auto] sm:items-center">
-        <div>
-          <dt className="sr-only">Company</dt>
-          <dd className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-[var(--text-primary)]">
+      <div className="flex flex-1 items-baseline justify-between gap-2 min-w-0">
+        <div className="flex items-baseline gap-2 min-w-0">
+          <span className="text-sm font-medium text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-primary)]">
             {role.company}
-          </dd>
-          <dt className="sr-only">Role</dt>
-          <dd className="text-[0.62rem] uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            {role.title}
-          </dd>
+          </span>
+          <span className="text-sm text-[var(--text-muted)] truncate">{role.title}</span>
         </div>
-        <div className="sm:text-right">
-          <dt className="sr-only">Date</dt>
-          <dd
-            className="text-[0.58rem] uppercase tracking-[0.16em] text-[var(--text-muted)]"
-            aria-label={`${startLabel} until ${endLabel}`}
-          >
-            <time dateTime={startDate}>{startLabel}</time>{' '}
-            <span aria-hidden="true">—</span>{' '}
-            <time dateTime={endDate}>{endLabel}</time>
-          </dd>
-        </div>
-      </dl>
+        <span className="text-xs text-[var(--text-muted)] opacity-40 tabular-nums shrink-0">
+          {role.start}–{role.end}
+        </span>
+      </div>
     </li>
   )
 }
 
-function Resume() {
-  // Transform WORK_EXPERIENCE to match the Role interface
-  let resume: Array<Role> = WORK_EXPERIENCE.map(exp => ({
-    ...exp,
-    end: exp.end === 'Present' 
-      ? { label: 'Present', dateTime: new Date().getFullYear().toString() }
-      : exp.end
-  }))
-
+function SocialLink({
+  href,
+  icon: Icon,
+  children,
+  delay,
+}: {
+  href: string
+  icon: React.ComponentType<{ className?: string; size?: number }>
+  children: React.ReactNode
+  delay: number
+}) {
   return (
-    <div className="rounded-lg border border-[var(--border-muted)] bg-[var(--surface-muted)] p-6">
-      <h2 className="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[var(--text-primary)]">
-        <BriefcaseIcon className="h-5 w-5 flex-none" />
-        Work Log
-      </h2>
-      <ol className="mt-4 divide-y divide-[var(--border-muted)]">
-        {resume.map((role, roleIndex) => (
-          <Role key={roleIndex} role={role} />
-        ))}
-      </ol>
-    </div>
+    <Link
+      href={href}
+      className="group flex items-center gap-1.5 text-sm text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent-primary)] opacity-0 animate-fade-up-subtle"
+      style={{ animationDelay: `${delay}ms`, animationFillMode: 'forwards' }}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Icon className="h-4 w-4 fill-current transition-transform duration-200 group-hover:scale-110" />
+      <span>{children}</span>
+    </Link>
   )
 }
 
+function SectionHeader({
+  icon: Icon,
+  children,
+  delay,
+}: {
+  icon: React.ComponentType<{ size?: number; className?: string }>
+  children: React.ReactNode
+  delay: number
+}) {
+  return (
+    <h2
+      className="flex items-center gap-2 text-sm font-medium text-[var(--text-primary)] opacity-0 animate-fade-up-subtle"
+      style={{ animationDelay: `${delay}ms`, animationFillMode: 'forwards' }}
+    >
+      <Icon size={16} className="text-[var(--text-muted)] opacity-50" />
+      {children}
+    </h2>
+  )
+}
 
-export default async function Home() {
-  let articles = (await getAllArticles()).slice(0, 4)
+function ExpandButton({
+  expanded,
+  onClick,
+  showMoreText,
+  showLessText,
+}: {
+  expanded: boolean
+  onClick: () => void
+  showMoreText: string
+  showLessText: string
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="group inline-flex items-center gap-1 text-xs text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent-primary)] pt-2"
+    >
+      <span>{expanded ? showLessText : showMoreText}</span>
+      <ArrowRightIcon
+        size={10}
+        className={`transition-transform duration-200 ${expanded ? 'rotate-[-90deg]' : 'rotate-90'}`}
+      />
+    </button>
+  )
+}
+
+export default function Home() {
+  const [showAllExperience, setShowAllExperience] = useState(false)
+
+  const resume: Array<Role> = WORK_EXPERIENCE.map(exp => ({
+    ...exp,
+    logo: exp.logo,
+  }))
+
+  const visibleExperience = showAllExperience ? resume : resume.slice(0, 4)
 
   return (
-    <div className="mx-auto max-w-5xl space-y-16">
+    <div className="space-y-14">
       {/* Hero Section */}
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-        <div className="space-y-6">
-          <p className="text-[0.6rem] uppercase tracking-[0.18em] text-[var(--text-muted)]">
-            Senior Software Engineer · Founder · Product Builder
-          </p>
-          <h1 className="font-display text-[2rem] font-semibold tracking-tight text-[var(--text-primary)] sm:text-[2.4rem] sm:leading-[1.1]">
-            Shipping trust-minimized finance with hands-on execution.
-          </h1>
-          <p className="max-w-2xl text-sm leading-relaxed tracking-[0.01em] text-[var(--text-muted)]">
-            Building zkTLS-powered fiat-to-crypto onramps at ZKP2P. Previously shipped MVPs that raised $3M+, managed $20M+ in value, and guided a 6,000+ member community. I thrive in the messy zero-to-one with product instincts and engineering ownership.
-          </p>
-          <div className="flex items-center gap-2">
-            <SocialLink
-              href={SOCIAL_LINKS.github}
-              aria-label="Follow on GitHub"
-              icon={GitHubIcon}
-            />
-            <SocialLink
-              href={SOCIAL_LINKS.twitter}
-              aria-label="Follow on Twitter"
-              icon={XIcon}
-            />
-          </div>
-        </div>
-        <div className="space-y-6">
-          <ContactMe />
-        </div>
-      </div>
+      <section className="space-y-5">
+        <h1
+          className="font-display text-2xl font-semibold text-[var(--text-primary)] opacity-0 animate-fade-up"
+          style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}
+        >
+          Andrew Wilkinson
+        </h1>
+        <p
+          className="text-sm leading-relaxed text-[var(--text-muted)] opacity-0 animate-fade-up-subtle"
+          style={{ animationDelay: '50ms', animationFillMode: 'forwards' }}
+        >
+          Software engineer building zkTLS-powered fiat-to-crypto onramps at ZKP2P.
+          Previously shipped MVPs that raised $3M+, managed $20M+ in value, and guided a 6,000+ member community.
+        </p>
 
-      {/* Content Section */}
-      <div className="grid grid-cols-1 gap-16 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
-        <section className="space-y-5">
-          <div className="flex flex-col gap-2 border-b border-[var(--border-default)] pb-3">
-            <h2 className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[var(--text-primary)]">
-              Latest Articles
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {articles.map((article) => (
-              <Article key={article.slug} article={article} />
-            ))}
-          </div>
-        </section>
-        <section className="space-y-5">
-          <div className="flex flex-col gap-2 border-b border-[var(--border-default)] pb-3">
-            <h2 className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[var(--text-primary)]">
-              Experience
-            </h2>
-          </div>
-          <Resume />
-        </section>
-      </div>
+        {/* Social Links */}
+        <div className="flex flex-wrap items-center gap-4 pt-1">
+          <SocialLink href={SOCIAL_LINKS.github} icon={GitHubIcon} delay={100}>
+            GitHub
+          </SocialLink>
+          <SocialLink href={SOCIAL_LINKS.twitter} icon={XIcon} delay={150}>
+            Twitter
+          </SocialLink>
+          <SocialLink href={SOCIAL_LINKS.linkedin} icon={LinkedInIcon} delay={200}>
+            LinkedIn
+          </SocialLink>
+          <Link
+            href="mailto:gm@andrewwilkinson.io"
+            className="group flex items-center gap-1.5 text-sm text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent-primary)] opacity-0 animate-fade-up-subtle"
+            style={{ animationDelay: '250ms', animationFillMode: 'forwards' }}
+          >
+            <MailIcon size={16} className="transition-transform duration-200 group-hover:scale-110" />
+            <span>Email</span>
+          </Link>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section className="space-y-4">
+        <SectionHeader icon={AnchorIcon} delay={80}>
+          Experience
+        </SectionHeader>
+        <ul className="space-y-0">
+          {visibleExperience.map((role, i) => (
+            <Role key={`${role.company}-${role.title}`} role={role} index={i} />
+          ))}
+        </ul>
+        {resume.length > 4 && (
+          <ExpandButton
+            expanded={showAllExperience}
+            onClick={() => setShowAllExperience(!showAllExperience)}
+            showMoreText={`Show ${resume.length - 4} more`}
+            showLessText="Show less"
+          />
+        )}
+      </section>
     </div>
   )
 }

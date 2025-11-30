@@ -27,15 +27,14 @@ function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function ChevronDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg viewBox="0 0 8 6" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
       <path
-        d="M1.5 1.5 4 4.25 6.5 1.5"
-        fill="none"
-        strokeWidth="1.5"
+        d="M4 6h12M4 10h12M4 14h12"
+        stroke="currentColor"
+        strokeWidth="1.4"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
     </svg>
   )
@@ -77,31 +76,29 @@ function MobileNavItem({
   href,
   isActive,
   children,
+  index,
 }: {
   href: string
   isActive: boolean
   children: React.ReactNode
+  index: number
 }) {
   return (
-    <li>
+    <li
+      className="opacity-0 animate-fade-up-subtle"
+      style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'forwards' }}
+    >
       <PopoverButton
         as={Link}
         href={href}
         className={clsx(
-          'group flex w-full items-center justify-between px-3 py-2 text-[0.65rem] font-medium uppercase tracking-[0.12em] transition-colors duration-90',
+          'block py-2.5 text-sm transition-colors duration-200',
           isActive
             ? 'text-[var(--text-primary)]'
             : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
         )}
       >
         {children}
-        <span
-          aria-hidden="true"
-          className={clsx(
-            'ml-3 h-px flex-1 bg-[var(--border-default)] transition-opacity duration-90',
-            isActive ? 'opacity-50' : 'opacity-0 group-hover:opacity-30',
-          )}
-        />
       </PopoverButton>
     </li>
   )
@@ -114,45 +111,40 @@ function MobileNavigation({
 }) {
   return (
     <Popover>
-      <PopoverButton className="flex items-center gap-2 rounded-lg border border-[var(--border-default)] bg-[var(--surface-muted)] px-3 py-2 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-[var(--text-primary)] shadow-[var(--shadow-sm)] transition-colors duration-90 hover:text-[var(--accent-primary)]">
-        Menu
-        <ChevronDownIcon className="h-3 w-3 stroke-[var(--text-primary)] stroke-2" />
+      <PopoverButton className="group flex items-center gap-2 text-sm text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--text-primary)]">
+        <MenuIcon className="h-5 w-5" />
+        <span>Menu</span>
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-40 bg-[var(--dj-charcoal)] backdrop-blur-sm duration-180 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+        className="fixed inset-0 z-40 bg-[var(--dj-charcoal)]/60 backdrop-blur-sm duration-200 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-6 top-5 z-50 origin-top rounded-lg border border-[var(--border-muted)] bg-[var(--surface-elevated)] p-4 shadow-[var(--shadow-lg)] backdrop-blur-sm duration-180 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+        className="fixed inset-x-6 top-6 z-50 origin-top rounded-lg border border-[var(--border-muted)]/20 bg-[var(--surface-elevated)] p-6 shadow-lg duration-200 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
       >
         <div className="flex items-center justify-between">
-          <h2 className="text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--text-muted)]">
-            Navigation
-          </h2>
+          <span className="text-xs text-[var(--text-muted)] opacity-60">Navigation</span>
           <PopoverButton
             aria-label="Close menu"
-            className="rounded-lg p-1 text-[var(--text-muted)] transition-colors duration-90 hover:text-[var(--text-primary)]"
+            className="rounded-full p-1.5 text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--text-primary)]"
           >
-            <CloseIcon className="h-4 w-4" />
+            <CloseIcon className="h-5 w-5" />
           </PopoverButton>
         </div>
-        <nav className="mt-3">
-          <ul className="space-y-1.5">
-            <MobileNavItem href="/about" isActive={currentPath === '/about'}>
+        <nav className="mt-4">
+          <ul className="space-y-1">
+            <MobileNavItem href="/" isActive={currentPath === '/'} index={0}>
+              Home
+            </MobileNavItem>
+            <MobileNavItem href="/about" isActive={currentPath === '/about'} index={1}>
               About
             </MobileNavItem>
-            <MobileNavItem
-              href="/articles"
-              isActive={currentPath.startsWith('/articles')}
-            >
-              Articles
+            <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')} index={2}>
+              Writing
             </MobileNavItem>
-            <MobileNavItem
-              href="/projects"
-              isActive={currentPath.startsWith('/projects')}
-            >
+            <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')} index={3}>
               Projects
             </MobileNavItem>
           </ul>
@@ -176,20 +168,16 @@ function NavItem({
       <Link
         href={href}
         className={clsx(
-          'group inline-flex items-center text-[0.65rem] font-medium uppercase tracking-[0.14em] transition-colors duration-90',
+          'relative text-sm transition-colors duration-200',
           isActive
             ? 'text-[var(--text-primary)]'
             : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
         )}
       >
         {children}
-        <span
-          aria-hidden="true"
-          className={clsx(
-            'ml-1 h-px w-6 bg-[var(--border-default)] transition-opacity duration-90',
-            isActive ? 'opacity-50' : 'opacity-0 group-hover:opacity-25',
-          )}
-        />
+        {isActive && (
+          <span className="absolute -bottom-1 left-0 h-px w-full bg-[var(--accent-primary)] opacity-60" />
+        )}
       </Link>
     </li>
   )
@@ -203,7 +191,10 @@ function DesktopNavigation({
 } & React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
-      <ul className="flex items-center gap-7">
+      <ul className="flex items-center gap-6">
+        <NavItem href="/" isActive={currentPath === '/'}>
+          Home
+        </NavItem>
         <NavItem href="/about" isActive={currentPath === '/about'}>
           About
         </NavItem>
@@ -211,7 +202,7 @@ function DesktopNavigation({
           href="/articles"
           isActive={currentPath.startsWith('/articles')}
         >
-          Articles
+          Writing
         </NavItem>
         <NavItem
           href="/projects"
@@ -221,18 +212,6 @@ function DesktopNavigation({
         </NavItem>
       </ul>
     </nav>
-  )
-}
-
-function BrandMark() {
-  return (
-    <Link
-      href="/"
-      aria-label="Back to home"
-      className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--text-primary)] transition-colors duration-90 hover:text-[var(--accent-primary)]"
-    >
-      Andrew Wilkinson
-    </Link>
   )
 }
 
@@ -246,7 +225,7 @@ function ThemeToggle() {
   }, [])
 
   const baseClasses =
-    'inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--border-default)] bg-[var(--surface-muted)] text-[var(--text-primary)] shadow-[var(--shadow-sm)] transition-colors duration-90 hover:text-[var(--accent-primary)]'
+    'group inline-flex h-8 w-8 items-center justify-center rounded-full text-[var(--text-muted)] transition-all duration-200 hover:text-[var(--text-primary)]'
 
   if (!mounted) {
     return (
@@ -255,7 +234,7 @@ function ThemeToggle() {
         aria-label="Toggle theme"
         className={baseClasses}
       >
-        <SunIcon className="h-4 w-4 stroke-[var(--text-primary)]" />
+        <SunIcon className="h-5 w-5 stroke-current" />
       </button>
     )
   }
@@ -268,9 +247,9 @@ function ThemeToggle() {
       onClick={() => setTheme(otherTheme)}
     >
       {resolvedTheme === 'dark' ? (
-        <SunIcon className="h-4 w-4 stroke-[var(--text-primary)] stroke-2" />
+        <SunIcon className="h-5 w-5 stroke-current transition-transform duration-300 group-hover:rotate-45" />
       ) : (
-        <MoonIcon className="h-4 w-4 stroke-[var(--text-primary)] stroke-2" />
+        <MoonIcon className="h-5 w-5 stroke-current fill-none transition-transform duration-300 group-hover:-rotate-12" />
       )}
     </button>
   )
@@ -280,19 +259,14 @@ export function Header() {
   const currentPath = usePathname() ?? '/'
 
   return (
-    <header className="relative">
-      <div className="flex items-center justify-between gap-4 border-b border-[var(--border-muted)] pb-6">
-        <BrandMark />
-        <div className="hidden items-center gap-8 md:flex">
-          <DesktopNavigation currentPath={currentPath} />
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="md:hidden">
-            <MobileNavigation currentPath={currentPath} />
-          </div>
-          <ThemeToggle />
-        </div>
+    <header className="flex items-center justify-between pb-8 opacity-0 animate-fade-in" style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}>
+      <div className="hidden md:block">
+        <DesktopNavigation currentPath={currentPath} />
       </div>
+      <div className="md:hidden">
+        <MobileNavigation currentPath={currentPath} />
+      </div>
+      <ThemeToggle />
     </header>
   )
 }
