@@ -176,7 +176,7 @@ function ProjectItem({
     >
       <Link
         href={project.url}
-        className="flex items-center gap-3 py-3 -mx-2 px-2 rounded-lg transition-all duration-200 hover:bg-[var(--text-primary)]/[0.03]"
+        className="flex items-center gap-3 py-3 -mx-2 px-2 rounded-lg transition-all duration-200 hover:bg-[var(--text-primary)]/[0.03] hover:shadow-sm hover:-translate-y-px"
         target={isExternal ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
       >
@@ -274,8 +274,13 @@ export default function Projects() {
           />
         </button>
 
-        {showPast && (
-          <ul className="space-y-0 mt-4">
+        {/* Expandable section with animation */}
+        <div
+          className={`grid transition-all duration-300 ease-out ${
+            showPast ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+          }`}
+        >
+          <ul className="space-y-0 mt-4 overflow-hidden">
             {pastProjects.map((project, index) => (
               <ProjectItem
                 key={project.name}
@@ -285,7 +290,7 @@ export default function Projects() {
               />
             ))}
           </ul>
-        )}
+        </div>
       </div>
     </SimpleLayout>
   )

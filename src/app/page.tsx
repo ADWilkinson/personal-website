@@ -45,7 +45,7 @@ function Role({ role, index }: { role: Role; index: number }) {
           <span className="text-sm font-medium text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-primary)]">
             {role.company}
           </span>
-          <span className="text-xs text-[var(--text-muted)] opacity-40 tabular-nums shrink-0">
+          <span className="text-xs text-[var(--text-primary)] opacity-50 tabular-nums shrink-0">
             {role.start}–{role.end}
           </span>
         </div>
@@ -75,7 +75,7 @@ function SocialLink({
       rel="noopener noreferrer"
     >
       <Icon className="h-4 w-4 fill-current transition-transform duration-200 group-hover:scale-110" />
-      <span>{children}</span>
+      <span className="link-underline">{children}</span>
     </Link>
   )
 }
@@ -170,7 +170,7 @@ export default function Home() {
             style={{ animationDelay: '250ms', animationFillMode: 'forwards' }}
           >
             <MailIcon size={16} className="transition-transform duration-200 group-hover:scale-110" />
-            <span>Email</span>
+            <span className="link-underline">Email</span>
           </Link>
         </div>
       </section>
@@ -181,10 +181,22 @@ export default function Home() {
           Experience
         </SectionHeader>
         <ul className="space-y-0">
-          {visibleExperience.map((role, i) => (
+          {resume.slice(0, 4).map((role, i) => (
             <Role key={`${role.company}-${role.title}`} role={role} index={i} />
           ))}
         </ul>
+        {/* Expandable section with animation */}
+        <div
+          className={`grid transition-all duration-300 ease-out ${
+            showAllExperience ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+          }`}
+        >
+          <ul className="space-y-0 overflow-hidden">
+            {resume.slice(4).map((role, i) => (
+              <Role key={`${role.company}-${role.title}`} role={role} index={i + 4} />
+            ))}
+          </ul>
+        </div>
         {resume.length > 4 && (
           <ExpandButton
             expanded={showAllExperience}

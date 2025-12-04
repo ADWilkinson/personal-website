@@ -145,7 +145,7 @@ function MobileNavigation({
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/70"
+        className="fixed inset-0 bg-black/70 animate-menu-backdrop"
         style={{ zIndex: 99998 }}
         onClick={closeMenu}
         aria-hidden="true"
@@ -153,7 +153,7 @@ function MobileNavigation({
 
       {/* Menu Panel */}
       <div
-        className="fixed left-4 right-4 top-4 rounded-xl border border-[var(--border-default)]/20 bg-[#f4eee8] p-6 shadow-2xl dark:bg-[#27272a]"
+        className="fixed left-4 right-4 top-4 rounded-xl border border-[var(--border-default)]/20 bg-[#f4eee8] p-6 shadow-2xl dark:bg-[#27272a] animate-menu-panel"
         style={{ zIndex: 99999 }}
         role="dialog"
         aria-modal="true"
@@ -220,16 +220,23 @@ function NavItem({
       <Link
         href={href}
         className={clsx(
-          'relative text-sm transition-colors duration-200',
+          'relative text-sm transition-colors duration-200 group',
           isActive
             ? 'text-[var(--text-primary)]'
             : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
         )}
       >
         {children}
-        {isActive && (
-          <span className="absolute -bottom-1 left-0 h-px w-full bg-[var(--accent-primary)] opacity-60" />
-        )}
+        {/* Animated underline */}
+        <span
+          className={clsx(
+            'absolute -bottom-1 left-0 h-px w-full bg-[var(--accent-primary)] transition-all duration-300 ease-out',
+            isActive
+              ? 'opacity-60 scale-x-100'
+              : 'opacity-0 scale-x-0 group-hover:opacity-40 group-hover:scale-x-100',
+          )}
+          style={{ transformOrigin: 'left' }}
+        />
       </Link>
     </li>
   )

@@ -34,38 +34,37 @@ export function ArticleLayout({
 
   return (
     <Container className="mt-16 lg:mt-32">
-      <div className="xl:relative">
-        <div className="mx-auto max-w-2xl">
-          {previousPathname && (
-            <button
-              type="button"
-              onClick={() => router.back()}
-              aria-label="Go back to articles"
-              className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-default)] bg-[var(--surface-elevated)] shadow-[var(--shadow-sm)] transition-transform duration-90 hover:-translate-y-[1px] lg:absolute lg:-left-5 lg:-mt-2 lg:mb-0 xl:-top-1.5 xl:left-0 xl:mt-0"
+      <div className="mx-auto max-w-2xl">
+        {/* Back button - inline on mobile, separate row on desktop */}
+        {previousPathname && (
+          <button
+            type="button"
+            onClick={() => router.back()}
+            aria-label="Go back to articles"
+            className="group mb-8 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[var(--border-default)]/20 bg-[var(--surface-elevated)] shadow-sm transition-all duration-200 hover:-translate-y-px hover:shadow-md"
+          >
+            <ArrowLeftIcon className="h-4 w-4 stroke-[var(--text-muted)] transition-colors duration-150 group-hover:stroke-[var(--text-primary)]" />
+          </button>
+        )}
+        <article>
+          <header className="flex flex-col">
+            <time
+              dateTime={article.date}
+              className="flex items-center text-sm text-[var(--text-primary)]"
             >
-              <ArrowLeftIcon className="h-4 w-4 stroke-[var(--text-muted)] transition-colors duration-90 group-hover:stroke-[var(--text-primary)]" />
-            </button>
-          )}
-          <article>
-            <header className="flex flex-col">
-              <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-[var(--text-primary)] sm:text-5xl">
-                {article.title}
-              </h1>
-              <time
-                dateTime={article.date}
-                className="order-first flex items-center text-sm uppercase tracking-[0.12em] text-[var(--text-muted)]"
-              >
-                <span className="h-4 w-0.5 rounded-full bg-[var(--border-default)]" />
-                <span className="ml-3 normal-case text-[var(--text-secondary)]">
-                  {formatDate(article.date)}
-                </span>
-              </time>
-            </header>
-            <Prose className="mt-8" data-mdx-content>
-              {children}
-            </Prose>
-          </article>
-        </div>
+              <span className="h-4 w-0.5 rounded-full bg-[var(--accent-primary)]/60" />
+              <span className="ml-3 opacity-70">
+                {formatDate(article.date)}
+              </span>
+            </time>
+            <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-[var(--text-primary)] sm:text-4xl">
+              {article.title}
+            </h1>
+          </header>
+          <Prose className="mt-8" data-mdx-content>
+            {children}
+          </Prose>
+        </article>
       </div>
     </Container>
   )

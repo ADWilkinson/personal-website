@@ -31,7 +31,7 @@ function SocialLink({
       rel="noopener noreferrer"
     >
       <Icon className="h-4 w-4 fill-current transition-transform duration-200 group-hover:scale-110" />
-      <span>{children}</span>
+      <span className="link-underline">{children}</span>
     </Link>
   )
 }
@@ -109,7 +109,7 @@ export default function About() {
             href="mailto:gm@andrewwilkinson.io"
             className="group flex items-center gap-1 text-sm text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent-primary)]"
           >
-            <span>Email</span>
+            <span className="link-underline">Email</span>
             <ArrowRightIcon size={10} className="opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0" />
           </Link>
         </div>

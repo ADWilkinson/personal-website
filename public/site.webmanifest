@@ -1,0 +1,16 @@
+{
+  "name": "Andrew Wilkinson",
+  "short_name": "Andrew W",
+  "description": "Senior Software Engineer at ZKP2P. Building zkTLS-powered fiat-to-crypto onramps.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4eee8",
+  "theme_color": "#0072b5",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -56,14 +56,14 @@ function ArticleItem({
     >
       <Link
         href={`/articles/${article.slug}`}
-        className="block py-4 -mx-2 px-2 rounded-lg transition-all duration-200 hover:bg-[var(--text-primary)]/[0.03]"
+        className="block py-4 -mx-2 px-2 rounded-lg transition-all duration-200 hover:bg-[var(--text-primary)]/[0.03] hover:shadow-sm hover:-translate-y-px"
       >
         <div className="flex items-baseline justify-between gap-4">
           <span className="text-sm font-medium text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-primary)]">
             {article.title}
           </span>
           <time
-            className="text-xs text-[var(--text-muted)] opacity-40 tabular-nums shrink-0"
+            className="text-xs text-[var(--text-primary)] opacity-50 tabular-nums shrink-0"
             dateTime={article.date}
           >
             {formatDate(article.date)}
