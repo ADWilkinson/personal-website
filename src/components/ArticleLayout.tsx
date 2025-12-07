@@ -50,18 +50,18 @@ export function ArticleLayout({
           <header className="flex flex-col">
             <time
               dateTime={article.date}
-              className="flex items-center text-sm text-[var(--text-primary)]"
+              className="flex items-center text-sm text-[var(--text-muted)]"
             >
-              <span className="h-4 w-0.5 rounded-full bg-[var(--accent-primary)]/60" />
-              <span className="ml-3 opacity-70">
+              <span className="h-5 w-0.5 rounded-full bg-[var(--accent-primary)]/50" />
+              <span className="ml-3 opacity-70 tabular-nums">
                 {formatDate(article.date)}
               </span>
             </time>
-            <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-[var(--text-primary)] sm:text-4xl">
+            <h1 className="mt-5 font-display text-3xl font-semibold tracking-tight text-[var(--text-primary)] sm:text-4xl">
               {article.title}
             </h1>
           </header>
-          <Prose className="mt-8" data-mdx-content>
+          <Prose className="mt-10" data-mdx-content>
             {children}
           </Prose>
         </article>

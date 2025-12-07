@@ -12,7 +12,6 @@ import {
   AnchorIcon,
   CoinIcon,
   MusicIcon,
-  UsersIcon,
   TreasureIcon,
   MoonIcon,
   BotIcon,
@@ -24,7 +23,6 @@ import {
   ZapIcon,
   TrendingIcon,
   CubeIcon,
-  GlobeIcon,
 } from '@/components/Icons'
 
 // Current active projects
@@ -161,10 +159,12 @@ function ProjectItem({
   project,
   index,
   baseDelay = 100,
+  variant = 'current',
 }: {
   project: ProjectType
   index: number
   baseDelay?: number
+  variant?: 'current' | 'past'
 }) {
   const IconComponent = project.icon
   const isExternal = !project.isInternal
@@ -176,71 +176,65 @@ function ProjectItem({
     >
       <Link
         href={project.url}
-        className="flex items-center gap-3 py-3 -mx-2 px-2 rounded-lg transition-all duration-200 hover:bg-[var(--text-primary)]/[0.03] hover:shadow-sm hover:-translate-y-px"
+        className="flex items-center gap-3 py-3 -mx-2 px-2 rounded-lg transition-all duration-300 ease-out hover:bg-[var(--text-primary)]/[0.03] hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08)] hover:-translate-y-0.5"
         target={isExternal ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
       >
         {/* Icon */}
-        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-[var(--surface-muted)] flex items-center justify-center ring-1 ring-[var(--border-default)]/10 transition-all duration-300 group-hover:scale-105 group-hover:ring-[var(--accent-primary)]/20">
+        <div className={`relative h-10 w-10 shrink-0 overflow-hidden rounded-lg flex items-center justify-center ring-1 transition-all duration-300 ease-out ${
+          variant === 'past'
+            ? 'bg-[var(--surface-muted)] ring-[var(--border-default)]/5 group-hover:ring-[var(--accent-primary)]/15'
+            : 'bg-[var(--surface-muted)] ring-[var(--border-default)]/10 group-hover:ring-[var(--accent-primary)]/25 group-hover:scale-105'
+        }`}>
           <IconComponent
             size={20}
-            className="text-[var(--text-muted)] transition-colors duration-200 group-hover:text-[var(--accent-primary)]"
+            className={`transition-all duration-300 ease-out ${
+              variant === 'past'
+                ? 'text-[var(--text-muted)] opacity-50 group-hover:opacity-80 group-hover:text-[var(--accent-primary)]'
+                : 'text-[var(--text-muted)] opacity-70 group-hover:text-[var(--accent-primary)] group-hover:rotate-3'
+            }`}
           />
         </div>
 
         {/* Content */}
         <div className="flex flex-1 flex-col min-w-0">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-primary)]">
+            <span className={`text-sm font-medium transition-colors duration-200 ${
+              variant === 'past'
+                ? 'text-[var(--text-primary)] opacity-70 group-hover:opacity-100 group-hover:text-[var(--accent-primary)]'
+                : 'text-[var(--text-primary)] group-hover:text-[var(--accent-primary)]'
+            }`}>
               {project.name}
             </span>
             {isExternal && (
               <ExternalLinkIcon
                 size={12}
-                className="text-[var(--text-muted)] opacity-0 transition-all duration-200 group-hover:opacity-50"
+                className="text-[var(--text-muted)] opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-50 group-hover:translate-x-0"
               />
             )}
             {/* Tags inline with title */}
-            <div className="hidden sm:flex items-center gap-1.5">
-              {project.tags.slice(0, 2).map(tag => (
+            <div className="hidden sm:flex items-center gap-1.5 ml-auto">
+              {project.tags.slice(0, 2).map((tag, tagIndex) => (
                 <span
                   key={tag}
-                  className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--text-primary)]/[0.05] text-[var(--text-muted)] transition-colors duration-200 group-hover:bg-[var(--accent-primary)]/10 group-hover:text-[var(--accent-primary)]"
+                  className={`text-[10px] px-1.5 py-0.5 rounded-md border transition-all duration-200 ${
+                    variant === 'past'
+                      ? 'bg-transparent border-[var(--border-default)]/10 text-[var(--text-muted)] opacity-50 group-hover:opacity-70 group-hover:border-[var(--accent-primary)]/20 group-hover:text-[var(--accent-primary)]'
+                      : 'bg-[var(--text-primary)]/[0.03] border-[var(--border-default)]/10 text-[var(--text-muted)] opacity-60 group-hover:bg-[var(--accent-primary)]/10 group-hover:border-[var(--accent-primary)]/20 group-hover:text-[var(--accent-primary)] group-hover:opacity-100'
+                  }`}
+                  style={{ transitionDelay: `${tagIndex * 30}ms` }}
                 >
                   {tag}
                 </span>
               ))}
             </div>
           </div>
-          <span className="text-sm text-[var(--text-muted)] line-clamp-2">{project.desc}</span>
+          <span className={`text-sm text-[var(--text-muted)] line-clamp-2 ${
+            variant === 'past' ? 'opacity-60' : 'opacity-80'
+          }`}>{project.desc}</span>
         </div>
       </Link>
     </li>
-  )
-}
-
-function ExpandButton({
-  expanded,
-  onClick,
-  showMoreText,
-  showLessText,
-}: {
-  expanded: boolean
-  onClick: () => void
-  showMoreText: string
-  showLessText: string
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className="group inline-flex items-center gap-1 text-xs text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent-primary)] pt-3"
-    >
-      <span>{expanded ? showLessText : showMoreText}</span>
-      <ArrowRightIcon
-        size={10}
-        className={`transition-transform duration-200 ${expanded ? 'rotate-[-90deg]' : 'rotate-90'}`}
-      />
-    </button>
   )
 }
 
@@ -261,22 +255,24 @@ export default function Projects() {
       </ul>
 
       {/* Past Projects Section */}
-      <div className="mt-10 pt-8 border-t border-[var(--border-default)]/10">
+      <div className="mt-12 pt-8 border-t border-[var(--border-default)]/10">
         <button
           onClick={() => setShowPast(!showPast)}
-          className="group flex items-center gap-2 text-sm text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--text-primary)]"
+          className="group flex items-center gap-2.5 text-sm text-[var(--text-muted)] opacity-70 transition-all duration-200 hover:opacity-100 hover:text-[var(--text-primary)]"
         >
-          <span className="font-medium">Past Projects</span>
-          <span className="text-xs opacity-60">({pastProjects.length})</span>
+          <span className="font-medium tracking-tight">Past Projects</span>
+          <span className="text-[11px] px-1.5 py-0.5 rounded bg-[var(--text-primary)]/[0.04] tabular-nums">
+            {pastProjects.length}
+          </span>
           <ArrowRightIcon
             size={12}
-            className={`transition-transform duration-200 ${showPast ? 'rotate-90' : ''}`}
+            className={`transition-all duration-300 ease-out ${showPast ? 'rotate-90 text-[var(--accent-primary)]' : 'group-hover:translate-x-0.5'}`}
           />
         </button>
 
-        {/* Expandable section with animation */}
+        {/* Expandable section with smooth animation */}
         <div
-          className={`grid transition-all duration-300 ease-out ${
+          className={`grid transition-[grid-template-rows,opacity] duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
             showPast ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
           }`}
         >
@@ -286,7 +282,8 @@ export default function Projects() {
                 key={project.name}
                 project={project}
                 index={index}
-                baseDelay={50}
+                baseDelay={showPast ? 50 : 0}
+                variant="past"
               />
             ))}
           </ul>

@@ -88,23 +88,34 @@ function MobileNavItem({
   isActive,
   onClick,
   children,
+  index = 0,
 }: {
   href: string
   isActive: boolean
   onClick: () => void
   children: React.ReactNode
+  index?: number
 }) {
   return (
-    <li>
+    <li
+      className="opacity-0 animate-fade-up-subtle"
+      style={{
+        animationDelay: `${80 + index * 40}ms`,
+        animationFillMode: 'forwards',
+      }}
+    >
       <Link
         href={href}
         onClick={onClick}
         className={clsx(
-          'block py-3 text-sm transition-colors duration-200',
+          'block py-3 text-sm rounded-md -mx-2 px-2',
+          'transition-[color,background-color] duration-200',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-inset',
           isActive
             ? 'text-[var(--text-primary)] font-medium'
-            : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
+            : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--text-primary)]/[0.03]',
         )}
+        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
       >
         {children}
       </Link>
@@ -159,28 +170,38 @@ function MobileNavigation({
         aria-modal="true"
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs text-[var(--text-muted)]">Navigation</span>
+          <span
+            className="text-xs text-[var(--text-muted)] opacity-0 animate-fade-in"
+            style={{ animationDelay: '50ms', animationFillMode: 'forwards' }}
+          >
+            Navigation
+          </span>
           <button
             type="button"
             onClick={closeMenu}
             aria-label="Close menu"
-            className="rounded-full p-2 text-[var(--text-muted)] transition-colors duration-200 hover:bg-[var(--text-primary)]/5 hover:text-[var(--text-primary)]"
+            className="rounded-full p-2 text-[var(--text-muted)] hover:bg-[var(--text-primary)]/5 hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-inset"
+            style={{
+              transitionProperty: 'color, background-color',
+              transitionDuration: '200ms',
+              transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            }}
           >
-            <CloseIcon className="h-5 w-5" />
+            <CloseIcon className="h-5 w-5 transition-transform duration-200 hover:rotate-90" style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' }} />
           </button>
         </div>
         <nav className="mt-4">
           <ul className="divide-y divide-[var(--border-default)]/10">
-            <MobileNavItem href="/" isActive={currentPath === '/'} onClick={closeMenu}>
+            <MobileNavItem href="/" isActive={currentPath === '/'} onClick={closeMenu} index={0}>
               Home
             </MobileNavItem>
-            <MobileNavItem href="/about" isActive={currentPath === '/about'} onClick={closeMenu}>
+            <MobileNavItem href="/about" isActive={currentPath === '/about'} onClick={closeMenu} index={1}>
               About
             </MobileNavItem>
-            <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')} onClick={closeMenu}>
+            <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')} onClick={closeMenu} index={2}>
               Writing
             </MobileNavItem>
-            <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')} onClick={closeMenu}>
+            <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')} onClick={closeMenu} index={3}>
               Projects
             </MobileNavItem>
           </ul>
@@ -194,11 +215,19 @@ function MobileNavigation({
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="group flex items-center gap-1.5 rounded-lg border border-[var(--border-default)]/20 bg-[var(--surface-muted)] px-3 py-2 text-sm text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--border-default)]/40"
+        className="group flex items-center gap-1.5 rounded-lg border border-[var(--border-default)]/20 bg-[var(--surface-muted)] px-3 py-2 text-sm text-[var(--text-primary)] hover:border-[var(--border-default)]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface-default)]"
+        style={{
+          transitionProperty: 'border-color, box-shadow',
+          transitionDuration: '200ms',
+          transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        }}
         aria-label="Open menu"
       >
         <span>Menu</span>
-        <ChevronDownIcon className="h-2.5 w-2.5 stroke-current stroke-2" />
+        <ChevronDownIcon
+          className="h-2.5 w-2.5 stroke-current stroke-2 transition-transform duration-200 group-hover:translate-y-0.5"
+          style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
+        />
       </button>
 
       {mounted && menuContent && createPortal(menuContent, document.body)}
@@ -220,22 +249,29 @@ function NavItem({
       <Link
         href={href}
         className={clsx(
-          'relative text-sm transition-colors duration-200 group',
+          'relative text-sm group py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface-default)] rounded-sm',
+          'transition-[color,transform] duration-200',
           isActive
             ? 'text-[var(--text-primary)]'
             : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
+          !isActive && 'hover:-translate-y-px',
         )}
+        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
       >
         {children}
-        {/* Animated underline */}
+        {/* Animated underline with refined easing */}
         <span
           className={clsx(
-            'absolute -bottom-1 left-0 h-px w-full bg-[var(--accent-primary)] transition-all duration-300 ease-out',
+            'absolute -bottom-0.5 left-0 h-[1.5px] w-full bg-[var(--accent-primary)] rounded-full',
+            'transition-[transform,opacity] duration-300',
             isActive
-              ? 'opacity-60 scale-x-100'
-              : 'opacity-0 scale-x-0 group-hover:opacity-40 group-hover:scale-x-100',
+              ? 'opacity-50 scale-x-100'
+              : 'opacity-0 scale-x-0 group-hover:opacity-35 group-hover:scale-x-100',
           )}
-          style={{ transformOrigin: 'left' }}
+          style={{
+            transformOrigin: 'left',
+            transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          }}
         />
       </Link>
     </li>
@@ -284,7 +320,13 @@ function ThemeToggle() {
   }, [])
 
   const baseClasses =
-    'group inline-flex h-9 w-9 items-center justify-center rounded-full text-[var(--text-muted)] transition-all duration-200 hover:bg-[var(--text-primary)]/5 hover:text-[var(--text-primary)]'
+    'group inline-flex h-9 w-9 items-center justify-center rounded-full text-[var(--text-muted)] hover:bg-[var(--text-primary)]/5 hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface-default)]'
+
+  const iconTransition = {
+    transitionProperty: 'transform',
+    transitionDuration: '300ms',
+    transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+  }
 
   if (!mounted) {
     return (
@@ -306,9 +348,15 @@ function ThemeToggle() {
       onClick={() => setTheme(otherTheme)}
     >
       {resolvedTheme === 'dark' ? (
-        <SunIcon className="h-5 w-5 stroke-current transition-transform duration-300 group-hover:rotate-45" />
+        <SunIcon
+          className="h-5 w-5 stroke-current group-hover:rotate-[30deg] group-hover:scale-110"
+          style={iconTransition}
+        />
       ) : (
-        <MoonIcon className="h-5 w-5 stroke-current fill-none transition-transform duration-300 group-hover:-rotate-12" />
+        <MoonIcon
+          className="h-5 w-5 stroke-current fill-none group-hover:-rotate-12 group-hover:scale-110"
+          style={iconTransition}
+        />
       )}
     </button>
   )

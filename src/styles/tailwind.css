@@ -538,11 +538,50 @@
   }
 }
 
-/* Wave animation for footer easter egg */
+/* Wave animation for footer easter egg - simple version */
 @keyframes wave {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(14deg); }
   75% { transform: rotate(-14deg); }
+}
+
+/* Playful multi-stage wave animation */
+@keyframes wave-playful {
+  0% { transform: rotate(0deg) scale(1); }
+  10% { transform: rotate(16deg) scale(1.1); }
+  20% { transform: rotate(-12deg) scale(1.05); }
+  30% { transform: rotate(14deg) scale(1.08); }
+  40% { transform: rotate(-10deg) scale(1.03); }
+  50% { transform: rotate(8deg) scale(1.05); }
+  60% { transform: rotate(-6deg) scale(1.02); }
+  70% { transform: rotate(4deg) scale(1.01); }
+  80% { transform: rotate(-2deg) scale(1); }
+  90% { transform: rotate(1deg) scale(1); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.animate-wave-playful {
+  animation: wave-playful 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Easter egg reveal with subtle bounce */
+@keyframes easter-egg-reveal {
+  0% {
+    opacity: 0;
+    transform: translateX(-4px) scale(0.9);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(2px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.animate-easter-egg-reveal {
+  animation: easter-egg-reveal 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 /* Subtle shimmer for special elements */

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { SpyglassIcon, ArrowRightIcon } from '@/components/Icons'
+import { SpyglassIcon, ArrowRightIcon, MailIcon } from '@/components/Icons'
 import { GitHubIcon, XIcon, LinkedInIcon } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
 import davyjonesImage from '@/images/galleon/davyjones.png'
@@ -45,12 +45,12 @@ export default function About() {
     >
       <div className="space-y-8">
         {/* Portrait with Davy Jones Easter Egg */}
-        <div className="group relative w-32 h-32 overflow-hidden rounded-lg cursor-pointer">
+        <div className="group relative w-32 h-32 overflow-hidden rounded-lg cursor-pointer transition-transform duration-300 hover:scale-[1.02]">
           {/* Normal portrait - grayscale, shows color on hover */}
           <Image
             src={portraitImage}
             alt="Andrew Wilkinson"
-            className="absolute inset-0 h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 dark:group-hover:opacity-0"
+            className="absolute inset-0 h-full w-full object-cover grayscale transition-all duration-500 ease-out group-hover:grayscale-0 dark:group-hover:opacity-0"
             fill
             sizes="128px"
             priority
@@ -59,12 +59,12 @@ export default function About() {
           <Image
             src={davyjonesImage}
             alt="Davy Jones"
-            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-all duration-500 dark:group-hover:opacity-100"
+            className="absolute inset-0 h-full w-full object-cover opacity-0 scale-105 transition-all duration-500 ease-out dark:group-hover:opacity-100 dark:group-hover:scale-100"
             fill
             sizes="128px"
           />
           {/* Subtle hint text */}
-          <span className="absolute bottom-1 right-1 text-[8px] text-[var(--text-muted)] opacity-0 transition-opacity duration-300 dark:group-hover:opacity-60 pointer-events-none">
+          <span className="absolute bottom-1.5 right-1.5 text-[8px] font-medium tracking-wide text-[var(--dj-canvas)] opacity-0 transition-all duration-400 dark:group-hover:opacity-70 pointer-events-none select-none">
             ahoy
           </span>
         </div>
@@ -86,10 +86,10 @@ export default function About() {
             Outside of work, I build side projects: AI assistants, trading tools, music apps. See my{' '}
             <Link
               href="/projects"
-              className="inline-flex items-center gap-0.5 text-[var(--text-primary)] transition-colors duration-200 hover:text-[var(--accent-primary)]"
+              className="group/link inline-flex items-center gap-0.5 text-[var(--text-primary)] transition-colors duration-200 hover:text-[var(--accent-primary)]"
             >
               <span className="link-underline">projects</span>
-              <ArrowRightIcon size={10} className="opacity-50" />
+              <ArrowRightIcon size={10} className="opacity-40 transition-all duration-200 group-hover/link:opacity-70 group-hover/link:translate-x-0.5" />
             </Link>{' '}
             for more.
           </p>
@@ -107,10 +107,10 @@ export default function About() {
           </SocialLink>
           <Link
             href="mailto:gm@andrewwilkinson.io"
-            className="group flex items-center gap-1 text-sm text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent-primary)]"
+            className="group flex items-center gap-1.5 text-sm text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent-primary)]"
           >
+            <MailIcon size={16} className="transition-transform duration-200 group-hover:scale-110" />
             <span className="link-underline">Email</span>
-            <ArrowRightIcon size={10} className="opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0" />
           </Link>
         </div>
       </div>
