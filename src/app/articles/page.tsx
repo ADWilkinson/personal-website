@@ -9,16 +9,16 @@ import { QuillIcon, ArrowRightIcon } from '@/components/Icons'
 // Static article data (in a real app, this would come from getAllArticles)
 const ARTICLES = [
   {
+    slug: 'building-davy-jones-intern',
+    title: 'Building Davy Jones Intern',
+    description: 'How I leveraged the Claude Code SDK to create an intelligent Slack bot that handles GitHub PRs and development workflows.',
+    date: '2025-08-18'
+  },
+  {
     slug: 'stablecoin-summer',
     title: 'Stablecoin Summer',
     description: 'Why 2025 might be the year stablecoins go mainstream, and what that means for crypto.',
     date: '2025-02-05'
-  },
-  {
-    slug: 'building-davy-jones-intern',
-    title: 'Building Davy Jones Intern',
-    description: 'How I built a Telegram bot to help manage a DeFi community using Claude and Firebase.',
-    date: '2025-01-18'
   },
   {
     slug: 'crypto-journey',
