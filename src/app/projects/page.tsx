@@ -245,7 +245,7 @@ export default function Projects() {
     <SimpleLayout
       icon={HelmIcon}
       title="Projects"
-      intro="Things I've built: DeFi protocols, trading tools, and side projects."
+      intro="Things I've built: AI tools, DeFi protocols, trading systems, and side projects."
     >
       {/* Current Projects - show all */}
       <ul className="space-y-0">

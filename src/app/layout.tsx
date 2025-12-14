@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     title: 'Andrew Wilkinson - Senior Software Engineer at ZKP2P',
     description:
       'Senior Software Engineer at ZKP2P building zkTLS-powered fiat-to-crypto onramps. Former VC-backed founder.',
-    creator: '@andreww_eth',
+    creator: '@davyjones0x',
     images: [`${siteUrl}/images/og-image.png`],
   },
   icons: {

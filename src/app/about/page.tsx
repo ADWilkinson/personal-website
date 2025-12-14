@@ -41,7 +41,7 @@ export default function About() {
     <SimpleLayout
       icon={SpyglassIcon}
       title="About"
-      intro="Software engineer and builder focused on making finance more accessible."
+      intro="Software engineer and builder focused on making finance more accessible through AI-augmented development."
     >
       <div className="space-y-8">
         {/* Portrait with Davy Jones Easter Egg */}
