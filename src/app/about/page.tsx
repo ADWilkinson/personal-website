@@ -83,7 +83,25 @@ export default function About() {
           </p>
 
           <p>
-            Outside of work, I build side projects: AI assistants, trading tools, music apps. See my{' '}
+            Outside work, I run a home server with AI systems I built—a Claude-powered assistant that handles PRs and builds for my team, and an autonomous layer that ships features on side projects without prompting. I also build supporting tools for projects I work on, like{' '}
+            <Link
+              href="https://peerlytics.xyz"
+              className="text-[var(--text-primary)] transition-colors duration-200 hover:text-[var(--accent-primary)] link-underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              analytics dashboards
+            </Link>{' '}
+            and{' '}
+            <Link
+              href="https://usdctofiat.xyz"
+              className="text-[var(--text-primary)] transition-colors duration-200 hover:text-[var(--accent-primary)] link-underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              peer-to-peer off-ramps
+            </Link>
+            . See my{' '}
             <Link
               href="/projects"
               className="group/link inline-flex items-center gap-0.5 text-[var(--text-primary)] transition-colors duration-200 hover:text-[var(--accent-primary)]"
