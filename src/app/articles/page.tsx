@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { QuillIcon, ArrowRightIcon } from '@/components/Icons'
 import { getAllArticles } from '@/lib/articles'
-import type { Article } from '@/lib/articles'
+import type { ArticleWithSlug } from '@/lib/articles'
 
 function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -17,7 +17,7 @@ function ArticleItem({
   article,
   index,
 }: {
-  article: Article
+  article: ArticleWithSlug
   index: number
 }) {
   return (
