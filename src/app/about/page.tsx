@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { SpyglassIcon, ArrowRightIcon, MailIcon } from '@/components/Icons'
 import { GitHubIcon, XIcon, LinkedInIcon } from '@/components/SocialIcons'
-import portraitImage from '@/images/portrait.jpg'
+import portraitImage from '@/images/portrait.webp'
 import davyjonesImage from '@/images/galleon/davyjones.png'
 import { SOCIAL_LINKS } from '@/lib/constants'
 
@@ -87,7 +87,7 @@ export default function About() {
           </p>
 
           <p>
-            Outside work, I run a home server with AI systems I built: a Claude-powered assistant that handles PRs and builds for my team, and an autonomous layer that ships features on side projects without prompting. I also build supporting tools for projects I work on, like{' '}
+            Outside work, I build supporting tools for the projects I work on, like{' '}
             <Link
               href="https://peerlytics.xyz"
               className="text-[var(--text-primary)] transition-colors duration-200 hover:text-[var(--accent-primary)] link-underline"
