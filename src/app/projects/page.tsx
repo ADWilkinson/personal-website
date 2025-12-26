@@ -64,6 +64,13 @@ const currentProjects = [
     isInternal: true,
   },
   {
+    name: 'Barbossa',
+    desc: 'Autonomous 5-agent AI development team that discovers issues, proposes features, implements code, reviews PRs, and merges changes automatically',
+    url: 'https://barbossa.dev',
+    icon: ServerIcon,
+    tags: ['AI', 'Autonomous'],
+  },
+  {
     name: 'ChordCraft',
     desc: 'AI chord progression generator helping musicians create compelling harmonic sequences',
     url: 'https://chordcraft.io',
@@ -87,13 +94,6 @@ const pastProjects = [
     url: 'https://tryelune.com',
     icon: MoonIcon,
     tags: ['DeFi', 'Automation'],
-  },
-  {
-    name: 'Barbossa Engineer',
-    desc: 'Automated server manager and AI engineer performing infrastructure upgrades and project work',
-    url: 'https://github.com/ADWilkinson/barbossa-engineer',
-    icon: ServerIcon,
-    tags: ['AI', 'Infrastructure'],
   },
   {
     name: 'The Flying Dutchman Theme',
@@ -245,7 +245,7 @@ export default function Projects() {
     <SimpleLayout
       icon={HelmIcon}
       title="Projects"
-      intro="Things I've built: AI tools, DeFi protocols, trading systems, and side projects."
+      intro="Things I've built: autonomous AI systems, DeFi protocols, trading tools, and experiments."
     >
       {/* Current Projects - show all */}
       <ul className="space-y-0">

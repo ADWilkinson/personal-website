@@ -75,6 +75,10 @@ export default function About() {
           </p>
 
           <p>
+            I use AI tools like Claude Code and Cursor daily, not just for my own work but to help teams ship faster. I've built production systems like Davy Jones (our team's AI intern handling PRs and builds in Slack) and Barbossa (five autonomous agents that ship code while you sleep). I help teams adopt AI workflows that actually work, showing how to use these tools as a force multiplier without losing the craft of engineering.
+          </p>
+
+          <p>
             Previously, I led a 10-person engineering team at Brava Labs, shipping an MVP that secured £2M in seed funding. Before that, I founded Galleon DAO, raised $1M+ from 1kx, grew a 6,000+ member community, and managed $20M+ TVL at peak.
           </p>
 
@@ -83,7 +87,7 @@ export default function About() {
           </p>
 
           <p>
-            Outside work, I run a home server with AI systems I built—a Claude-powered assistant that handles PRs and builds for my team, and an autonomous layer that ships features on side projects without prompting. I also build supporting tools for projects I work on, like{' '}
+            Outside work, I run a home server with AI systems I built: a Claude-powered assistant that handles PRs and builds for my team, and an autonomous layer that ships features on side projects without prompting. I also build supporting tools for projects I work on, like{' '}
             <Link
               href="https://peerlytics.xyz"
               className="text-[var(--text-primary)] transition-colors duration-200 hover:text-[var(--accent-primary)] link-underline"

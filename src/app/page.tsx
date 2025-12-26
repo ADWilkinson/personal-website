@@ -149,7 +149,7 @@ export default function Home() {
           className="text-sm leading-[1.7] text-[var(--text-muted)]/85 opacity-0 animate-fade-up-subtle"
           style={{ animationDelay: '60ms', animationFillMode: 'forwards' }}
         >
-          Software engineer building zkTLS-powered fiat-to-crypto onramps at ZKP2P.
+          Software engineer building zkTLS-powered fiat-to-crypto onramps at ZKP2P with AI-augmented workflows.
           Previously shipped MVPs that raised $3M+, managed $20M+ in value, and guided a 6,000+ member community.
         </p>
 
