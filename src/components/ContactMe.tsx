@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { LinkedInIcon, TelegramIcon } from '@/components/SocialIcons'
+import { SOCIAL_LINKS } from '@/lib/constants'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -62,7 +63,7 @@ export function ContactMe() {
       </h2>
       <div className="space-y-0">
         <ContactLink
-          href="https://www.linkedin.com/in/andrew-d-wilkinson"
+          href={SOCIAL_LINKS.linkedin}
           icon={LinkedInIcon}
           label="LinkedIn"
           handle="/in/andrew"

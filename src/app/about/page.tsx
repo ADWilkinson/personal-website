@@ -83,7 +83,7 @@ export default function About() {
           </p>
 
           <p>
-            I've spent my career turning napkin sketches into production systems. Started at Sky and Worldpay building large-scale infrastructure, then moved into blockchain at R3 and Set Labs to focus on DeFi products people can actually use.
+            Started at Sky and Worldpay building large-scale infrastructure, then moved into blockchain at R3 and Set Labs to focus on DeFi products people can actually use.
           </p>
 
           <p>
