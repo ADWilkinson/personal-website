@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { SpyglassIcon, ArrowRightIcon, MailIcon } from '@/components/Icons'
+import { ArrowRightIcon, MailIcon } from '@/components/Icons'
 import { GitHubIcon, XIcon, LinkedInIcon } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.webp'
 import davyjonesImage from '@/images/galleon/davyjones.png'
@@ -39,18 +39,17 @@ function SocialLink({
 export default function About() {
   return (
     <SimpleLayout
-      icon={SpyglassIcon}
       title="About"
       intro="Software engineer and builder focused on making finance more accessible."
     >
       <div className="space-y-8">
         {/* Portrait with Davy Jones Easter Egg */}
         <div className="group relative w-32 h-32 overflow-hidden rounded-lg cursor-pointer transition-transform duration-300 hover:scale-[1.02]">
-          {/* Normal portrait - grayscale, shows color on hover */}
+          {/* Normal portrait - shows Davy Jones on dark mode hover */}
           <Image
             src={portraitImage}
             alt="Andrew Wilkinson"
-            className="absolute inset-0 h-full w-full object-cover grayscale transition-all duration-500 ease-out group-hover:grayscale-0 dark:group-hover:opacity-0"
+            className="absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-out dark:group-hover:opacity-0"
             fill
             sizes="128px"
             priority

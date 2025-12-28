@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 import { SimpleLayout } from '@/components/SimpleLayout'
 import {
-  HelmIcon,
   ExternalLinkIcon,
   ArrowRightIcon,
   ChartIcon,
@@ -243,7 +242,6 @@ export default function Projects() {
 
   return (
     <SimpleLayout
-      icon={HelmIcon}
       title="Projects"
       intro="Things I've built: autonomous AI systems, DeFi protocols, trading tools, and experiments."
     >

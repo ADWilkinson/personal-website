@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { QuillIcon, ArrowRightIcon } from '@/components/Icons'
+import { ArrowRightIcon } from '@/components/Icons'
 import { getAllArticles } from '@/lib/articles'
 import type { ArticleWithSlug } from '@/lib/articles'
 
@@ -57,7 +57,6 @@ export default async function ArticlesIndex() {
 
   return (
     <SimpleLayout
-      icon={QuillIcon}
       title="Writing"
       intro="Thoughts on building products, blockchain, and DeFi."
     >
