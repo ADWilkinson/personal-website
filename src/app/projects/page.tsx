@@ -49,13 +49,6 @@ const currentProjects = [
     tags: ['Payments', 'ZK'],
   },
   {
-    name: 'Piggy DAO',
-    desc: 'Official website for Piggy DAO, a DeFAI agent developed by Superform with real-time analytics',
-    url: 'https://piggyonchain.xyz',
-    icon: CubeIcon,
-    tags: ['AI', 'DAO'],
-  },
-  {
     name: 'Davy Jones Intern',
     desc: 'Claude Code SDK-powered Slack bot managing GitHub PRs, builds, and development workflows',
     url: '/articles/building-davy-jones-intern',
@@ -81,6 +74,13 @@ const currentProjects = [
 
 // Past projects
 const pastProjects = [
+  {
+    name: 'Piggy DAO',
+    desc: 'Official website for Piggy DAO, a DeFAI agent developed by Superform with real-time analytics',
+    url: 'https://piggydao.xyz',
+    icon: CubeIcon,
+    tags: ['AI', 'DAO'],
+  },
   {
     name: 'Galleon DAO',
     desc: 'DeFi protocol managing $20M+ in structured products and 6,000+ member community',

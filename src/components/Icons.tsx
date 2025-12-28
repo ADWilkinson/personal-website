@@ -108,7 +108,7 @@ export function HelmIcon({ size = 20, className, ...props }: IconProps) {
   )
 }
 
-// Spyglass - for about/discovery
+// Spyglass/Telescope - for about/discovery
 export function SpyglassIcon({ size = 20, className, ...props }: IconProps) {
   return (
     <svg
@@ -124,10 +124,12 @@ export function SpyglassIcon({ size = 20, className, ...props }: IconProps) {
       aria-hidden="true"
       {...props}
     >
-      <circle cx="10" cy="10" r="6" />
-      <path d="M16 10h5" />
-      <path d="M21 8v4" />
-      <line x1="14.5" y1="14.5" x2="19" y2="19" />
+      {/* Telescope body - three sections getting wider */}
+      <path d="M3 12l4-1.5v3L3 12z" />
+      <rect x="7" y="9" width="6" height="6" rx="1" />
+      <path d="M13 8l8-3v14l-8-3V8z" />
+      {/* Lens flare */}
+      <circle cx="19" cy="12" r="1" fill="currentColor" stroke="none" opacity="0.5" />
     </svg>
   )
 }
@@ -602,10 +604,14 @@ export function TreasureIcon({ size = 20, className, ...props }: IconProps) {
       aria-hidden="true"
       {...props}
     >
-      <rect x="2" y="9" width="20" height="11" rx="2" />
-      <path d="M2 14h20" />
-      <circle cx="12" cy="17" r="2" />
-      <path d="M6 9V6a6 6 0 0 1 12 0v3" />
+      {/* Chest base */}
+      <rect x="2" y="11" width="20" height="10" rx="1" />
+      {/* Chest lid - domed top */}
+      <path d="M2 11V9a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2" />
+      <path d="M2 9c0-3 4-5 10-5s10 2 10 5" />
+      {/* Center band/lock */}
+      <rect x="9" y="9" width="6" height="6" rx="0.5" />
+      <circle cx="12" cy="12" r="1.5" />
     </svg>
   )
 }
