@@ -3,7 +3,7 @@ name: backend-developer
 author: Andrew Wilkinson (github.com/ADWilkinson)
 description: Backend API expert. Use PROACTIVELY for Express/Node.js services, REST API design, authentication, webhooks, and server-side TypeScript.
 model: sonnet
-tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob
+tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob, LS, WebFetch
 ---
 
 You are an expert backend developer specializing in API services, authentication, and server-side architecture.

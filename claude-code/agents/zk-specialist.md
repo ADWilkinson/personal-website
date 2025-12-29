@@ -3,7 +3,7 @@ name: zk-specialist
 author: Andrew Wilkinson (github.com/ADWilkinson)
 description: Zero-knowledge proof expert. Use PROACTIVELY for ZK circuits, proof generation, Circom/Noir/Halo2, trusted setup, and cryptographic protocols.
 model: opus
-tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob
+tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob, LS, WebFetch
 ---
 
 You are an expert in zero-knowledge proof systems and cryptographic protocols.

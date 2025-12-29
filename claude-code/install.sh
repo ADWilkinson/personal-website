@@ -6,31 +6,46 @@
 
 set -e
 
+VERSION="1.1.0"
+
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
 NC='\033[0m'
 
 CLAUDE_DIR="$HOME/.claude"
 BACKUP_DIR=""
 BACKUP_CREATED=false
 INSTALL_SUCCESS=false
+DRY_RUN=false
+VERBOSE=false
+INSTALL_AGENTS=true
+INSTALL_COMMANDS=true
+INSTALL_STATUSLINE=true
 
-print_status() { echo -e "${BLUE}[INFO]${NC} $1"; }
-print_success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
-print_warning() { echo -e "${YELLOW}[WARNING]${NC} $1"; }
-print_error() { echo -e "${RED}[ERROR]${NC} $1"; }
+print_status() { echo -e "${BLUE}→${NC} $1"; }
+print_success() { echo -e "${GREEN}✓${NC} $1"; }
+print_warning() { echo -e "${YELLOW}!${NC} $1"; }
+print_error() { echo -e "${RED}✗${NC} $1"; }
+print_verbose() { [ "$VERBOSE" = true ] && echo -e "${CYAN}  $1${NC}"; }
+print_dry() { [ "$DRY_RUN" = true ] && echo -e "${YELLOW}[DRY RUN]${NC} $1"; }
 
 cleanup() {
     local exit_code=$?
+
+    if [ "$DRY_RUN" = true ]; then
+        return
+    fi
 
     if [ "$exit_code" -ne 0 ] && [ "$BACKUP_CREATED" = true ]; then
         print_error "Installation failed! Rolling back..."
         rollback_installation
     elif [ "$exit_code" -eq 0 ] && [ "$INSTALL_SUCCESS" = true ] && [ "$BACKUP_CREATED" = true ]; then
-        print_status "Cleaning up backup..."
+        print_verbose "Cleaning up backup..."
         rm -rf "$BACKUP_DIR"
     fi
 }
@@ -69,12 +84,21 @@ check_claude_installation() {
 }
 
 create_directories() {
+    if [ "$DRY_RUN" = true ]; then
+        print_dry "Would create directories: $CLAUDE_DIR/agents, $CLAUDE_DIR/commands"
+        return
+    fi
     mkdir -p "$CLAUDE_DIR/agents"
     mkdir -p "$CLAUDE_DIR/commands"
-    print_success "Directories ready"
+    print_verbose "Directories ready"
 }
 
 backup_existing() {
+    if [ "$DRY_RUN" = true ]; then
+        print_dry "Would backup existing files"
+        return
+    fi
+
     local timestamp=$(date +"%Y%m%d_%H%M%S")
     BACKUP_DIR="$CLAUDE_DIR/backup_$timestamp"
 
@@ -84,31 +108,38 @@ backup_existing() {
 
     echo "# Installation Manifest" > "$BACKUP_DIR/metadata/manifest.txt"
     echo "Timestamp: $(date)" >> "$BACKUP_DIR/metadata/manifest.txt"
+    echo "Version: $VERSION" >> "$BACKUP_DIR/metadata/manifest.txt"
     echo "" >> "$BACKUP_DIR/metadata/manifest.txt"
 
     local files_backed_up=0
 
-    for agent_file in agents/*.md; do
-        if [ -f "$agent_file" ]; then
-            agent_name=$(basename "$agent_file")
-            echo "Agent: $agent_name" >> "$BACKUP_DIR/metadata/manifest.txt"
-            if [ -f "$CLAUDE_DIR/agents/$agent_name" ]; then
-                cp "$CLAUDE_DIR/agents/$agent_name" "$BACKUP_DIR/agents/"
-                ((files_backed_up++)) || true
+    if [ "$INSTALL_AGENTS" = true ] && [ -d "agents" ]; then
+        for agent_file in agents/*.md; do
+            if [ -f "$agent_file" ]; then
+                agent_name=$(basename "$agent_file")
+                echo "Agent: $agent_name" >> "$BACKUP_DIR/metadata/manifest.txt"
+                if [ -f "$CLAUDE_DIR/agents/$agent_name" ]; then
+                    cp "$CLAUDE_DIR/agents/$agent_name" "$BACKUP_DIR/agents/"
+                    ((files_backed_up++)) || true
+                    print_verbose "Backed up: $agent_name"
+                fi
             fi
-        fi
-    done
+        done
+    fi
 
-    for command_file in commands/*.md; do
-        if [ -f "$command_file" ]; then
-            command_name=$(basename "$command_file")
-            echo "Command: $command_name" >> "$BACKUP_DIR/metadata/manifest.txt"
-            if [ -f "$CLAUDE_DIR/commands/$command_name" ]; then
-                cp "$CLAUDE_DIR/commands/$command_name" "$BACKUP_DIR/commands/"
-                ((files_backed_up++)) || true
+    if [ "$INSTALL_COMMANDS" = true ] && [ -d "commands" ]; then
+        for command_file in commands/*.md; do
+            if [ -f "$command_file" ]; then
+                command_name=$(basename "$command_file")
+                echo "Command: $command_name" >> "$BACKUP_DIR/metadata/manifest.txt"
+                if [ -f "$CLAUDE_DIR/commands/$command_name" ]; then
+                    cp "$CLAUDE_DIR/commands/$command_name" "$BACKUP_DIR/commands/"
+                    ((files_backed_up++)) || true
+                    print_verbose "Backed up: $command_name"
+                fi
             fi
-        fi
-    done
+        done
+    fi
 
     BACKUP_CREATED=true
 
@@ -118,6 +149,10 @@ backup_existing() {
 }
 
 install_agents() {
+    if [ "$INSTALL_AGENTS" = false ]; then
+        return
+    fi
+
     print_status "Installing agents..."
 
     if [ ! -d "agents" ]; then
@@ -128,7 +163,13 @@ install_agents() {
     local count=0
     for agent_file in agents/*.md; do
         if [ -f "$agent_file" ]; then
-            cp "$agent_file" "$CLAUDE_DIR/agents/"
+            agent_name=$(basename "$agent_file" .md)
+            if [ "$DRY_RUN" = true ]; then
+                print_dry "Would install agent: $agent_name"
+            else
+                cp "$agent_file" "$CLAUDE_DIR/agents/"
+                print_verbose "Installed: $agent_name"
+            fi
             ((count++)) || true
         fi
     done
@@ -137,6 +178,10 @@ install_agents() {
 }
 
 install_commands() {
+    if [ "$INSTALL_COMMANDS" = false ]; then
+        return
+    fi
+
     print_status "Installing commands..."
 
     if [ ! -d "commands" ]; then
@@ -147,7 +192,13 @@ install_commands() {
     local count=0
     for command_file in commands/*.md; do
         if [ -f "$command_file" ]; then
-            cp "$command_file" "$CLAUDE_DIR/commands/"
+            command_name=$(basename "$command_file" .md)
+            if [ "$DRY_RUN" = true ]; then
+                print_dry "Would install command: /$command_name"
+            else
+                cp "$command_file" "$CLAUDE_DIR/commands/"
+                print_verbose "Installed: /$command_name"
+            fi
             ((count++)) || true
         fi
     done
@@ -156,6 +207,10 @@ install_commands() {
 }
 
 install_statusline() {
+    if [ "$INSTALL_STATUSLINE" = false ]; then
+        return
+    fi
+
     print_status "Installing statusline..."
 
     SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -163,6 +218,11 @@ install_statusline() {
 
     if [ ! -f "$STATUSLINE_SCRIPT" ]; then
         print_warning "Statusline script not found, skipping"
+        return
+    fi
+
+    if [ "$DRY_RUN" = true ]; then
+        print_dry "Would configure statusline: $STATUSLINE_SCRIPT"
         return
     fi
 
@@ -181,49 +241,138 @@ install_statusline() {
     fi
 }
 
+show_preview() {
+    echo
+    echo -e "${BOLD}Files to install:${NC}"
+    echo
+
+    if [ "$INSTALL_AGENTS" = true ] && [ -d "agents" ]; then
+        echo "  Agents:"
+        for agent_file in agents/*.md; do
+            if [ -f "$agent_file" ]; then
+                agent_name=$(basename "$agent_file" .md)
+                # Check if opus model
+                if grep -q "model: opus" "$agent_file" 2>/dev/null; then
+                    echo -e "    ${CYAN}$agent_name${NC} (opus)"
+                else
+                    echo "    $agent_name"
+                fi
+            fi
+        done
+        echo
+    fi
+
+    if [ "$INSTALL_COMMANDS" = true ] && [ -d "commands" ]; then
+        echo "  Commands:"
+        for command_file in commands/*.md; do
+            if [ -f "$command_file" ]; then
+                echo "    /$(basename "$command_file" .md)"
+            fi
+        done
+        echo
+    fi
+
+    if [ "$INSTALL_STATUSLINE" = true ] && [ -f "statusline/flying-dutchman-statusline.sh" ]; then
+        echo "  Statusline:"
+        echo "    flying-dutchman-statusline.sh"
+        echo
+    fi
+}
+
 show_summary() {
     echo
     print_success "Installation complete!"
     echo
-    echo "Installed agents:"
-    ls -1 "$CLAUDE_DIR/agents" 2>/dev/null | sed 's/.md$//' | sed 's/^/  - /' || echo "  (none)"
+    echo -e "${BOLD}Installed:${NC}"
+
+    if [ "$INSTALL_AGENTS" = true ]; then
+        local agent_count=$(ls -1 "$CLAUDE_DIR/agents"/*.md 2>/dev/null | wc -l | tr -d ' ')
+        echo "  $agent_count agents in ~/.claude/agents/"
+    fi
+
+    if [ "$INSTALL_COMMANDS" = true ]; then
+        local cmd_count=$(ls -1 "$CLAUDE_DIR/commands"/*.md 2>/dev/null | wc -l | tr -d ' ')
+        echo "  $cmd_count commands in ~/.claude/commands/"
+    fi
+
     echo
-    echo "Installed commands:"
-    ls -1 "$CLAUDE_DIR/commands" 2>/dev/null | sed 's/.md$//' | sed 's/^/  - \//' || echo "  (none)"
+    echo -e "${BOLD}Usage:${NC}"
+    echo "  Agents are auto-invoked by Claude Code via the Task tool"
+    echo "  Commands: /repo-polish, /update-claudes"
     echo
-    echo "Usage:"
-    echo "  Agents: Available via Task tool subagent_type parameter"
-    echo "  Commands: Use slash commands (e.g., /repo-polish)"
+}
+
+show_help() {
+    echo "Claude Code Tools Installer v$VERSION"
+    echo
+    echo "Usage: $0 [OPTIONS]"
+    echo
+    echo "Options:"
+    echo "  --claude-dir DIR    Custom Claude directory (default: ~/.claude)"
+    echo "  --dry-run           Preview what would be installed without making changes"
+    echo "  --agents-only       Only install agents"
+    echo "  --commands-only     Only install commands"
+    echo "  --no-statusline     Skip statusline installation"
+    echo "  -v, --verbose       Show detailed output"
+    echo "  -V, --version       Show version"
+    echo "  -h, --help          Show this help"
+    echo
+    echo "Examples:"
+    echo "  ./install.sh                    Install everything"
+    echo "  ./install.sh --dry-run          Preview installation"
+    echo "  ./install.sh --agents-only -v   Install only agents with verbose output"
     echo
 }
 
 main() {
-    echo
-    echo "Claude Code Tools Installer"
-    echo "==========================="
-    echo "Author: Andrew Wilkinson"
-    echo
-
     while [[ $# -gt 0 ]]; do
         case $1 in
             --claude-dir)
                 CLAUDE_DIR="$2"
                 shift 2
                 ;;
-            --help|-h)
-                echo "Usage: $0 [OPTIONS]"
-                echo
-                echo "Options:"
-                echo "  --claude-dir DIR    Custom Claude directory (default: ~/.claude)"
-                echo "  --help, -h          Show help"
+            --dry-run)
+                DRY_RUN=true
+                shift
+                ;;
+            --agents-only)
+                INSTALL_COMMANDS=false
+                INSTALL_STATUSLINE=false
+                shift
+                ;;
+            --commands-only)
+                INSTALL_AGENTS=false
+                INSTALL_STATUSLINE=false
+                shift
+                ;;
+            --no-statusline)
+                INSTALL_STATUSLINE=false
+                shift
+                ;;
+            -v|--verbose)
+                VERBOSE=true
+                shift
+                ;;
+            -V|--version)
+                echo "v$VERSION"
+                exit 0
+                ;;
+            -h|--help)
+                show_help
                 exit 0
                 ;;
             *)
                 print_error "Unknown option: $1"
+                echo "Use --help for usage information"
                 exit 1
                 ;;
         esac
     done
+
+    echo
+    echo -e "${BOLD}Claude Code Tools Installer${NC} v$VERSION"
+    echo "Author: Andrew Wilkinson"
+    echo
 
     CLAUDE_DIR="${CLAUDE_DIR/#\~/$HOME}"
 
@@ -233,6 +382,12 @@ main() {
         exit 1
     fi
 
+    if [ "$DRY_RUN" = true ]; then
+        echo -e "${YELLOW}DRY RUN MODE - No changes will be made${NC}"
+        echo
+    fi
+
+    show_preview
     check_claude_installation
     backup_existing
     create_directories
@@ -242,7 +397,12 @@ main() {
 
     INSTALL_SUCCESS=true
 
-    show_summary
+    if [ "$DRY_RUN" = false ]; then
+        show_summary
+    else
+        echo
+        print_success "Dry run complete. Use without --dry-run to install."
+    fi
 }
 
 main "$@"

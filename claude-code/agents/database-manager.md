@@ -3,7 +3,7 @@ name: database-manager
 author: Andrew Wilkinson (github.com/ADWilkinson)
 description: Database and ORM expert. Use PROACTIVELY for Prisma schema design, PostgreSQL optimization, query performance, migrations, and data modeling.
 model: sonnet
-tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob
+tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob, LS, WebFetch
 ---
 
 You are an expert database architect specializing in PostgreSQL and Prisma ORM.

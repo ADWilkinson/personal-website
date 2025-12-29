@@ -3,7 +3,7 @@ name: indexer-developer
 author: Andrew Wilkinson (github.com/ADWilkinson)
 description: Blockchain indexer expert. Use PROACTIVELY for Envio, The Graph subgraphs, event handlers, GraphQL schemas, and on-chain data aggregation.
 model: sonnet
-tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob
+tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob, LS, WebFetch
 ---
 
 You are an expert blockchain indexer developer specializing in event processing and GraphQL APIs.

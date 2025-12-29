@@ -11,10 +11,11 @@ import {
   CodeIcon,
   CopyIcon,
   CheckIcon,
+  DownloadIcon,
 } from '@/components/Icons'
 
 const sections = [
-  { id: 'agents', label: 'Agents' },
+  { id: 'agents', label: 'Barbossa System' },
   { id: 'subagents', label: 'Subagents' },
   { id: 'commands', label: 'Commands' },
   { id: 'statusline', label: 'Statusline' },
@@ -54,10 +55,10 @@ function SideNav({ activeSection }: { activeSection: string }) {
           key={id}
           href={`#${id}`}
           className={clsx(
-            'block py-1.5 pl-3 text-sm border-l transition-colors duration-200',
+            'block py-1.5 pl-3 text-sm border-l-2 transition-all duration-200',
             activeSection === id
-              ? 'border-[var(--text-primary)] text-[var(--text-primary)]'
-              : 'border-[var(--border-default)]/30 text-[var(--text-muted)] hover:text-[var(--text-primary)]'
+              ? 'border-teal-500 text-[var(--text-primary)] font-medium bg-teal-500/5'
+              : 'border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--border-default)]/50'
           )}
         >
           {label}
@@ -141,6 +142,8 @@ function ToolSection({
   )
 }
 
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/ADWilkinson/personal-website/main/claude-code/agents'
+
 const subagents = [
   { name: 'backend-developer', desc: 'Express/Node.js, REST APIs, authentication, webhooks' },
   { name: 'blockchain-specialist', desc: 'Solidity, Wagmi, multi-chain, gas optimization (opus)' },
@@ -210,7 +213,7 @@ export default function AI() {
             </section>
 
             {/* Subagents */}
-            <section id="subagents" className="scroll-mt-8">
+            <section id="subagents" className="scroll-mt-8 pt-8 border-t border-[var(--border-default)]/20">
               <ToolSection
                 title="Claude Code Subagents"
                 description="12 specialized subagents for Claude Code. Each brings deep expertise in a specific domain."
@@ -220,13 +223,25 @@ export default function AI() {
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
                     {subagents.map((agent) => (
-                      <div key={agent.name} className="py-1.5">
-                        <p className="text-sm text-[var(--text-primary)] font-mono">
-                          {agent.name}
-                        </p>
-                        <p className="text-xs text-[var(--text-muted)]">
-                          {agent.desc}
-                        </p>
+                      <div key={agent.name} className="py-1.5 flex items-start justify-between gap-2">
+                        <div className="min-w-0">
+                          <p className="text-sm text-[var(--text-primary)] font-mono">
+                            {agent.name}
+                          </p>
+                          <p className="text-xs text-[var(--text-muted)]">
+                            {agent.desc}
+                          </p>
+                        </div>
+                        <a
+                          href={`${GITHUB_RAW_BASE}/${agent.name}.md`}
+                          download={`${agent.name}.md`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 p-1 text-[var(--text-muted)] opacity-40 hover:opacity-100 hover:text-[var(--text-primary)] transition-all"
+                          title={`Download ${agent.name}.md`}
+                        >
+                          <DownloadIcon size={14} />
+                        </a>
                       </div>
                     ))}
                   </div>
@@ -242,7 +257,7 @@ export default function AI() {
             </section>
 
             {/* Commands */}
-            <section id="commands" className="scroll-mt-8 space-y-12">
+            <section id="commands" className="scroll-mt-8 space-y-12 pt-8 border-t border-[var(--border-default)]/20">
                 <ToolSection
                   title="/repo-polish"
                   description="Fire-and-forget repository cleanup. Creates a branch, fixes issues, opens a PR."
@@ -293,7 +308,7 @@ export default function AI() {
             </section>
 
             {/* Statusline */}
-            <section id="statusline" className="scroll-mt-8">
+            <section id="statusline" className="scroll-mt-8 pt-8 border-t border-[var(--border-default)]/20">
               <ToolSection
                 title="Flying Dutchman Statusline"
                 description="Custom Claude Code statusline showing git branch, activity icons, cost tracking, and lines changed."
