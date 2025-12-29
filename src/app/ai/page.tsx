@@ -208,7 +208,7 @@ export default function AI() {
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Install</p>
                         <CodeBlock id="repo-polish-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/repo-polish.md \\
-  https://raw.githubusercontent.com/ADWilkinson/claude-skills/main/repo-polish.md`}</CodeBlock>
+  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/skills/repo-polish.md`}</CodeBlock>
                       </div>
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Run</p>
@@ -232,7 +232,7 @@ export default function AI() {
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Install</p>
                         <CodeBlock id="update-claudes-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/update-claudes.md \\
-  https://raw.githubusercontent.com/ADWilkinson/claude-skills/main/update-claudes.md`}</CodeBlock>
+  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/skills/update-claudes.md`}</CodeBlock>
                       </div>
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Run</p>
