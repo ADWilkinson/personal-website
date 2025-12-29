@@ -799,3 +799,34 @@ export function CheckIcon({ size = 16, className, ...props }: IconProps) {
     </svg>
   )
 }
+
+// Cannon icon for games/combat
+export function CannonIcon({ size = 20, className, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+      {...props}
+    >
+      {/* Cannon barrel */}
+      <path d="M4 14l12-6 2 4-12 6-2-4z" />
+      {/* Cannon ball flying */}
+      <circle cx="20" cy="6" r="2" />
+      {/* Explosion lines */}
+      <line x1="18" y1="4" x2="17" y2="2" />
+      <line x1="22" y1="5" x2="23" y2="3" />
+      <line x1="21" y1="8" x2="23" y2="9" />
+      {/* Wheel */}
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="6" cy="18" r="1" />
+    </svg>
+  )
+}

@@ -22,6 +22,7 @@ import {
   ZapIcon,
   TrendingIcon,
   CubeIcon,
+  CannonIcon,
 } from '@/components/Icons'
 
 // Current active projects
@@ -68,6 +69,13 @@ const currentProjects = [
     url: 'https://chordcraft.io',
     icon: MusicIcon,
     tags: ['AI', 'Music'],
+  },
+  {
+    name: 'Broadside.fun',
+    desc: 'Browser-based multiplayer naval combat game with up to 100 players battling in real-time',
+    url: 'https://broadside.fun',
+    icon: CannonIcon,
+    tags: ['Game', 'Multiplayer'],
   },
 ]
 
