@@ -800,7 +800,7 @@ export function CheckIcon({ size = 16, className, ...props }: IconProps) {
   )
 }
 
-// Cannon icon for games/combat
+// Cannonball icon for games/combat
 export function CannonIcon({ size = 20, className, ...props }: IconProps) {
   return (
     <svg
@@ -816,17 +816,16 @@ export function CannonIcon({ size = 20, className, ...props }: IconProps) {
       aria-hidden="true"
       {...props}
     >
-      {/* Cannon barrel */}
-      <path d="M4 14l12-6 2 4-12 6-2-4z" />
-      {/* Cannon ball flying */}
-      <circle cx="20" cy="6" r="2" />
-      {/* Explosion lines */}
-      <line x1="18" y1="4" x2="17" y2="2" />
-      <line x1="22" y1="5" x2="23" y2="3" />
-      <line x1="21" y1="8" x2="23" y2="9" />
-      {/* Wheel */}
-      <circle cx="6" cy="18" r="3" />
-      <circle cx="6" cy="18" r="1" />
+      {/* Cannonball */}
+      <circle cx="15" cy="12" r="5" fill="currentColor" />
+      {/* Motion/speed lines */}
+      <line x1="2" y1="10" x2="7" y2="10" />
+      <line x1="3" y1="12" x2="8" y2="12" />
+      <line x1="2" y1="14" x2="7" y2="14" />
+      {/* Impact sparks */}
+      <line x1="21" y1="8" x2="23" y2="6" />
+      <line x1="22" y1="12" x2="24" y2="12" />
+      <line x1="21" y1="16" x2="23" y2="18" />
     </svg>
   )
 }
