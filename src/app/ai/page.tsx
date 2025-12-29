@@ -15,7 +15,9 @@ import {
 
 const sections = [
   { id: 'agents', label: 'Agents' },
+  { id: 'subagents', label: 'Subagents' },
   { id: 'commands', label: 'Commands' },
+  { id: 'statusline', label: 'Statusline' },
 ]
 
 function useActiveSection() {
@@ -139,6 +141,21 @@ function ToolSection({
   )
 }
 
+const subagents = [
+  { name: 'backend-developer', desc: 'Express/Node.js, REST APIs, authentication, webhooks' },
+  { name: 'blockchain-specialist', desc: 'Solidity, Wagmi, multi-chain, gas optimization (opus)' },
+  { name: 'database-manager', desc: 'PostgreSQL, Prisma ORM, query optimization' },
+  { name: 'devops-engineer', desc: 'CI/CD, Docker, GitHub Actions, cloud deployment' },
+  { name: 'extension-developer', desc: 'Chrome Manifest V3, service workers, messaging' },
+  { name: 'firebase-specialist', desc: 'Firestore, Cloud Functions, FCM, security rules' },
+  { name: 'frontend-developer', desc: 'React, Next.js, TanStack Query, Tailwind' },
+  { name: 'indexer-developer', desc: 'Envio, The Graph, GraphQL, event handlers' },
+  { name: 'mobile-developer', desc: 'React Native, Expo, biometrics, push notifications' },
+  { name: 'performance-engineer', desc: 'Profiling, caching, load testing, optimization (opus)' },
+  { name: 'testing-specialist', desc: 'Jest, Playwright, E2E, mocking strategies' },
+  { name: 'zk-specialist', desc: 'ZK circuits, Circom/Noir, trusted setup (opus)' },
+]
+
 export default function AI() {
   const activeSection = useActiveSection()
 
@@ -192,6 +209,38 @@ export default function AI() {
               </ToolSection>
             </section>
 
+            {/* Subagents */}
+            <section id="subagents" className="scroll-mt-8">
+              <ToolSection
+                title="Claude Code Subagents"
+                description="12 specialized subagents for Claude Code. Each brings deep expertise in a specific domain."
+                icon={CodeIcon}
+                url="https://github.com/ADWilkinson/personal-website/tree/main/claude-code/agents"
+              >
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+                    {subagents.map((agent) => (
+                      <div key={agent.name} className="py-1.5">
+                        <p className="text-sm text-[var(--text-primary)] font-mono">
+                          {agent.name}
+                        </p>
+                        <p className="text-xs text-[var(--text-muted)]">
+                          {agent.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="space-y-3 pt-2">
+                    <div className="space-y-1.5">
+                      <p className="text-xs text-[var(--text-muted)]">Quick Install (all tools)</p>
+                      <CodeBlock id="subagents-install">{`git clone https://github.com/ADWilkinson/personal-website.git && \\
+  cd personal-website/claude-code && ./install.sh`}</CodeBlock>
+                    </div>
+                  </div>
+                </div>
+              </ToolSection>
+            </section>
+
             {/* Commands */}
             <section id="commands" className="scroll-mt-8 space-y-12">
                 <ToolSection
@@ -208,7 +257,7 @@ export default function AI() {
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Install</p>
                         <CodeBlock id="repo-polish-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/repo-polish.md \\
-  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/commands/repo-polish.md`}</CodeBlock>
+  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/claude-code/commands/repo-polish.md`}</CodeBlock>
                       </div>
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Run</p>
@@ -232,7 +281,7 @@ export default function AI() {
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Install</p>
                         <CodeBlock id="update-claudes-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/update-claudes.md \\
-  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/commands/update-claudes.md`}</CodeBlock>
+  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/claude-code/commands/update-claudes.md`}</CodeBlock>
                       </div>
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Run</p>
@@ -241,6 +290,35 @@ export default function AI() {
                     </div>
                   </div>
                 </ToolSection>
+            </section>
+
+            {/* Statusline */}
+            <section id="statusline" className="scroll-mt-8">
+              <ToolSection
+                title="Flying Dutchman Statusline"
+                description="Custom Claude Code statusline showing git branch, activity icons, cost tracking, and lines changed."
+                icon={TerminalIcon}
+                url="https://github.com/ADWilkinson/personal-website/tree/main/claude-code/statusline"
+              >
+                <div className="space-y-4">
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                    Displays current folder, git branch with dirty indicator, active tool icons,
+                    cumulative cost, and code diff stats. Pairs with the Flying Dutchman theme.
+                  </p>
+                  <div className="space-y-3">
+                    <div className="space-y-1.5">
+                      <p className="text-xs text-[var(--text-muted)]">Install</p>
+                      <CodeBlock id="statusline-install">{`curl -o ~/.claude/flying-dutchman-statusline.sh \\
+  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/claude-code/statusline/flying-dutchman-statusline.sh && \\
+  chmod +x ~/.claude/flying-dutchman-statusline.sh`}</CodeBlock>
+                    </div>
+                    <div className="space-y-1.5">
+                      <p className="text-xs text-[var(--text-muted)]">Configure (add to ~/.claude/settings.json)</p>
+                      <CodeBlock id="statusline-config">{`"statusline": "~/.claude/flying-dutchman-statusline.sh"`}</CodeBlock>
+                    </div>
+                  </div>
+                </div>
+              </ToolSection>
             </section>
 
             {/* Footer */}
