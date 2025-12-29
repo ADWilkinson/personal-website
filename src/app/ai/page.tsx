@@ -243,19 +243,33 @@ export default function AI() {
                 </ToolSection>
             </section>
 
-            {/* Footer note */}
-            <p className="text-sm text-[var(--text-muted)] pt-4 border-t border-[var(--border-default)]/10">
-              More tools in progress.{' '}
-              <Link
-                href="https://x.com/davyjones0x"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-underline hover:text-[var(--text-primary)] transition-colors"
-              >
-                Follow for updates
-              </Link>
-              .
-            </p>
+            {/* Footer */}
+            <div className="pt-6 border-t border-[var(--border-default)]/10 space-y-4">
+              <p className="text-sm text-[var(--text-muted)]">
+                More tools in progress.{' '}
+                <Link
+                  href="https://x.com/davyjones0x"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline hover:text-[var(--text-primary)] transition-colors"
+                >
+                  Follow for updates
+                </Link>
+                .
+              </p>
+              <p className="text-xs text-[var(--text-muted)] opacity-70">
+                Using Claude Code?{' '}
+                <Link
+                  href="https://github.com/ADWilkinson/the-flying-dutchman-theme"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline hover:text-[var(--text-primary)] transition-colors"
+                >
+                  Try the Flying Dutchman theme
+                </Link>
+                .
+              </p>
+            </div>
           </div>
         </div>
       </div>
