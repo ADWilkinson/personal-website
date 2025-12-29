@@ -1,43 +1,80 @@
-# Spotlight
+# andrewwilkinson.xyz
 
-Spotlight is a [Tailwind Plus](https://tailwindcss.com/plus) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+Personal website and portfolio built with Next.js, Tailwind CSS, and MDX. Features articles, project showcases, and AI tooling prompts.
 
-## Getting started
+## Tech Stack
 
-To get started with this template, first install the npm dependencies:
+- **Framework**: Next.js 14+ (App Router)
+- **Styling**: Tailwind CSS
+- **Content**: MDX for articles
+- **Typography**: Custom fonts (Morion, Wigrum)
+- **Deployment**: Vercel
+
+## Getting Started
 
 ```bash
+# Install dependencies
 npm install
-```
 
-Next, create a `.env.local` file in the root of your project and set the `NEXT_PUBLIC_SITE_URL` variable to your site's public URL:
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local with your site URL
 
-```
-NEXT_PUBLIC_SITE_URL=https://example.com
-```
-
-Next, run the development server:
-
-```bash
+# Run development server
 npm run dev
 ```
 
-Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-## Customizing
+## Project Structure
 
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
+```
+src/
+├── app/           # Next.js App Router pages
+│   ├── articles/  # MDX blog posts
+│   ├── projects/  # Project showcase
+│   └── about/     # About page
+├── components/    # Reusable UI components
+├── lib/           # Utility functions
+├── styles/        # Global styles & tokens
+└── images/        # Static assets
+```
+
+## Writing Articles
+
+Create a new directory in `src/app/articles/` with a `page.mdx` file:
+
+```jsx
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Your Name',
+  date: 'YYYY-MM-DD',
+  title: 'Article Title',
+  description: 'Brief description'
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Your markdown content here...
+```
+
+## Commands
+
+```bash
+npm run dev      # Development server
+npm run build    # Production build
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
 
 ## License
 
-This site template is a commercial product and is licensed under the [Tailwind Plus license](https://tailwindcss.com/plus/license).
+This project is licensed under the MIT License - see [LICENSE.md](LICENSE.md) for details.
 
-## Learn more
-
-To learn more about the technologies used in this site template, see the following resources:
-
-- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
-- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
-- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
-- [MDX](https://mdxjs.com) - the MDX documentation
-
+The base template is from [Tailwind Plus](https://tailwindcss.com/plus) (Spotlight template), used under their commercial license which permits open-source end products.

@@ -204,6 +204,9 @@ function MobileNavigation({
             <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')} onClick={closeMenu} index={3}>
               Projects
             </MobileNavItem>
+            <MobileNavItem href="/ai" isActive={currentPath.startsWith('/ai')} onClick={closeMenu} index={4}>
+              AI
+            </MobileNavItem>
           </ul>
         </nav>
       </div>
@@ -304,6 +307,12 @@ function DesktopNavigation({
           isActive={currentPath.startsWith('/projects')}
         >
           Projects
+        </NavItem>
+        <NavItem
+          href="/ai"
+          isActive={currentPath.startsWith('/ai')}
+        >
+          AI
         </NavItem>
       </ul>
     </nav>

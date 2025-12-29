@@ -27,7 +27,7 @@ import {
 // Current active projects
 const currentProjects = [
   {
-    name: 'PeerLytics',
+    name: 'Peerlytics',
     desc: 'ZKP2P liquidity intelligence dashboard with Envio-backed analytics APIs and realtime 3D visualization',
     url: 'https://peerlytics.xyz',
     icon: ChartIcon,
@@ -41,7 +41,7 @@ const currentProjects = [
     tags: ['Trading', 'Automation'],
   },
   {
-    name: 'usdctofiat',
+    name: 'UsdcToFiat',
     desc: 'Sell USDC and receive fiat via ZK proofs',
     url: 'https://usdctofiat.xyz',
     icon: CoinIcon,
@@ -170,33 +170,33 @@ function ProjectItem({
 
   return (
     <li
-      className="group opacity-0 animate-fade-up-subtle"
+      className="group opacity-0 animate-fade-up-subtle border-b border-[var(--border-default)]/5 last:border-b-0"
       style={{ animationDelay: `${baseDelay + index * 40}ms`, animationFillMode: 'forwards' }}
     >
       <Link
         href={project.url}
-        className="flex items-center gap-3 py-3 -mx-2 px-2 rounded-lg transition-all duration-300 ease-out hover:bg-[var(--text-primary)]/[0.03] hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08)] hover:-translate-y-0.5"
+        className="relative flex items-center gap-3 py-4 -mx-2 px-2 pl-4 transition-all duration-300 ease-out hover:bg-[var(--text-primary)]/[0.02] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-8 before:w-0.5 before:rounded-full before:bg-[var(--accent-primary)] before:opacity-0 before:transition-all before:duration-300 hover:before:opacity-100"
         target={isExternal ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
       >
         {/* Icon */}
         <div className={`relative h-10 w-10 shrink-0 overflow-hidden rounded-lg flex items-center justify-center ring-1 transition-all duration-300 ease-out ${
           variant === 'past'
-            ? 'bg-[var(--surface-muted)] ring-[var(--border-default)]/5 group-hover:ring-[var(--accent-primary)]/15'
-            : 'bg-[var(--surface-muted)] ring-[var(--border-default)]/10 group-hover:ring-[var(--accent-primary)]/25 group-hover:scale-105'
+            ? 'bg-[var(--surface-muted)] ring-[var(--border-default)]/5 group-hover:ring-[var(--accent-primary)]/20'
+            : 'bg-[var(--surface-muted)] ring-[var(--border-default)]/10 group-hover:ring-[var(--accent-primary)]/30 group-hover:shadow-[0_0_12px_-3px_var(--accent-primary)]'
         }`}>
           <IconComponent
             size={20}
             className={`transition-all duration-300 ease-out ${
               variant === 'past'
                 ? 'text-[var(--text-muted)] opacity-50 group-hover:opacity-80 group-hover:text-[var(--accent-primary)]'
-                : 'text-[var(--text-muted)] opacity-70 group-hover:text-[var(--accent-primary)] group-hover:rotate-3'
+                : 'text-[var(--text-muted)] opacity-70 group-hover:text-[var(--accent-primary)]'
             }`}
           />
         </div>
 
         {/* Content */}
-        <div className="flex flex-1 flex-col min-w-0">
+        <div className="relative flex flex-1 flex-col min-w-0 sm:pr-28">
           <div className="flex items-center gap-2">
             <span className={`text-sm font-medium transition-colors duration-200 ${
               variant === 'past'
@@ -211,26 +211,25 @@ function ProjectItem({
                 className="text-[var(--text-muted)] opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-50 group-hover:translate-x-0"
               />
             )}
-            {/* Tags inline with title */}
-            <div className="hidden sm:flex items-center gap-1.5 ml-auto">
-              {project.tags.slice(0, 2).map((tag, tagIndex) => (
-                <span
-                  key={tag}
-                  className={`text-[10px] px-1.5 py-0.5 rounded-md border transition-all duration-200 ${
-                    variant === 'past'
-                      ? 'bg-transparent border-[var(--border-default)]/10 text-[var(--text-muted)] opacity-50 group-hover:opacity-70 group-hover:border-[var(--accent-primary)]/20 group-hover:text-[var(--accent-primary)]'
-                      : 'bg-[var(--text-primary)]/[0.03] border-[var(--border-default)]/10 text-[var(--text-muted)] opacity-60 group-hover:bg-[var(--accent-primary)]/10 group-hover:border-[var(--accent-primary)]/20 group-hover:text-[var(--accent-primary)] group-hover:opacity-100'
-                  }`}
-                  style={{ transitionDelay: `${tagIndex * 30}ms` }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
           </div>
           <span className={`text-sm text-[var(--text-muted)] line-clamp-2 ${
             variant === 'past' ? 'opacity-60' : 'opacity-80'
           }`}>{project.desc}</span>
+          {/* Tags positioned absolutely */}
+          <div className="absolute right-0 top-0 hidden sm:flex items-center gap-1.5">
+            {project.tags.slice(0, 2).map((tag) => (
+              <span
+                key={tag}
+                className={`text-[10px] px-1.5 py-0.5 rounded-md border transition-all duration-200 ${
+                  variant === 'past'
+                    ? 'bg-transparent border-[var(--border-default)]/10 text-[var(--text-muted)] opacity-50 group-hover:opacity-70 group-hover:border-[var(--accent-primary)]/20 group-hover:text-[var(--accent-primary)]'
+                    : 'border-[var(--accent-primary)]/20 text-[var(--accent-primary)]/70 group-hover:border-[var(--accent-primary)]/40 group-hover:text-[var(--accent-primary)]'
+                }`}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </Link>
     </li>
