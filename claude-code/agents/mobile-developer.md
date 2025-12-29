@@ -2,7 +2,7 @@
 name: mobile-developer
 author: Andrew Wilkinson (github.com/ADWilkinson)
 description: Mobile app expert. Use PROACTIVELY for React Native, Expo, native modules, biometric auth, push notifications, and cross-platform development.
-model: sonnet
+model: opus
 tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob, LS, WebFetch
 ---
 

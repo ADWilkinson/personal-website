@@ -146,7 +146,7 @@ const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/ADWilkinson/personal-
 
 const subagents = [
   { name: 'backend-developer', desc: 'Express/Node.js, REST APIs, authentication, webhooks' },
-  { name: 'blockchain-specialist', desc: 'Solidity, Wagmi, multi-chain, gas optimization (opus)' },
+  { name: 'blockchain-specialist', desc: 'Solidity, Wagmi, multi-chain, gas optimization' },
   { name: 'database-manager', desc: 'PostgreSQL, Prisma ORM, query optimization' },
   { name: 'devops-engineer', desc: 'CI/CD, Docker, GitHub Actions, cloud deployment' },
   { name: 'extension-developer', desc: 'Chrome Manifest V3, service workers, messaging' },
@@ -154,9 +154,9 @@ const subagents = [
   { name: 'frontend-developer', desc: 'React, Next.js, TanStack Query, Tailwind' },
   { name: 'indexer-developer', desc: 'Envio, The Graph, GraphQL, event handlers' },
   { name: 'mobile-developer', desc: 'React Native, Expo, biometrics, push notifications' },
-  { name: 'performance-engineer', desc: 'Profiling, caching, load testing, optimization (opus)' },
+  { name: 'performance-engineer', desc: 'Profiling, caching, load testing, optimization' },
   { name: 'testing-specialist', desc: 'Jest, Playwright, E2E, mocking strategies' },
-  { name: 'zk-specialist', desc: 'ZK circuits, Circom/Noir, trusted setup (opus)' },
+  { name: 'zk-specialist', desc: 'ZK circuits, Circom/Noir, trusted setup' },
 ]
 
 export default function AI() {

@@ -2,7 +2,7 @@
 name: devops-engineer
 author: Andrew Wilkinson (github.com/ADWilkinson)
 description: DevOps and infrastructure expert. Use PROACTIVELY for CI/CD pipelines, Docker, GitHub Actions, Vercel/Railway deployment, and cloud configuration.
-model: sonnet
+model: opus
 tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob, LS, WebFetch
 ---
 

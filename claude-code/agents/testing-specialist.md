@@ -2,7 +2,7 @@
 name: testing-specialist
 author: Andrew Wilkinson (github.com/ADWilkinson)
 description: Testing expert. Use PROACTIVELY for unit tests, integration tests, E2E with Playwright, mocking strategies, and test coverage.
-model: sonnet
+model: opus
 tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob, LS, WebFetch
 ---
 

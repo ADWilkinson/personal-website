@@ -16,20 +16,22 @@ cd personal-website/claude-code
 
 Specialized subagents invoked automatically by Claude Code's Task tool:
 
-| Agent | Model | Description |
-|-------|-------|-------------|
-| `backend-developer` | sonnet | Express/Node.js, REST APIs, authentication, webhooks |
-| `blockchain-specialist` | **opus** | Solidity, Wagmi, multi-chain, gas optimization |
-| `database-manager` | sonnet | PostgreSQL, Prisma ORM, query optimization |
-| `devops-engineer` | sonnet | CI/CD, Docker, GitHub Actions, cloud deployment |
-| `extension-developer` | sonnet | Chrome Manifest V3, service workers, messaging |
-| `firebase-specialist` | sonnet | Firestore, Cloud Functions, FCM, security rules |
-| `frontend-developer` | sonnet | React, Next.js, TanStack Query, Tailwind |
-| `indexer-developer` | sonnet | Envio, The Graph, GraphQL, event handlers |
-| `mobile-developer` | sonnet | React Native, Expo, biometrics, push notifications |
-| `performance-engineer` | **opus** | Profiling, caching, load testing, optimization |
-| `testing-specialist` | sonnet | Jest, Playwright, E2E, mocking strategies |
-| `zk-specialist` | **opus** | ZK circuits, Circom/Noir, trusted setup |
+| Agent | Description |
+|-------|-------------|
+| `backend-developer` | Express/Node.js, REST APIs, authentication, webhooks |
+| `blockchain-specialist` | Solidity, Wagmi, multi-chain, gas optimization |
+| `database-manager` | PostgreSQL, Prisma ORM, query optimization |
+| `devops-engineer` | CI/CD, Docker, GitHub Actions, cloud deployment |
+| `extension-developer` | Chrome Manifest V3, service workers, messaging |
+| `firebase-specialist` | Firestore, Cloud Functions, FCM, security rules |
+| `frontend-developer` | React, Next.js, TanStack Query, Tailwind |
+| `indexer-developer` | Envio, The Graph, GraphQL, event handlers |
+| `mobile-developer` | React Native, Expo, biometrics, push notifications |
+| `performance-engineer` | Profiling, caching, load testing, optimization |
+| `testing-specialist` | Jest, Playwright, E2E, mocking strategies |
+| `zk-specialist` | ZK circuits, Circom/Noir, trusted setup |
+
+All agents use **opus** model for maximum capability.
 
 ### Commands (2)
 

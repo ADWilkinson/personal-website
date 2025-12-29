@@ -2,7 +2,7 @@
 name: firebase-specialist
 author: Andrew Wilkinson (github.com/ADWilkinson)
 description: Firebase platform expert. Use PROACTIVELY for Firestore, Cloud Functions, Authentication, FCM push notifications, security rules, and real-time features.
-model: sonnet
+model: opus
 tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob, LS, WebFetch
 ---
 

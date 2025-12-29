@@ -2,7 +2,7 @@
 name: extension-developer
 author: Andrew Wilkinson (github.com/ADWilkinson)
 description: Browser extension expert. Use PROACTIVELY for Chrome Manifest V3, service workers, content scripts, extension messaging, and secure storage.
-model: sonnet
+model: opus
 tools: Read, Edit, MultiEdit, Write, Bash, Grep, Glob, LS, WebFetch
 ---
 
