@@ -74,7 +74,7 @@ export default function About() {
           </p>
 
           <p>
-            I use AI tools like Claude Code and Cursor daily, not just for my own work but to help teams ship faster. I've built production systems like Davy Jones (our team's AI intern handling PRs and builds in Slack) and Barbossa (five autonomous agents that ship code while you sleep). I help teams adopt AI workflows that actually work, showing how to use these tools as a force multiplier without losing the craft of engineering.
+            I use AI tools like Claude Code and Cursor daily, not just for my own work but to help teams ship faster. I've built production systems like Davy Jones (AI Slack bot that coordinates between GitHub, Linear, and Notion) and Barbossa (autonomous AI engineering agents that ship 24/7). I help teams adopt AI workflows that actually work, showing how to use these tools as a force multiplier without losing the craft of engineering.
           </p>
 
           <p>
