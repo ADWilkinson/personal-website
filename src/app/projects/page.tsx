@@ -222,8 +222,8 @@ function ProjectItem({
                 key={tag}
                 className={`text-[10px] px-1.5 py-0.5 rounded-md border transition-all duration-200 ${
                   variant === 'past'
-                    ? 'bg-transparent border-[var(--border-default)]/10 text-[var(--text-muted)] opacity-50 group-hover:opacity-70 group-hover:border-[var(--accent-primary)]/20 group-hover:text-[var(--accent-primary)]'
-                    : 'border-[var(--accent-primary)]/20 text-[var(--accent-primary)]/70 group-hover:border-[var(--accent-primary)]/40 group-hover:text-[var(--accent-primary)]'
+                    ? 'border-[var(--border-default)]/20 text-[var(--text-muted)] opacity-50 group-hover:opacity-70'
+                    : 'border-[var(--border-default)]/30 text-[var(--text-muted)] opacity-70 group-hover:opacity-100'
                 }`}
               >
                 {tag}

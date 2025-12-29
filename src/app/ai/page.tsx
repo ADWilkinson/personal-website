@@ -15,7 +15,7 @@ import {
 
 const sections = [
   { id: 'agents', label: 'Agents' },
-  { id: 'skills', label: 'Skills' },
+  { id: 'commands', label: 'Commands' },
 ]
 
 function useActiveSection() {
@@ -192,8 +192,8 @@ export default function AI() {
               </ToolSection>
             </section>
 
-            {/* Skills */}
-            <section id="skills" className="scroll-mt-8 space-y-12">
+            {/* Commands */}
+            <section id="commands" className="scroll-mt-8 space-y-12">
                 <ToolSection
                   title="/repo-polish"
                   description="Fire-and-forget repository cleanup. Creates a branch, fixes issues, opens a PR."
@@ -208,7 +208,7 @@ export default function AI() {
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Install</p>
                         <CodeBlock id="repo-polish-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/repo-polish.md \\
-  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/skills/repo-polish.md`}</CodeBlock>
+  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/commands/repo-polish.md`}</CodeBlock>
                       </div>
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Run</p>
@@ -232,7 +232,7 @@ export default function AI() {
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Install</p>
                         <CodeBlock id="update-claudes-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/update-claudes.md \\
-  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/skills/update-claudes.md`}</CodeBlock>
+  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/commands/update-claudes.md`}</CodeBlock>
                       </div>
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Run</p>
