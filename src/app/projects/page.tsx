@@ -64,13 +64,6 @@ const currentProjects = [
     tags: ['AI', 'Autonomous'],
   },
   {
-    name: 'ChordCraft',
-    desc: 'AI chord progression generator helping musicians create compelling harmonic sequences',
-    url: 'https://chordcraft.io',
-    icon: MusicIcon,
-    tags: ['AI', 'Music'],
-  },
-  {
     name: 'Broadside.fun',
     desc: 'Browser-based multiplayer naval combat game with up to 100 players battling in real-time',
     url: 'https://broadside.fun',
@@ -81,6 +74,13 @@ const currentProjects = [
 
 // Past projects
 const pastProjects = [
+  {
+    name: 'ChordCraft',
+    desc: 'AI chord progression generator helping musicians create compelling harmonic sequences',
+    url: 'https://chordcraft.io',
+    icon: MusicIcon,
+    tags: ['AI', 'Music'],
+  },
   {
     name: 'Piggy DAO',
     desc: 'Official website for Piggy DAO, a DeFAI agent developed by Superform with real-time analytics',
