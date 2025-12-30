@@ -275,8 +275,8 @@ export default function AI() {
                     <p className="text-xs font-medium text-[var(--text-primary)]">Usage Examples</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                       <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"show my tasks"</div>
-                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"what am I working on"</div>
-                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"create task: fix login bug"</div>
+                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"search rebrand issues"</div>
+                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"show my backlog"</div>
                       <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"mark ENG-123 done"</div>
                     </div>
                   </div>
