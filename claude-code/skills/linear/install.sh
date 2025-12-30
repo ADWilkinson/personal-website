@@ -27,6 +27,10 @@ cp "$SCRIPT_DIR/SKILL.md" "$SKILL_DIR/"
 cp "$SCRIPT_DIR/scripts/linear.ts" "$SKILL_DIR/scripts/"
 chmod +x "$SKILL_DIR/scripts/linear.ts"
 
+# Install npm dependency
+echo "Installing @linear/sdk..."
+cd "$SKILL_DIR" && npm init -y > /dev/null 2>&1 && npm install @linear/sdk > /dev/null 2>&1
+
 echo -e "${GREEN}✓${NC} Skill installed to $SKILL_DIR"
 
 # Check for API key

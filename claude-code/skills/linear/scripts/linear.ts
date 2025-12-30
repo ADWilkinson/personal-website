@@ -66,8 +66,7 @@ async function getMyTasks() {
     filter: {
       assignee: { id: { eq: me.id } },
       state: { type: { nin: ['completed', 'canceled'] } }
-    },
-    orderBy: client.LinearDocument.PaginationOrderBy.UpdatedAt
+    }
   });
 
   const formatted = await Promise.all(

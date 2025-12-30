@@ -17,6 +17,7 @@ import {
 const sections = [
   { id: 'agents', label: 'Barbossa System' },
   { id: 'subagents', label: 'Subagents' },
+  { id: 'skills', label: 'Skills' },
   { id: 'commands', label: 'Commands' },
   { id: 'statusline', label: 'Statusline' },
 ]
@@ -252,6 +253,49 @@ export default function AI() {
   cd personal-website/claude-code && ./install.sh`}</CodeBlock>
                     </div>
                   </div>
+                </div>
+              </ToolSection>
+            </section>
+
+            {/* Skills */}
+            <section id="skills" className="scroll-mt-8 pt-8 border-t border-[var(--border-default)]/20">
+              <ToolSection
+                title="Linear"
+                description="Auto-invoked skill for Linear task management. Just mention tasks or issues in natural language."
+                icon={ServerIcon}
+                url="https://github.com/ADWilkinson/personal-website/tree/main/claude-code/skills/linear"
+              >
+                <div className="space-y-6">
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                    Skills are automatically invoked by Claude when your request matches their description.
+                    No slash command needed—just talk naturally.
+                  </p>
+
+                  <div className="space-y-2">
+                    <p className="text-xs font-medium text-[var(--text-primary)]">Usage Examples</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"show my tasks"</div>
+                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"what am I working on"</div>
+                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"create task: fix login bug"</div>
+                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"mark ENG-123 done"</div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="space-y-1.5">
+                      <p className="text-xs text-[var(--text-muted)]">Install</p>
+                      <CodeBlock id="linear-install">{`git clone https://github.com/ADWilkinson/personal-website.git && \\
+  cd personal-website/claude-code/skills/linear && ./install.sh`}</CodeBlock>
+                    </div>
+                    <div className="space-y-1.5">
+                      <p className="text-xs text-[var(--text-muted)]">Configure (add to ~/.zshrc)</p>
+                      <CodeBlock id="linear-config">{`export LINEAR_API_KEY="lin_api_..."`}</CodeBlock>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-[var(--text-muted)]">
+                    Get your API key from Linear → Settings → Security & access → Personal API keys
+                  </p>
                 </div>
               </ToolSection>
             </section>
