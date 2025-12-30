@@ -12,10 +12,14 @@ import {
   CopyIcon,
   CheckIcon,
   DownloadIcon,
+  GitHubIcon,
+  StarIcon,
+  InfoIcon,
 } from '@/components/Icons'
 
 const sections = [
   { id: 'agents', label: 'Barbossa System' },
+  { id: 'types', label: 'Tool Types' },
   { id: 'subagents', label: 'Subagents' },
   { id: 'skills', label: 'Skills' },
   { id: 'commands', label: 'Commands' },
@@ -167,13 +171,55 @@ export default function AI() {
     <div className="relative w-[100vw] -ml-[calc((100vw-100%)/2)] px-6 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-5xl">
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-2xl font-semibold text-[var(--text-primary)]">
-            AI Tools
-          </h1>
-          <p className="mt-2 text-sm text-[var(--text-muted)] max-w-lg leading-relaxed">
-            Tools and automation I build for AI-assisted development.
-          </p>
+        <div className="mb-12 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-semibold text-[var(--text-primary)]">
+                AI Tools
+              </h1>
+              <p className="mt-2 text-sm text-[var(--text-muted)] max-w-lg leading-relaxed">
+                Tools and automation I build for AI-assisted development.
+              </p>
+            </div>
+            <Link
+              href="https://github.com/ADWilkinson/claude-code-tools"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.03] hover:bg-[var(--text-primary)]/[0.06] rounded-lg transition-all"
+            >
+              <GitHubIcon size={14} />
+              <span>Star on GitHub</span>
+              <StarIcon size={12} />
+            </Link>
+          </div>
+
+          {/* Stats */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[var(--text-muted)]">
+            <span>12 Subagents</span>
+            <span className="opacity-30">•</span>
+            <span>1 Skill</span>
+            <span className="opacity-30">•</span>
+            <span>2 Commands</span>
+            <span className="opacity-30">•</span>
+            <span>1 Statusline</span>
+          </div>
+
+          {/* Prerequisites */}
+          <div className="flex items-start gap-2 px-3 py-2 bg-teal-500/5 border border-teal-500/10 rounded-lg">
+            <InfoIcon size={14} className="text-teal-500 mt-0.5 shrink-0" />
+            <p className="text-xs text-[var(--text-muted)]">
+              Requires{' '}
+              <Link
+                href="https://github.com/anthropics/claude-code"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-teal-500 hover:underline"
+              >
+                Claude Code
+              </Link>
+              {' '}to be installed.
+            </p>
+          </div>
         </div>
 
         {/* Layout */}
@@ -211,6 +257,44 @@ export default function AI() {
                   </Link>
                 </div>
               </ToolSection>
+            </section>
+
+            {/* Tool Types Explainer */}
+            <section id="types" className="scroll-mt-8 pt-8 border-t border-[var(--border-default)]/20">
+              <div className="space-y-4">
+                <h3 className="text-sm font-medium text-[var(--text-primary)]">
+                  Understanding Tool Types
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-lg bg-[var(--text-primary)]/[0.02] border border-[var(--border-default)]/10">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CodeIcon size={14} className="text-[var(--text-muted)]" />
+                      <p className="text-xs font-medium text-[var(--text-primary)]">Subagents</p>
+                    </div>
+                    <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                      Invoked automatically by Claude via the Task tool when domain expertise is needed.
+                    </p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-[var(--text-primary)]/[0.02] border border-[var(--border-default)]/10">
+                    <div className="flex items-center gap-2 mb-2">
+                      <ServerIcon size={14} className="text-[var(--text-muted)]" />
+                      <p className="text-xs font-medium text-[var(--text-primary)]">Skills</p>
+                    </div>
+                    <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                      Auto-invoked when your request matches trigger words. No slash command needed.
+                    </p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-[var(--text-primary)]/[0.02] border border-[var(--border-default)]/10">
+                    <div className="flex items-center gap-2 mb-2">
+                      <TerminalIcon size={14} className="text-[var(--text-muted)]" />
+                      <p className="text-xs font-medium text-[var(--text-primary)]">Commands</p>
+                    </div>
+                    <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                      Manually triggered with slash notation like <code className="text-teal-500">/repo-polish</code>.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </section>
 
             {/* Subagents */}
