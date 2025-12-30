@@ -27,10 +27,12 @@ export default (props) => <ArticleLayout article={article} {...props} />
 
 ## Prerequisites
 
-- Linux server (Ubuntu 22.04+ recommended)
+- Linux server (Ubuntu 22.04+) or macOS (Intel/Apple Silicon)
 - [Docker](https://docs.docker.com/get-docker/)
 - [GitHub CLI](https://cli.github.com/)
-- [Claude Max subscription](https://claude.ai)
+- **Claude authentication** (one of):
+  - [Claude Pro/Max subscription](https://claude.ai) — recommended, long-lasting tokens
+  - [Anthropic API key](https://console.anthropic.com) — pay-as-you-go
 
 ## Quick Start
 
@@ -43,22 +45,35 @@ sudo usermod -aG docker $USER && newgrp docker
 
 # GitHub CLI
 sudo apt install gh -y
+
+# Claude Code CLI
+npm install -g @anthropic-ai/claude-code
 ```
 
-### 2. Authenticate
+### 2. Generate tokens
 
 ```bash
+# GitHub token
 gh auth login
-npm install -g @anthropic-ai/claude-code && claude login
+gh auth token  # Save this output
+
+# Claude token (recommended for subscriptions)
+claude setup-token  # Follow prompts, save the token
+
+# Or use Anthropic API key instead
+# Get from: https://console.anthropic.com/settings/keys
 ```
 
 ### 3. Install Barbossa
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ADWilkinson/barbossa-dev/main/scripts/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ADWilkinson/barbossa-dev/main/install.sh | bash
 ```
 
-Enter your GitHub username and repository when prompted.
+The script will prompt for:
+- GitHub username and repository
+- GitHub token (from `gh auth token`)
+- Claude token or Anthropic API key
 
 ### 4. Start
 
@@ -72,7 +87,7 @@ cd barbossa && docker compose up -d
 docker exec barbossa barbossa health
 ```
 
-That's it. Barbossa is now running.
+All checks should pass. Barbossa is now running.
 
 ## Adding More Repositories
 
@@ -137,7 +152,7 @@ To use Linear instead of GitHub Issues, add to your `repositories.json`:
 }
 ```
 
-Then set `LINEAR_API_KEY=lin_api_xxx` in `docker-compose.yml` under environment.
+Then add `LINEAR_API_KEY=lin_api_xxx` to your `.env` file.
 
 ## Commands
 
@@ -151,7 +166,7 @@ docker compose pull && docker compose up -d # Update
 
 ## Troubleshooting
 
-**Auth issues:** Re-run `gh auth login` or `claude login`, then `docker compose restart`
+**Token issues:** Regenerate with `gh auth token` or `claude setup-token`, update `.env`, then `docker compose restart`
 
 **No PRs created:** Check for `backlog` labeled issues, or run `docker exec barbossa barbossa run engineer`
 
