@@ -3,37 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { ArrowRightIcon, MailIcon } from '@/components/Icons'
-import { GitHubIcon, XIcon, LinkedInIcon } from '@/components/SocialIcons'
+import { ArrowRightIcon } from '@/components/Icons'
 import portraitImage from '@/images/portrait.webp'
 import davyjonesImage from '@/images/galleon/davyjones.png'
-import { SOCIAL_LINKS } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'About',
   description: "I'm Andrew. Software Engineer at ZKP2P, Former VC-backed Founder.",
-}
-
-function SocialLink({
-  href,
-  icon: Icon,
-  children,
-}: {
-  href: string
-  icon: React.ComponentType<{ className?: string }>
-  children: React.ReactNode
-}) {
-  return (
-    <Link
-      href={href}
-      className="group flex items-center gap-1.5 text-sm text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent-primary)]"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Icon className="h-4 w-4 fill-current transition-transform duration-200 group-hover:scale-110" />
-      <span className="link-underline">{children}</span>
-    </Link>
-  )
 }
 
 export default function About() {
@@ -116,24 +92,6 @@ export default function About() {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-4 pt-2">
-          <SocialLink href={SOCIAL_LINKS.github} icon={GitHubIcon}>
-            GitHub
-          </SocialLink>
-          <SocialLink href={SOCIAL_LINKS.twitter} icon={XIcon}>
-            Twitter
-          </SocialLink>
-          <SocialLink href={SOCIAL_LINKS.linkedin} icon={LinkedInIcon}>
-            LinkedIn
-          </SocialLink>
-          <Link
-            href="mailto:gm@andrewwilkinson.io"
-            className="group flex items-center gap-1.5 text-sm text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent-primary)]"
-          >
-            <MailIcon size={16} className="transition-transform duration-200 group-hover:scale-110" />
-            <span className="link-underline">Email</span>
-          </Link>
-        </div>
       </div>
     </SimpleLayout>
   )
