@@ -33,6 +33,22 @@ Specialized subagents invoked automatically by Claude Code's Task tool:
 
 All agents use **opus** model for maximum capability.
 
+### Skills (1)
+
+Auto-invoked skills that Claude applies when relevant:
+
+| Skill | Trigger | Description |
+|-------|---------|-------------|
+| `linear` | "tasks", "issues", "Linear" | Simple Linear task management - view, create, update issues |
+
+**Linear Skill Setup:**
+```bash
+cd skills/linear && ./install.sh
+export LINEAR_API_KEY="lin_api_..."  # Add to ~/.zshrc
+```
+
+Then just talk naturally: "show my tasks", "create task: fix the bug", "mark ENG-123 done"
+
 ### Commands (2)
 
 Slash commands for common workflows:
