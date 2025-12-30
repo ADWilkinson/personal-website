@@ -467,6 +467,32 @@ export default function AI() {
 
             {/* Commands */}
             <section id="commands" className="scroll-mt-8 space-y-12 pt-8">
+                {/* Commands Intro */}
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <h3 className="text-sm font-medium text-[var(--text-primary)]">Slash Commands</h3>
+                    <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                      Commands are invoked with <code className="text-xs font-medium text-[var(--text-primary)] bg-[var(--text-primary)]/[0.05] px-1.5 py-0.5 rounded">/command-name</code> in Claude Code.
+                      They execute structured workflows automatically.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="space-y-1.5">
+                      <p className="text-xs font-medium text-[var(--text-primary)]">One-Time Setup</p>
+                      <p className="text-xs text-[var(--text-muted)]">Run once to create the commands directory:</p>
+                      <CodeBlock id="commands-setup">{`mkdir -p ~/.claude/commands`}</CodeBlock>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <p className="text-xs font-medium text-[var(--text-primary)]">Quick Install (All Commands)</p>
+                      <CodeBlock id="commands-install-all">{`curl -o ~/.claude/commands/repo-polish.md ${GITHUB_RAW_BASE}/commands/repo-polish.md && \\
+curl -o ~/.claude/commands/update-claudes.md ${GITHUB_RAW_BASE}/commands/update-claudes.md && \\
+curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-ui.md`}</CodeBlock>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--text-primary)]/[0.03]">
@@ -500,12 +526,11 @@ export default function AI() {
                     </p>
                     <div className="space-y-3">
                       <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Install</p>
-                        <CodeBlock id="repo-polish-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/repo-polish.md \\
-  ${GITHUB_RAW_BASE}/commands/repo-polish.md`}</CodeBlock>
+                        <p className="text-xs text-[var(--text-muted)]">Install (after one-time setup above)</p>
+                        <CodeBlock id="repo-polish-install">{`curl -o ~/.claude/commands/repo-polish.md ${GITHUB_RAW_BASE}/commands/repo-polish.md`}</CodeBlock>
                       </div>
                       <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Run</p>
+                        <p className="text-xs text-[var(--text-muted)]">Usage</p>
                         <CodeBlock id="repo-polish-run">{`/repo-polish`}</CodeBlock>
                       </div>
                     </div>
@@ -545,12 +570,11 @@ export default function AI() {
                     </p>
                     <div className="space-y-3">
                       <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Install</p>
-                        <CodeBlock id="update-claudes-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/update-claudes.md \\
-  ${GITHUB_RAW_BASE}/commands/update-claudes.md`}</CodeBlock>
+                        <p className="text-xs text-[var(--text-muted)]">Install (after one-time setup above)</p>
+                        <CodeBlock id="update-claudes-install">{`curl -o ~/.claude/commands/update-claudes.md ${GITHUB_RAW_BASE}/commands/update-claudes.md`}</CodeBlock>
                       </div>
                       <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Run</p>
+                        <p className="text-xs text-[var(--text-muted)]">Usage</p>
                         <CodeBlock id="update-claudes-run">{`/update-claudes`}</CodeBlock>
                       </div>
                     </div>
@@ -635,12 +659,11 @@ export default function AI() {
 
                     <div className="space-y-3">
                       <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Install</p>
-                        <CodeBlock id="minimize-ui-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/minimize-ui.md \\
-  ${GITHUB_RAW_BASE}/commands/minimize-ui.md`}</CodeBlock>
+                        <p className="text-xs text-[var(--text-muted)]">Install (after one-time setup above)</p>
+                        <CodeBlock id="minimize-ui-install">{`curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-ui.md`}</CodeBlock>
                       </div>
                       <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Run</p>
+                        <p className="text-xs text-[var(--text-muted)]">Usage</p>
                         <CodeBlock id="minimize-ui-run">{`/minimize-ui`}</CodeBlock>
                       </div>
                     </div>
