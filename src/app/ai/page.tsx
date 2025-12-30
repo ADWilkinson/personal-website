@@ -143,7 +143,7 @@ function ToolSection({
   )
 }
 
-const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/ADWilkinson/personal-website/main/claude-code'
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/ADWilkinson/claude-code-tools/main'
 
 const subagents = [
   { name: 'backend-developer', desc: 'Express/Node.js, REST APIs, authentication, webhooks' },
@@ -219,7 +219,7 @@ export default function AI() {
                 title="Claude Code Subagents"
                 description="12 specialized subagents for Claude Code. Each brings deep expertise in a specific domain."
                 icon={CodeIcon}
-                url="https://github.com/ADWilkinson/personal-website/tree/main/claude-code/agents"
+                url="https://github.com/ADWilkinson/claude-code-tools/tree/main/agents"
               >
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
@@ -249,8 +249,8 @@ export default function AI() {
                   <div className="space-y-3 pt-2">
                     <div className="space-y-1.5">
                       <p className="text-xs text-[var(--text-muted)]">Quick Install (all tools)</p>
-                      <CodeBlock id="subagents-install">{`git clone https://github.com/ADWilkinson/personal-website.git && \\
-  cd personal-website/claude-code && ./install.sh`}</CodeBlock>
+                      <CodeBlock id="subagents-install">{`git clone https://github.com/ADWilkinson/claude-code-tools.git && \\
+  cd claude-code-tools && ./install.sh`}</CodeBlock>
                     </div>
                   </div>
                 </div>
@@ -263,7 +263,7 @@ export default function AI() {
                 title="Linear"
                 description="Auto-invoked skill for Linear task management. Just mention tasks or issues in natural language."
                 icon={ServerIcon}
-                url="https://github.com/ADWilkinson/personal-website/tree/main/claude-code/skills/linear"
+                url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/linear"
               >
                 <div className="space-y-6">
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed">
@@ -284,8 +284,8 @@ export default function AI() {
                   <div className="space-y-3">
                     <div className="space-y-1.5">
                       <p className="text-xs text-[var(--text-muted)]">Install</p>
-                      <CodeBlock id="linear-install">{`git clone https://github.com/ADWilkinson/personal-website.git && \\
-  cd personal-website/claude-code/skills/linear && ./install.sh`}</CodeBlock>
+                      <CodeBlock id="linear-install">{`git clone https://github.com/ADWilkinson/claude-code-tools.git && \\
+  cd claude-code-tools/skills/linear && ./install.sh`}</CodeBlock>
                     </div>
                     <div className="space-y-1.5">
                       <p className="text-xs text-[var(--text-muted)]">Configure (add to ~/.zshrc)</p>
@@ -399,7 +399,7 @@ export default function AI() {
                 title="Flying Dutchman Statusline"
                 description="Custom Claude Code statusline showing git branch, activity icons, cost tracking, and lines changed."
                 icon={TerminalIcon}
-                url="https://github.com/ADWilkinson/personal-website/tree/main/claude-code/statusline"
+                url="https://github.com/ADWilkinson/claude-code-tools/tree/main/statusline"
               >
                 <div className="space-y-4">
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed">
@@ -410,7 +410,7 @@ export default function AI() {
                     <div className="space-y-1.5">
                       <p className="text-xs text-[var(--text-muted)]">Install</p>
                       <CodeBlock id="statusline-install">{`curl -o ~/.claude/flying-dutchman-statusline.sh \\
-  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/claude-code/statusline/flying-dutchman-statusline.sh && \\
+  https://raw.githubusercontent.com/ADWilkinson/claude-code-tools/main/statusline/flying-dutchman-statusline.sh && \\
   chmod +x ~/.claude/flying-dutchman-statusline.sh`}</CodeBlock>
                     </div>
                     <div className="space-y-1.5">
