@@ -143,7 +143,7 @@ function ToolSection({
   )
 }
 
-const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/ADWilkinson/personal-website/main/claude-code/agents'
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/ADWilkinson/personal-website/main/claude-code'
 
 const subagents = [
   { name: 'backend-developer', desc: 'Express/Node.js, REST APIs, authentication, webhooks' },
@@ -234,7 +234,7 @@ export default function AI() {
                           </p>
                         </div>
                         <a
-                          href={`${GITHUB_RAW_BASE}/${agent.name}.md`}
+                          href={`${GITHUB_RAW_BASE}/agents/${agent.name}.md`}
                           download={`${agent.name}.md`}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -302,12 +302,33 @@ export default function AI() {
 
             {/* Commands */}
             <section id="commands" className="scroll-mt-8 space-y-12 pt-8 border-t border-[var(--border-default)]/20">
-                <ToolSection
-                  title="/repo-polish"
-                  description="Fire-and-forget repository cleanup. Creates a branch, fixes issues, opens a PR."
-                  icon={TerminalIcon}
-                >
-                  <div className="space-y-4">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--text-primary)]/[0.03]">
+                      <TerminalIcon size={18} className="text-[var(--text-muted)]" />
+                    </div>
+                    <div className="space-y-1 pt-0.5 flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+                          /repo-polish
+                        </h3>
+                        <a
+                          href={`${GITHUB_RAW_BASE}/commands/repo-polish.md`}
+                          download="repo-polish.md"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 p-1 text-[var(--text-muted)] opacity-40 hover:opacity-100 hover:text-[var(--text-primary)] transition-all"
+                          title="Download repo-polish.md"
+                        >
+                          <DownloadIcon size={14} />
+                        </a>
+                      </div>
+                      <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                        Fire-and-forget repository cleanup. Creates a branch, fixes issues, opens a PR.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="pl-12 space-y-4">
                     <p className="text-sm text-[var(--text-muted)] leading-relaxed">
                       Scans for unused imports, debug statements, type gaps, and outdated docs.
                       Commits atomically and verifies tests pass.
@@ -316,7 +337,7 @@ export default function AI() {
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Install</p>
                         <CodeBlock id="repo-polish-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/repo-polish.md \\
-  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/claude-code/commands/repo-polish.md`}</CodeBlock>
+  ${GITHUB_RAW_BASE}/commands/repo-polish.md`}</CodeBlock>
                       </div>
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Run</p>
@@ -324,14 +345,35 @@ export default function AI() {
                       </div>
                     </div>
                   </div>
-                </ToolSection>
+                </div>
 
-                <ToolSection
-                  title="/update-claudes"
-                  description="Generates CLAUDE.md files throughout your project for AI context."
-                  icon={CodeIcon}
-                >
-                  <div className="space-y-4">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--text-primary)]/[0.03]">
+                      <CodeIcon size={18} className="text-[var(--text-muted)]" />
+                    </div>
+                    <div className="space-y-1 pt-0.5 flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+                          /update-claudes
+                        </h3>
+                        <a
+                          href={`${GITHUB_RAW_BASE}/commands/update-claudes.md`}
+                          download="update-claudes.md"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 p-1 text-[var(--text-muted)] opacity-40 hover:opacity-100 hover:text-[var(--text-primary)] transition-all"
+                          title="Download update-claudes.md"
+                        >
+                          <DownloadIcon size={14} />
+                        </a>
+                      </div>
+                      <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                        Generates CLAUDE.md files throughout your project for AI context.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="pl-12 space-y-4">
                     <p className="text-sm text-[var(--text-muted)] leading-relaxed">
                       Analyzes structure, spawns specialized agents, creates documentation
                       at root and component levels.
@@ -340,7 +382,7 @@ export default function AI() {
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Install</p>
                         <CodeBlock id="update-claudes-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/update-claudes.md \\
-  https://raw.githubusercontent.com/ADWilkinson/personal-website/main/claude-code/commands/update-claudes.md`}</CodeBlock>
+  ${GITHUB_RAW_BASE}/commands/update-claudes.md`}</CodeBlock>
                       </div>
                       <div className="space-y-1.5">
                         <p className="text-xs text-[var(--text-muted)]">Run</p>
@@ -348,7 +390,7 @@ export default function AI() {
                       </div>
                     </div>
                   </div>
-                </ToolSection>
+                </div>
             </section>
 
             {/* Statusline */}
