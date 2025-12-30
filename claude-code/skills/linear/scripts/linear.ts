@@ -148,13 +148,10 @@ async function createTask(title: string, assignToMe: boolean, teamKey?: string) 
 }
 
 async function updateState(issueId: string, targetStateName: string) {
-  // Find the issue
-  const issues = await client.issues({
-    filter: { identifier: { eq: issueId.toUpperCase() } }
-  });
-
-  const issue = issues.nodes[0];
-  if (!issue) {
+  let issue;
+  try {
+    issue = await client.issue(issueId.toUpperCase());
+  } catch {
     console.error(`ERROR: Issue ${issueId} not found`);
     process.exit(1);
   }
@@ -182,12 +179,10 @@ async function updateState(issueId: string, targetStateName: string) {
 }
 
 async function showIssue(issueId: string) {
-  const issues = await client.issues({
-    filter: { identifier: { eq: issueId.toUpperCase() } }
-  });
-
-  const issue = issues.nodes[0];
-  if (!issue) {
+  let issue;
+  try {
+    issue = await client.issue(issueId.toUpperCase());
+  } catch {
     console.error(`ERROR: Issue ${issueId} not found`);
     process.exit(1);
   }
@@ -213,12 +208,10 @@ async function showIssue(issueId: string) {
 }
 
 async function addComment(issueId: string, body: string) {
-  const issues = await client.issues({
-    filter: { identifier: { eq: issueId.toUpperCase() } }
-  });
-
-  const issue = issues.nodes[0];
-  if (!issue) {
+  let issue;
+  try {
+    issue = await client.issue(issueId.toUpperCase());
+  } catch {
     console.error(`ERROR: Issue ${issueId} not found`);
     process.exit(1);
   }
