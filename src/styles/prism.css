@@ -40,7 +40,6 @@ pre[class*='language-'] {
   color: var(--accent-hover);
 }
 
-.token.comment,
 .token.operator,
 .token.combinator {
   color: var(--text-muted);

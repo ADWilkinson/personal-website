@@ -1,0 +1,167 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Andrew Wilkinson',
+  date: '2025-12-30',
+  title: 'Setting Up Barbossa.dev: Your AI Engineering Team',
+  description:
+    'Deploy five AI agents on your server that discover issues, write code, create PRs, and review each other\'s work autonomously.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+[Barbossa](https://barbossa.dev) is a team of five AI agents that work on your codebase while you sleep:
+
+| Agent | What it does |
+|-------|--------------|
+| **Discovery** | Finds TODOs, missing tests, issues |
+| **Product Manager** | Proposes features from your docs |
+| **Engineer** | Picks from backlog, creates PRs |
+| **Tech Lead** | Reviews PRs, merges or requests changes |
+| **Auditor** | Monitors system health |
+
+## Prerequisites
+
+- Linux server (Ubuntu 22.04+ recommended)
+- [Docker](https://docs.docker.com/get-docker/)
+- [GitHub CLI](https://cli.github.com/)
+- [Claude Max subscription](https://claude.ai)
+
+## Quick Start
+
+### 1. Install dependencies
+
+```bash
+# Docker
+curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker $USER && newgrp docker
+
+# GitHub CLI
+sudo apt install gh -y
+```
+
+### 2. Authenticate
+
+```bash
+gh auth login
+npm install -g @anthropic-ai/claude-code && claude login
+```
+
+### 3. Install Barbossa
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ADWilkinson/barbossa-dev/main/scripts/install.sh | bash
+```
+
+Enter your GitHub username and repository when prompted.
+
+### 4. Start
+
+```bash
+cd barbossa && docker compose up -d
+```
+
+### 5. Verify
+
+```bash
+docker exec barbossa barbossa health
+```
+
+That's it. Barbossa is now running.
+
+## Adding More Repositories
+
+Edit `config/repositories.json`:
+
+```json
+{
+  "owner": "your-username",
+  "repositories": [
+    {
+      "name": "my-app",
+      "url": "https://github.com/your-username/my-app.git"
+    },
+    {
+      "name": "my-api",
+      "url": "https://github.com/your-username/my-api.git"
+    }
+  ]
+}
+```
+
+Then restart: `docker compose restart`
+
+## Configuration Options
+
+```json
+{
+  "owner": "your-username",
+  "repositories": [
+    {
+      "name": "my-app",
+      "url": "https://github.com/your-username/my-app.git",
+      "package_manager": "pnpm",
+      "do_not_touch": [".env*", "prisma/migrations/"]
+    }
+  ],
+  "settings": {
+    "tech_lead": { "auto_merge": true }
+  }
+}
+```
+
+All agents are enabled by default. Common options:
+
+- `package_manager` — npm, yarn, pnpm, or bun (auto-detected if omitted)
+- `do_not_touch` — files agents should never modify
+- `auto_merge` — PRs merge automatically when approved (default: `true`)
+
+## Linear Integration
+
+To use Linear instead of GitHub Issues, add to your `repositories.json`:
+
+```json
+{
+  "issue_tracker": {
+    "type": "linear",
+    "linear": {
+      "team_key": "ENG",
+      "backlog_state": "Backlog"
+    }
+  }
+}
+```
+
+Then set `LINEAR_API_KEY=lin_api_xxx` in `docker-compose.yml` under environment.
+
+## Commands
+
+```bash
+docker exec barbossa barbossa health        # Status
+docker exec barbossa barbossa run engineer  # Run agent manually
+docker exec barbossa barbossa status        # Activity log
+docker compose logs -f                      # Live logs
+docker compose pull && docker compose up -d # Update
+```
+
+## Troubleshooting
+
+**Auth issues:** Re-run `gh auth login` or `claude login`, then `docker compose restart`
+
+**No PRs created:** Check for `backlog` labeled issues, or run `docker exec barbossa barbossa run engineer`
+
+**Container crashing:** Check `docker compose logs barbossa` for config errors
+
+## Resources
+
+- [barbossa.dev](https://barbossa.dev) — Documentation
+- [GitHub](https://github.com/ADWilkinson/barbossa-dev) — Source code
+
+## What's Next
+
+If you're enjoying Barbossa, I've also put together a [collection of Claude Code tools](/ai) — skills, subagents, themes, and MCP servers I use daily. Worth a look if you want to squeeze more out of your setup.

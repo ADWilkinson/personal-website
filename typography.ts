@@ -25,6 +25,29 @@ export default {
           '--tw-prose-pre-border': 'var(--tw-prose-invert-pre-border)',
           '--tw-prose-th-borders': 'var(--tw-prose-invert-th-borders)',
           '--tw-prose-td-borders': 'var(--tw-prose-invert-td-borders)',
+          // Force light code text in dark mode
+          'pre': {
+            color: '#e5e7eb',
+          },
+          'pre code': {
+            color: '#e5e7eb',
+          },
+          // Syntax highlighting for dark mode
+          'pre code .token': {
+            color: '#e5e7eb',
+          },
+          'pre code .token.comment': {
+            color: '#9ca3af',
+          },
+          'pre code .token.keyword': {
+            color: '#93c5fd',
+          },
+          'pre code .token.function': {
+            color: '#93c5fd',
+          },
+          'pre code .token.string': {
+            color: '#86efac',
+          },
         },
       },
       DEFAULT: {
@@ -209,12 +232,28 @@ export default {
           },
           'pre code': {
             display: 'inline',
-            color: 'inherit',
+            color: '#e5e7eb',
             fontSize: 'inherit',
             fontWeight: 'inherit',
             backgroundColor: 'transparent',
             borderRadius: 0,
             padding: 0,
+          },
+          // Syntax highlighting (code blocks have dark bg in both modes)
+          'pre code .token': {
+            color: '#e5e7eb',
+          },
+          'pre code .token.comment': {
+            color: '#9ca3af',
+          },
+          'pre code .token.keyword': {
+            color: '#93c5fd',
+          },
+          'pre code .token.function': {
+            color: '#93c5fd',
+          },
+          'pre code .token.string': {
+            color: '#86efac',
           },
 
           // Horizontal rules
