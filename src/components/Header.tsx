@@ -192,19 +192,16 @@ function MobileNavigation({
         </div>
         <nav className="mt-4">
           <ul className="divide-y divide-[var(--border-default)]/10">
-            <MobileNavItem href="/" isActive={currentPath === '/'} onClick={closeMenu} index={0}>
-              Home
-            </MobileNavItem>
-            <MobileNavItem href="/about" isActive={currentPath === '/about'} onClick={closeMenu} index={1}>
+            <MobileNavItem href="/about" isActive={currentPath === '/about'} onClick={closeMenu} index={0}>
               About
             </MobileNavItem>
-            <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')} onClick={closeMenu} index={2}>
+            <MobileNavItem href="/articles" isActive={currentPath.startsWith('/articles')} onClick={closeMenu} index={1}>
               Writing
             </MobileNavItem>
-            <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')} onClick={closeMenu} index={3}>
+            <MobileNavItem href="/projects" isActive={currentPath.startsWith('/projects')} onClick={closeMenu} index={2}>
               Projects
             </MobileNavItem>
-            <MobileNavItem href="/ai" isActive={currentPath.startsWith('/ai')} onClick={closeMenu} index={4}>
+            <MobileNavItem href="/ai" isActive={currentPath.startsWith('/ai')} onClick={closeMenu} index={3}>
               AI Tools
             </MobileNavItem>
           </ul>
@@ -290,9 +287,6 @@ function DesktopNavigation({
   return (
     <nav {...props}>
       <ul className="flex items-center gap-6">
-        <NavItem href="/" isActive={currentPath === '/'}>
-          Home
-        </NavItem>
         <NavItem href="/about" isActive={currentPath === '/about'}>
           About
         </NavItem>

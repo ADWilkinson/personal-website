@@ -223,20 +223,17 @@ function ProjectItem({
           <span className={`text-sm text-[var(--text-muted)] line-clamp-2 ${
             variant === 'past' ? 'opacity-60' : 'opacity-80'
           }`}>{project.desc}</span>
-          {/* Tags positioned absolutely */}
-          <div className="absolute right-0 top-0 hidden sm:flex items-center gap-1.5">
-            {project.tags.slice(0, 2).map((tag) => (
-              <span
-                key={tag}
-                className={`text-[10px] px-1.5 py-0.5 rounded-md border transition-all duration-200 ${
-                  variant === 'past'
-                    ? 'border-[var(--border-default)]/20 text-[var(--text-muted)] opacity-50 group-hover:opacity-70'
-                    : 'border-[var(--border-default)]/30 text-[var(--text-muted)] opacity-70 group-hover:opacity-100'
-                }`}
-              >
-                {tag}
-              </span>
-            ))}
+          {/* Tag positioned absolutely */}
+          <div className="absolute right-0 top-0 hidden sm:flex items-center">
+            <span
+              className={`text-[10px] px-1.5 py-0.5 rounded-md border transition-all duration-200 ${
+                variant === 'past'
+                  ? 'border-[var(--border-default)]/20 text-[var(--text-muted)] opacity-50 group-hover:opacity-70'
+                  : 'border-[var(--border-default)]/30 text-[var(--text-muted)] opacity-70 group-hover:opacity-100'
+              }`}
+            >
+              {project.tags[0]}
+            </span>
           </div>
         </div>
       </Link>
