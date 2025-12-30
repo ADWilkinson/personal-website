@@ -19,6 +19,7 @@ import {
 
 const sections = [
   { id: 'agents', label: 'Barbossa System' },
+  { id: 'claude-code', label: 'Claude Code', isHeader: true },
   { id: 'types', label: 'Tool Types' },
   { id: 'subagents', label: 'Subagents' },
   { id: 'skills', label: 'Skills' },
@@ -55,19 +56,27 @@ function useActiveSection() {
 function SideNav({ activeSection }: { activeSection: string }) {
   return (
     <nav className="space-y-1">
-      {sections.map(({ id, label }) => (
-        <a
-          key={id}
-          href={`#${id}`}
-          className={clsx(
-            'block py-1.5 pl-3 text-sm border-l-2 transition-all duration-200',
-            activeSection === id
-              ? 'border-teal-500 text-[var(--text-primary)] font-medium bg-teal-500/5'
-              : 'border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--border-default)]/50'
-          )}
-        >
-          {label}
-        </a>
+      {sections.map(({ id, label, isHeader }) => (
+        isHeader ? (
+          <div key={id} className="pt-4 pb-1">
+            <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-60">
+              {label}
+            </p>
+          </div>
+        ) : (
+          <a
+            key={id}
+            href={`#${id}`}
+            className={clsx(
+              'block py-1.5 pl-3 text-sm border-l-2 transition-all duration-200',
+              activeSection === id
+                ? 'border-[var(--text-primary)]/30 text-[var(--text-primary)] font-medium'
+                : 'border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--border-default)]/50'
+            )}
+          >
+            {label}
+          </a>
+        )
       ))}
     </nav>
   )
@@ -193,34 +202,7 @@ export default function AI() {
             </Link>
           </div>
 
-          {/* Stats */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[var(--text-muted)]">
-            <span>12 Subagents</span>
-            <span className="opacity-30">•</span>
-            <span>1 Skill</span>
-            <span className="opacity-30">•</span>
-            <span>2 Commands</span>
-            <span className="opacity-30">•</span>
-            <span>1 Statusline</span>
           </div>
-
-          {/* Prerequisites */}
-          <div className="flex items-start gap-2 px-3 py-2 bg-teal-500/5 border border-teal-500/10 rounded-lg">
-            <InfoIcon size={14} className="text-teal-500 mt-0.5 shrink-0" />
-            <p className="text-xs text-[var(--text-muted)]">
-              Requires{' '}
-              <Link
-                href="https://github.com/anthropics/claude-code"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-teal-500 hover:underline"
-              >
-                Claude Code
-              </Link>
-              {' '}to be installed.
-            </p>
-          </div>
-        </div>
 
         {/* Layout */}
         <div className="flex gap-16">
@@ -259,8 +241,27 @@ export default function AI() {
               </ToolSection>
             </section>
 
+            {/* Claude Code Section */}
+            <section id="claude-code" className="scroll-mt-8 pt-8 border-t border-[var(--border-default)]/20">
+              <div className="space-y-2 mb-8">
+                <h2 className="text-lg font-medium text-[var(--text-primary)]">Claude Code Tools</h2>
+                <p className="text-sm text-[var(--text-muted)]">
+                  Requires{' '}
+                  <Link
+                    href="https://github.com/anthropics/claude-code"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 hover:text-[var(--text-primary)] transition-colors"
+                  >
+                    Claude Code
+                  </Link>
+                  {' '}to be installed.
+                </p>
+              </div>
+            </section>
+
             {/* Tool Types Explainer */}
-            <section id="types" className="scroll-mt-8 pt-8 border-t border-[var(--border-default)]/20">
+            <section id="types" className="scroll-mt-8">
               <div className="space-y-4">
                 <h3 className="text-sm font-medium text-[var(--text-primary)]">
                   Understanding Tool Types
@@ -290,7 +291,7 @@ export default function AI() {
                       <p className="text-xs font-medium text-[var(--text-primary)]">Commands</p>
                     </div>
                     <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                      Manually triggered with slash notation like <code className="text-teal-500">/repo-polish</code>.
+                      Manually triggered with slash notation like <code className="font-medium text-[var(--text-primary)]">/repo-polish</code>.
                     </p>
                   </div>
                 </div>
@@ -298,7 +299,7 @@ export default function AI() {
             </section>
 
             {/* Subagents */}
-            <section id="subagents" className="scroll-mt-8 pt-8 border-t border-[var(--border-default)]/20">
+            <section id="subagents" className="scroll-mt-8 pt-8">
               <ToolSection
                 title="Claude Code Subagents"
                 description="12 specialized subagents for Claude Code. Each brings deep expertise in a specific domain."
@@ -342,7 +343,7 @@ export default function AI() {
             </section>
 
             {/* Skills */}
-            <section id="skills" className="scroll-mt-8 pt-8 border-t border-[var(--border-default)]/20">
+            <section id="skills" className="scroll-mt-8 pt-8">
               <ToolSection
                 title="Linear"
                 description="Auto-invoked skill for Linear task management. Just mention tasks or issues in natural language."
@@ -385,7 +386,7 @@ export default function AI() {
             </section>
 
             {/* Commands */}
-            <section id="commands" className="scroll-mt-8 space-y-12 pt-8 border-t border-[var(--border-default)]/20">
+            <section id="commands" className="scroll-mt-8 space-y-12 pt-8">
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--text-primary)]/[0.03]">
@@ -478,7 +479,7 @@ export default function AI() {
             </section>
 
             {/* Statusline */}
-            <section id="statusline" className="scroll-mt-8 pt-8 border-t border-[var(--border-default)]/20">
+            <section id="statusline" className="scroll-mt-8 pt-8">
               <ToolSection
                 title="Flying Dutchman Statusline"
                 description="Custom Claude Code statusline showing git branch, activity icons, cost tracking, and lines changed."
