@@ -556,6 +556,96 @@ export default function AI() {
                     </div>
                   </div>
                 </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--text-primary)]/[0.03]">
+                      <CodeIcon size={18} className="text-[var(--text-muted)]" />
+                    </div>
+                    <div className="space-y-1 pt-0.5 flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+                          /minimize-ui
+                        </h3>
+                        <a
+                          href={`${GITHUB_RAW_BASE}/commands/minimize-ui.md`}
+                          download="minimize-ui.md"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 p-1 text-[var(--text-muted)] opacity-40 hover:opacity-100 hover:text-[var(--text-primary)] transition-all"
+                          title="Download minimize-ui.md"
+                        >
+                          <DownloadIcon size={14} />
+                        </a>
+                      </div>
+                      <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                        Systematic UI minimalization through ruthless reduction. Remove before polish.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="pl-12 space-y-4">
+                    <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                      7-phase workflow that audits your UI, identifies bloat, and removes everything
+                      that doesn't serve the user's core journey. Creates branch, captures before/after
+                      screenshots, and opens PR with visual comparison.
+                    </p>
+
+                    <div className="space-y-2">
+                      <p className="text-xs font-medium text-[var(--text-primary)]">Workflow</p>
+                      <ul className="text-xs text-[var(--text-muted)] space-y-1 list-disc list-inside">
+                        <li>Creates dedicated branch (minimize-ui/timestamp)</li>
+                        <li>Runs dev server and captures before screenshots</li>
+                        <li>Audits UI against 6 reduction categories</li>
+                        <li>Executes changes grouped by impact (HIGH → MEDIUM → LOW)</li>
+                        <li>Applies design principles (spacing, hierarchy, consistency)</li>
+                        <li>Captures after screenshots and generates side-by-side HTML</li>
+                        <li>Opens PR with metrics (element count, color reduction, etc.)</li>
+                      </ul>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-xs font-medium text-[var(--text-primary)]">Design Principles Applied</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <div className="text-[var(--text-muted)]">
+                          <span className="font-medium text-[var(--text-primary)]">Proximity:</span> Inner spacing &lt; outer
+                        </div>
+                        <div className="text-[var(--text-muted)]">
+                          <span className="font-medium text-[var(--text-primary)]">Fitts's Law:</span> Bigger targets easier to hit
+                        </div>
+                        <div className="text-[var(--text-muted)]">
+                          <span className="font-medium text-[var(--text-primary)]">Emphasis:</span> One focal point per screen
+                        </div>
+                        <div className="text-[var(--text-muted)]">
+                          <span className="font-medium text-[var(--text-primary)]">White Space:</span> Premium feel through spacing
+                        </div>
+                        <div className="text-[var(--text-muted)]">
+                          <span className="font-medium text-[var(--text-primary)]">Consistency:</span> System of rules across UI
+                        </div>
+                        <div className="text-[var(--text-muted)]">
+                          <span className="font-medium text-[var(--text-primary)]">Modularity:</span> Grid-aligned rectangles
+                        </div>
+                        <div className="text-[var(--text-muted)]">
+                          <span className="font-medium text-[var(--text-primary)]">Anchor Objects:</span> Corners/center placement
+                        </div>
+                        <div className="text-[var(--text-muted)]">
+                          <span className="font-medium text-[var(--text-primary)]">Z/F Patterns:</span> Natural eye scanning flow
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div className="space-y-1.5">
+                        <p className="text-xs text-[var(--text-muted)]">Install</p>
+                        <CodeBlock id="minimize-ui-install">{`mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/minimize-ui.md \\
+  ${GITHUB_RAW_BASE}/commands/minimize-ui.md`}</CodeBlock>
+                      </div>
+                      <div className="space-y-1.5">
+                        <p className="text-xs text-[var(--text-muted)]">Run</p>
+                        <CodeBlock id="minimize-ui-run">{`/minimize-ui`}</CodeBlock>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </section>
 
             {/* Statusline */}
