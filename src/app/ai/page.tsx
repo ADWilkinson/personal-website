@@ -14,7 +14,8 @@ import {
   DownloadIcon,
   GitHubIcon,
   StarIcon,
-  InfoIcon,
+  MenuIcon,
+  XIcon,
 } from '@/components/Icons'
 
 const sections = [
@@ -53,7 +54,7 @@ function useActiveSection() {
   return activeSection
 }
 
-function SideNav({ activeSection }: { activeSection: string }) {
+function SideNav({ activeSection, onNavigate }: { activeSection: string; onNavigate?: () => void }) {
   return (
     <nav className="space-y-1">
       {sections.map(({ id, label, isHeader }) => (
@@ -67,6 +68,7 @@ function SideNav({ activeSection }: { activeSection: string }) {
           <a
             key={id}
             href={`#${id}`}
+            onClick={onNavigate}
             className={clsx(
               'block py-1.5 pl-3 text-sm border-l-2 transition-all duration-200',
               activeSection === id
@@ -79,6 +81,82 @@ function SideNav({ activeSection }: { activeSection: string }) {
         )
       ))}
     </nav>
+  )
+}
+
+function MobileNav({ activeSection }: { activeSection: string }) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <>
+      {/* Mobile menu button */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="lg:hidden fixed bottom-6 right-6 z-40 p-3 bg-[var(--bg-primary)] border border-[var(--border-default)]/20 rounded-full shadow-lg"
+        aria-label="Open navigation"
+      >
+        <MenuIcon size={20} className="text-[var(--text-primary)]" />
+      </button>
+
+      {/* Mobile menu overlay */}
+      {isOpen && (
+        <div className="lg:hidden fixed inset-0 z-50">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="absolute bottom-0 left-0 right-0 bg-[var(--bg-primary)] border-t border-[var(--border-default)]/20 rounded-t-2xl p-6 max-h-[70vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-sm font-medium text-[var(--text-primary)]">Navigate</p>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-1 text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+                aria-label="Close navigation"
+              >
+                <XIcon size={20} />
+              </button>
+            </div>
+            <SideNav activeSection={activeSection} onNavigate={() => setIsOpen(false)} />
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
+
+const INSTALL_COMMAND = `git clone https://github.com/ADWilkinson/claude-code-tools.git && cd claude-code-tools && ./install.sh`
+
+function InstallButton() {
+  const [copied, setCopied] = useState(false)
+
+  const copy = async () => {
+    await navigator.clipboard.writeText(INSTALL_COMMAND)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  return (
+    <button
+      onClick={copy}
+      className={clsx(
+        'inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-lg transition-all',
+        copied
+          ? 'bg-green-500/10 text-green-600'
+          : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.03] hover:bg-[var(--text-primary)]/[0.06]'
+      )}
+    >
+      {copied ? (
+        <>
+          <CheckIcon size={12} />
+          <span>Copied!</span>
+        </>
+      ) : (
+        <>
+          <CopyIcon size={12} />
+          <span>Copy install command</span>
+        </>
+      )}
+    </button>
   )
 }
 
@@ -190,16 +268,18 @@ export default function AI() {
                 Tools and automation I build for AI-assisted development.
               </p>
             </div>
-            <Link
-              href="https://github.com/ADWilkinson/claude-code-tools"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.03] hover:bg-[var(--text-primary)]/[0.06] rounded-lg transition-all"
-            >
-              <GitHubIcon size={14} />
-              <span>Star on GitHub</span>
-              <StarIcon size={12} />
-            </Link>
+            <div className="flex flex-wrap items-center gap-2">
+              <InstallButton />
+              <Link
+                href="https://github.com/ADWilkinson/claude-code-tools"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.03] hover:bg-[var(--text-primary)]/[0.06] rounded-lg transition-all"
+              >
+                <GitHubIcon size={14} />
+                <span>GitHub</span>
+              </Link>
+            </div>
           </div>
 
           </div>
@@ -537,6 +617,9 @@ export default function AI() {
           </div>
         </div>
       </div>
+
+      {/* Mobile Navigation */}
+      <MobileNav activeSection={activeSection} />
     </div>
   )
 }
