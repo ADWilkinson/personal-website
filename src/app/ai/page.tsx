@@ -524,15 +524,9 @@ curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-u
                       Scans for unused imports, debug statements, type gaps, and outdated docs.
                       Commits atomically and verifies tests pass.
                     </p>
-                    <div className="space-y-3">
-                      <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Install (after one-time setup above)</p>
-                        <CodeBlock id="repo-polish-install">{`curl -o ~/.claude/commands/repo-polish.md ${GITHUB_RAW_BASE}/commands/repo-polish.md`}</CodeBlock>
-                      </div>
-                      <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Usage</p>
-                        <CodeBlock id="repo-polish-run">{`/repo-polish`}</CodeBlock>
-                      </div>
+                    <div className="space-y-1.5">
+                      <p className="text-xs text-[var(--text-muted)]">Usage</p>
+                      <CodeBlock id="repo-polish-run">{`/repo-polish`}</CodeBlock>
                     </div>
                   </div>
                 </div>
@@ -568,15 +562,9 @@ curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-u
                       Analyzes structure, spawns specialized agents, creates documentation
                       at root and component levels.
                     </p>
-                    <div className="space-y-3">
-                      <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Install (after one-time setup above)</p>
-                        <CodeBlock id="update-claudes-install">{`curl -o ~/.claude/commands/update-claudes.md ${GITHUB_RAW_BASE}/commands/update-claudes.md`}</CodeBlock>
-                      </div>
-                      <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Usage</p>
-                        <CodeBlock id="update-claudes-run">{`/update-claudes`}</CodeBlock>
-                      </div>
+                    <div className="space-y-1.5">
+                      <p className="text-xs text-[var(--text-muted)]">Usage</p>
+                      <CodeBlock id="update-claudes-run">{`/update-claudes`}</CodeBlock>
                     </div>
                   </div>
                 </div>
@@ -657,15 +645,9 @@ curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-u
                       </div>
                     </div>
 
-                    <div className="space-y-3">
-                      <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Install (after one-time setup above)</p>
-                        <CodeBlock id="minimize-ui-install">{`curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-ui.md`}</CodeBlock>
-                      </div>
-                      <div className="space-y-1.5">
-                        <p className="text-xs text-[var(--text-muted)]">Usage</p>
-                        <CodeBlock id="minimize-ui-run">{`/minimize-ui`}</CodeBlock>
-                      </div>
+                    <div className="space-y-1.5">
+                      <p className="text-xs text-[var(--text-muted)]">Usage</p>
+                      <CodeBlock id="minimize-ui-run">{`/minimize-ui`}</CodeBlock>
                     </div>
                   </div>
                 </div>
