@@ -400,28 +400,56 @@ export default function AI() {
           >
             {/* Barbossa */}
             <section id="agents" className="scroll-mt-8">
-              <ToolCard
-                title="Barbossa"
-                description="5-agent system that discovers issues, plans features, writes code, reviews PRs, and merges—all automatically."
-                icon={ServerIcon}
-                url="https://barbossa.dev"
-              >
-                <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Built with Claude Agent SDK. Agents coordinate through GitHub and Linear,
-                    each handling a phase: discovery, planning, implementation, review, merge.
-                  </p>
-                  <Link
-                    href="https://barbossa.dev"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--text-primary)] opacity-70 hover:opacity-100 transition-opacity"
-                  >
-                    <span>View documentation</span>
-                    <ExternalLinkIcon size={12} />
-                  </Link>
+              <div className="p-6 rounded-xl bg-[var(--text-primary)]/[0.02] border border-[var(--border-default)]/10">
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-primary)]/10">
+                    <ServerIcon size={22} className="text-[var(--accent-primary)]" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-[var(--text-primary)] tracking-tight">
+                        Barbossa
+                      </h3>
+                      <Link
+                        href="https://barbossa.dev"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[var(--text-muted)] opacity-50 hover:opacity-100 transition-opacity"
+                      >
+                        <ExternalLinkIcon size={14} />
+                      </Link>
+                    </div>
+                    <p className="text-sm text-[var(--text-muted)] mt-1">
+                      Autonomous 5-agent AI development team
+                    </p>
+                  </div>
                 </div>
-              </ToolCard>
+
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-5">
+                  Built with Claude Agent SDK. Coordinates through GitHub and Linear to ship code 24/7 without human intervention.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {['Discovery', 'Planning', 'Implementation', 'Review', 'Merge'].map((phase, i) => (
+                    <div key={phase} className="flex items-center gap-1.5">
+                      <span className="text-xs font-medium text-[var(--text-primary)] bg-[var(--text-primary)]/[0.04] px-2 py-1 rounded-md">
+                        {phase}
+                      </span>
+                      {i < 4 && <span className="text-[var(--text-muted)] opacity-30">→</span>}
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href="https://barbossa.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 hover:bg-[var(--accent-primary)]/15 rounded-lg transition-colors"
+                >
+                  <span>View documentation</span>
+                  <ExternalLinkIcon size={12} />
+                </Link>
+              </div>
             </section>
 
             {/* Claude Code Section */}
