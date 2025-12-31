@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
 
@@ -13,7 +13,6 @@ import {
   CheckIcon,
   DownloadIcon,
   GitHubIcon,
-  StarIcon,
   MenuIcon,
   XIcon,
 } from '@/components/Icons'
@@ -59,8 +58,8 @@ function SideNav({ activeSection, onNavigate }: { activeSection: string; onNavig
     <nav className="space-y-1">
       {sections.map(({ id, label, isHeader }) => (
         isHeader ? (
-          <div key={id} className="pt-4 pb-1">
-            <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-60">
+          <div key={id} className="pt-5 pb-2">
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--text-muted)] opacity-50">
               {label}
             </p>
           </div>
@@ -72,8 +71,8 @@ function SideNav({ activeSection, onNavigate }: { activeSection: string; onNavig
             className={clsx(
               'block py-1.5 pl-3 text-sm border-l-2 transition-all duration-200',
               activeSection === id
-                ? 'border-[var(--text-primary)]/30 text-[var(--text-primary)] font-medium'
-                : 'border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--border-default)]/50'
+                ? 'border-[var(--accent-primary)] text-[var(--text-primary)] font-medium'
+                : 'border-transparent text-[var(--text-muted)] opacity-60 hover:opacity-100 hover:text-[var(--text-primary)] hover:border-[var(--border-default)]/30'
             )}
           >
             {label}
@@ -89,31 +88,29 @@ function MobileNav({ activeSection }: { activeSection: string }) {
 
   return (
     <>
-      {/* Mobile menu button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="lg:hidden fixed bottom-6 right-6 z-40 p-3 bg-[var(--bg-primary)] border border-[var(--border-default)]/20 rounded-full shadow-lg"
+        className="lg:hidden fixed bottom-6 right-6 z-40 p-3.5 bg-[var(--surface-default)] border border-[var(--border-default)]/20 rounded-full shadow-lg backdrop-blur-sm"
         aria-label="Open navigation"
       >
-        <MenuIcon size={20} className="text-[var(--text-primary)]" />
+        <MenuIcon size={18} className="text-[var(--text-primary)]" />
       </button>
 
-      {/* Mobile menu overlay */}
       {isOpen && (
         <div className="lg:hidden fixed inset-0 z-50">
           <div
-            className="absolute inset-0 bg-black/50"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute bottom-0 left-0 right-0 bg-[var(--bg-primary)] border-t border-[var(--border-default)]/20 rounded-t-2xl p-6 max-h-[70vh] overflow-y-auto">
+          <div className="absolute bottom-0 left-0 right-0 bg-[var(--surface-default)] border-t border-[var(--border-default)]/20 rounded-t-2xl p-6 max-h-[70vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
               <p className="text-sm font-medium text-[var(--text-primary)]">Navigate</p>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+                className="p-1.5 text-[var(--text-muted)] hover:text-[var(--text-primary)] rounded-lg hover:bg-[var(--text-primary)]/5 transition-colors"
                 aria-label="Close navigation"
               >
-                <XIcon size={20} />
+                <XIcon size={18} />
               </button>
             </div>
             <SideNav activeSection={activeSection} onNavigate={() => setIsOpen(false)} />
@@ -139,28 +136,28 @@ function InstallButton() {
     <button
       onClick={copy}
       className={clsx(
-        'inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-lg transition-all',
+        'inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium rounded-lg transition-all duration-200',
         copied
-          ? 'bg-green-500/10 text-green-600'
-          : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.03] hover:bg-[var(--text-primary)]/[0.06]'
+          ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
+          : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.04] hover:bg-[var(--text-primary)]/[0.08]'
       )}
     >
       {copied ? (
         <>
-          <CheckIcon size={12} />
+          <CheckIcon size={13} />
           <span>Copied!</span>
         </>
       ) : (
         <>
-          <CopyIcon size={12} />
-          <span>Copy install command</span>
+          <CopyIcon size={13} />
+          <span>Copy install</span>
         </>
       )}
     </button>
   )
 }
 
-function CodeBlock({ children, id }: { children: string; id: string }) {
+function CodeBlock({ children, id, label }: { children: string; id: string; label?: string }) {
   const [copied, setCopied] = useState(false)
 
   const copy = async () => {
@@ -171,15 +168,25 @@ function CodeBlock({ children, id }: { children: string; id: string }) {
 
   return (
     <div className="group relative">
-      <pre className="overflow-x-auto rounded-lg bg-zinc-900 p-4 text-xs leading-relaxed">
+      {label && (
+        <div className="absolute -top-2.5 left-3 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-zinc-500 bg-zinc-900 rounded">
+          {label}
+        </div>
+      )}
+      <pre className={clsx(
+        "overflow-x-auto rounded-lg bg-zinc-900 p-4 text-xs leading-relaxed font-mono",
+        label && "pt-5"
+      )}>
         <code className="text-zinc-400">{children}</code>
       </pre>
       <button
         onClick={copy}
         className={clsx(
-          'absolute top-2.5 right-2.5 p-1.5 rounded transition-opacity duration-200',
+          'absolute top-3 right-3 p-1.5 rounded-md transition-all duration-200',
           'opacity-0 group-hover:opacity-100',
-          copied ? 'text-green-400' : 'text-zinc-500 hover:text-zinc-300'
+          copied
+            ? 'text-emerald-400 bg-emerald-500/10'
+            : 'text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800'
         )}
         aria-label={copied ? 'Copied' : 'Copy'}
       >
@@ -189,39 +196,81 @@ function CodeBlock({ children, id }: { children: string; id: string }) {
   )
 }
 
-function ToolSection({
+function SectionHeader({
+  title,
+  badge,
+  children
+}: {
+  title: string
+  badge?: string
+  children?: React.ReactNode
+}) {
+  return (
+    <div className="flex items-start justify-between gap-4 mb-6">
+      <div className="space-y-1">
+        <div className="flex items-center gap-3">
+          <h3 className="text-base font-semibold text-[var(--text-primary)] tracking-tight">
+            {title}
+          </h3>
+          {badge && (
+            <span className="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 rounded-full">
+              {badge}
+            </span>
+          )}
+        </div>
+        {children}
+      </div>
+    </div>
+  )
+}
+
+function ToolCard({
   title,
   description,
   icon: Icon,
   url,
+  downloadUrl,
   children,
 }: {
   title: string
   description: string
   icon: React.ComponentType<{ size?: number; className?: string }>
   url?: string
+  downloadUrl?: string
   children?: React.ReactNode
 }) {
   return (
-    <div className="space-y-4">
-      <div className="flex items-start gap-3">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--text-primary)]/[0.03]">
-          <Icon size={18} className="text-[var(--text-muted)]" />
+    <div className="group">
+      <div className="flex items-start gap-4">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--text-primary)]/[0.04] group-hover:bg-[var(--text-primary)]/[0.07] transition-colors">
+          <Icon size={18} className="text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors" />
         </div>
-        <div className="space-y-1 pt-0.5">
+        <div className="flex-1 min-w-0 space-y-1">
           <div className="flex items-center gap-2">
-            <h3 className="text-sm font-medium text-[var(--text-primary)]">
+            <h4 className="text-sm font-semibold text-[var(--text-primary)] tracking-tight">
               {title}
-            </h3>
+            </h4>
             {url && (
               <Link
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[var(--text-muted)] opacity-50 hover:opacity-100 transition-opacity"
+                className="text-[var(--text-muted)] opacity-40 hover:opacity-100 transition-opacity"
               >
                 <ExternalLinkIcon size={12} />
               </Link>
+            )}
+            {downloadUrl && (
+              <a
+                href={downloadUrl}
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--text-muted)] opacity-40 hover:opacity-100 transition-opacity"
+                title="Download"
+              >
+                <DownloadIcon size={12} />
+              </a>
             )}
           </div>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed">
@@ -229,46 +278,96 @@ function ToolSection({
           </p>
         </div>
       </div>
-      {children && <div className="pl-12">{children}</div>}
+      {children && <div className="mt-4 pl-14">{children}</div>}
     </div>
   )
 }
 
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/ADWilkinson/claude-code-tools/main'
 
-const subagents = [
-  { name: 'backend-developer', desc: 'Express/Node.js, REST APIs, authentication, webhooks' },
-  { name: 'blockchain-specialist', desc: 'Solidity, Wagmi, multi-chain, gas optimization' },
-  { name: 'database-manager', desc: 'PostgreSQL, Prisma ORM, query optimization' },
-  { name: 'debugger', desc: 'Root cause analysis, error tracing, systematic debugging' },
-  { name: 'devops-engineer', desc: 'CI/CD, Docker, GitHub Actions, cloud deployment' },
-  { name: 'extension-developer', desc: 'Chrome Manifest V3, service workers, messaging' },
-  { name: 'firebase-specialist', desc: 'Firestore, Cloud Functions, FCM, security rules' },
-  { name: 'frontend-developer', desc: 'React, Next.js, TanStack Query, Tailwind' },
-  { name: 'indexer-developer', desc: 'Envio, The Graph, GraphQL, event handlers' },
-  { name: 'mcp-developer', desc: 'MCP servers, tool definitions, LLM integrations' },
-  { name: 'mobile-developer', desc: 'React Native, Expo, biometrics, push notifications' },
-  { name: 'performance-engineer', desc: 'Profiling, caching, load testing, optimization' },
-  { name: 'refactoring-specialist', desc: 'Code smells, safe transformations, complexity reduction' },
-  { name: 'testing-specialist', desc: 'Jest, Playwright, E2E, mocking strategies' },
-  { name: 'zk-specialist', desc: 'ZK circuits, Circom/Noir, trusted setup' },
+// Categorized subagents for better scannability
+const subagentCategories = [
+  {
+    label: 'Core',
+    agents: [
+      { name: 'frontend-developer', desc: 'React, Next.js, TanStack Query, Tailwind' },
+      { name: 'backend-developer', desc: 'Express/Node.js, REST APIs, authentication' },
+      { name: 'database-manager', desc: 'PostgreSQL, Prisma ORM, query optimization' },
+      { name: 'mobile-developer', desc: 'React Native, Expo, biometrics, push notifications' },
+    ]
+  },
+  {
+    label: 'Web3',
+    agents: [
+      { name: 'blockchain-specialist', desc: 'Solidity, Wagmi, multi-chain, gas optimization' },
+      { name: 'indexer-developer', desc: 'Envio, The Graph, GraphQL, event handlers' },
+      { name: 'zk-specialist', desc: 'ZK circuits, Circom/Noir, trusted setup' },
+    ]
+  },
+  {
+    label: 'Infrastructure',
+    agents: [
+      { name: 'devops-engineer', desc: 'CI/CD, Docker, GitHub Actions, deployment' },
+      { name: 'firebase-specialist', desc: 'Firestore, Cloud Functions, FCM, security rules' },
+      { name: 'extension-developer', desc: 'Chrome Manifest V3, service workers, messaging' },
+      { name: 'mcp-developer', desc: 'MCP servers, tool definitions, LLM integrations' },
+    ]
+  },
+  {
+    label: 'Quality',
+    agents: [
+      { name: 'testing-specialist', desc: 'Jest, Playwright, E2E, mocking strategies' },
+      { name: 'performance-engineer', desc: 'Profiling, caching, load testing, optimization' },
+      { name: 'debugger', desc: 'Root cause analysis, error tracing, systematic debugging' },
+      { name: 'refactoring-specialist', desc: 'Code smells, safe transformations, complexity reduction' },
+    ]
+  },
 ]
+
+function SubagentCard({ name, desc }: { name: string; desc: string }) {
+  return (
+    <div className="group flex items-start justify-between gap-3 py-2.5 px-3 -mx-3 rounded-lg hover:bg-[var(--text-primary)]/[0.03] transition-colors">
+      <div className="min-w-0 flex-1">
+        <p className="text-sm font-medium text-[var(--text-primary)] font-mono tracking-tight">
+          {name}
+        </p>
+        <p className="text-xs text-[var(--text-muted)] mt-0.5 leading-relaxed">
+          {desc}
+        </p>
+      </div>
+      <a
+        href={`${GITHUB_RAW_BASE}/agents/${name}.md`}
+        download={`${name}.md`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="shrink-0 p-1.5 text-[var(--text-muted)] opacity-0 group-hover:opacity-60 hover:!opacity-100 hover:text-[var(--text-primary)] transition-all rounded-md hover:bg-[var(--text-primary)]/5"
+        title={`Download ${name}.md`}
+      >
+        <DownloadIcon size={14} />
+      </a>
+    </div>
+  )
+}
 
 export default function AI() {
   const activeSection = useActiveSection()
+  const totalAgents = useMemo(() =>
+    subagentCategories.reduce((acc, cat) => acc + cat.agents.length, 0),
+    []
+  )
 
   return (
     <div className="relative w-[100vw] -ml-[calc((100vw-100%)/2)] px-6 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-5xl">
         {/* Header */}
-        <div className="mb-12 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <h1 className="text-2xl font-semibold text-[var(--text-primary)]">
+        <header className="mb-16">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+            <div className="space-y-3">
+              <h1 className="text-3xl font-semibold text-[var(--text-primary)] tracking-tight">
                 AI Tools
               </h1>
-              <p className="mt-2 text-sm text-[var(--text-muted)] max-w-lg leading-relaxed">
-                Tools and automation I build for AI-assisted development.
+              <p className="text-base text-[var(--text-muted)] max-w-md leading-relaxed">
+                Tools and automation for AI-assisted development.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
@@ -277,30 +376,29 @@ export default function AI() {
                 href="https://github.com/ADWilkinson/claude-code-tools"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.03] hover:bg-[var(--text-primary)]/[0.06] rounded-lg transition-all"
+                className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.04] hover:bg-[var(--text-primary)]/[0.08] rounded-lg transition-all"
               >
                 <GitHubIcon size={14} />
                 <span>GitHub</span>
               </Link>
             </div>
           </div>
-
-          </div>
+        </header>
 
         {/* Layout */}
-        <div className="flex gap-16">
+        <div className="flex gap-20">
           {/* Sidebar */}
-          <aside className="hidden lg:block w-40 shrink-0">
+          <aside className="hidden lg:block w-44 shrink-0">
             <div className="sticky top-8">
               <SideNav activeSection={activeSection} />
             </div>
           </aside>
 
           {/* Content */}
-          <div className="flex-1 min-w-0 space-y-20">
-            {/* Agents */}
+          <div className="flex-1 min-w-0 space-y-24">
+            {/* Barbossa */}
             <section id="agents" className="scroll-mt-8">
-              <ToolSection
+              <ToolCard
                 title="Barbossa"
                 description="5-agent system that discovers issues, plans features, writes code, reviews PRs, and merges—all automatically."
                 icon={ServerIcon}
@@ -315,26 +413,28 @@ export default function AI() {
                     href="https://barbossa.dev"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--text-primary)] opacity-70 hover:opacity-100 transition-opacity"
                   >
-                    <span className="link-underline">Documentation</span>
+                    <span>View documentation</span>
                     <ExternalLinkIcon size={12} />
                   </Link>
                 </div>
-              </ToolSection>
+              </ToolCard>
             </section>
 
             {/* Claude Code Section */}
-            <section id="claude-code" className="scroll-mt-8 pt-8 border-t border-[var(--border-default)]/20">
-              <div className="space-y-2 mb-8">
-                <h2 className="text-lg font-medium text-[var(--text-primary)]">Claude Code Tools</h2>
+            <section id="claude-code" className="scroll-mt-8">
+              <div className="pb-8 mb-8 border-b border-[var(--border-default)]/10">
+                <h2 className="text-xl font-semibold text-[var(--text-primary)] tracking-tight mb-2">
+                  Claude Code Tools
+                </h2>
                 <p className="text-sm text-[var(--text-muted)]">
                   Requires{' '}
                   <Link
                     href="https://github.com/anthropics/claude-code"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline underline-offset-2 hover:text-[var(--text-primary)] transition-colors"
+                    className="font-medium text-[var(--text-primary)] opacity-70 hover:opacity-100 underline underline-offset-2 transition-opacity"
                   >
                     Claude Code
                   </Link>
@@ -343,380 +443,274 @@ export default function AI() {
               </div>
             </section>
 
-            {/* Tool Types Explainer */}
-            <section id="types" className="scroll-mt-8">
-              <div className="space-y-4">
-                <h3 className="text-sm font-medium text-[var(--text-primary)]">
-                  Understanding Tool Types
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="p-4 rounded-lg bg-[var(--text-primary)]/[0.02] border border-[var(--border-default)]/10">
-                    <div className="flex items-center gap-2 mb-2">
-                      <CodeIcon size={14} className="text-[var(--text-muted)]" />
-                      <p className="text-xs font-medium text-[var(--text-primary)]">Subagents</p>
+            {/* Tool Types */}
+            <section id="types" className="scroll-mt-8 -mt-16">
+              <SectionHeader title="Understanding Tool Types" />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  {
+                    icon: CodeIcon,
+                    title: 'Subagents',
+                    desc: 'Invoked automatically via Task tool when domain expertise is needed.',
+                    trigger: 'Auto'
+                  },
+                  {
+                    icon: ServerIcon,
+                    title: 'Skills',
+                    desc: 'Auto-invoked when your request matches trigger patterns.',
+                    trigger: 'Pattern'
+                  },
+                  {
+                    icon: TerminalIcon,
+                    title: 'Commands',
+                    desc: 'Manually triggered with slash notation.',
+                    trigger: 'Manual'
+                  },
+                ].map((type) => (
+                  <div
+                    key={type.title}
+                    className="relative p-5 rounded-xl bg-[var(--text-primary)]/[0.02] border border-[var(--border-default)]/10 hover:border-[var(--border-default)]/20 transition-colors"
+                  >
+                    <span className="absolute top-3 right-3 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[var(--text-muted)] opacity-40">
+                      {type.trigger}
+                    </span>
+                    <div className="flex items-center gap-2.5 mb-3">
+                      <type.icon size={16} className="text-[var(--text-muted)]" />
+                      <p className="text-sm font-semibold text-[var(--text-primary)]">{type.title}</p>
                     </div>
                     <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                      Invoked automatically by Claude via the Task tool when domain expertise is needed.
+                      {type.desc}
                     </p>
                   </div>
-                  <div className="p-4 rounded-lg bg-[var(--text-primary)]/[0.02] border border-[var(--border-default)]/10">
-                    <div className="flex items-center gap-2 mb-2">
-                      <ServerIcon size={14} className="text-[var(--text-muted)]" />
-                      <p className="text-xs font-medium text-[var(--text-primary)]">Skills</p>
-                    </div>
-                    <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                      Auto-invoked when your request matches trigger words. No slash command needed.
-                    </p>
-                  </div>
-                  <div className="p-4 rounded-lg bg-[var(--text-primary)]/[0.02] border border-[var(--border-default)]/10">
-                    <div className="flex items-center gap-2 mb-2">
-                      <TerminalIcon size={14} className="text-[var(--text-muted)]" />
-                      <p className="text-xs font-medium text-[var(--text-primary)]">Commands</p>
-                    </div>
-                    <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                      Manually triggered with slash notation like <code className="font-medium text-[var(--text-primary)]">/repo-polish</code>.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </section>
 
             {/* Subagents */}
-            <section id="subagents" className="scroll-mt-8 pt-8">
-              <ToolSection
-                title="Claude Code Subagents"
-                description="15 specialized subagents for Claude Code. Each brings deep expertise in a specific domain."
-                icon={CodeIcon}
-                url="https://github.com/ADWilkinson/claude-code-tools/tree/main/agents"
-              >
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
-                    {subagents.map((agent) => (
-                      <div key={agent.name} className="py-1.5 flex items-start justify-between gap-2">
-                        <div className="min-w-0">
-                          <p className="text-sm text-[var(--text-primary)] font-mono">
-                            {agent.name}
-                          </p>
-                          <p className="text-xs text-[var(--text-muted)]">
-                            {agent.desc}
-                          </p>
-                        </div>
-                        <a
-                          href={`${GITHUB_RAW_BASE}/agents/${agent.name}.md`}
-                          download={`${agent.name}.md`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="shrink-0 p-1 text-[var(--text-muted)] opacity-40 hover:opacity-100 hover:text-[var(--text-primary)] transition-all"
-                          title={`Download ${agent.name}.md`}
-                        >
-                          <DownloadIcon size={14} />
-                        </a>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="space-y-3 pt-2">
-                    <div className="space-y-1.5">
-                      <p className="text-xs text-[var(--text-muted)]">Quick Install (all tools)</p>
-                      <CodeBlock id="subagents-install">{`git clone https://github.com/ADWilkinson/claude-code-tools.git && \\
-  cd claude-code-tools && ./install.sh`}</CodeBlock>
+            <section id="subagents" className="scroll-mt-8">
+              <SectionHeader title="Subagents" badge={`${totalAgents} agents`}>
+                <p className="text-sm text-[var(--text-muted)]">
+                  Specialized agents for Claude Code, organized by domain.
+                </p>
+              </SectionHeader>
+
+              <div className="space-y-8">
+                {subagentCategories.map((category) => (
+                  <div key={category.label}>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] opacity-50 mb-3">
+                      {category.label}
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-0">
+                      {category.agents.map((agent) => (
+                        <SubagentCard key={agent.name} {...agent} />
+                      ))}
                     </div>
                   </div>
-                </div>
-              </ToolSection>
+                ))}
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-[var(--border-default)]/10">
+                <p className="text-xs text-[var(--text-muted)] mb-3">Quick install (all agents)</p>
+                <CodeBlock id="subagents-install">{`git clone https://github.com/ADWilkinson/claude-code-tools.git && \\
+  cd claude-code-tools && ./install.sh`}</CodeBlock>
+              </div>
             </section>
 
             {/* Skills */}
-            <section id="skills" className="scroll-mt-8 pt-8">
-              <ToolSection
+            <section id="skills" className="scroll-mt-8">
+              <SectionHeader title="Skills">
+                <p className="text-sm text-[var(--text-muted)]">
+                  Auto-invoked when your request matches their description.
+                </p>
+              </SectionHeader>
+
+              <ToolCard
                 title="Linear"
-                description="Auto-invoked skill for Linear task management. Just mention tasks or issues in natural language."
+                description="Natural language task management. Just mention tasks or issues."
                 icon={ServerIcon}
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/linear"
               >
                 <div className="space-y-6">
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Skills are automatically invoked by Claude when your request matches their description.
-                    No slash command needed—just talk naturally.
-                  </p>
-
-                  <div className="space-y-2">
-                    <p className="text-xs font-medium text-[var(--text-primary)]">Usage Examples</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"show my tasks"</div>
-                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"search rebrand issues"</div>
-                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"show my backlog"</div>
-                      <div className="bg-zinc-900 rounded px-3 py-2 text-zinc-400">"mark ENG-123 done"</div>
+                  <div className="space-y-3">
+                    <p className="text-xs font-semibold text-[var(--text-primary)]">Example prompts</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {['"show my tasks"', '"search rebrand issues"', '"show my backlog"', '"mark ENG-123 done"'].map((example) => (
+                        <div key={example} className="bg-zinc-900 rounded-lg px-3 py-2 text-xs text-zinc-400 font-mono">
+                          {example}
+                        </div>
+                      ))}
                     </div>
                   </div>
 
                   <div className="space-y-3">
-                    <div className="space-y-1.5">
-                      <p className="text-xs text-[var(--text-muted)]">Install</p>
-                      <CodeBlock id="linear-install">{`git clone https://github.com/ADWilkinson/claude-code-tools.git && \\
+                    <CodeBlock id="linear-install" label="Install">{`git clone https://github.com/ADWilkinson/claude-code-tools.git && \\
   cd claude-code-tools/skills/linear && ./install.sh`}</CodeBlock>
-                    </div>
-                    <div className="space-y-1.5">
-                      <p className="text-xs text-[var(--text-muted)]">Configure (add to ~/.zshrc)</p>
-                      <CodeBlock id="linear-config">{`export LINEAR_API_KEY="lin_api_..."`}</CodeBlock>
-                    </div>
+                    <CodeBlock id="linear-config" label="Configure">{`export LINEAR_API_KEY="lin_api_..."`}</CodeBlock>
                   </div>
 
-                  <p className="text-xs text-[var(--text-muted)]">
+                  <p className="text-xs text-[var(--text-muted)] opacity-70">
                     Get your API key from Linear → Settings → Security & access → Personal API keys
                   </p>
                 </div>
-              </ToolSection>
+              </ToolCard>
             </section>
 
             {/* Commands */}
-            <section id="commands" className="scroll-mt-8 space-y-12 pt-8">
-                {/* Commands Intro */}
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <h3 className="text-sm font-medium text-[var(--text-primary)]">Slash Commands</h3>
-                    <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                      Commands are invoked with <code className="text-xs font-medium text-[var(--text-primary)] bg-[var(--text-primary)]/[0.05] px-1.5 py-0.5 rounded">/command-name</code> in Claude Code.
-                      They execute structured workflows automatically.
-                    </p>
-                  </div>
+            <section id="commands" className="scroll-mt-8 space-y-12">
+              <div>
+                <SectionHeader title="Slash Commands">
+                  <p className="text-sm text-[var(--text-muted)]">
+                    Invoked with <code className="text-xs font-semibold text-[var(--text-primary)] bg-[var(--text-primary)]/[0.06] px-1.5 py-0.5 rounded font-mono">/command-name</code> in Claude Code.
+                  </p>
+                </SectionHeader>
 
-                  <div className="space-y-3">
-                    <div className="space-y-1.5">
-                      <p className="text-xs font-medium text-[var(--text-primary)]">One-Time Setup</p>
-                      <p className="text-xs text-[var(--text-muted)]">Run once to create the commands directory:</p>
-                      <CodeBlock id="commands-setup">{`mkdir -p ~/.claude/commands`}</CodeBlock>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <p className="text-xs font-medium text-[var(--text-primary)]">Quick Install (All Commands)</p>
-                      <CodeBlock id="commands-install-all">{`curl -o ~/.claude/commands/repo-polish.md ${GITHUB_RAW_BASE}/commands/repo-polish.md && \\
+                <div className="space-y-4 mb-8">
+                  <CodeBlock id="commands-setup" label="One-time setup">{`mkdir -p ~/.claude/commands`}</CodeBlock>
+                  <CodeBlock id="commands-install-all" label="Install all commands">{`curl -o ~/.claude/commands/repo-polish.md ${GITHUB_RAW_BASE}/commands/repo-polish.md && \\
 curl -o ~/.claude/commands/update-claudes.md ${GITHUB_RAW_BASE}/commands/update-claudes.md && \\
 curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-ui.md`}</CodeBlock>
-                    </div>
-                  </div>
                 </div>
+              </div>
 
+              {/* Command: repo-polish */}
+              <ToolCard
+                title="/repo-polish"
+                description="Fire-and-forget repository cleanup. Creates a branch, fixes issues, opens a PR."
+                icon={TerminalIcon}
+                downloadUrl={`${GITHUB_RAW_BASE}/commands/repo-polish.md`}
+              >
                 <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--text-primary)]/[0.03]">
-                      <TerminalIcon size={18} className="text-[var(--text-muted)]" />
-                    </div>
-                    <div className="space-y-1 pt-0.5 flex-1">
-                      <div className="flex items-center justify-between gap-2">
-                        <h3 className="text-sm font-medium text-[var(--text-primary)]">
-                          /repo-polish
-                        </h3>
-                        <a
-                          href={`${GITHUB_RAW_BASE}/commands/repo-polish.md`}
-                          download="repo-polish.md"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="shrink-0 p-1 text-[var(--text-muted)] opacity-40 hover:opacity-100 hover:text-[var(--text-primary)] transition-all"
-                          title="Download repo-polish.md"
-                        >
-                          <DownloadIcon size={14} />
-                        </a>
-                      </div>
-                      <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                        Fire-and-forget repository cleanup. Creates a branch, fixes issues, opens a PR.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pl-12 space-y-4">
-                    <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                      Scans for unused imports, debug statements, type gaps, and outdated docs.
-                      Commits atomically and verifies tests pass.
-                    </p>
-                    <div className="space-y-1.5">
-                      <p className="text-xs text-[var(--text-muted)]">Usage</p>
-                      <CodeBlock id="repo-polish-run">{`/repo-polish`}</CodeBlock>
-                    </div>
-                  </div>
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                    Scans for unused imports, debug statements, type gaps, and outdated docs.
+                    Commits atomically and verifies tests pass.
+                  </p>
+                  <CodeBlock id="repo-polish-run">{`/repo-polish`}</CodeBlock>
                 </div>
+              </ToolCard>
 
+              {/* Command: update-claudes */}
+              <ToolCard
+                title="/update-claudes"
+                description="Generates CLAUDE.md files throughout your project for AI context."
+                icon={CodeIcon}
+                downloadUrl={`${GITHUB_RAW_BASE}/commands/update-claudes.md`}
+              >
                 <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--text-primary)]/[0.03]">
-                      <CodeIcon size={18} className="text-[var(--text-muted)]" />
-                    </div>
-                    <div className="space-y-1 pt-0.5 flex-1">
-                      <div className="flex items-center justify-between gap-2">
-                        <h3 className="text-sm font-medium text-[var(--text-primary)]">
-                          /update-claudes
-                        </h3>
-                        <a
-                          href={`${GITHUB_RAW_BASE}/commands/update-claudes.md`}
-                          download="update-claudes.md"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="shrink-0 p-1 text-[var(--text-muted)] opacity-40 hover:opacity-100 hover:text-[var(--text-primary)] transition-all"
-                          title="Download update-claudes.md"
-                        >
-                          <DownloadIcon size={14} />
-                        </a>
-                      </div>
-                      <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                        Generates CLAUDE.md files throughout your project for AI context.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pl-12 space-y-4">
-                    <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                      Analyzes structure, spawns specialized agents, creates documentation
-                      at root and component levels.
-                    </p>
-                    <div className="space-y-1.5">
-                      <p className="text-xs text-[var(--text-muted)]">Usage</p>
-                      <CodeBlock id="update-claudes-run">{`/update-claudes`}</CodeBlock>
-                    </div>
-                  </div>
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                    Analyzes structure, spawns specialized agents, creates documentation
+                    at root and component levels.
+                  </p>
+                  <CodeBlock id="update-claudes-run">{`/update-claudes`}</CodeBlock>
                 </div>
+              </ToolCard>
 
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--text-primary)]/[0.03]">
-                      <CodeIcon size={18} className="text-[var(--text-muted)]" />
-                    </div>
-                    <div className="space-y-1 pt-0.5 flex-1">
-                      <div className="flex items-center justify-between gap-2">
-                        <h3 className="text-sm font-medium text-[var(--text-primary)]">
-                          /minimize-ui
-                        </h3>
-                        <a
-                          href={`${GITHUB_RAW_BASE}/commands/minimize-ui.md`}
-                          download="minimize-ui.md"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="shrink-0 p-1 text-[var(--text-muted)] opacity-40 hover:opacity-100 hover:text-[var(--text-primary)] transition-all"
-                          title="Download minimize-ui.md"
-                        >
-                          <DownloadIcon size={14} />
-                        </a>
-                      </div>
-                      <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                        Systematic UI minimalization through ruthless reduction. Remove before polish.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pl-12 space-y-4">
-                    <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                      7-phase workflow that audits your UI, identifies bloat, and removes everything
-                      that doesn't serve the user's core journey. Creates branch, captures before/after
-                      screenshots, and opens PR with visual comparison.
-                    </p>
+              {/* Command: minimize-ui */}
+              <ToolCard
+                title="/minimize-ui"
+                description="Systematic UI minimalization through ruthless reduction."
+                icon={CodeIcon}
+                downloadUrl={`${GITHUB_RAW_BASE}/commands/minimize-ui.md`}
+              >
+                <div className="space-y-5">
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                    7-phase workflow that audits your UI, identifies bloat, and removes everything
+                    that doesn't serve the user's core journey.
+                  </p>
 
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <p className="text-xs font-medium text-[var(--text-primary)]">Workflow</p>
-                      <ul className="text-xs text-[var(--text-muted)] space-y-1 list-disc list-inside">
-                        <li>Creates dedicated branch (minimize-ui/timestamp)</li>
-                        <li>Runs dev server and captures before screenshots</li>
-                        <li>Audits UI against 6 reduction categories</li>
-                        <li>Executes changes grouped by impact (HIGH → MEDIUM → LOW)</li>
-                        <li>Applies design principles (spacing, hierarchy, consistency)</li>
-                        <li>Captures after screenshots and generates side-by-side HTML</li>
-                        <li>Opens PR with metrics (element count, color reduction, etc.)</li>
+                      <p className="text-xs font-semibold text-[var(--text-primary)]">Workflow</p>
+                      <ul className="text-xs text-[var(--text-muted)] space-y-1.5">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[var(--accent-primary)] opacity-50">→</span>
+                          Creates branch, captures before screenshots
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[var(--accent-primary)] opacity-50">→</span>
+                          Audits against 6 reduction categories
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[var(--accent-primary)] opacity-50">→</span>
+                          Executes changes by impact priority
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[var(--accent-primary)] opacity-50">→</span>
+                          Opens PR with visual comparison
+                        </li>
                       </ul>
                     </div>
-
                     <div className="space-y-2">
-                      <p className="text-xs font-medium text-[var(--text-primary)]">Design Principles Applied</p>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                        <div className="text-[var(--text-muted)]">
-                          <span className="font-medium text-[var(--text-primary)]">Proximity:</span> Inner spacing &lt; outer
-                        </div>
-                        <div className="text-[var(--text-muted)]">
-                          <span className="font-medium text-[var(--text-primary)]">Fitts's Law:</span> Bigger targets easier to hit
-                        </div>
-                        <div className="text-[var(--text-muted)]">
-                          <span className="font-medium text-[var(--text-primary)]">Emphasis:</span> One focal point per screen
-                        </div>
-                        <div className="text-[var(--text-muted)]">
-                          <span className="font-medium text-[var(--text-primary)]">White Space:</span> Premium feel through spacing
-                        </div>
-                        <div className="text-[var(--text-muted)]">
-                          <span className="font-medium text-[var(--text-primary)]">Consistency:</span> System of rules across UI
-                        </div>
-                        <div className="text-[var(--text-muted)]">
-                          <span className="font-medium text-[var(--text-primary)]">Modularity:</span> Grid-aligned rectangles
-                        </div>
-                        <div className="text-[var(--text-muted)]">
-                          <span className="font-medium text-[var(--text-primary)]">Anchor Objects:</span> Corners/center placement
-                        </div>
-                        <div className="text-[var(--text-muted)]">
-                          <span className="font-medium text-[var(--text-primary)]">Z/F Patterns:</span> Natural eye scanning flow
-                        </div>
+                      <p className="text-xs font-semibold text-[var(--text-primary)]">Principles</p>
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-[var(--text-muted)]">
+                        <span>Proximity</span>
+                        <span>Fitts's Law</span>
+                        <span>Emphasis</span>
+                        <span>White Space</span>
+                        <span>Consistency</span>
+                        <span>Modularity</span>
+                        <span>Anchor Objects</span>
+                        <span>Z/F Patterns</span>
                       </div>
                     </div>
-
-                    <div className="space-y-1.5">
-                      <p className="text-xs text-[var(--text-muted)]">Usage</p>
-                      <CodeBlock id="minimize-ui-run">{`/minimize-ui`}</CodeBlock>
-                    </div>
                   </div>
+
+                  <CodeBlock id="minimize-ui-run">{`/minimize-ui`}</CodeBlock>
                 </div>
+              </ToolCard>
             </section>
 
             {/* Statusline */}
-            <section id="statusline" className="scroll-mt-8 pt-8">
-              <ToolSection
+            <section id="statusline" className="scroll-mt-8">
+              <ToolCard
                 title="Flying Dutchman Statusline"
-                description="Custom Claude Code statusline showing git branch, activity icons, cost tracking, and lines changed."
+                description="Custom statusline showing git branch, activity icons, cost tracking, and diff stats."
                 icon={TerminalIcon}
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/statusline"
               >
                 <div className="space-y-4">
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Displays current folder, git branch with dirty indicator, active tool icons,
-                    cumulative cost, and code diff stats. Pairs with the Flying Dutchman theme.
+                    Pairs with the Flying Dutchman theme. Shows folder, branch with dirty indicator,
+                    active tool icons, cumulative cost, and code changes.
                   </p>
                   <div className="space-y-3">
-                    <div className="space-y-1.5">
-                      <p className="text-xs text-[var(--text-muted)]">Install</p>
-                      <CodeBlock id="statusline-install">{`curl -o ~/.claude/flying-dutchman-statusline.sh \\
-  https://raw.githubusercontent.com/ADWilkinson/claude-code-tools/main/statusline/flying-dutchman-statusline.sh && \\
+                    <CodeBlock id="statusline-install" label="Install">{`curl -o ~/.claude/flying-dutchman-statusline.sh \\
+  ${GITHUB_RAW_BASE}/statusline/flying-dutchman-statusline.sh && \\
   chmod +x ~/.claude/flying-dutchman-statusline.sh`}</CodeBlock>
-                    </div>
-                    <div className="space-y-1.5">
-                      <p className="text-xs text-[var(--text-muted)]">Configure (add to ~/.claude/settings.json)</p>
-                      <CodeBlock id="statusline-config">{`"statusline": "~/.claude/flying-dutchman-statusline.sh"`}</CodeBlock>
-                    </div>
+                    <CodeBlock id="statusline-config" label="Configure">{`"statusline": "~/.claude/flying-dutchman-statusline.sh"`}</CodeBlock>
                   </div>
                 </div>
-              </ToolSection>
+              </ToolCard>
             </section>
 
             {/* Footer */}
-            <div className="pt-6 border-t border-[var(--border-default)]/10 space-y-4">
+            <footer className="pt-8 pb-4 border-t border-[var(--border-default)]/10 space-y-3">
               <p className="text-sm text-[var(--text-muted)]">
                 More tools in progress.{' '}
                 <Link
                   href="https://x.com/davyjones0x"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-underline hover:text-[var(--text-primary)] transition-colors"
+                  className="font-medium text-[var(--text-primary)] opacity-70 hover:opacity-100 transition-opacity"
                 >
                   Follow for updates
                 </Link>
-                .
               </p>
-              <p className="text-xs text-[var(--text-muted)] opacity-70">
+              <p className="text-xs text-[var(--text-muted)] opacity-60">
                 Using Claude Code?{' '}
                 <Link
                   href="https://github.com/ADWilkinson/the-flying-dutchman-theme"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-underline hover:text-[var(--text-primary)] transition-colors"
+                  className="hover:text-[var(--text-primary)] transition-colors"
                 >
                   Try the Flying Dutchman theme
                 </Link>
-                .
               </p>
-            </div>
+            </footer>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       <MobileNav activeSection={activeSection} />
     </div>
   )
