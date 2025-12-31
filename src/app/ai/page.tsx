@@ -240,13 +240,16 @@ const subagents = [
   { name: 'backend-developer', desc: 'Express/Node.js, REST APIs, authentication, webhooks' },
   { name: 'blockchain-specialist', desc: 'Solidity, Wagmi, multi-chain, gas optimization' },
   { name: 'database-manager', desc: 'PostgreSQL, Prisma ORM, query optimization' },
+  { name: 'debugger', desc: 'Root cause analysis, error tracing, systematic debugging' },
   { name: 'devops-engineer', desc: 'CI/CD, Docker, GitHub Actions, cloud deployment' },
   { name: 'extension-developer', desc: 'Chrome Manifest V3, service workers, messaging' },
   { name: 'firebase-specialist', desc: 'Firestore, Cloud Functions, FCM, security rules' },
   { name: 'frontend-developer', desc: 'React, Next.js, TanStack Query, Tailwind' },
   { name: 'indexer-developer', desc: 'Envio, The Graph, GraphQL, event handlers' },
+  { name: 'mcp-developer', desc: 'MCP servers, tool definitions, LLM integrations' },
   { name: 'mobile-developer', desc: 'React Native, Expo, biometrics, push notifications' },
   { name: 'performance-engineer', desc: 'Profiling, caching, load testing, optimization' },
+  { name: 'refactoring-specialist', desc: 'Code smells, safe transformations, complexity reduction' },
   { name: 'testing-specialist', desc: 'Jest, Playwright, E2E, mocking strategies' },
   { name: 'zk-specialist', desc: 'ZK circuits, Circom/Noir, trusted setup' },
 ]
@@ -382,7 +385,7 @@ export default function AI() {
             <section id="subagents" className="scroll-mt-8 pt-8">
               <ToolSection
                 title="Claude Code Subagents"
-                description="12 specialized subagents for Claude Code. Each brings deep expertise in a specific domain."
+                description="15 specialized subagents for Claude Code. Each brings deep expertise in a specific domain."
                 icon={CodeIcon}
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/agents"
               >
