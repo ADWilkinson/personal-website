@@ -59,7 +59,7 @@ function SideNav({ activeSection, onNavigate }: { activeSection: string; onNavig
       {sections.map(({ id, label, isHeader }) => (
         isHeader ? (
           <div key={id} className="pt-5 pb-2">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--text-muted)] opacity-50">
+            <p className="text-[10px] font-medium uppercase tracking-widest text-[var(--text-muted)] opacity-50">
               {label}
             </p>
           </div>
@@ -138,8 +138,8 @@ function InstallButton() {
       className={clsx(
         'inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium rounded-lg transition-all duration-200',
         copied
-          ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
-          : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.04] hover:bg-[var(--text-primary)]/[0.08]'
+          ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
+          : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.03] hover:bg-[var(--text-primary)]/[0.06]'
       )}
     >
       {copied ? (
@@ -169,15 +169,15 @@ function CodeBlock({ children, id, label }: { children: string; id: string; labe
   return (
     <div className="group relative">
       {label && (
-        <div className="absolute -top-2.5 left-3 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-zinc-500 bg-zinc-900 rounded">
+        <div className="absolute -top-2.5 left-3 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] bg-[var(--surface-default)] border border-[var(--border-default)]/10 rounded">
           {label}
         </div>
       )}
       <pre className={clsx(
-        "overflow-x-auto rounded-lg bg-zinc-900 p-4 text-xs leading-relaxed font-mono",
+        "overflow-x-auto rounded-lg bg-[var(--dj-charcoal)] p-4 text-xs leading-relaxed font-mono",
         label && "pt-5"
       )}>
-        <code className="text-zinc-400">{children}</code>
+        <code className="text-[var(--dj-canvas)] opacity-70">{children}</code>
       </pre>
       <button
         onClick={copy}
@@ -185,8 +185,8 @@ function CodeBlock({ children, id, label }: { children: string; id: string; labe
           'absolute top-3 right-3 p-1.5 rounded-md transition-all duration-200',
           'opacity-0 group-hover:opacity-100',
           copied
-            ? 'text-emerald-400 bg-emerald-500/10'
-            : 'text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800'
+            ? 'text-[var(--accent-primary)] bg-[var(--accent-primary)]/10'
+            : 'text-[var(--dj-canvas)] opacity-50 hover:opacity-80 hover:bg-[var(--dj-canvas)]/10'
         )}
         aria-label={copied ? 'Copied' : 'Copy'}
       >
@@ -213,7 +213,7 @@ function SectionHeader({
             {title}
           </h3>
           {badge && (
-            <span className="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 rounded-full">
+            <span className="px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 rounded-full">
               {badge}
             </span>
           )}
@@ -326,26 +326,22 @@ const subagentCategories = [
 
 function SubagentCard({ name, desc }: { name: string; desc: string }) {
   return (
-    <div className="group flex items-start justify-between gap-3 py-2.5 px-3 -mx-3 rounded-lg hover:bg-[var(--text-primary)]/[0.03] transition-colors">
-      <div className="min-w-0 flex-1">
-        <p className="text-sm font-medium text-[var(--text-primary)] font-mono tracking-tight">
-          {name}
-        </p>
-        <p className="text-xs text-[var(--text-muted)] mt-0.5 leading-relaxed">
-          {desc}
-        </p>
-      </div>
-      <a
-        href={`${GITHUB_RAW_BASE}/agents/${name}.md`}
-        download={`${name}.md`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="shrink-0 p-1.5 text-[var(--text-muted)] opacity-0 group-hover:opacity-60 hover:!opacity-100 hover:text-[var(--text-primary)] transition-all rounded-md hover:bg-[var(--text-primary)]/5"
-        title={`Download ${name}.md`}
-      >
-        <DownloadIcon size={14} />
-      </a>
-    </div>
+    <a
+      href={`${GITHUB_RAW_BASE}/agents/${name}.md`}
+      download={`${name}.md`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex items-center gap-2 py-1.5 px-2 -mx-2 rounded-md hover:bg-[var(--text-primary)]/[0.03] transition-colors"
+      title={`Download ${name}.md`}
+    >
+      <span className="text-sm font-medium text-[var(--text-primary)] font-mono tracking-tight group-hover:text-[var(--accent-primary)] transition-colors shrink-0">
+        {name}
+      </span>
+      <span className="text-xs text-[var(--text-muted)] truncate">
+        {desc}
+      </span>
+      <DownloadIcon size={12} className="shrink-0 text-[var(--text-muted)] opacity-30 group-hover:opacity-100 group-hover:text-[var(--accent-primary)] transition-all ml-auto" />
+    </a>
   )
 }
 
@@ -360,13 +356,16 @@ export default function AI() {
     <div className="relative w-[100vw] -ml-[calc((100vw-100%)/2)] px-6 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-5xl">
         {/* Header */}
-        <header className="mb-16">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+        <header className="mb-16 space-y-3">
+          <div
+            className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 opacity-0 animate-fade-up"
+            style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}
+          >
             <div className="space-y-3">
-              <h1 className="text-3xl font-semibold text-[var(--text-primary)] tracking-tight">
+              <h1 className="font-display text-2xl font-semibold text-[var(--text-primary)] tracking-tight">
                 AI Tools
               </h1>
-              <p className="text-base text-[var(--text-muted)] max-w-md leading-relaxed">
+              <p className="text-sm text-[var(--text-muted)] max-w-md leading-relaxed">
                 Tools and automation for AI-assisted development.
               </p>
             </div>
@@ -376,7 +375,7 @@ export default function AI() {
                 href="https://github.com/ADWilkinson/claude-code-tools"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.04] hover:bg-[var(--text-primary)]/[0.08] rounded-lg transition-all"
+                className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--text-primary)]/[0.03] hover:bg-[var(--text-primary)]/[0.06] rounded-lg transition-all"
               >
                 <GitHubIcon size={14} />
                 <span>GitHub</span>
@@ -395,7 +394,10 @@ export default function AI() {
           </aside>
 
           {/* Content */}
-          <div className="flex-1 min-w-0 space-y-24">
+          <div
+            className="flex-1 min-w-0 space-y-24 opacity-0 animate-fade-up-subtle"
+            style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
+          >
             {/* Barbossa */}
             <section id="agents" className="scroll-mt-8">
               <ToolCard
@@ -471,7 +473,7 @@ export default function AI() {
                     key={type.title}
                     className="relative p-5 rounded-xl bg-[var(--text-primary)]/[0.02] border border-[var(--border-default)]/10 hover:border-[var(--border-default)]/20 transition-colors"
                   >
-                    <span className="absolute top-3 right-3 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[var(--text-muted)] opacity-40">
+                    <span className="absolute top-3 right-3 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-40">
                       {type.trigger}
                     </span>
                     <div className="flex items-center gap-2.5 mb-3">
@@ -494,13 +496,13 @@ export default function AI() {
                 </p>
               </SectionHeader>
 
-              <div className="space-y-8">
+              <div className="space-y-5">
                 {subagentCategories.map((category) => (
                   <div key={category.label}>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] opacity-50 mb-3">
+                    <p className="text-[10px] font-medium uppercase tracking-widest text-[var(--text-muted)] opacity-50 mb-2">
                       {category.label}
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-0">
+                    <div className="space-y-0">
                       {category.agents.map((agent) => (
                         <SubagentCard key={agent.name} {...agent} />
                       ))}
@@ -531,11 +533,11 @@ export default function AI() {
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/linear"
               >
                 <div className="space-y-6">
-                  <div className="space-y-3">
-                    <p className="text-xs font-semibold text-[var(--text-primary)]">Example prompts</p>
-                    <div className="grid grid-cols-2 gap-2">
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-50">Example prompts</p>
+                    <div className="grid grid-cols-2 gap-1.5">
                       {['"show my tasks"', '"search rebrand issues"', '"show my backlog"', '"mark ENG-123 done"'].map((example) => (
-                        <div key={example} className="bg-zinc-900 rounded-lg px-3 py-2 text-xs text-zinc-400 font-mono">
+                        <div key={example} className="bg-[var(--dj-charcoal)] rounded-md px-3 py-2 text-xs font-mono" style={{ color: 'rgba(244, 238, 232, 0.8)' }}>
                           {example}
                         </div>
                       ))}
