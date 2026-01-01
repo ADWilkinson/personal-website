@@ -49,14 +49,6 @@ const currentProjects = [
     tags: ['Payments', 'ZK'],
   },
   {
-    name: 'Davy Jones Intern',
-    desc: 'Claude Code SDK-powered Slack bot managing GitHub PRs, builds, and development workflows',
-    url: '/articles/building-davy-jones-intern',
-    icon: TerminalIcon,
-    tags: ['AI', 'Automation'],
-    isInternal: true,
-  },
-  {
     name: 'Barbossa',
     desc: 'Autonomous 5-agent AI development team that discovers issues, proposes features, implements code, reviews PRs, and merges changes automatically',
     url: 'https://barbossa.dev',
@@ -70,10 +62,25 @@ const currentProjects = [
     icon: CannonIcon,
     tags: ['Game', 'Multiplayer'],
   },
+  {
+    name: 'Jones Intern',
+    desc: 'Free multi-tenant AI Slack assistant with unified context across GitHub, Linear, and Notion',
+    url: 'https://jonesintern.ai',
+    icon: BotIcon,
+    tags: ['AI', 'SaaS'],
+  },
 ]
 
 // Past projects
 const pastProjects = [
+  {
+    name: 'Davy Jones Intern',
+    desc: 'Claude Code SDK-powered Slack bot managing GitHub PRs, builds, and development workflows',
+    url: '/articles/building-davy-jones-intern',
+    icon: TerminalIcon,
+    tags: ['AI', 'Automation'],
+    isInternal: true,
+  },
   {
     name: 'ChordCraft',
     desc: 'AI chord progression generator helping musicians create compelling harmonic sequences',
