@@ -19,6 +19,7 @@ import {
 
 const sections = [
   { id: 'agents', label: 'Barbossa System' },
+  { id: 'jones-intern', label: 'Jones Intern' },
   { id: 'claude-code', label: 'Claude Code', isHeader: true },
   { id: 'types', label: 'Tool Types' },
   { id: 'subagents', label: 'Subagents' },
@@ -447,6 +448,57 @@ export default function AI() {
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 hover:bg-[var(--accent-primary)]/15 rounded-lg transition-colors"
                 >
                   <span>View documentation</span>
+                  <ExternalLinkIcon size={12} />
+                </Link>
+              </div>
+            </section>
+
+            {/* Jones Intern */}
+            <section id="jones-intern" className="scroll-mt-8">
+              <div className="p-6 rounded-xl bg-[var(--text-primary)]/[0.02] border border-[var(--border-default)]/10">
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-primary)]/10">
+                    <TerminalIcon size={22} className="text-[var(--accent-primary)]" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-[var(--text-primary)] tracking-tight">
+                        Jones Intern
+                      </h3>
+                      <Link
+                        href="https://jonesintern.ai"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[var(--text-muted)] opacity-50 hover:opacity-100 transition-opacity"
+                      >
+                        <ExternalLinkIcon size={14} />
+                      </Link>
+                    </div>
+                    <p className="text-sm text-[var(--text-muted)] mt-1">
+                      Multi-tenant AI Slack assistant
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-5">
+                  SaaS Slack bot powered by Claude Agent SDK. BYOK model with OAuth integrations for GitHub and Linear, per-workspace usage tracking, and a web dashboard for configuration.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {['Claude Agent SDK', 'Slack Bolt', 'Firebase', 'Next.js'].map((tech) => (
+                    <span key={tech} className="text-xs font-medium text-[var(--text-primary)] bg-[var(--text-primary)]/[0.04] px-2 py-1 rounded-md">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  href="https://jonesintern.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 hover:bg-[var(--accent-primary)]/15 rounded-lg transition-colors"
+                >
+                  <span>Add to Slack</span>
                   <ExternalLinkIcon size={12} />
                 </Link>
               </div>
