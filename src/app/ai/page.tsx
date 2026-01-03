@@ -25,6 +25,7 @@ const sections = [
   { id: 'subagents', label: 'Subagents' },
   { id: 'skills', label: 'Skills' },
   { id: 'commands', label: 'Commands' },
+  { id: 'hooks', label: 'Hooks' },
   { id: 'statusline', label: 'Statusline' },
 ]
 
@@ -321,6 +322,7 @@ const subagentCategories = [
       { name: 'performance-engineer', desc: 'Profiling, caching, load testing, optimization' },
       { name: 'debugger', desc: 'Root cause analysis, error tracing, systematic debugging' },
       { name: 'refactoring-specialist', desc: 'Code smells, safe transformations, complexity reduction' },
+      { name: 'code-simplifier', desc: 'Remove over-engineering, dead code, verbose patterns' },
     ]
   },
 ]
@@ -635,6 +637,22 @@ export default function AI() {
                   </p>
                 </div>
               </ToolCard>
+
+              <div className="mt-8" />
+
+              <ToolCard
+                title="verify-changes"
+                description="Run tests, builds, and checks after implementing features."
+                icon={CodeIcon}
+                url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/verify-changes"
+              >
+                <div className="space-y-4">
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                    Auto-detects project type and runs appropriate verification (typecheck, lint, test, build).
+                    Provides the feedback loop that 2-3x code quality.
+                  </p>
+                </div>
+              </ToolCard>
             </section>
 
             {/* Commands */}
@@ -650,7 +668,8 @@ export default function AI() {
                   <CodeBlock id="commands-setup" label="One-time setup">{`mkdir -p ~/.claude/commands`}</CodeBlock>
                   <CodeBlock id="commands-install-all" label="Install all commands">{`curl -o ~/.claude/commands/repo-polish.md ${GITHUB_RAW_BASE}/commands/repo-polish.md && \\
 curl -o ~/.claude/commands/update-claudes.md ${GITHUB_RAW_BASE}/commands/update-claudes.md && \\
-curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-ui.md`}</CodeBlock>
+curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-ui.md && \\
+curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/commands/generate-precommit-hooks.md`}</CodeBlock>
                 </div>
               </div>
 
@@ -737,6 +756,48 @@ curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-u
                   </div>
 
                   <CodeBlock id="minimize-ui-run">{`/minimize-ui`}</CodeBlock>
+                </div>
+              </ToolCard>
+
+              {/* Command: generate-precommit-hooks */}
+              <ToolCard
+                title="/generate-precommit-hooks"
+                description="Set up pre-commit hooks for any project type."
+                icon={TerminalIcon}
+                downloadUrl={`${GITHUB_RAW_BASE}/commands/generate-precommit-hooks.md`}
+              >
+                <div className="space-y-4">
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                    Detects project type (Node, Python, Rust, Go, Solidity) and installs appropriate
+                    pre-commit hooks (husky, lint-staged, ruff, etc.).
+                  </p>
+                  <CodeBlock id="generate-precommit-hooks-run">{`/generate-precommit-hooks`}</CodeBlock>
+                </div>
+              </ToolCard>
+            </section>
+
+            {/* Hooks */}
+            <section id="hooks" className="scroll-mt-8">
+              <SectionHeader title="Hooks">
+                <p className="text-sm text-[var(--text-muted)]">
+                  Shell scripts that run at specific points in Claude Code's lifecycle.
+                </p>
+              </SectionHeader>
+
+              <ToolCard
+                title="auto-format.sh"
+                description="PostToolUse hook that formats code after Claude writes it."
+                icon={TerminalIcon}
+                url="https://github.com/ADWilkinson/claude-code-tools/tree/main/hooks"
+              >
+                <div className="space-y-4">
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                    Runs formatters automatically after Edit/Write operations. Supports Prettier,
+                    Ruff, gofmt, rustfmt, and forge fmt.
+                  </p>
+                  <CodeBlock id="hooks-install" label="Install">{`mkdir -p ~/.claude/hooks && \\
+curl -o ~/.claude/hooks/auto-format.sh ${GITHUB_RAW_BASE}/hooks/auto-format.sh && \\
+chmod +x ~/.claude/hooks/auto-format.sh`}</CodeBlock>
                 </div>
               </ToolCard>
             </section>
