@@ -646,10 +646,37 @@ export default function AI() {
                 icon={CodeIcon}
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/verify-changes"
               >
-                <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Auto-detects project type and runs appropriate verification (typecheck, lint, test, build).
-                    Provides the feedback loop that 2-3x code quality.
+                <div className="space-y-6">
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-50">When to use</p>
+                    <div className="grid grid-cols-2 gap-1.5">
+                      {['"verify my changes"', '"run the tests"', '"check if this works"', '"before I commit"'].map((example) => (
+                        <div key={example} className="bg-[var(--dj-charcoal)] rounded-md px-3 py-2 text-xs font-mono" style={{ color: 'rgba(244, 238, 232, 0.8)' }}>
+                          {example}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-50">Supported stacks</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {['TypeScript/Node', 'Python', 'Rust', 'Go', 'Solidity'].map((stack) => (
+                        <span key={stack} className="px-2 py-1 text-xs rounded bg-[var(--text-primary)]/[0.06] text-[var(--text-muted)]">
+                          {stack}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <CodeBlock id="verify-install" label="Install">{`mkdir -p ~/.claude/skills/verify-changes && \\
+curl -o ~/.claude/skills/verify-changes/SKILL.md \\
+  ${GITHUB_RAW_BASE}/skills/verify-changes/SKILL.md`}</CodeBlock>
+                  </div>
+
+                  <p className="text-xs text-[var(--text-muted)] opacity-70">
+                    Auto-detects project type and runs typecheck → lint → test → build in order of speed.
                   </p>
                 </div>
               </ToolCard>
