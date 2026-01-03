@@ -483,7 +483,7 @@ export default function AI() {
                 </div>
 
                 <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-5">
-                  SaaS Slack bot powered by Claude Agent SDK. BYOK model with OAuth integrations for GitHub and Linear, per-workspace usage tracking, and a web dashboard for configuration.
+                  SaaS Slack bot with BYOK Claude, OAuth for GitHub/Linear, usage tracking, and web dashboard.
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-5">
@@ -703,14 +703,13 @@ curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/comman
               {/* Command: repo-polish */}
               <ToolCard
                 title="/repo-polish"
-                description="Fire-and-forget repository cleanup. Creates a branch, fixes issues, opens a PR."
+                description="Autonomous cleanup. Branch → fix → PR."
                 icon={TerminalIcon}
                 downloadUrl={`${GITHUB_RAW_BASE}/commands/repo-polish.md`}
               >
                 <div className="space-y-4">
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Scans for unused imports, debug statements, type gaps, and outdated docs.
-                    Commits atomically and verifies tests pass.
+                    Finds unused imports, debug statements, type gaps. Commits atomically, verifies tests.
                   </p>
                   <CodeBlock id="repo-polish-run">{`/repo-polish`}</CodeBlock>
                 </div>
@@ -719,14 +718,13 @@ curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/comman
               {/* Command: update-claudes */}
               <ToolCard
                 title="/update-claudes"
-                description="Generates CLAUDE.md files throughout your project for AI context."
+                description="Generate CLAUDE.md files for AI context."
                 icon={CodeIcon}
                 downloadUrl={`${GITHUB_RAW_BASE}/commands/update-claudes.md`}
               >
                 <div className="space-y-4">
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Analyzes structure, spawns specialized agents, creates documentation
-                    at root and component levels.
+                    Spawns agents to analyze and document your codebase at root and component levels.
                   </p>
                   <CodeBlock id="update-claudes-run">{`/update-claudes`}</CodeBlock>
                 </div>
@@ -735,53 +733,14 @@ curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/comman
               {/* Command: minimize-ui */}
               <ToolCard
                 title="/minimize-ui"
-                description="Systematic UI minimalization through ruthless reduction."
+                description="Systematic UI reduction. Removes before polishing."
                 icon={CodeIcon}
                 downloadUrl={`${GITHUB_RAW_BASE}/commands/minimize-ui.md`}
               >
-                <div className="space-y-5">
+                <div className="space-y-4">
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    7-phase workflow that audits your UI, identifies bloat, and removes everything
-                    that doesn't serve the user's core journey.
+                    7-phase workflow: branch → audit → reduce → PR with before/after screenshots.
                   </p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <p className="text-xs font-semibold text-[var(--text-primary)]">Workflow</p>
-                      <ul className="text-xs text-[var(--text-muted)] space-y-1.5">
-                        <li className="flex items-start gap-2">
-                          <span className="text-[var(--accent-primary)] opacity-50">→</span>
-                          Creates branch, captures before screenshots
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[var(--accent-primary)] opacity-50">→</span>
-                          Audits against 6 reduction categories
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[var(--accent-primary)] opacity-50">→</span>
-                          Executes changes by impact priority
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[var(--accent-primary)] opacity-50">→</span>
-                          Opens PR with visual comparison
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-2">
-                      <p className="text-xs font-semibold text-[var(--text-primary)]">Principles</p>
-                      <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-[var(--text-muted)]">
-                        <span>Proximity</span>
-                        <span>Fitts's Law</span>
-                        <span>Emphasis</span>
-                        <span>White Space</span>
-                        <span>Consistency</span>
-                        <span>Modularity</span>
-                        <span>Anchor Objects</span>
-                        <span>Z/F Patterns</span>
-                      </div>
-                    </div>
-                  </div>
-
                   <CodeBlock id="minimize-ui-run">{`/minimize-ui`}</CodeBlock>
                 </div>
               </ToolCard>
@@ -789,14 +748,13 @@ curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/comman
               {/* Command: generate-precommit-hooks */}
               <ToolCard
                 title="/generate-precommit-hooks"
-                description="Set up pre-commit hooks for any project type."
+                description="Auto-detect stack, install hooks."
                 icon={TerminalIcon}
                 downloadUrl={`${GITHUB_RAW_BASE}/commands/generate-precommit-hooks.md`}
               >
                 <div className="space-y-4">
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Detects project type (Node, Python, Rust, Go, Solidity) and installs appropriate
-                    pre-commit hooks (husky, lint-staged, ruff, etc.).
+                    Detects Node/Python/Rust/Go/Solidity and installs husky, lint-staged, ruff, etc.
                   </p>
                   <CodeBlock id="generate-precommit-hooks-run">{`/generate-precommit-hooks`}</CodeBlock>
                 </div>
@@ -813,14 +771,13 @@ curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/comman
 
               <ToolCard
                 title="auto-format.sh"
-                description="PostToolUse hook that formats code after Claude writes it."
+                description="Format code after Claude writes it."
                 icon={TerminalIcon}
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/hooks"
               >
                 <div className="space-y-4">
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Runs formatters automatically after Edit/Write operations. Supports Prettier,
-                    Ruff, gofmt, rustfmt, and forge fmt.
+                    PostToolUse hook. Supports Prettier, Ruff, gofmt, rustfmt, forge fmt.
                   </p>
                   <CodeBlock id="hooks-install" label="Install">{`mkdir -p ~/.claude/hooks && \\
 curl -o ~/.claude/hooks/auto-format.sh ${GITHUB_RAW_BASE}/hooks/auto-format.sh && \\
@@ -833,21 +790,15 @@ chmod +x ~/.claude/hooks/auto-format.sh`}</CodeBlock>
             <section id="statusline" className="scroll-mt-8">
               <ToolCard
                 title="Flying Dutchman Statusline"
-                description="Custom statusline showing git branch, activity icons, cost tracking, and diff stats."
+                description="Git branch, tool icons, cost, diff stats."
                 icon={TerminalIcon}
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/statusline"
               >
-                <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Pairs with the Flying Dutchman theme. Shows folder, branch with dirty indicator,
-                    active tool icons, cumulative cost, and code changes.
-                  </p>
-                  <div className="space-y-3">
-                    <CodeBlock id="statusline-install" label="Install">{`curl -o ~/.claude/flying-dutchman-statusline.sh \\
+                <div className="space-y-3">
+                  <CodeBlock id="statusline-install" label="Install">{`curl -o ~/.claude/flying-dutchman-statusline.sh \\
   ${GITHUB_RAW_BASE}/statusline/flying-dutchman-statusline.sh && \\
   chmod +x ~/.claude/flying-dutchman-statusline.sh`}</CodeBlock>
-                    <CodeBlock id="statusline-config" label="Configure">{`"statusline": "~/.claude/flying-dutchman-statusline.sh"`}</CodeBlock>
-                  </div>
+                  <CodeBlock id="statusline-config" label="Configure">{`"statusline": "~/.claude/flying-dutchman-statusline.sh"`}</CodeBlock>
                 </div>
               </ToolCard>
             </section>
