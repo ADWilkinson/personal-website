@@ -94,3 +94,17 @@ export default (props) => <ArticleLayout article={article} {...props} />
 
 // Article content in Markdown format
 ```
+
+## Verification
+
+After making changes, run:
+```bash
+# Lint
+npm run lint
+
+# Build to catch type errors
+npm run build
+
+# For UI changes, run dev and visually verify
+npm run dev
+```
