@@ -784,6 +784,24 @@ curl -o ~/.claude/hooks/auto-format.sh ${GITHUB_RAW_BASE}/hooks/auto-format.sh &
 chmod +x ~/.claude/hooks/auto-format.sh`}</CodeBlock>
                 </div>
               </ToolCard>
+
+              <div className="mt-8" />
+
+              <ToolCard
+                title="constraint-persistence.sh"
+                description="Detect rules and persist them to CLAUDE.md."
+                icon={TerminalIcon}
+                url="https://github.com/ADWilkinson/claude-code-tools/tree/main/hooks"
+              >
+                <div className="space-y-4">
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                    UserPromptSubmit hook. Detects phrases like "from now on", "always do", "never do" and prompts Claude to save them.
+                  </p>
+                  <CodeBlock id="constraint-install" label="Install">{`curl -o ~/.claude/hooks/constraint-persistence.sh \\
+  ${GITHUB_RAW_BASE}/hooks/constraint-persistence.sh && \\
+chmod +x ~/.claude/hooks/constraint-persistence.sh`}</CodeBlock>
+                </div>
+              </ToolCard>
             </section>
 
             {/* Statusline */}
