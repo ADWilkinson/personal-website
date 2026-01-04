@@ -16,9 +16,10 @@ cd claude-code-tools
 
 ## What's Included
 
-- 12 specialized agents for Claude Code
-- Slash commands (`/repo-polish`, `/update-claudes`)
-- Linear skill for task management
+- Specialized agents for Claude Code
+- Slash commands (e.g., `/repo-polish`, `/update-claudes`, `/minimize-ui`, `/generate-precommit-hooks`)
+- Skills (Linear task management, verify-changes)
+- Hooks for formatting automation
 - Custom statusline
 
-See the [new repository](https://github.com/ADWilkinson/claude-code-tools) for full documentation.
+See the [new repository](https://github.com/ADWilkinson/claude-code-tools) for full documentation and install options.
