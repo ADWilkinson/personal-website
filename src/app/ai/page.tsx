@@ -610,7 +610,7 @@ export default function AI() {
 
               <ToolCard
                 title="Linear"
-                description="Natural language task management. Just mention tasks or issues."
+                description="Natural language task management. Prefers MCP when available, falls back to CLI."
                 icon={ServerIcon}
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/linear"
               >
@@ -626,14 +626,21 @@ export default function AI() {
                     </div>
                   </div>
 
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-50">Tool priority</p>
+                    <p className="text-xs text-[var(--text-muted)]">
+                      Uses Linear MCP server if configured, otherwise falls back to CLI script.
+                    </p>
+                  </div>
+
                   <div className="space-y-3">
                     <CodeBlock id="linear-install" label="Install">{`git clone https://github.com/ADWilkinson/claude-code-tools.git && \\
   cd claude-code-tools/skills/linear && ./install.sh`}</CodeBlock>
-                    <CodeBlock id="linear-config" label="Configure">{`export LINEAR_API_KEY="lin_api_..."`}</CodeBlock>
+                    <CodeBlock id="linear-config" label="CLI fallback config">{`export LINEAR_API_KEY="lin_api_..."`}</CodeBlock>
                   </div>
 
                   <p className="text-xs text-[var(--text-muted)] opacity-70">
-                    Get your API key from Linear → Settings → Security & access → Personal API keys
+                    CLI fallback requires API key from Linear → Settings → Security & access → Personal API keys
                   </p>
                 </div>
               </ToolCard>
