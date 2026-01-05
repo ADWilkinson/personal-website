@@ -292,10 +292,10 @@ const subagentCategories = [
   {
     label: 'Core',
     agents: [
-      { name: 'frontend-developer', desc: 'React, Next.js, TanStack Query, Tailwind' },
-      { name: 'backend-developer', desc: 'Express/Node.js, REST APIs, authentication' },
-      { name: 'database-manager', desc: 'PostgreSQL, Prisma ORM, query optimization' },
-      { name: 'mobile-developer', desc: 'React Native, Expo, biometrics, push notifications' },
+      { name: 'frontend-developer', desc: 'React, Vue, Angular, Svelte, state management' },
+      { name: 'backend-developer', desc: 'Node, Python, Go, Rust, Ruby - REST/GraphQL APIs' },
+      { name: 'database-manager', desc: 'SQL & NoSQL, Prisma, Drizzle, SQLAlchemy, GORM' },
+      { name: 'mobile-developer', desc: 'React Native, Flutter, Swift, Kotlin, cross-platform' },
     ]
   },
   {
