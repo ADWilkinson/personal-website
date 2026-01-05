@@ -45,7 +45,7 @@ function Role({ role, index }: { role: Role; index: number }) {
           <span className="text-sm font-medium text-[var(--text-primary)] transition-colors duration-150 group-hover:text-[var(--accent-primary)]">
             {role.company}
           </span>
-          <span className="text-xs text-[var(--text-primary)]/45 tabular-nums shrink-0 tracking-wide">
+          <span className="text-xs text-[#706D6A] dark:text-[#a1a1aa] tabular-nums shrink-0 tracking-wide">
             {role.start}–{role.end}
           </span>
         </div>

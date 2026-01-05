@@ -249,7 +249,7 @@ function NavItem({
       <Link
         href={href}
         className={clsx(
-          'relative text-sm group py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface-default)] rounded-sm',
+          'relative text-sm group py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface-default)] rounded-sm',
           'transition-[color,transform] duration-200',
           isActive
             ? 'text-[var(--text-primary)]'

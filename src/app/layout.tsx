@@ -104,7 +104,23 @@ export default function RootLayout({
       className="h-full antialiased"
       suppressHydrationWarning
     >
-      <head />
+      <head>
+          {/* Preload critical fonts for faster LCP */}
+          <link
+            rel="preload"
+            href="/_next/static/media/wigrumweb-regular.d043d0e0.woff"
+            as="font"
+            type="font/woff"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/_next/static/media/wigrumweb-medium.1434c689.woff"
+            as="font"
+            type="font/woff"
+            crossOrigin="anonymous"
+          />
+        </head>
       <body className="relative min-h-screen w-full">
         <Providers>
           <div className="w-full">
@@ -112,7 +128,7 @@ export default function RootLayout({
             <DavyJonesEasterEgg />
           </div>
         </Providers>
-        <Analytics />
+        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   )
