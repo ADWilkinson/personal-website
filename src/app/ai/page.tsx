@@ -703,7 +703,8 @@ curl -o ~/.claude/skills/verify-changes/SKILL.md \\
                   <CodeBlock id="commands-install-all" label="Install all commands">{`curl -o ~/.claude/commands/repo-polish.md ${GITHUB_RAW_BASE}/commands/repo-polish.md && \\
 curl -o ~/.claude/commands/update-claudes.md ${GITHUB_RAW_BASE}/commands/update-claudes.md && \\
 curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-ui.md && \\
-curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/commands/generate-precommit-hooks.md`}</CodeBlock>
+curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/commands/generate-precommit-hooks.md && \\
+curl -o ~/.claude/commands/lighthouse.md ${GITHUB_RAW_BASE}/commands/lighthouse.md`}</CodeBlock>
                 </div>
               </div>
 
@@ -764,6 +765,21 @@ curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/comman
                     Detects Node/Python/Rust/Go/Solidity and installs husky, lint-staged, ruff, etc.
                   </p>
                   <CodeBlock id="generate-precommit-hooks-run">{`/generate-precommit-hooks`}</CodeBlock>
+                </div>
+              </ToolCard>
+
+              {/* Command: lighthouse */}
+              <ToolCard
+                title="/lighthouse"
+                description="Audit and optimize web performance."
+                icon={TerminalIcon}
+                downloadUrl={`${GITHUB_RAW_BASE}/commands/lighthouse.md`}
+              >
+                <div className="space-y-4">
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                    Runs Lighthouse audits and iteratively fixes issues until target scores are met. Covers performance, accessibility, best practices, and SEO.
+                  </p>
+                  <CodeBlock id="lighthouse-run">{`/lighthouse --target 95`}</CodeBlock>
                 </div>
               </ToolCard>
             </section>
