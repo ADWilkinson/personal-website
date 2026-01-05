@@ -303,7 +303,6 @@ const subagentCategories = [
     agents: [
       { name: 'blockchain-specialist', desc: 'Solidity, Wagmi, multi-chain, gas optimization' },
       { name: 'indexer-developer', desc: 'Envio, The Graph, GraphQL, event handlers' },
-      { name: 'zk-specialist', desc: 'ZK circuits, Circom/Noir, trusted setup' },
     ]
   },
   {
@@ -321,8 +320,7 @@ const subagentCategories = [
       { name: 'testing-specialist', desc: 'Jest, Playwright, E2E, mocking strategies' },
       { name: 'performance-engineer', desc: 'Profiling, caching, load testing, optimization' },
       { name: 'debugger', desc: 'Root cause analysis, error tracing, systematic debugging' },
-      { name: 'refactoring-specialist', desc: 'Code smells, safe transformations, complexity reduction' },
-      { name: 'code-simplifier', desc: 'Remove over-engineering, dead code, verbose patterns' },
+      { name: 'refactoring-specialist', desc: 'Code smells, simplification, safe transformations' },
     ]
   },
 ]
