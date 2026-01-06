@@ -685,6 +685,41 @@ curl -o ~/.claude/skills/verify-changes/SKILL.md \\
                   </p>
                 </div>
               </ToolCard>
+
+              <div className="mt-8" />
+
+              <ToolCard
+                title="clarify-before-implementing"
+                description="Ask targeted questions before coding to avoid wrong work."
+                icon={CodeIcon}
+                url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/clarify-before-implementing"
+              >
+                <div className="space-y-6">
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-50">Triggers on</p>
+                    <p className="text-xs text-[var(--text-muted)]">
+                      Underspecified implementation requests - when scope, acceptance criteria, or constraints are unclear.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-50">Example behavior</p>
+                    <div className="bg-[var(--dj-charcoal)] rounded-md px-3 py-2 text-xs font-mono" style={{ color: 'rgba(244, 238, 232, 0.8)' }}>
+                      {`1) Scope? a) Minimal (default) b) Refactor too\n2) Compatibility? a) Current defaults b) Support older\n\nReply: defaults or 1a 2b`}
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <CodeBlock id="clarify-install" label="Install">{`mkdir -p ~/.claude/skills/clarify-before-implementing && \\
+curl -o ~/.claude/skills/clarify-before-implementing/SKILL.md \\
+  ${GITHUB_RAW_BASE}/skills/clarify-before-implementing/SKILL.md`}</CodeBlock>
+                  </div>
+
+                  <p className="text-xs text-[var(--text-muted)] opacity-70">
+                    Prevents wrong work by asking 1-5 multiple-choice questions with defaults before implementing.
+                  </p>
+                </div>
+              </ToolCard>
             </section>
 
             {/* Commands */}
@@ -698,13 +733,29 @@ curl -o ~/.claude/skills/verify-changes/SKILL.md \\
 
                 <div className="space-y-4 mb-8">
                   <CodeBlock id="commands-setup" label="One-time setup">{`mkdir -p ~/.claude/commands`}</CodeBlock>
-                  <CodeBlock id="commands-install-all" label="Install all commands">{`curl -o ~/.claude/commands/repo-polish.md ${GITHUB_RAW_BASE}/commands/repo-polish.md && \\
+                  <CodeBlock id="commands-install-all" label="Install all commands">{`curl -o ~/.claude/commands/deslop.md ${GITHUB_RAW_BASE}/commands/deslop.md && \\
+curl -o ~/.claude/commands/repo-polish.md ${GITHUB_RAW_BASE}/commands/repo-polish.md && \\
 curl -o ~/.claude/commands/update-claudes.md ${GITHUB_RAW_BASE}/commands/update-claudes.md && \\
 curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-ui.md && \\
 curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/commands/generate-precommit-hooks.md && \\
 curl -o ~/.claude/commands/lighthouse.md ${GITHUB_RAW_BASE}/commands/lighthouse.md`}</CodeBlock>
                 </div>
               </div>
+
+              {/* Command: deslop */}
+              <ToolCard
+                title="/deslop"
+                description="Remove AI-generated slop from diffs."
+                icon={TerminalIcon}
+                downloadUrl={`${GITHUB_RAW_BASE}/commands/deslop.md`}
+              >
+                <div className="space-y-4">
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                    Checks diff against main and removes: extra comments, defensive checks, type escapes, console.logs, style inconsistencies.
+                  </p>
+                  <CodeBlock id="deslop-run">{`/deslop`}</CodeBlock>
+                </div>
+              </ToolCard>
 
               {/* Command: repo-polish */}
               <ToolCard
