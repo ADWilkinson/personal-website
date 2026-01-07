@@ -15,6 +15,7 @@ import {
   GitHubIcon,
   MenuIcon,
   XIcon,
+  ChevronDownIcon,
 } from '@/components/Icons'
 
 const sections = [
@@ -233,6 +234,8 @@ function ToolCard({
   url,
   downloadUrl,
   children,
+  expandable = false,
+  defaultExpanded = false,
 }: {
   title: string
   description: string
@@ -240,10 +243,21 @@ function ToolCard({
   url?: string
   downloadUrl?: string
   children?: React.ReactNode
+  expandable?: boolean
+  defaultExpanded?: boolean
 }) {
+  const [isExpanded, setIsExpanded] = useState(defaultExpanded)
+  const showContent = !expandable || isExpanded
+
   return (
     <div className="group">
-      <div className="flex items-start gap-4">
+      <div
+        className={clsx(
+          "flex items-start gap-4",
+          expandable && "cursor-pointer"
+        )}
+        onClick={expandable ? () => setIsExpanded(!isExpanded) : undefined}
+      >
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--text-primary)]/[0.04] group-hover:bg-[var(--text-primary)]/[0.07] transition-colors">
           <Icon size={18} className="text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors" />
         </div>
@@ -258,6 +272,7 @@ function ToolCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[var(--text-muted)] opacity-40 hover:opacity-100 transition-opacity"
+                onClick={(e) => e.stopPropagation()}
               >
                 <ExternalLinkIcon size={12} />
               </Link>
@@ -270,9 +285,19 @@ function ToolCard({
                 rel="noopener noreferrer"
                 className="text-[var(--text-muted)] opacity-40 hover:opacity-100 transition-opacity"
                 title="Download"
+                onClick={(e) => e.stopPropagation()}
               >
                 <DownloadIcon size={12} />
               </a>
+            )}
+            {expandable && (
+              <ChevronDownIcon
+                size={14}
+                className={clsx(
+                  "text-[var(--text-muted)] opacity-40 transition-transform duration-200 ml-auto",
+                  isExpanded && "rotate-180"
+                )}
+              />
             )}
           </div>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed">
@@ -280,12 +305,78 @@ function ToolCard({
           </p>
         </div>
       </div>
-      {children && <div className="mt-4 pl-14">{children}</div>}
+      {children && showContent && (
+        <div className={clsx(
+          "mt-4 pl-14",
+          expandable && "animate-fade-in"
+        )}>
+          {children}
+        </div>
+      )}
     </div>
   )
 }
 
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/ADWilkinson/claude-code-tools/main'
+
+// Compact command data for grid display
+const commands = [
+  { name: '/deslop', desc: 'Remove AI slop from diffs', detail: 'Extra comments, defensive checks, type escapes' },
+  { name: '/repo-polish', desc: 'Autonomous cleanup → PR', detail: 'Unused imports, debug statements, type gaps' },
+  { name: '/update-claudes', desc: 'Generate CLAUDE.md files', detail: 'Multi-agent codebase documentation' },
+  { name: '/minimize-ui', desc: 'Systematic UI reduction', detail: '7-phase: branch → audit → reduce → PR' },
+  { name: '/generate-precommit-hooks', desc: 'Auto-detect stack, install hooks', detail: 'husky, lint-staged, ruff, etc.' },
+  { name: '/lighthouse', desc: 'Web performance optimization', detail: 'Iterative fixes until target score' },
+  { name: '/xml', desc: 'Convert prompts to XML', detail: 'Structured prompts for Claude' },
+]
+
+function CommandCard({ name, desc, detail }: { name: string; desc: string; detail: string }) {
+  const [copied, setCopied] = useState(false)
+
+  const copy = async () => {
+    await navigator.clipboard.writeText(name)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  return (
+    <div
+      className="group relative p-4 rounded-lg bg-[var(--text-primary)]/[0.02] border border-[var(--border-default)]/10 hover:border-[var(--border-default)]/20 transition-all cursor-pointer"
+      onClick={copy}
+    >
+      <div className="flex items-start justify-between gap-2 mb-1.5">
+        <code className="text-sm font-semibold text-[var(--text-primary)] font-mono">
+          {name}
+        </code>
+        <span className={clsx(
+          "text-[10px] px-1.5 py-0.5 rounded transition-all",
+          copied
+            ? "text-[var(--accent-primary)] bg-[var(--accent-primary)]/10"
+            : "text-[var(--text-muted)] opacity-0 group-hover:opacity-50"
+        )}>
+          {copied ? 'copied!' : 'click to copy'}
+        </span>
+      </div>
+      <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+        {desc}
+      </p>
+      <p className="text-[10px] text-[var(--text-muted)] opacity-50 mt-1">
+        {detail}
+      </p>
+      <a
+        href={`${GITHUB_RAW_BASE}/commands/${name.slice(1)}.md`}
+        download
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute top-3 right-3 text-[var(--text-muted)] opacity-0 group-hover:opacity-40 hover:!opacity-100 transition-opacity"
+        onClick={(e) => e.stopPropagation()}
+        title="Download"
+      >
+        <DownloadIcon size={12} />
+      </a>
+    </div>
+  )
+}
 
 // Categorized subagents for better scannability
 const subagentCategories = [
@@ -611,6 +702,7 @@ export default function AI() {
                 description="Natural language task management. Prefers MCP when available, falls back to CLI."
                 icon={ServerIcon}
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/linear"
+                expandable
               >
                 <div className="space-y-6">
                   <div className="space-y-2">
@@ -650,6 +742,7 @@ export default function AI() {
                 description="Run tests, builds, and checks after implementing features."
                 icon={CodeIcon}
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/verify-changes"
+                expandable
               >
                 <div className="space-y-6">
                   <div className="space-y-2">
@@ -693,6 +786,7 @@ curl -o ~/.claude/skills/verify-changes/SKILL.md \\
                 description="Ask targeted questions before coding to avoid wrong work."
                 icon={CodeIcon}
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/clarify-before-implementing"
+                expandable
               >
                 <div className="space-y-6">
                   <div className="space-y-2">
@@ -720,117 +814,77 @@ curl -o ~/.claude/skills/clarify-before-implementing/SKILL.md \\
                   </p>
                 </div>
               </ToolCard>
+
+              <div className="mt-8" />
+
+              <ToolCard
+                title="dev-browser"
+                description="Browser automation for testing and verification during development."
+                icon={ServerIcon}
+                url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/dev-browser"
+                expandable
+              >
+                <div className="space-y-6">
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-50">Capabilities</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {['Visual verification', 'Flow testing', 'Form validation', 'Responsive testing'].map((cap) => (
+                        <span key={cap} className="px-2 py-1 text-xs rounded bg-[var(--text-primary)]/[0.06] text-[var(--text-muted)]">
+                          {cap}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-50">Example prompts</p>
+                    <div className="grid grid-cols-2 gap-1.5">
+                      {['"test the login"', '"screenshot dashboard"', '"verify form validation"', '"test mobile layout"'].map((example) => (
+                        <div key={example} className="bg-[var(--dj-charcoal)] rounded-md px-3 py-2 text-xs font-mono" style={{ color: 'rgba(244, 238, 232, 0.8)' }}>
+                          {example}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <CodeBlock id="dev-browser-install" label="Install">{`mkdir -p ~/.claude/skills/dev-browser && \\
+curl -o ~/.claude/skills/dev-browser/SKILL.md \\
+  ${GITHUB_RAW_BASE}/skills/dev-browser/SKILL.md`}</CodeBlock>
+                  </div>
+
+                  <p className="text-xs text-[var(--text-muted)] opacity-70">
+                    Integrates with verify-changes skill for combined code + UI verification.
+                  </p>
+                </div>
+              </ToolCard>
             </section>
 
             {/* Commands */}
-            <section id="commands" className="scroll-mt-8 space-y-12">
-              <div>
-                <SectionHeader title="Slash Commands">
-                  <p className="text-sm text-[var(--text-muted)]">
-                    Invoked with <code className="text-xs font-semibold text-[var(--text-primary)] bg-[var(--text-primary)]/[0.06] px-1.5 py-0.5 rounded font-mono">/command-name</code> in Claude Code.
-                  </p>
-                </SectionHeader>
+            <section id="commands" className="scroll-mt-8">
+              <SectionHeader title="Slash Commands" badge={`${commands.length} commands`}>
+                <p className="text-sm text-[var(--text-muted)]">
+                  Manually triggered with <code className="text-xs font-semibold text-[var(--text-primary)] bg-[var(--text-primary)]/[0.06] px-1.5 py-0.5 rounded font-mono">/command</code>. Click to copy.
+                </p>
+              </SectionHeader>
 
-                <div className="space-y-4 mb-8">
-                  <CodeBlock id="commands-setup" label="One-time setup">{`mkdir -p ~/.claude/commands`}</CodeBlock>
-                  <CodeBlock id="commands-install-all" label="Install all commands">{`curl -o ~/.claude/commands/deslop.md ${GITHUB_RAW_BASE}/commands/deslop.md && \\
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                {commands.map((cmd) => (
+                  <CommandCard key={cmd.name} {...cmd} />
+                ))}
+              </div>
+
+              <div className="pt-6 border-t border-[var(--border-default)]/10">
+                <p className="text-xs text-[var(--text-muted)] mb-3">Install all commands</p>
+                <CodeBlock id="commands-install-all">{`mkdir -p ~/.claude/commands && \\
+curl -o ~/.claude/commands/deslop.md ${GITHUB_RAW_BASE}/commands/deslop.md && \\
 curl -o ~/.claude/commands/repo-polish.md ${GITHUB_RAW_BASE}/commands/repo-polish.md && \\
 curl -o ~/.claude/commands/update-claudes.md ${GITHUB_RAW_BASE}/commands/update-claudes.md && \\
 curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-ui.md && \\
 curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/commands/generate-precommit-hooks.md && \\
-curl -o ~/.claude/commands/lighthouse.md ${GITHUB_RAW_BASE}/commands/lighthouse.md`}</CodeBlock>
-                </div>
+curl -o ~/.claude/commands/lighthouse.md ${GITHUB_RAW_BASE}/commands/lighthouse.md && \\
+curl -o ~/.claude/commands/xml.md ${GITHUB_RAW_BASE}/commands/xml.md`}</CodeBlock>
               </div>
-
-              {/* Command: deslop */}
-              <ToolCard
-                title="/deslop"
-                description="Remove AI-generated slop from diffs."
-                icon={TerminalIcon}
-                downloadUrl={`${GITHUB_RAW_BASE}/commands/deslop.md`}
-              >
-                <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Checks diff against main and removes: extra comments, defensive checks, type escapes, console.logs, style inconsistencies.
-                  </p>
-                  <CodeBlock id="deslop-run">{`/deslop`}</CodeBlock>
-                </div>
-              </ToolCard>
-
-              {/* Command: repo-polish */}
-              <ToolCard
-                title="/repo-polish"
-                description="Autonomous cleanup. Branch → fix → PR."
-                icon={TerminalIcon}
-                downloadUrl={`${GITHUB_RAW_BASE}/commands/repo-polish.md`}
-              >
-                <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Finds unused imports, debug statements, type gaps. Commits atomically, verifies tests.
-                  </p>
-                  <CodeBlock id="repo-polish-run">{`/repo-polish`}</CodeBlock>
-                </div>
-              </ToolCard>
-
-              {/* Command: update-claudes */}
-              <ToolCard
-                title="/update-claudes"
-                description="Generate CLAUDE.md files for AI context."
-                icon={CodeIcon}
-                downloadUrl={`${GITHUB_RAW_BASE}/commands/update-claudes.md`}
-              >
-                <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Spawns agents to analyze and document your codebase at root and component levels.
-                  </p>
-                  <CodeBlock id="update-claudes-run">{`/update-claudes`}</CodeBlock>
-                </div>
-              </ToolCard>
-
-              {/* Command: minimize-ui */}
-              <ToolCard
-                title="/minimize-ui"
-                description="Systematic UI reduction. Removes before polishing."
-                icon={CodeIcon}
-                downloadUrl={`${GITHUB_RAW_BASE}/commands/minimize-ui.md`}
-              >
-                <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    7-phase workflow: branch → audit → reduce → PR with before/after screenshots.
-                  </p>
-                  <CodeBlock id="minimize-ui-run">{`/minimize-ui`}</CodeBlock>
-                </div>
-              </ToolCard>
-
-              {/* Command: generate-precommit-hooks */}
-              <ToolCard
-                title="/generate-precommit-hooks"
-                description="Auto-detect stack, install hooks."
-                icon={TerminalIcon}
-                downloadUrl={`${GITHUB_RAW_BASE}/commands/generate-precommit-hooks.md`}
-              >
-                <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Detects Node/Python/Rust/Go/Solidity and installs husky, lint-staged, ruff, etc.
-                  </p>
-                  <CodeBlock id="generate-precommit-hooks-run">{`/generate-precommit-hooks`}</CodeBlock>
-                </div>
-              </ToolCard>
-
-              {/* Command: lighthouse */}
-              <ToolCard
-                title="/lighthouse"
-                description="Audit and optimize web performance."
-                icon={TerminalIcon}
-                downloadUrl={`${GITHUB_RAW_BASE}/commands/lighthouse.md`}
-              >
-                <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    Runs Lighthouse audits and iteratively fixes issues until target scores are met. Covers performance, accessibility, best practices, and SEO.
-                  </p>
-                  <CodeBlock id="lighthouse-run">{`/lighthouse --target 95`}</CodeBlock>
-                </div>
-              </ToolCard>
             </section>
 
             {/* Hooks */}
