@@ -815,49 +815,6 @@ curl -o ~/.claude/skills/clarify-before-implementing/SKILL.md \\
                 </div>
               </ToolCard>
 
-              <div className="mt-8" />
-
-              <ToolCard
-                title="dev-browser"
-                description="Browser automation for testing and verification during development."
-                icon={ServerIcon}
-                url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/dev-browser"
-                expandable
-              >
-                <div className="space-y-6">
-                  <div className="space-y-2">
-                    <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-50">Capabilities</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {['Visual verification', 'Flow testing', 'Form validation', 'Responsive testing'].map((cap) => (
-                        <span key={cap} className="px-2 py-1 text-xs rounded bg-[var(--text-primary)]/[0.06] text-[var(--text-muted)]">
-                          {cap}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <p className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)] opacity-50">Example prompts</p>
-                    <div className="grid grid-cols-2 gap-1.5">
-                      {['"test the login"', '"screenshot dashboard"', '"verify form validation"', '"test mobile layout"'].map((example) => (
-                        <div key={example} className="bg-[var(--dj-charcoal)] rounded-md px-3 py-2 text-xs font-mono" style={{ color: 'rgba(244, 238, 232, 0.8)' }}>
-                          {example}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <CodeBlock id="dev-browser-install" label="Install">{`mkdir -p ~/.claude/skills/dev-browser && \\
-curl -o ~/.claude/skills/dev-browser/SKILL.md \\
-  ${GITHUB_RAW_BASE}/skills/dev-browser/SKILL.md`}</CodeBlock>
-                  </div>
-
-                  <p className="text-xs text-[var(--text-muted)] opacity-70">
-                    Integrates with verify-changes skill for combined code + UI verification.
-                  </p>
-                </div>
-              </ToolCard>
             </section>
 
             {/* Commands */}
