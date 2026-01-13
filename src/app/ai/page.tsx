@@ -124,13 +124,16 @@ function MobileNav({ activeSection }: { activeSection: string }) {
   )
 }
 
-const INSTALL_COMMAND = `git clone https://github.com/ADWilkinson/claude-code-tools.git && cd claude-code-tools && ./install.sh`
+const PLUGIN_INSTALL_COMMANDS = `/plugin marketplace add ADWilkinson/claude-code-tools
+/plugin install cct@cct`
+
+const SCRIPT_INSTALL_COMMAND = `git clone https://github.com/ADWilkinson/claude-code-tools.git && cd claude-code-tools && ./install.sh`
 
 function InstallButton() {
   const [copied, setCopied] = useState(false)
 
   const copy = async () => {
-    await navigator.clipboard.writeText(INSTALL_COMMAND)
+    await navigator.clipboard.writeText(PLUGIN_INSTALL_COMMANDS)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -153,7 +156,7 @@ function InstallButton() {
       ) : (
         <>
           <CopyIcon size={13} />
-          <span>Copy install</span>
+          <span>Copy plugin install</span>
         </>
       )}
     </button>
@@ -601,7 +604,7 @@ export default function AI() {
                 <h2 className="text-xl font-semibold text-[var(--text-primary)] tracking-tight mb-2">
                   Claude Code Tools
                 </h2>
-                <p className="text-sm text-[var(--text-muted)]">
+                <p className="text-sm text-[var(--text-muted)] mb-6">
                   Requires{' '}
                   <Link
                     href="https://github.com/anthropics/claude-code"
@@ -613,6 +616,22 @@ export default function AI() {
                   </Link>
                   {' '}to be installed.
                 </p>
+
+                <div className="p-5 rounded-xl bg-[var(--accent-primary)]/5 border border-[var(--accent-primary)]/20">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 rounded-full">
+                      Recommended
+                    </span>
+                    <p className="text-sm font-medium text-[var(--text-primary)]">Install as Plugin</p>
+                  </div>
+                  <p className="text-xs text-[var(--text-muted)] mb-4">
+                    Get all 14 agents, 7 commands, 3 skills, and 2 hooks in one install. Commands namespaced as <code className="font-mono text-[var(--text-primary)]">/cct:*</code>
+                  </p>
+                  <CodeBlock id="plugin-install" label="Plugin install">{PLUGIN_INSTALL_COMMANDS}</CodeBlock>
+                  <p className="text-[10px] text-[var(--text-muted)] opacity-60 mt-3">
+                    Or use the install script for short command names: <code className="font-mono">./install.sh</code>
+                  </p>
+                </div>
               </div>
             </section>
 
@@ -683,9 +702,8 @@ export default function AI() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-[var(--border-default)]/10">
-                <p className="text-xs text-[var(--text-muted)] mb-3">Quick install (all agents)</p>
-                <CodeBlock id="subagents-install">{`git clone https://github.com/ADWilkinson/claude-code-tools.git && \\
-  cd claude-code-tools && ./install.sh`}</CodeBlock>
+                <p className="text-xs text-[var(--text-muted)] mb-3">Quick install (plugin includes all agents)</p>
+                <CodeBlock id="subagents-install">{PLUGIN_INSTALL_COMMANDS}</CodeBlock>
               </div>
             </section>
 
@@ -832,15 +850,11 @@ curl -o ~/.claude/skills/clarify-before-implementing/SKILL.md \\
               </div>
 
               <div className="pt-6 border-t border-[var(--border-default)]/10">
-                <p className="text-xs text-[var(--text-muted)] mb-3">Install all commands</p>
-                <CodeBlock id="commands-install-all">{`mkdir -p ~/.claude/commands && \\
-curl -o ~/.claude/commands/deslop.md ${GITHUB_RAW_BASE}/commands/deslop.md && \\
-curl -o ~/.claude/commands/repo-polish.md ${GITHUB_RAW_BASE}/commands/repo-polish.md && \\
-curl -o ~/.claude/commands/update-claudes.md ${GITHUB_RAW_BASE}/commands/update-claudes.md && \\
-curl -o ~/.claude/commands/minimize-ui.md ${GITHUB_RAW_BASE}/commands/minimize-ui.md && \\
-curl -o ~/.claude/commands/generate-precommit-hooks.md ${GITHUB_RAW_BASE}/commands/generate-precommit-hooks.md && \\
-curl -o ~/.claude/commands/lighthouse.md ${GITHUB_RAW_BASE}/commands/lighthouse.md && \\
-curl -o ~/.claude/commands/xml.md ${GITHUB_RAW_BASE}/commands/xml.md`}</CodeBlock>
+                <p className="text-xs text-[var(--text-muted)] mb-3">Install all commands (plugin includes all)</p>
+                <CodeBlock id="commands-install-all">{PLUGIN_INSTALL_COMMANDS}</CodeBlock>
+                <p className="text-[10px] text-[var(--text-muted)] opacity-50 mt-3">
+                  Plugin commands: <code className="font-mono">/cct:deslop</code>, <code className="font-mono">/cct:lighthouse</code>, <code className="font-mono">/cct:xml</code>, etc.
+                </p>
               </div>
             </section>
 
