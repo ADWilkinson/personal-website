@@ -327,8 +327,9 @@ const commands = [
   { name: '/repo-polish', desc: 'Autonomous cleanup → PR', detail: 'Unused imports, debug statements, type gaps' },
   { name: '/update-claudes', desc: 'Generate CLAUDE.md files', detail: 'Multi-agent codebase documentation' },
   { name: '/minimize-ui', desc: 'Systematic UI reduction', detail: '7-phase: branch → audit → reduce → PR' },
+  { name: '/design-audit', desc: 'Accessibility & visual audit', detail: 'WCAG compliance, scoring, auto-fix' },
+  { name: '/lighthouse', desc: 'Web performance optimization', detail: 'Iterative fixes with progress tracking' },
   { name: '/generate-precommit-hooks', desc: 'Auto-detect stack, install hooks', detail: 'husky, lint-staged, ruff, etc.' },
-  { name: '/lighthouse', desc: 'Web performance optimization', detail: 'Iterative fixes until target score' },
   { name: '/xml', desc: 'Convert prompts to XML', detail: 'Structured prompts for Claude' },
 ]
 
@@ -573,7 +574,7 @@ export default function AI() {
                     <p className="text-sm font-medium text-[var(--text-primary)]">Install as Plugin</p>
                   </div>
                   <p className="text-xs text-[var(--text-muted)] mb-4">
-                    Get all 14 agents, 7 commands, 3 skills, and 2 hooks in one install. Commands namespaced as <code className="font-mono text-[var(--text-primary)]">/cct:*</code>
+                    Get all 14 agents, 8 commands, 3 skills, and 2 hooks in one install. Commands namespaced as <code className="font-mono text-[var(--text-primary)]">/cct:*</code>. Also supports Cursor, Windsurf, Cline.
                   </p>
                   <CodeBlock id="plugin-install" label="Plugin install">{PLUGIN_INSTALL_COMMANDS}</CodeBlock>
                   <p className="text-[10px] text-[var(--text-muted)] opacity-60 mt-3">
@@ -705,7 +706,7 @@ export default function AI() {
 
               <ToolCard
                 title="verify-changes"
-                description="Run tests, builds, and checks after implementing features."
+                description="Run tests, builds, and checks with scored output (100-point scale)."
                 icon={CodeIcon}
                 url="https://github.com/ADWilkinson/claude-code-tools/tree/main/skills/verify-changes"
                 expandable
@@ -740,7 +741,7 @@ curl -o ~/.claude/skills/verify-changes/SKILL.md \\
                   </div>
 
                   <p className="text-xs text-[var(--text-muted)] opacity-70">
-                    Auto-detects project type and runs typecheck → lint → test → build in order of speed.
+                    Returns scored results with severity tiers (Critical/Serious/Moderate). Ready for commit at ≥70 points with no critical issues.
                   </p>
                 </div>
               </ToolCard>
