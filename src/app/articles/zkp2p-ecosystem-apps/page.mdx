@@ -1,0 +1,86 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import ecosystemCover from '@/images/articles/zkp2p-ecosystem-apps/ecosystem-apps-cover.png'
+
+export const article = {
+  author: 'Andrew Wilkinson',
+  date: '2026-01-18',
+  title: 'ZKP2P Ecosystem Apps: Just Build Things',
+  description:
+    'How ADHD plus AI coding tools helped me ship Peerlytics and USDCtoFiat - two ecosystem apps built on ZKP2P.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<figure className="my-8">
+  <Image
+    src={ecosystemCover}
+    alt="USDCtoFiat and Peerlytics logos"
+    className="rounded-lg shadow-lg"
+  />
+</figure>
+
+My good dose of ADHD plus AI coding tools is a combination that, at the expense of sleep, means I've finally been able to bring to life the ideas constantly running through my head. Every "this would be cool" thought now has a chance of actually happening, and I've had hundreds over the years; my GitHub is an actual graveyard of half-finished experiments from the days where getting stuck meant Stack Overflow (RIP) or it's so over.
+
+The past few months, I've been pushing some of these to production while sacrificing others in the quest to cross the chasm from slop project to something people might actually use. Some stupid, just for fun, stuck around ([broadside.fun](https://broadside.fun)). The others, more aligned with my career in crypto for the last 8 years, are the ones I've been pushing hardest. I'll talk about two here: USDCtoFiat & Peerlytics.
+
+Working on [ZKP2P](https://zkp2p.xyz), we're building an incredible protocol with plenty of complex problems to solve to scale a better, privacy-preserving way to do global P2P. Outside of that, Peerlytics and USDCtoFiat started as small thoughts that grew into ecosystem projects, built to benefit the protocol. Often built on the sofa with a film in the background, Claude Code cooking away while I half-watch, iterating from homeserver-hosted junk to more polished products deployed on real infrastructure.
+
+## Two Starting Points
+
+The first itch: protocol analytics. We had an indexer pumping out data, but I wanted to see it visualised. Volume trends, liquidity heatmaps, leaderboards. A pseudo-Etherscan for protocol activity (and I didn't want to use Dune, because I have Claude).
+
+The second itch: a simplified experience for the "just make it work" crowd. ZKP2P serves power users well and will continue to improve significantly throughout 2026. But what about someone who just wants to sell USDC to their Revolut in a few clicks at market rate? A specialised app built on the same protocol contracts serves that perfectly.
+
+## Peerlytics
+
+[Peerlytics](https://peerlytics.xyz) started as a weekend experiment. Could I build a dashboard that made protocol activity legible? With Claude handling the heavy lifting, what would've taken months became a very janky v0.1 in a few hours. Now we have:
+
+**Analytics**: 11 dashboard views covering volume, liquidity, currency flows, live on-chain events, profitability, protocol order rates insights
+
+**Discovery**: explorer for any deposit/intent/address, leaderboards with protocol tier rankings
+
+**Personal**: deposit health monitoring, APR simulator, watchlist with push notifications, year-in-review wrapped stats
+
+## USDCtoFiat
+
+While Peerlytics served the team and power users, [USDCtoFiat](https://usdctofiat.xyz) went the opposite direction: simplicity first. I wanted to develop a clean, minimal interface by default, with advanced features for those who want them, without compromising the default UI.
+
+**Core order flows**: buy and sell USDC utilising all supported currencies and platforms enabled by ZKP2P.
+
+**Liquidity Intelligence & management**: easily manage sell orders in one view, rate percentiles, suggested rates, competitiveness analysis
+
+**Notifications**: Telegram bot, push notifications, Twitter bot auto-posting deposits and fills, quiet hours
+
+**Experiments**: earnings goals, cross-device recovery, Claim-to-Sell flow for DeFi rewards, Relay bridge, PWA
+
+## Bringing Them Together
+
+These apps initially shared nothing. Peerlytics came first by a few months, but patterns kept emerging. Both needed user preferences, notifications, and the same data layer. So I unified them: shared Firebase, cross-app notifications, unified auth, and scheduled cloud functions precomputing protocol data for both to serve faster and reduce indexer load.
+
+## The Toolkit
+
+- **Claude Code** as the core loop for feature development
+- **Conductor** for parallel 'one-shots' work that I can merge with little oversight
+- **MCPs and CLIs** connecting Figma, Chrome devtools, doc retrievals & browser automation, and all my developer platforms (Firebase, Docker, Github)
+- **Custom Claude Code tools** I've been building to help with my workflow, and to parallelize it to an extent. [Claude Code Tools](https://github.com/ADWilkinson/claude-code-tools) & [Barbossa.dev](https://barbossa.dev)
+- Community tools like Vercel's react-best-practices, amongst others I discover every day
+
+## Just Build It
+
+The past few months, I've gone hard on AI-fuelled development of basically everything remotely interesting that landed in my brain. Going forward, I'll probably rebalance a bit and see how far I can take the 4 or 5 things I've been sofa-building.
+
+I'll spare you the inspirational speech about developing with AI. But I will say this: find something that triggers your imagination and just start. For me, it was the ZKP2P SDK. Once that was shipped, the ideas wouldn't stop, and I got to work.
+
+If you have agency, curiosity, and a half-decent imagination, you're un-outbuildable.
+
+## Links
+
+- [ZKP2P](https://zkp2p.xyz) | [@zkp2p](https://x.com/zkp2p) | [SDK](https://github.com/zkp2p/zkp2p-sdk)
+- [Peerlytics](https://peerlytics.xyz)
+- [USDCtoFiat](https://usdctofiat.xyz) | [@usdctofiat](https://x.com/usdctofiat)
