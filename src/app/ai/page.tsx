@@ -24,7 +24,6 @@ const sections = [
   { id: 'types', label: 'Tool Types' },
   { id: 'subagents', label: 'Subagents' },
   { id: 'skills', label: 'Skills' },
-  { id: 'commands', label: 'Commands' },
   { id: 'hooks', label: 'Hooks' },
   { id: 'statusline', label: 'Statusline' },
 ]
@@ -321,8 +320,8 @@ function ToolCard({
 
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/ADWilkinson/claude-code-tools/main'
 
-// Compact command data for grid display
-const commands = [
+// Skills data - unified model (user-invoked and auto-invoked)
+const userInvokedSkills = [
   { name: '/deslop', desc: 'Remove AI slop from diffs', detail: 'Extra comments, defensive checks, type escapes' },
   { name: '/repo-polish', desc: 'Autonomous cleanup → PR', detail: 'Unused imports, debug statements, type gaps' },
   { name: '/update-claudes', desc: 'Generate CLAUDE.md files', detail: 'Multi-agent codebase documentation' },
@@ -333,7 +332,7 @@ const commands = [
   { name: '/xml', desc: 'Convert prompts to XML', detail: 'Structured prompts for Claude' },
 ]
 
-function CommandCard({ name, desc, detail }: { name: string; desc: string; detail: string }) {
+function SkillCard({ name, desc, detail }: { name: string; desc: string; detail: string }) {
   const [copied, setCopied] = useState(false)
 
   const copy = async () => {
@@ -367,7 +366,7 @@ function CommandCard({ name, desc, detail }: { name: string; desc: string; detai
         {detail}
       </p>
       <a
-        href={`${GITHUB_RAW_BASE}/commands/${name.slice(1)}.md`}
+        href={`${GITHUB_RAW_BASE}/skills/${name.slice(1)}/SKILL.md`}
         download
         target="_blank"
         rel="noopener noreferrer"
@@ -574,7 +573,7 @@ export default function AI() {
                     <p className="text-sm font-medium text-[var(--text-primary)]">Install as Plugin</p>
                   </div>
                   <p className="text-xs text-[var(--text-muted)] mb-4">
-                    Get all 14 agents, 8 commands, 3 skills, and 2 hooks in one install. Commands namespaced as <code className="font-mono text-[var(--text-primary)]">/cct:*</code>. Also supports Cursor, Windsurf, Cline.
+                    Get all 14 agents, 11 skills, and 2 hooks in one install. Skills namespaced as <code className="font-mono text-[var(--text-primary)]">/cct:*</code>. Also supports Cursor, Windsurf, Cline.
                   </p>
                   <CodeBlock id="plugin-install" label="Plugin install">{PLUGIN_INSTALL_COMMANDS}</CodeBlock>
                   <p className="text-[10px] text-[var(--text-muted)] opacity-60 mt-3">
@@ -587,25 +586,19 @@ export default function AI() {
             {/* Tool Types */}
             <section id="types" className="scroll-mt-8 -mt-16">
               <SectionHeader title="Understanding Tool Types" />
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   {
                     icon: CodeIcon,
                     title: 'Subagents',
-                    desc: 'Invoked automatically via Task tool when domain expertise is needed.',
+                    desc: 'Specialized agents invoked automatically via Task tool when domain expertise is needed.',
                     trigger: 'Auto'
                   },
                   {
                     icon: ServerIcon,
                     title: 'Skills',
-                    desc: 'Auto-invoked when your request matches trigger patterns.',
-                    trigger: 'Pattern'
-                  },
-                  {
-                    icon: TerminalIcon,
-                    title: 'Commands',
-                    desc: 'Manually triggered with slash notation.',
-                    trigger: 'Manual'
+                    desc: 'Can be user-invoked with /skill-name or auto-invoked when your request matches their description.',
+                    trigger: 'Both'
                   },
                 ].map((type) => (
                   <div
@@ -658,9 +651,9 @@ export default function AI() {
 
             {/* Skills */}
             <section id="skills" className="scroll-mt-8">
-              <SectionHeader title="Skills">
+              <SectionHeader title="Skills" badge="11 skills">
                 <p className="text-sm text-[var(--text-muted)]">
-                  Auto-invoked when your request matches their description.
+                  Unified extension model. User-invoked with <code className="text-xs font-semibold text-[var(--text-primary)] bg-[var(--text-primary)]/[0.06] px-1.5 py-0.5 rounded font-mono">/skill</code> or auto-invoked when relevant.
                 </p>
               </SectionHeader>
 
@@ -782,27 +775,29 @@ curl -o ~/.claude/skills/clarify-before-implementing/SKILL.md \\
                 </div>
               </ToolCard>
 
-            </section>
+              {/* User-Invoked Skills */}
+              <div className="mt-12">
+                <div className="mb-6">
+                  <p className="text-[10px] font-medium uppercase tracking-widest text-[var(--text-muted)] opacity-50 mb-2">
+                    User-Invoked Skills
+                  </p>
+                  <p className="text-sm text-[var(--text-muted)]">
+                    Manual invocation with <code className="text-xs font-semibold text-[var(--text-primary)] bg-[var(--text-primary)]/[0.06] px-1.5 py-0.5 rounded font-mono">/skill</code>. Click to copy.
+                  </p>
+                </div>
 
-            {/* Commands */}
-            <section id="commands" className="scroll-mt-8">
-              <SectionHeader title="Slash Commands" badge={`${commands.length} commands`}>
-                <p className="text-sm text-[var(--text-muted)]">
-                  Manually triggered with <code className="text-xs font-semibold text-[var(--text-primary)] bg-[var(--text-primary)]/[0.06] px-1.5 py-0.5 rounded font-mono">/command</code>. Click to copy.
-                </p>
-              </SectionHeader>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                {commands.map((cmd) => (
-                  <CommandCard key={cmd.name} {...cmd} />
-                ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                  {userInvokedSkills.map((skill) => (
+                    <SkillCard key={skill.name} {...skill} />
+                  ))}
+                </div>
               </div>
 
               <div className="pt-6 border-t border-[var(--border-default)]/10">
-                <p className="text-xs text-[var(--text-muted)] mb-3">Install all commands (plugin includes all)</p>
-                <CodeBlock id="commands-install-all">{PLUGIN_INSTALL_COMMANDS}</CodeBlock>
+                <p className="text-xs text-[var(--text-muted)] mb-3">Install all skills (plugin includes all)</p>
+                <CodeBlock id="skills-install-all">{PLUGIN_INSTALL_COMMANDS}</CodeBlock>
                 <p className="text-[10px] text-[var(--text-muted)] opacity-50 mt-3">
-                  Plugin commands: <code className="font-mono">/cct:deslop</code>, <code className="font-mono">/cct:lighthouse</code>, <code className="font-mono">/cct:xml</code>, etc.
+                  Plugin skills: <code className="font-mono">/cct:deslop</code>, <code className="font-mono">/cct:lighthouse</code>, <code className="font-mono">/cct:xml</code>, etc.
                 </p>
               </div>
             </section>
